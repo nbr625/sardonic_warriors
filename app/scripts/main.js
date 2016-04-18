@@ -1,4 +1,9 @@
 import ReactDOM from 'react-dom';
-import routes from './routes';
+import React from "react";
+import Game from '../scripts/components/game.jsx'
 
-ReactDOM.render(routes, document.getElementById('app'));
+ReactDOM.render(
+    <Game />,
+    document.getElementById('app')
+);
+
