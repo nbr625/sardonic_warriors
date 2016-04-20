@@ -1,10 +1,8 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import createHistory from 'history/lib/createHashHistory'
+import createHistory from '../../../node_modules/history/lib/createHashHistory'
 
 import StartScreen from './start_screen.jsx';
-
-import characterList from '../data/characters.jsx'
 
 import Layout from './layout.jsx'
 
@@ -13,44 +11,85 @@ import IPanel1 from './intro/panels/intro-panel-1.jsx';
 import IPanel2 from './intro/panels/intro-panel-2.jsx';
 import IPanel3 from './intro/panels/intro-panel-3.jsx';
 
-import SelectionScreen from './selection_screen.jsx';
-import SelectedCharacterPanel from './selected-character-panel.jsx'
-import CharacterProfile from './character-profile.jsx'
+import SelectionScreen from './selection-screen/selection_screen.jsx';
+import SelectedCharacterPanel from './selection-screen/selected-character-panel.jsx';
+import CharacterProfile from './character-profile.jsx';
+import CharacterSprite from './character-sprite.jsx';
 
 import Battle from './battle.jsx';
 
+var Rebase = require('re-base');
+var base = Rebase.createClass('https://sardonic-warriors.firebaseio.com');
+
 var Game = React.createClass ({
+
+    size: function(obj) {
+        var size = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) size++;
+        }
+        return size;
+    },
 
     getInitialState: function() {
         return {
-            characters: require('../data/characters.jsx'),
+            characters: {},
             selectedCharacters: {},
+            text: "",
             selectCharacter: this.selectCharacter,
             unselectCharacter: this.unselectCharacter,
             renderCharacterProfile: this.renderCharacterProfile,
-            renderToSelectionPanel: this.renderToSelectionPanel
+            renderToSelectionPanel: this.renderToSelectionPanel,
+            renderSprites: this.renderSprites,
+            size: this.size
         }
     },
 
+    componentDidMount: function(){
+        base.syncState('characters', {
+            context: this,
+            state: 'characters'
+        });
+
+        var localStorageRef = localStorage.getItem('selectedCharacters');
+
+        if(localStorageRef) {
+            this.setState ({
+                selectedCharacters: JSON.parse(localStorageRef)
+            });
+        }
+    },
+
+    componentWillUpdate: function(nextProps, nextState) {
+        localStorage.setItem('selectedCharacters', JSON.stringify(nextState.selectedCharacters));
+    },
+
     renderCharacterProfile: function(key){
-        return <CharacterProfile key={key} index={key} character={this.state.characters[key]} {...this.state} />;
+        return <CharacterProfile key={key} index={key} {...this.state} />;
     },
 
-    renderToSelectionPanel: function(key){
-        return <SelectedCharacterPanel key={key} index={key} selectedCharcter={this.state.selectedCharacters[key]}/>;
-
+    renderSprites:  function(key){
+        return <CharacterSprite key={key} index={key} {...this.state} />;
     },
 
-    selectCharacter: function(character){
-        this.setState(
-            {selectedCharacters: this.selectedCharacters.concat(character)}
-        )
+    selectCharacter: function(key){
+        var selectedCharacters = this.state.selectedCharacters;
+        if (this.size(selectedCharacters) < 3) {
+            selectedCharacters[key] = this.state.characters[key];
+            this.setState({
+                selectedCharacters: selectedCharacters
+            });
+        } else {
+            this.setState({
+                text: "You can only choose three!"
+            });
+            console.log(this.state.text);
+        }
+
+        console.log(this.state.selectedCharacters);
     },
 
-    unselectCharacter: function(selectedCharacter) {
-        this.setState(
-            {selectedCharacters: this.selectedCharacters.slice(selectedCharacter)}
-        )
+    unselectCharacter: function(character) {
     },
 
     render: function() {

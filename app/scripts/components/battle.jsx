@@ -4,7 +4,11 @@ import { Link } from 'react-router';
 export default class Battle extends React.Component {
     render () {
         return (
-            <h1>Battle</h1>
+            <div>
+                <h1>The Showdown!</h1>
+                <div>{Object.keys(this.props.selectedCharacters).map(this.props.renderSprites)}</div>
+            </div>
+
         );
     }
 }
