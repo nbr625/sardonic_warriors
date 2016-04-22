@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import createHistory from '../../../node_modules/history/lib/createHashHistory'
 
-import StartScreen from './start_screen.jsx';
+import StartScreen from './start-screen/start_screen.jsx';
 
 import Layout from './layout.jsx'
 
@@ -12,11 +12,10 @@ import IPanel2 from './intro/panels/intro-panel-2.jsx';
 import IPanel3 from './intro/panels/intro-panel-3.jsx';
 
 import SelectionScreen from './selection-screen/selection_screen.jsx';
-import SelectedCharacterPanel from './selection-screen/selected-character-panel.jsx';
-import CharacterProfile from './character-profile.jsx';
-import CharacterSprite from './character-sprite.jsx';
 
-import Battle from './battle.jsx';
+import SelectionCharacterProfile from './selection-screen/selection-character-profile.jsx';
+
+import Battle from './battle/battle.jsx';
 
 var Rebase = require('re-base');
 var base = Rebase.createClass('https://sardonic-warriors.firebaseio.com');
@@ -33,14 +32,18 @@ var Game = React.createClass ({
 
     getInitialState: function() {
         return {
+
             characters: {},
-            selectedCharacters: {},
+
+            firstCharacter:{},
+            secondCharacter:{},
+            thirdCharacter:{},
+
             text: "",
+
             selectCharacter: this.selectCharacter,
-            unselectCharacter: this.unselectCharacter,
-            renderCharacterProfile: this.renderCharacterProfile,
-            renderToSelectionPanel: this.renderToSelectionPanel,
-            renderSprites: this.renderSprites,
+            renderSelectionProfile: this.renderSelectionProfile,
+
             size: this.size
         }
     },
@@ -64,33 +67,36 @@ var Game = React.createClass ({
         localStorage.setItem('selectedCharacters', JSON.stringify(nextState.selectedCharacters));
     },
 
-    renderCharacterProfile: function(key){
-        return <CharacterProfile key={key} index={key} {...this.state} />;
+
+
+    renderSelectionProfile: function(key, player){
+        return <SelectionCharacterProfile key={key} index={key} player={player} {...this.state} />;
     },
 
-    renderSprites:  function(key){
-        return <CharacterSprite key={key} index={key} {...this.state} />;
-    },
 
-    selectCharacter: function(key){
-        var selectedCharacters = this.state.selectedCharacters;
-        if (this.size(selectedCharacters) < 3) {
-            selectedCharacters[key] = this.state.characters[key];
-            this.setState({
-                selectedCharacters: selectedCharacters
-            });
-        } else {
-            this.setState({
-                text: "You can only choose three!"
-            });
-            console.log(this.state.text);
+    selectCharacter: function(key, player){
+        var state = this.state,
+            characters = state.characters;
+
+        switch (player) {
+            case 1:
+                state.firstCharacter = characters[key];
+                this.setState({
+                    firstCharacter: state.firstCharacter
+                });
+            case 2:
+                state.secondCharacter = characters[key];
+                this.setState({
+                    secondCharacter: state.secondCharacter
+                });
+            case 3:
+                state.thirdCharacter = characters[key];
+                this.setState({
+                    thirdCharacter: state.thirdCharacter
+                });
         }
-
-        console.log(this.state.selectedCharacters);
     },
 
-    unselectCharacter: function(character) {
-    },
 
     render: function() {
 

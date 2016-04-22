@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Game from '../game.jsx'
-import SelectedCharacterPanel from './selected-character-panel.jsx'
+import Game from '../game.jsx';
+import SelectedCharacterPanel from './selected-character-panel.jsx';
+import FirstCharacterPanel from './first-player-panel.jsx';
+import SecondCharacterPanel from './selected-character-panel.jsx';
+import ThirdCharacterPanel from './third-player-panel.jsx';
 import CharacterProfile from '../character-profile.jsx';
-import ToBattleButton from './to-battle-button.jsx'
+import ToBattleButton from './to-battle-button.jsx';
 
 export default class SelectionScreen extends React.Component {
 
@@ -14,6 +17,9 @@ export default class SelectionScreen extends React.Component {
     }
 
     render() {
+
+        var renderCharacterProfile = this.props.renderCharacterProfile();
+
         return (
             <div>
                 <h1>Selection Screen</h1>
@@ -22,14 +28,13 @@ export default class SelectionScreen extends React.Component {
                 <table>
                     <tbody>
                         <tr>
-                            <td>
-                                <ul className="list-of-characters">
-                                    {Object.keys(this.props.characters).map(this.props.renderCharacterProfile)}
-                                </ul>
-                            </td>
-                            <td>
-                                <SelectedCharacterPanel {...this.props}  />
-                            </td>
+                            <FirstPlayerPanel {...this.props} />
+                        </tr>
+                        <tr>
+                            <SecondPlayerPanel {...this.props} />
+                        </tr>
+                        <tr>
+                            <ThirdPlayerPanel {...this.props} />
                         </tr>
                     </tbody>
                 </table>
