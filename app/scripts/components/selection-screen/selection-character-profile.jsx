@@ -1,21 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router';
-import SelectionScreen from './selection-screen/selection_screen.jsx';
-import Game from './game.jsx';
+import SelectionScreen from './selection_screen.jsx';
 
-export default class CharacterProfile extends React.Component {
+export default class SelectionCharacterProfile extends React.Component {
 
     onSelectCharacter(){
-        this.props.selectCharacter(this.props.index);
+        this.props.selectCharacter(this.props.index, this.props.player);
     }
 
     render () {
-        var character = this.props.characters[this.props.index];
-        var disabled = (this.props.selectedCharacters.length >= 3);
+        var unselectedChars = this.props.unselectedChars,
+            character = unselectedChars[this.props.index];
         return (
-            <div className="character-profile" disabled={disabled} onClick={this.onSelectCharacter.bind(this)}>
-                <div className="character-name">{character.name}</div>
-            </div>
+            <li className="character-profile" onClick={this.onSelectCharacter.bind(this)}>
+                <span className="character-name">{character.name}</span>
+            </li>
         );
     }
 }

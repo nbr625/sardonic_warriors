@@ -1,44 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Game from '../game.jsx';
-import SelectedCharacterPanel from './selected-character-panel.jsx';
-import FirstCharacterPanel from './first-player-panel.jsx';
-import SecondCharacterPanel from './selected-character-panel.jsx';
-import ThirdCharacterPanel from './third-player-panel.jsx';
-import CharacterProfile from '../character-profile.jsx';
+
+import FirstCharacterPanel from './selection-player-panel.jsx';
+import CharacterProfile from './selection-character-profile.jsx';
 import ToBattleButton from './to-battle-button.jsx';
 
 export default class SelectionScreen extends React.Component {
 
     renderBattleButton() {
-        if (this.props.size(this.props.selectedCharacters) >= 3) {
+        var props = this.props,
+            firstCharset = props.firstCharacter.hasOwnProperty('player'),
+            secondCharset = props.secondCharacter.hasOwnProperty('player'),
+            thirdCharset = props.thirdCharacter.hasOwnProperty('player');
+        if (firstCharset && (secondCharset && thirdCharset)){
             return <ToBattleButton {...this.props} />;
         }
     }
 
     render() {
 
-        var renderCharacterProfile = this.props.renderCharacterProfile();
+        var props = this.props,
+            firstCharset = props.firstCharacter.hasOwnProperty('player'),
+            secondCharset = props.secondCharacter.hasOwnProperty('player'),
+            thirdCharset = props.thirdCharacter.hasOwnProperty('player'),
+            renderPlayerPanel = props.renderPlayerPanel;
 
         return (
             <div>
                 <h1>Selection Screen</h1>
                 <div>Select your warriors wisely</div>
-                <div>You may only take three to battle</div>
+                <div>You may only take three to battle...</div>
                 <table>
                     <tbody>
-                        <tr>
-                            <FirstPlayerPanel {...this.props} />
-                        </tr>
-                        <tr>
-                            <SecondPlayerPanel {...this.props} />
-                        </tr>
-                        <tr>
-                            <ThirdPlayerPanel {...this.props} />
-                        </tr>
+                            {renderPlayerPanel(1)}
+                            {renderPlayerPanel(2)}
+                            {renderPlayerPanel(3)}
                     </tbody>
                 </table>
-                {this.renderBattleButton()}
+                <div>
+                    {firstCharset &&  secondCharset && thirdCharset ?
+                        <ToBattleButton ready={true} {...this.props} />:
+                        <ToBattleButton ready={false} {...this.props} />
+                    }
+                </div>
             </div>
         );
     }
