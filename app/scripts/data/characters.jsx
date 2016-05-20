@@ -1,7 +1,7 @@
 
 module.exports = {
     character1:{
-        name:'Roman', hp:100, max_hp: 100, description: 'description', status: 'alive', attacks: [
+        name:'Roman', hp:1000, maxHp: 1000, description: 'description', status: 'alive', defence: 0, attacks: [
             {name:"Smite Her", magnitude: 250, type: 'damaging', initialText: [
                 "Roman opens the Cosmic Terminal",
                 "He navigates to one his most devistating attacks",
@@ -31,7 +31,7 @@ module.exports = {
             ]}
         ]
     }, character2: {
-        name:'Pri', hp:100, max_hp: 100, description: 'description', status: 'alive', attacks: [
+        name:'Pri', hp:1000, maxHp: 1000, description: 'description', status: 'alive', defence: 0, attacks: [
             {name:"Set off a Waterbottle Avalanche", magnitude: 250, type: 'damaging', initialText: [
                 "\"I knew this day would come.\" Says Pri as he approaches his desk",
                 "There stands a monolithic structure that spans thousands of waterbottles high",
@@ -66,7 +66,7 @@ module.exports = {
         ]
 
     }, character3: {
-        name:'Murat', hp:100, max_hp: 100, description: 'description', status: 'alive', attacks: [
+        name:'Murat', hp:1000, maxHp: 1000, description: 'description', status: 'alive', defence: 0, attacks: [
             {name:"Use Empathy to reason with her", magnitude: 250, type: 'damaging', initialText: [
                 "\"Gayathan, I know sometimes things have been confusing...\"",
                 "\"I have never been turned into a Dinosaur before, but I know what is to feel like you don't belong\"",
@@ -100,7 +100,7 @@ module.exports = {
         ]
 
     },character4: {
-        name:'Andrew', hp:100, max_hp: 100, description: 'description', status: 'alive', attacks: [
+        name:'Andrew', hp:1000, maxHp: 1000, description: 'description', status: 'alive', defence: 0, attacks: [
             {name: "Bust a Move", magnitude: 250, type: 'damaging', initialText: [
                 "Andrew has been preparing for this momment. He can finally reap the crop of endless nights of secret Bollywood dancing meetups",
                 "He rolls on the floor like a human that was taught how to walk by drunken snakes.",
@@ -124,7 +124,7 @@ module.exports = {
         ]
 
     }, character5: {
-        name:'Oleg', hp:100, max_hp: 100, description: 'description', status: 'alive', attacks: [
+        name:'Oleg', hp:1000, maxHp: 1000, description: 'description', status: 'alive', defence: 0, attacks: [
             {name:"Angry Bird", magnitude: 250, type: 'damaging', initialText: [
                 "Oleg reaches for his favorite plush to throw at people",
                 "But in his haste, he moves to Nico\'s desk and grabs the Spicy Chicken Man status",
@@ -150,7 +150,7 @@ module.exports = {
         ]
 
     }, character6: {
-        name:'Bryan', hp:100, max_hp: 100, description: 'description', status: 'alive', attacks: [
+        name:'Bryan', hp:1000, maxHp: 1000, description: 'description', status: 'alive', defence: 0, attacks: [
             {name:"Soylet Green", magnitude: 250, type: 'healing', initialText: [
                 "Bryan reveals that he has been stocking up on Soylet",
                 "\"Do you see now? we don't have time to prepare a meal so this Soylet is the perfect meal for this occasion\"",
@@ -176,7 +176,7 @@ module.exports = {
         ]
 
     }, character7: {
-        name:'PH', hp:100, max_hp: 100, description: 'description', status: 'alive', attacks: [
+        name:'PH', hp:1000, maxHp: 1000, description: 'description', status: 'alive', defence: 0, attacks: [
             {name: "Display your Cane-jutsu moves", magnitude: 250, type: 'damaging', initialText: [
                 "Pri takes out the cane he uses on his pimp training clases",
                 "He moves the curved stave with the deadly fervour of a roided up JROTC student",
@@ -203,7 +203,7 @@ module.exports = {
         ]
 
     }, character8: {
-        name:'Andy', hp:100, max_hp: 100, description: 'description', status: 'alive', attacks: [
+        name:'Andy', hp:1000, maxHp: 1000, description: 'description', status: 'alive', defence: 0, attacks: [
             {name: "Snide Remark in Spanish", magnitude: 250, type: 'damaging', initialText: [
                 "\"Ahora que eres un dinosaurio por lo menos tiene sentido que hagas tanto ruido\"",
                 "Gayathan cannot understand the euphonious glorious language of the castellians",

@@ -8,9 +8,9 @@ export default class InitialTextBox extends React.Component{
         super(props, context);
         var text = this.props.activeAction.initialText;
         this.state = {
-            activeTextIndex: 0,
+            activeTextIndex: 1,
             text: text,
-            activeText: text[0]
+            activeText: text[1]
         };
     }
 
@@ -18,12 +18,13 @@ export default class InitialTextBox extends React.Component{
         var text = this.state.text,
             activeTextIndex = this.state.activeTextIndex + 1,
             size = this.props.size(text);
-        if (activeTextIndex <= size) {
+        if (activeTextIndex < size) {
             this.setState({
                 activeText: text[activeTextIndex],
                 activeTextIndex: activeTextIndex
             });
         } else {
+            debugger;
             this.props.screenHandler('damageTB');
         }
     }

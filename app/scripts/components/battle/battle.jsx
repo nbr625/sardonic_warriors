@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+
 import Game from '../game.jsx';
 
 import Introduction from './text-panels/introduction.jsx';
@@ -25,8 +26,9 @@ var Battle = React.createClass({
         this.setActivePlayer.bind(this);
         this.setAction.bind(this);
         this.screenHandler.bind(this);
-
+        debugger;
         return {
+
             firstCharacter: firstChar,
             secondCharacter: secChar,
             thirdCharacter: thirdChar,
@@ -35,16 +37,18 @@ var Battle = React.createClass({
             lastKilledCharacter: {},
             activeAction: {},
             activeActionTarget: {},
-            boss: this.props.gayathan,
-            bossHP: this.props.gayathan.hp,
+            boss: this.props.boss,
             bossState: 1,
-            bossStateAttackSets: this.props.gayathan.attacks,
             activeBossAttackSets: 'to be written',
-            screen: 'intro'
+            screen: 'intro',
+
+            lastDamage: '',
+            lastHeal: ''
         }
     },
 
     screenHandler: function(screen, dead=null){
+        debugger;
         this.setState({ screen: screen });
         if (dead){
             this.setState({lastKilledCharacter: dead});
@@ -56,28 +60,41 @@ var Battle = React.createClass({
 
         var state = this.state,
             screen = state.screen;
-        if (screen === 'intro') {
-            return <Introduction screenHandler={this.screenHandler.bind(this)} {...this.props} />;
-        } else if (screen === 'initialTB') {
-            return <InitialTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
-                                   screenHandler={this.screenHandler.bind(this)} {...this.props}/>;
-        } else if (screen === 'damageTB') {
-            debugger;
-            return <DamageTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
-                                  activePlayer={state.activePlayer} screenHandler={this.screenHandler}/>;
-        } else if (screen === 'PlayerP') {
-            return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
-                                defend={this.defend} setAction={this.setAction.bind(this)}
-                                meditate={this.meditate} encourage={this.encourage}/>;
-        } else if (screen === 'attackP'){
-            return <AttackPanel setAction={this.setAction} activePlayer={state.activePlayer}
-                                screenHandler={this.screenHandler}/>;
-        } else if (screen === 'victoryP') {
-            return <VictoryPanel />;
-        } else if (screen === 'characterD') {
-            return <CharacterDiedPanel />;
-        } else if (screen === 'selectHT') {
-            return <SelectHealTarget />;
+        switch (screen) {
+            case 'intro':
+                return <Introduction screenHandler={this.screenHandler.bind(this)} {...this.props} />;
+                break;
+            case 'initialTB':
+
+                return <InitialTextBox activeAction={state.activeAction}
+                                       activeActionTarget={state.activeActionTarget}
+                                       screenHandler={this.screenHandler.bind(this)} {...this.props}/>;
+                break;
+            case 'damageTB':
+                debugger;
+                return <CharacterDamageTextBox activeAction={state.activeAction}
+                                               activeActionTarget={state.activeActionTarget}
+                                               activePlayer={state.activePlayer}
+                                               screenHandler={this.screenHandler.bind(this)}
+                                               setNextTurn={this.setNextTurn.bind(this)}/>;
+                break;
+            case 'PlayerP':
+                return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
+                                    defend={this.defend} setAction={this.setAction.bind(this)}
+                                    meditate={this.meditate} encourage={this.encourage}/>;
+                break;
+            case 'attackP':
+                return <AttackPanel setAction={this.setAction} activePlayer={state.activePlayer}
+                                    screenHandler={this.screenHandler}/>;
+                break;
+            case 'victoryP':
+                return <VictoryPanel />;
+                break;
+            case 'characterD':
+                return <CharacterDiedPanel />;
+                break;
+            case 'selectHT':
+                return <SelectHealTarget />;
         }
     },
 
@@ -89,7 +106,6 @@ var Battle = React.createClass({
 
 
     setAction: function(action, target=null){
-        debugger;
         this.setState({
            activeAction: action
         });
@@ -260,15 +276,83 @@ var Battle = React.createClass({
     },
 
     defend: function(){
-
     },
 
     meditate: function(){
-
     },
 
     encourage: function(){
+    },
 
+    damage: function(action, target){
+        var state = this.state,
+            boss = state.boss,
+            firstCharacter = state.firstCharacter,
+            secondCharacter = state.secondCharacter,
+            thirdCharacter = state.thirdCharacter;
+        switch (target) {
+            case 'boss':
+                var damage = action.magnitude - boss.defense;
+                boss.hp = boss.hp - damage;
+                this.setState({
+                    boss: boss,
+                    lastDamage: damage
+                });
+                break;
+            case 'p1':
+                var damage = action.magnitude - firstCharacter.defense;
+                firstCharacter.hp = firstCharacter.hp - firstCharacter.defense;
+                this.setState({
+                    firstCharacter: firstCharacter,
+                    lastDamage: damage
+                });
+                break;
+            case 'p2':
+                var damage = action.magnitude - secondCharacter.defense;
+                this.setState({
+                    secondCharacter: secondCharacter,
+                    lastDamage: damage
+                });
+                break;
+            case 'p3':
+                var damage = action.magnitude - thirdCharacter.defense;
+                this.setState({
+                    thirdCharacter: thirdCharacter,
+                    lastDamage: damage
+                });
+        }
+    },
+
+    heal: function(action, target){
+        var state = this.state,
+            firstCharacter = state.firstCharacter,
+            secondCharacter = state.secondCharacter,
+            thirdCharacter = state.thirdCharacter;
+        switch (target) {
+            case 'p1':
+                var restoration = action.magnitude;
+                firstCharacter.hp = firstCharacter.hp + restoration;
+                this.setState({
+                    firstCharacter: firstCharacter,
+                    lastHeal: restoration
+                });
+                break;
+            case 'p2':
+                var restoration = action.magnitude;
+                secondCharacter.hp = secondCharacter.hp + restoration;
+                this.setState({
+                    secondCharacter: secondCharacter,
+                    lastHeal: restoration
+                });
+                break;
+            case 'p3':
+                var restoration = action.magnitude;
+                thirdCharacter.hp = secondCharacter.hp + restoration;
+                this.setState({
+                    thirdCharacter: thirdCharacter,
+                    lastHeal: restoration
+                });
+        }
     },
 
     render: function() {
@@ -276,9 +360,10 @@ var Battle = React.createClass({
             props = this.props,
             firstCharacter = props.firstCharacter,
             secondCharacter = props.secondCharacter,
-            thirdCharacter = props.thirdCharacter;
+            thirdCharacter = props.thirdCharacter,
+            boss = props.boss;
 
-
+        debugger;
         return (
             <table>
                 <tbody>
@@ -289,20 +374,20 @@ var Battle = React.createClass({
                         <td>
                             <div onClick={()=>{this.setHealingTarget()}}>
                                 <img src={"/images/" + firstCharacter.name.toLowerCase() + "_standing.png"} alt={firstCharacter.name}/>
-                                <div>{firstCharacter.name}</div>
+                                <div>{firstCharacter.name} {firstCharacter.hp}/{firstCharacter.maxHp}</div>
                             </div>
                             <div onClick={()=>{this.setHealingTarget()}}>
                                 <img src={"/images/" + secondCharacter.name.toLowerCase() + "_standing.png"} alt={secondCharacter.name}/>
-                                <div>{secondCharacter.name}</div>
+                                <div>{secondCharacter.name} {secondCharacter.hp}/{secondCharacter.maxHp}</div>
                             </div>
                             <div onClick={()=>{this.setHealingTarget()}}>
                                 <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
-                                <div>{thirdCharacter.name}</div>
+                                <div>{thirdCharacter.name} {thirdCharacter.hp}/{thirdCharacter.maxHp}</div>
                             </div>
                         </td>
                         <td>
                             <img src={"/images/gayathan_standing.png"}/>
-                            <div>{state.boss.name}</div>
+                            <div>{boss.name} {boss.hp}/{boss.maxHp}</div>
                         </td>
                     </tr>
                     <tr>

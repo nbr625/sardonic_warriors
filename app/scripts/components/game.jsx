@@ -11,7 +11,6 @@ import IPanel1 from './intro/panels/intro-panel-1.jsx';
 import IPanel2 from './intro/panels/intro-panel-2.jsx';
 import IPanel3 from './intro/panels/intro-panel-3.jsx';
 
-import characterList from '../data/characters.jsx'
 
 import SelectionScreen from './selection-screen/selection_screen.jsx';
 import SelectionPlayerPanel from './selection-screen/selection-player-panel.jsx';
@@ -26,15 +25,16 @@ var Game = React.createClass ({
 
 
     getInitialState: function() {
-
+        debugger;
+        var enemiesData = require('../data/enemies.jsx');
         return {
 
             characters: require('../data/characters.jsx'),
+            boss: enemiesData.gayathan,
 
             firstCharacter: {},
             secondCharacter: {},
             thirdCharacter: {},
-            gayathan: {name: 'Gayathan'},
 
             text: "",
 
