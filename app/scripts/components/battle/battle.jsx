@@ -48,7 +48,6 @@ var Battle = React.createClass({
 
     screenHandler: function(screen, dead=null){
         this.setState({ screen: screen });
-        debugger;
         if (dead){
             this.setState({lastKilledCharacter: dead});
         }

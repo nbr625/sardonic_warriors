@@ -25,7 +25,6 @@ export default class InitialTextBox extends React.Component{
                 activeTextIndex: activeTextIndex
             });
         } else {
-            debugger;
             if (props.activeAction.type === 'damaging') {
                 props.damage(props.activeAction, props.activeActionTarget);
             } else if (props.activeAction.type === 'healing') {
