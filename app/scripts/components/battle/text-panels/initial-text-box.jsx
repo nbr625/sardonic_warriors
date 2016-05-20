@@ -17,7 +17,8 @@ export default class InitialTextBox extends React.Component{
     switchText(){
         var text = this.state.text,
             activeTextIndex = this.state.activeTextIndex + 1,
-            size = this.props.size(text);
+            props = this.props,
+            size = props.size(text);
         if (activeTextIndex < size) {
             this.setState({
                 activeText: text[activeTextIndex],
@@ -25,9 +26,17 @@ export default class InitialTextBox extends React.Component{
             });
         } else {
             debugger;
-            this.props.screenHandler('damageTB');
+            if (props.activeAction.type === 'damaging') {
+                props.damage(props.activeAction, props.activeActionTarget);
+            } else if (props.activeAction.type === 'healing') {
+                props.heal(props.activeAction , props.activeActionTarget);
+            }
+            props.screenHandler('damageTB');
+
         }
     }
+
+
     render() {
         return (
             <div>

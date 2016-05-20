@@ -26,7 +26,6 @@ var Battle = React.createClass({
         this.setActivePlayer.bind(this);
         this.setAction.bind(this);
         this.screenHandler.bind(this);
-        debugger;
         return {
 
             firstCharacter: firstChar,
@@ -48,8 +47,8 @@ var Battle = React.createClass({
     },
 
     screenHandler: function(screen, dead=null){
-        debugger;
         this.setState({ screen: screen });
+        debugger;
         if (dead){
             this.setState({lastKilledCharacter: dead});
         }
@@ -66,17 +65,14 @@ var Battle = React.createClass({
                 break;
             case 'initialTB':
 
-                return <InitialTextBox activeAction={state.activeAction}
-                                       activeActionTarget={state.activeActionTarget}
-                                       screenHandler={this.screenHandler.bind(this)} {...this.props}/>;
+                return <InitialTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
+                                       screenHandler={this.screenHandler} {...this.props}
+                                       heal={this.heal.bind(this)} damage={this.damage.bind(this)}/>;
                 break;
             case 'damageTB':
-                debugger;
-                return <CharacterDamageTextBox activeAction={state.activeAction}
-                                               activeActionTarget={state.activeActionTarget}
-                                               activePlayer={state.activePlayer}
-                                               screenHandler={this.screenHandler.bind(this)}
-                                               setNextTurn={this.setNextTurn.bind(this)}/>;
+
+                return <CharacterDamageTextBox {...state} screenHandler={this.screenHandler.bind(this)}
+                                               setNextTurn={this.setNextTurn.bind(this)} />;
                 break;
             case 'PlayerP':
                 return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
@@ -292,7 +288,7 @@ var Battle = React.createClass({
             thirdCharacter = state.thirdCharacter;
         switch (target) {
             case 'boss':
-                var damage = action.magnitude - boss.defense;
+                var damage = action.magnitude - boss.defence;
                 boss.hp = boss.hp - damage;
                 this.setState({
                     boss: boss,
@@ -300,7 +296,7 @@ var Battle = React.createClass({
                 });
                 break;
             case 'p1':
-                var damage = action.magnitude - firstCharacter.defense;
+                var damage = action.magnitude - firstCharacter.defence;
                 firstCharacter.hp = firstCharacter.hp - firstCharacter.defense;
                 this.setState({
                     firstCharacter: firstCharacter,
@@ -308,14 +304,14 @@ var Battle = React.createClass({
                 });
                 break;
             case 'p2':
-                var damage = action.magnitude - secondCharacter.defense;
+                var damage = action.magnitude - secondCharacter.defence;
                 this.setState({
                     secondCharacter: secondCharacter,
                     lastDamage: damage
                 });
                 break;
             case 'p3':
-                var damage = action.magnitude - thirdCharacter.defense;
+                var damage = action.magnitude - thirdCharacter.defence;
                 this.setState({
                     thirdCharacter: thirdCharacter,
                     lastDamage: damage
@@ -363,7 +359,6 @@ var Battle = React.createClass({
             thirdCharacter = props.thirdCharacter,
             boss = props.boss;
 
-        debugger;
         return (
             <table>
                 <tbody>

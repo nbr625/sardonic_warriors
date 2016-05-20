@@ -4,7 +4,8 @@ import Battle from './../battle.jsx';
 
 export default class CharacterDamageTextBox extends React.Component{
 
-    continue(){
+
+    nextPanel(){
         if(this.props.activeActionTarget.status == 'dead'){
             return this.props.screenHandler('characterD', this.props.activeActionTarget);
         } else {
@@ -17,6 +18,7 @@ export default class CharacterDamageTextBox extends React.Component{
         var props = this.props,
             activeActionTarget = props.activeActionTarget,
             activePlayer = props.activePlayer,
+            activeAction = props.activeAction,
             text = '';
 
         switch(this.props.activeAction.type){
@@ -33,7 +35,7 @@ export default class CharacterDamageTextBox extends React.Component{
         return (
             <div>
                 <div id="text">{text}</div>
-                <div onClick={() => {this.continue.bind(this)}}>Continue</div>
+                <div onClick={() => {this.nextPanel()}}>Continue</div>
             </div>
         );
     }

@@ -21,7 +21,7 @@ export default class ToBattleButton extends React.Component {
         return (
             <div>
                 {props.ready ?
-                    <Link to="battle">To Battle!</Link> :
+                    <Link onClick={()=> {this.props.resetBoss}} to="battle">To Battle!</Link> :
                     characterCount == 2?
                         <div>Pick one more Hero</div> :
                         <div>Pick {3-characterCount} more Heroes</div>

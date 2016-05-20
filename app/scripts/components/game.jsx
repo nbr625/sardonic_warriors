@@ -46,6 +46,7 @@ var Game = React.createClass ({
             renderSecondSelectionProfile: this.renderSecondSelectionProfile,
             renderThirdSelectionProfile: this.renderThirdSelectionProfile,
             renderPlayerPanel: this.renderPlayerPanel,
+            resetBoss: this.resetBoss,
 
             size: this.size
         }
@@ -174,6 +175,13 @@ var Game = React.createClass ({
             <TextBox {...this.props} setTurn={this.setTurn} script={script} activePlayer={this.state.activePlayer} afterScript={afterScript}/>,
             document.getElementById("panel")
         );
+    },
+
+    resetBoss(){
+        this.state.boss.hp = this.state.boss.maxHp;
+        this.setState({
+           boss: this.state.boss
+        });
     },
 
 
