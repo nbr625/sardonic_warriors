@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Battle from './battle.jsx';
+import Battle from './../battle.jsx';
 
 export default class SelectHealTarget extends React.Component{
 

@@ -2,23 +2,22 @@ import React from 'react';
 import { Link } from 'react-router';
 import Game from '../game.jsx';
 
-import Introduction from './introduction.jsx';
-import InitialTextBox from './initial-text-box.jsx';
-import CharacterDamageTextBox from './character-damage-text-box.jsx';
-import FinalTextBox from './final-text_box.jsx';
-import PlayerPanel from './player-panel.jsx';
-import AttackPanel from './attack-panel.jsx';
-import SelectHealTarget from './select_healing_target_panel.jsx';
-import CharacterDiedPanel from './character-died.jsx';
+import Introduction from './text-panels/introduction.jsx';
+import InitialTextBox from './text-panels/initial-text-box.jsx';
+import CharacterDamageTextBox from './text-panels/character-damage-text-box.jsx';
+import PlayerPanel from './action-panels/player-panel.jsx';
+import AttackPanel from './action-panels/attack-panel.jsx';
+import SelectHealTarget from './action-panels/select-healing-target-panel.jsx';
+import CharacterDiedPanel from './text-panels/character-died.jsx';
 
-class default class Battle extends React.Component{
+
+var Battle = React.createClass({
 
     //activePlayers and individual characters are now different entities for the sake of
     //establishing flexibility
     //lastKilled character is another new entity that might be changed to all killed characters
     //for the sake of symmetry and ability to revive.
-    constructor(props, context){
-        super(props, context);
+    getInitialState: function(){
         var firstChar = this.props.firstCharacter,
             secChar = this.props.secondCharacter,
             thirdChar = this.props.thirdCharacter;
@@ -27,44 +26,70 @@ class default class Battle extends React.Component{
         this.setAction.bind(this);
         this.screenHandler.bind(this);
 
-        this.setState({
-            firstCharacter: this.props.firstCharacter,
-            secondCharacter: this.props.secondCharacter,
-            thirdCharacter: this.props.thirdCharacter,
+        return {
+            firstCharacter: firstChar,
+            secondCharacter: secChar,
+            thirdCharacter: thirdChar,
             playableCharacters: {firstChar, secChar, thirdChar},
             activePlayer: this.props.firstCharacter,
             lastKilledCharacter: {},
             activeAction: {},
             activeActionTarget: {},
-
             boss: this.props.gayathan,
             bossHP: this.props.gayathan.hp,
             bossState: 1,
             bossStateAttackSets: this.props.gayathan.attacks,
             activeBossAttackSets: 'to be written',
-
             screen: 'intro'
-        });
-    }
+        }
+    },
 
-    screenHandler(screen, dead=null){
-        this.setState({
-            screen: screen
-        });
+    screenHandler: function(screen, dead=null){
+        this.setState({ screen: screen });
         if (dead){
             this.setState({lastKilledCharacter: dead});
         }
 
-    }
+    },
+
+    renderPanel: function() {
+
+        var state = this.state,
+            screen = state.screen;
+        if (screen === 'intro') {
+            return <Introduction screenHandler={this.screenHandler.bind(this)} {...this.props} />;
+        } else if (screen === 'initialTB') {
+            return <InitialTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
+                                   screenHandler={this.screenHandler.bind(this)} {...this.props}/>;
+        } else if (screen === 'damageTB') {
+            debugger;
+            return <DamageTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
+                                  activePlayer={state.activePlayer} screenHandler={this.screenHandler}/>;
+        } else if (screen === 'PlayerP') {
+            return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
+                                defend={this.defend} setAction={this.setAction.bind(this)}
+                                meditate={this.meditate} encourage={this.encourage}/>;
+        } else if (screen === 'attackP'){
+            return <AttackPanel setAction={this.setAction} activePlayer={state.activePlayer}
+                                screenHandler={this.screenHandler}/>;
+        } else if (screen === 'victoryP') {
+            return <VictoryPanel />;
+        } else if (screen === 'characterD') {
+            return <CharacterDiedPanel />;
+        } else if (screen === 'selectHT') {
+            return <SelectHealTarget />;
+        }
+    },
 
     setActivePlayer(player){
         this.setState({
             activePlayer: player
         });
-    }
+    },
 
 
-    setAction(action, target=null){
+    setAction: function(action, target=null){
+        debugger;
         this.setState({
            activeAction: action
         });
@@ -78,15 +103,15 @@ class default class Battle extends React.Component{
         }
 
 
-    }
+    },
 
-    setHealingTarget(target){
+    setHealingTarget: function(target){
         this.setState({
             activeActionTarget: target
         });
-    }
+    },
 
-    actionHandler(action, target){
+    actionHandler: function(action, target){
         switch(action) {
             case 'damaging':
                 target.hp = target.hp - action.magnitude;
@@ -109,9 +134,9 @@ class default class Battle extends React.Component{
         });
         this.updateCharacter(target);
         this.playableCharactersHandler();
-    }
+    },
 
-    updateCharacter(character){
+    updateCharacter: function(character){
         var state = this.state;
         switch(character.name){
             case state.firstCharacter.name:
@@ -135,22 +160,22 @@ class default class Battle extends React.Component{
                 });
         }
 
-    }
+    },
 
-    bossTakesTurn(){
+    bossTakesTurn: function(){
         var size = this.props.size(),
             targetIndex = Math.floor((Math.random() * this.state.playableCharacters.length) + 1),
             attackIndex = Math.floor((Math.random() * size(this.state.bossStateAttackSets)) + 1),
             attack = this.state.activeBossAttackSets[attackIndex];
         this.setAction(attack, this.state.playableCharacters[targetIndex]);
-    }
+    },
 
 
     //similar loop to playableCharactersHandler but with hp as it's argument
 
 
     //will set screen to dead.
-    playableCharactersHandler(){
+    playableCharactersHandler: function(){
         var characters = this.state.playableCharacters;
         Object.keys(characters).map(function(key){
             if (characters[key].status == 'dead'){
@@ -178,19 +203,15 @@ class default class Battle extends React.Component{
         this.setState({
             playableCharacters: characters
         })
-    }
+    },
 
 
-    setVictory(){
+    setVictory: function(){
         this.screenHandler('victoryP');
-    }
+    },
 
 
-    setGameOver(){
-
-    }
-
-    setNextTurn(character){
+    setNextTurn: function(character){
         var boss = this.state.gayathan,
             firstChar = this.state.firstCharacter,
             secondChar = this.state.secondCharacter,
@@ -236,74 +257,64 @@ class default class Battle extends React.Component{
                     this.screenHandler('PlayerP');
             }
         }
-    }
+    },
 
-    render() {
+    defend: function(){
+
+    },
+
+    meditate: function(){
+
+    },
+
+    encourage: function(){
+
+    },
+
+    render: function() {
         var state = this.state,
-            healing = !(state.screen == 'selectHT'),
-            panel;
+            props = this.props,
+            firstCharacter = props.firstCharacter,
+            secondCharacter = props.secondCharacter,
+            thirdCharacter = props.thirdCharacter;
 
-        switch(screen) {
-            case 'intro':
-                panel = <Introduction intro={state.intro} screenHandler={this.screenHandler}/>;
-                break;
-            case 'initialTB':
-                panel = <InitialTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
-                                        screenHandler={this.screenHandler}/>;
-                break;
-            case 'damageTB':
-                panel = <DamageTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
-                                       activePlayer={state.activePlayer} screenHandler={this.screenHandler}/>;
-                break;
-            case 'finalTB':
-                panel = <FinalTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
-                                      setNextTurn={this.setNextTurn}/>;
-                break;
-            case 'PlayerP':
-                panel = <PlayerPanel screenHandler={this.screenHandler} activePlayer={state.activePlayer}/>;
-                break;
-            case 'attackP':
-                panel = <AttackPanel setAction={this.setAction} activePlayer={state.activePlayer}
-                                     screenHandler={this.screenHandler}/>;
-                break;
-            case 'victoryP':
-                panel = <VictoryPanel />;
-                break;
-            case 'characterD':
-                panel = <CharacterDiedPanel />;
-                break;
-            case 'selectHT':
-                panel = <SelectHealTarget />;
-
-        }
 
         return (
             <table>
                 <tbody>
-                <tr>
-                    <td><h1>The Showdown!</h1></td>
-                </tr>
-                <tr>
-                    <td>
-
-                        <div onClick={this.setHealingTarget(state.firstCharacter)} disabled={healing}>{state.firstCharacter.name}</div>
-                        <div onClick={this.setHealingTarget(state.secondCharacter)} disabled={healing}>{state.secondCharacter.name}</div>
-                        <div onClick={this.setHealingTarget(state.secondCharacter)} disabled={healing}>{state.thirdCharacter.name}</div>
-                    </td>
-
-                    <td>
-                        <div>{state.boss}</div>
-
-                    </td>
-                 </tr>
-                <tr>
-                    <td className="panel">
-                        {panel}
-                    </td>
-                </tr>
+                    <tr>
+                        <td><h1>The Showdown!</h1></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div onClick={()=>{this.setHealingTarget()}}>
+                                <img src={"/images/" + firstCharacter.name.toLowerCase() + "_standing.png"} alt={firstCharacter.name}/>
+                                <div>{firstCharacter.name}</div>
+                            </div>
+                            <div onClick={()=>{this.setHealingTarget()}}>
+                                <img src={"/images/" + secondCharacter.name.toLowerCase() + "_standing.png"} alt={secondCharacter.name}/>
+                                <div>{secondCharacter.name}</div>
+                            </div>
+                            <div onClick={()=>{this.setHealingTarget()}}>
+                                <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
+                                <div>{thirdCharacter.name}</div>
+                            </div>
+                        </td>
+                        <td>
+                            <img src={"/images/gayathan_standing.png"}/>
+                            <div>{state.boss.name}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="panel">
+                            {this.renderPanel()}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
         );
     }
-}
+});
+
+export default Battle;

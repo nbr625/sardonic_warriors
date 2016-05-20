@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Game from '../game.jsx';
 import SelectionScreen from './selection_screen.jsx';
-import SelectionCharacterProfile from './selection-character-profile.jsx';
-
+import SelectionCharacterProfile from './selection-character-profile.jsx'
 
 export default class SelectionPlayerPanel extends React.Component {
 
@@ -43,8 +42,8 @@ export default class SelectionPlayerPanel extends React.Component {
                 </td>
 
                 <td>
-                    {panelCharacter.name}
-                    {panelCharacter.description}
+                    <img src={"/images/" + panelCharacter.name.toLowerCase() + "_standing.png"} alt={panelCharacter.name}/>
+                    <div>{panelCharacter.name}</div>
                 </td>
 
             </tr>

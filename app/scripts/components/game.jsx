@@ -11,6 +11,8 @@ import IPanel1 from './intro/panels/intro-panel-1.jsx';
 import IPanel2 from './intro/panels/intro-panel-2.jsx';
 import IPanel3 from './intro/panels/intro-panel-3.jsx';
 
+import characterList from '../data/characters.jsx'
+
 import SelectionScreen from './selection-screen/selection_screen.jsx';
 import SelectionPlayerPanel from './selection-screen/selection-player-panel.jsx';
 import SelectionCharacterProfile from './selection-screen/selection-character-profile.jsx';
@@ -27,12 +29,12 @@ var Game = React.createClass ({
 
         return {
 
-            characters: {},
+            characters: require('../data/characters.jsx'),
 
             firstCharacter: {},
             secondCharacter: {},
             thirdCharacter: {},
-            gayathan: {},
+            gayathan: {name: 'Gayathan'},
 
             text: "",
 
@@ -50,16 +52,6 @@ var Game = React.createClass ({
     },
 
     componentDidMount: function(){
-
-        base.syncState('/characters', {
-            context: this,
-            state: 'characters'
-        });
-
-        base.syncState('/gayathan', {
-            context: this,
-            state: 'gayathan'
-        });
 
 
         var localStorageRefFirstChar = localStorage.getItem('firstCharacter');
@@ -177,14 +169,6 @@ var Game = React.createClass ({
 
     },
 
-    damageGayathan: function(attack){
-        this.state.gayathan -= attack.damage;
-        this.setState({
-            gayathan: this.state.gayathan
-        });
-        this.renderTextBox(attack.finalText, setTurn);
-    },
-
     renderTextBox: function(script, afterScript){
         ReactDom.render(
             <TextBox {...this.props} setTurn={this.setTurn} script={script} activePlayer={this.state.activePlayer} afterScript={afterScript}/>,
@@ -219,5 +203,7 @@ function createElementFn(parentProps) {
         return <Component {...parentProps} {...props} />
     }
 }
+
+
 
 export default Game;

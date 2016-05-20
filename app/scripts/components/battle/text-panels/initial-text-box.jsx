@@ -1,26 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Battle from './battle.jsx';
+import Battle from './../battle.jsx';
 
 export default class InitialTextBox extends React.Component{
 
-    constructor(){
-        super();
-        this.switchText.bind(this);
-        this.setState({
+    constructor(props,context){
+        super(props, context);
+        var text = this.props.activeAction.initialText;
+        this.state = {
             activeTextIndex: 0,
-            text: this.props.activeAction.initialText,
-            activeText: this.state.text[this.state.activeTextIndex]
-        });
+            text: text,
+            activeText: text[0]
+        };
     }
 
     switchText(){
         var text = this.state.text,
-            activeTextIndex = this.state.activeTextIndex,
+            activeTextIndex = this.state.activeTextIndex + 1,
             size = this.props.size(text);
-        if (activeTextIndex < size) {
+        if (activeTextIndex <= size) {
             this.setState({
-                activeText: text[activeTextIndex]
+                activeText: text[activeTextIndex],
+                activeTextIndex: activeTextIndex
             });
         } else {
             this.props.screenHandler('damageTB');
@@ -30,7 +31,7 @@ export default class InitialTextBox extends React.Component{
         return (
             <div>
                 <div id="text">{this.state.activeText}</div>
-                <div onClick={this.switchText}>Next</div>
+                <div onClick={this.switchText.bind(this)}>Next</div>
             </div>
         );
     }
