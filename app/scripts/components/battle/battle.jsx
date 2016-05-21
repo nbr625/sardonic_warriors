@@ -116,7 +116,14 @@ var Battle = React.createClass({
 
     },
 
-    setHealingTarget: function(target){
+    setTarget: function(target){
+        var state = this.state,
+            activeAction = state.activeAction;
+
+        if (activeAction.type = 'healing'){
+            this.heal(activeAction, target);
+        }
+        this.screenHandler('damageTB');
         this.setState({
             activeActionTarget: target
         });
@@ -187,21 +194,22 @@ var Battle = React.createClass({
 
     //will set screen to dead.
     playableCharactersHandler: function(){
-        var characters = this.state.playableCharacters;
+        var state = this.state;
+            characters = this.state.playableCharacters;
         Object.keys(characters).map(function(key){
             if (characters[key].status == 'dead'){
                 switch(characters[key].name){
-                    case this.state.firstCharacter.name:
+                    case state.firstCharacter.name:
                         this.setState({
                            firstCharacter:  characters[key]
                         });
                         break;
-                    case this.state.secondCharacter.name:
+                    case state.secondCharacter.name:
                         this.setState({
                             secondCharacter:  characters[key]
                         });
                         break;
-                    case this.state.thirdCharacter.name:
+                    case state.thirdCharacter.name:
                         this.setState({
                             thirdCharacter:  characters[key]
                         });
@@ -323,7 +331,7 @@ var Battle = React.createClass({
                     firstCharacter.courage = firstCharacter.maxCourage;
                 }
                 setState({
-                    firstCharacter:  firstChatacter
+                    firstCharacter: firstCharacter
                 });
             case 'p2':
                 secondCharacter.courage += 50;
@@ -401,14 +409,15 @@ var Battle = React.createClass({
     },
 
     heal: function(action, target){
+        debugger;
         var state = this.state,
-            restoration = action.magnitude,
             firstCharacter = state.firstCharacter,
             secondCharacter = state.secondCharacter,
             thirdCharacter = state.thirdCharacter;
 
-        switch (target) {
-            case 'p1':
+        switch (target.name) {
+            case firstCharacter.name:
+                var restoration = action.magnitude;
                 if(firstCharacter.status === 'dead'){
                     firstCharacter.status = 'alive';
                 }
@@ -421,7 +430,8 @@ var Battle = React.createClass({
                     lastHeal: restoration
                 });
                 break;
-            case 'p2':
+            case secondCharacter.name:
+                var restoration = action.magnitude;
                 if(secondCharacter.status === 'dead'){
                     secondCharacter.status = 'alive';
                 }
@@ -434,7 +444,8 @@ var Battle = React.createClass({
                     lastHeal: restoration
                 });
                 break;
-            case 'p3':
+            case thirdCharacter.name:
+                var restoration = action.magnitude;
                 thirdCharacter.hp = secondCharacter.hp + restoration;
                 if(thirdCharacter.hp > thirdCharacter.maxHp){
                     thirdCharacter.hp = thirdCharacter.maxHp;
@@ -447,8 +458,7 @@ var Battle = React.createClass({
     },
 
     render: function() {
-        var state = this.state,
-            props = this.props,
+        var props = this.props,
             firstCharacter = props.firstCharacter,
             secondCharacter = props.secondCharacter,
             thirdCharacter = props.thirdCharacter,
@@ -462,15 +472,15 @@ var Battle = React.createClass({
                     </tr>
                     <tr>
                         <td>
-                            <div onClick={()=>{this.setHealingTarget()}}>
+                            <div onClick={()=>{this.setTarget(firstCharacter)}}>
                                 <img src={"/images/" + firstCharacter.name.toLowerCase() + "_standing.png"} alt={firstCharacter.name}/>
                                 <div>{firstCharacter.name} {firstCharacter.hp}/{firstCharacter.maxHp}</div>
                             </div>
-                            <div onClick={()=>{this.setHealingTarget()}}>
+                            <div onClick={()=>{this.setTarget(secondCharacter)}}>
                                 <img src={"/images/" + secondCharacter.name.toLowerCase() + "_standing.png"} alt={secondCharacter.name}/>
                                 <div>{secondCharacter.name} {secondCharacter.hp}/{secondCharacter.maxHp}</div>
                             </div>
-                            <div onClick={()=>{this.setHealingTarget()}}>
+                            <div onClick={()=>{this.setTarget(thirdCharacter)}}>
                                 <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
                                 <div>{thirdCharacter.name} {thirdCharacter.hp}/{thirdCharacter.maxHp}</div>
                             </div>

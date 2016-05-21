@@ -28,6 +28,7 @@ export default class InitialTextBox extends React.Component{
             if (props.activeAction.type === 'damaging') {
                 props.damage(props.activeAction, props.activeActionTarget);
             } else if (props.activeAction.type === 'healing') {
+                debugger;
                 props.heal(props.activeAction , props.activeActionTarget);
             }
             props.screenHandler('damageTB');
