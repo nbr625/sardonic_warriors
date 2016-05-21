@@ -271,6 +271,15 @@ var Battle = React.createClass({
     },
 
     defend: function(){
+        var state = this.state;
+        state.playableCharacters.map(function(char){
+            char.defence += 50;
+        });
+        this.setState({
+            firstCharacter: playableCharacter[0],
+            secondCharacter: playableCharacter[1],
+            thirdCharacter: playableCharacter[2]
+        });
     },
 
     meditate: function(){
@@ -289,6 +298,10 @@ var Battle = React.createClass({
             case 'boss':
                 var damage = action.magnitude - boss.defence;
                 boss.hp = boss.hp - damage;
+                if (boss.hp <= 0){
+                    boss.hp = 0;
+                    boss.status = 'dead';
+                }
                 this.setState({
                     boss: boss,
                     lastDamage: damage
@@ -297,6 +310,10 @@ var Battle = React.createClass({
             case 'p1':
                 var damage = action.magnitude - firstCharacter.defence;
                 firstCharacter.hp = firstCharacter.hp - firstCharacter.defense;
+                if (firstCharacter.hp <= 0){
+                    firstCharacter.hp = 0;
+                    firstCharacter.status = 'dead';
+                }
                 this.setState({
                     firstCharacter: firstCharacter,
                     lastDamage: damage
@@ -304,6 +321,10 @@ var Battle = React.createClass({
                 break;
             case 'p2':
                 var damage = action.magnitude - secondCharacter.defence;
+                if (secondCharacter.hp <= 0){
+                    secondCharacter.hp = 0;
+                    secondCharacter.status = 'dead';
+                }
                 this.setState({
                     secondCharacter: secondCharacter,
                     lastDamage: damage
@@ -311,6 +332,10 @@ var Battle = React.createClass({
                 break;
             case 'p3':
                 var damage = action.magnitude - thirdCharacter.defence;
+                if (thirdCharacter.hp <= 0){
+                    thirdCharacter.hp = 0;
+                    thirdCharacter.status = 'dead';
+                }
                 this.setState({
                     thirdCharacter: thirdCharacter,
                     lastDamage: damage
@@ -320,29 +345,43 @@ var Battle = React.createClass({
 
     heal: function(action, target){
         var state = this.state,
+            restoration = action.magnitude,
             firstCharacter = state.firstCharacter,
             secondCharacter = state.secondCharacter,
             thirdCharacter = state.thirdCharacter;
+
         switch (target) {
             case 'p1':
-                var restoration = action.magnitude;
+                if(firstCharacter.status === 'dead'){
+                    firstCharacter.status = 'alive';
+                }
                 firstCharacter.hp = firstCharacter.hp + restoration;
+                if(firstCharacter.hp > firstCharacter.maxHp){
+                    firstCharacter.hp = firstCharacter.maxHp;
+                }
                 this.setState({
                     firstCharacter: firstCharacter,
                     lastHeal: restoration
                 });
                 break;
             case 'p2':
-                var restoration = action.magnitude;
+                if(secondCharacter.status === 'dead'){
+                    secondCharacter.status = 'alive';
+                }
                 secondCharacter.hp = secondCharacter.hp + restoration;
+                if(thirdCharacter.hp > secondCharacter.maxHp){
+                    thirdCharacter.hp = secondCharacter.maxHp;
+                }
                 this.setState({
                     secondCharacter: secondCharacter,
                     lastHeal: restoration
                 });
                 break;
             case 'p3':
-                var restoration = action.magnitude;
                 thirdCharacter.hp = secondCharacter.hp + restoration;
+                if(thirdCharacter.hp > thirdCharacter.maxHp){
+                    thirdCharacter.hp = thirdCharacter.maxHp;
+                }
                 this.setState({
                     thirdCharacter: thirdCharacter,
                     lastHeal: restoration
