@@ -18,7 +18,6 @@ export default class CharacterDamageTextBox extends React.Component{
         var props = this.props,
             activeActionTarget = props.activeActionTarget,
             activePlayer = props.activePlayer,
-            activeAction = props.activeAction,
             text = '';
 
         switch(this.props.activeAction.type){

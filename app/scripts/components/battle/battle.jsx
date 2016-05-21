@@ -223,11 +223,11 @@ var Battle = React.createClass({
 
 
     setNextTurn: function(character){
-        var boss = this.state.gayathan,
-            firstChar = this.state.firstCharacter,
-            secondChar = this.state.secondCharacter,
-            thirdChar = this.state.thirdCharacter,
-            setActivePlayer = this.setActivePlayer();
+        var state = this.state,
+            boss = state.boss,
+            firstChar = state.firstCharacter,
+            secondChar = state.secondCharacter,
+            thirdChar = state.thirdCharacter;
 
         if(boss.status == 'dead'){
             this.setVictory();
@@ -236,35 +236,35 @@ var Battle = React.createClass({
         } else {
             switch(character) {
                 case(firstChar && secondChar.status == 'alive'):
-                    setActivePlayer(secondChar);
+                    this.setActivePlayer(secondChar);
                     this.screenHandler('PlayerP');
                     break;
                 case(firstChar && thirdChar.status == 'alive'):
-                    setActivePlayer(thirdChar);
+                    this.setActivePlayer(thirdChar);
                     this.screenHandler('PlayerP');
                     break;
                 case(firstChar):
-                    setActivePlayer(boss);
+                    this.setActivePlayer(boss);
                     this.bossTakesTurn();
                     break;
                 case(secondChar && thirdChar.status == 'alive'):
-                    setActivePlayer(thirdChar);
+                    this.setActivePlayer(thirdChar);
                     this.screenHandler('PlayerP');
                     break;
                 case(secondChar || thirdChar):
-                    setActivePlayer(boss);
+                    this.setActivePlayer(boss);
                     this.bossTakesTurn();
                     break;
                 case(boss && firstChar == 'alive'):
-                    setActivePlayer(firstChar);
+                    this.setActivePlayer(firstChar);
                     this.screenHandler('PlayerP');
                     break;
                 case(boss && secondChar == 'alive'):
-                    setActivePlayer(secondChar);
+                    this.setActivePlayer(secondChar);
                     this.screenHandler('PlayerP');
                     break;
                 default:
-                    setActivePlayer(thirdChar);
+                    this.setActivePlayer(thirdChar);
                     this.screenHandler('PlayerP');
             }
         }
