@@ -283,9 +283,66 @@ var Battle = React.createClass({
     },
 
     meditate: function(){
+        var state = this.state,
+            activePlayer = state.activePlayer,
+            firstCharacter = state.firstCharacter,
+            secondCharacter = state.secondCharacter,
+            thirdCharacter = state.thirdCharacter;
+        if(activePlayer.name === firstCharacter.name){
+            firstCharacter.courage += 50;
+            if(firstCharacter.courage > firstCharacter.maxCourage){
+                firstCharacter.courage = firstCharacter.maxCourage;
+            }
+            setState({
+               firstCharacter:  firstChatacter
+            });
+        } else if(activePlayer.name === secondCharacter.name){
+            secondCharacter.courage += 50;
+            if(secondCharacter.courage > secondCharacter.maxCourage){
+                secondCharacter.courage = secondCharacter.maxCourage;
+            }
+            setState({
+                firstCharacter:  secondCharacter
+            });
+        } else if(activePlayer.name === thirdCharacter.name){
+            thirdCharacter.courage += 50;
+            if(thirdCharacter.courage > thirdCharacter.maxCourage){
+                thirdCharacter.courage = thirdCharacter.maxCourage;
+            }
+            setState({
+                firstCharacter:  thirdCharacter
+            });
+        }
     },
 
-    encourage: function(){
+    encourage: function(target){
+        switch(target){
+            case 'p1':
+                firstCharacter.courage += 50;
+                if(firstCharacter.courage > firstCharacter.maxCourage){
+                    firstCharacter.courage = firstCharacter.maxCourage;
+                }
+                setState({
+                    firstCharacter:  firstChatacter
+                });
+            case 'p2':
+                secondCharacter.courage += 50;
+                if(secondCharacter.courage > secondCharacter.maxCourage){
+                    secondCharacter.courage = secondCharacter.maxCourage;
+                }
+                setState({
+                    firstCharacter:  secondCharacter
+                });
+            case 'p3':
+                thirdCharacter.courage += 50;
+                if(thirdCharacter.courage > thirdCharacter.maxCourage){
+                    thirdCharacter.courage = thirdCharacter.maxCourage;
+                }
+                setState({
+                    firstCharacter:  thirdCharacter
+                });
+
+        }
     },
 
     damage: function(action, target){
