@@ -70,7 +70,7 @@ var Battle = React.createClass({
                 break;
             case 'damageTB':
 
-                return <CharacterDamageTextBox {...state} screenHandler={this.screenHandler.bind(this)}
+                return <CharacterDamageTextBox {...state} screenHandler={this.screenHandler}
                                                setNextTurn={this.setNextTurn.bind(this)} />;
                 break;
             case 'PlayerP':
@@ -89,7 +89,7 @@ var Battle = React.createClass({
                 return <CharacterDiedPanel />;
                 break;
             case 'selectHT':
-                return <SelectHealTarget />;
+                return <SelectHealTarget screenHandler={this.screenHandler}/>;
         }
     },
 
@@ -182,9 +182,21 @@ var Battle = React.createClass({
 
     bossTakesTurn: function(){
         var size = this.props.size(),
+            boss = this.state.boss,
             targetIndex = Math.floor((Math.random() * this.state.playableCharacters.length) + 1),
-            attackIndex = Math.floor((Math.random() * size(this.state.bossStateAttackSets)) + 1),
-            attack = this.state.activeBossAttackSets[attackIndex];
+            bossActiveAttackSet;
+
+        if (this.state.boss > 6600){
+            bossActiveAttackSet = this.props.boss.attacks_1;
+        } else if (this.state.boss > 3300) {
+            bossActiveAttackSet = this.props.boss.attacks_2;
+        } else {
+            bossActiveAttackSet = this.props.boss.attacks_3;
+        }
+
+        var attackIndex = Math.floor((Math.random() * size(bossActiveAttackSet)) + 1),
+                attack = bossActiveAttackSet[attackIndex];
+
         this.setAction(attack, this.state.playableCharacters[targetIndex]);
     },
 
@@ -409,7 +421,6 @@ var Battle = React.createClass({
     },
 
     heal: function(action, target){
-        debugger;
         var state = this.state,
             firstCharacter = state.firstCharacter,
             secondCharacter = state.secondCharacter,

@@ -9,6 +9,7 @@ export default class PlayerPanel extends React.Component {
     render () {
         return (
             <div class="action-panel">
+                <div>{this.props.activePlayer.name}</div>
                 <div onClick={() => {this.props.screenHandler('attackP')}}>Attack
                     <span>&nbsp;&nbsp;</span>
                     <span onClick={() => {this.props.defend(this.props.activePlayer)}}>Defend</span>
