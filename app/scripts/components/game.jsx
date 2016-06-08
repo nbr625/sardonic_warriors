@@ -25,7 +25,6 @@ var Game = React.createClass ({
 
 
     getInitialState: function() {
-        debugger;
         var enemiesData = require('../data/enemies.jsx');
         return {
 
