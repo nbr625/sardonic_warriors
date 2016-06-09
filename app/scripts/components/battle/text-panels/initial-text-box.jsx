@@ -19,6 +19,7 @@ export default class InitialTextBox extends React.Component{
             activeTextIndex = this.state.activeTextIndex + 1,
             props = this.props,
             size = props.size(text);
+        debugger;
         if (activeTextIndex < size) {
             this.setState({
                 activeText: text[activeTextIndex],

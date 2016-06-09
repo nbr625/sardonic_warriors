@@ -6,7 +6,6 @@ export default class SelectHealTarget extends React.Component{
 
 
     render() {
-        debugger;
         return (
             <div>
                 <div id="text">Select Target</div>

@@ -31,7 +31,7 @@ var Battle = React.createClass({
             firstCharacter: firstChar,
             secondCharacter: secChar,
             thirdCharacter: thirdChar,
-            playableCharacters: {firstChar, secChar, thirdChar},
+            playableCharacters: [firstChar, secChar, thirdChar],
             activePlayer: this.props.firstCharacter,
             lastKilledCharacter: {},
             activeAction: {},
@@ -79,8 +79,7 @@ var Battle = React.createClass({
                                     meditate={this.meditate} encourage={this.encourage}/>;
                 break;
             case 'attackP':
-                return <AttackPanel setAction={this.setAction} activePlayer={state.activePlayer}
-                                    screenHandler={this.screenHandler}/>;
+                return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} {...state}/>;
                 break;
             case 'victoryP':
                 return <VictoryPanel />;
@@ -112,6 +111,7 @@ var Battle = React.createClass({
         } else {
             this.screenHandler('selectHT')
         }
+        debugger;
 
 
     },
@@ -181,15 +181,15 @@ var Battle = React.createClass({
     },
 
     bossTakesTurn: function(){
-        var size = this.props.size(),
-            state = this.state,
+        debugger;
+        var state = this.state,
             boss = state.boss,
-            targetIndex = Math.floor((Math.random() * state.playableCharacters.length) + 1),
+            targetIndex = Math.floor(Math.random() * state.playableCharacters.length),
             activeActionTarget = this.state.playableCharacters[targetIndex].name;
 
 
 
-        if (this.state.boss > 6600){
+        if (this.state.boss.hp > 6600){
             boss.attacks = [
                 {
                     name: "Make the Snake Dance", magnitude: 250, type: 'damaging', initialText: [
@@ -216,7 +216,7 @@ var Battle = React.createClass({
                     "The thought brings bile to the back of his throat"]
                 }
             ];
-        } else if (this.state.boss > 3300) {
+        } else if (this.state.boss.hp > 3300) {
             boss.attacks = [
                 {name: "Insist that you watch bollywood videos", magnitude: 250, type: 'damaging', initialText: [
                     "Now that she is one the deadliest predators that have ever roamed the earth,",
@@ -259,8 +259,9 @@ var Battle = React.createClass({
                 }
             ]
         }
+        debugger;
 
-        var attackIndex = Math.floor((Math.random() * size(bossActiveAttackSet)) + 1),
+        var attackIndex = Math.floor(Math.random() * this.props.size(boss.attacks)),
                 attack = state.boss.attacks[attackIndex];
 
         this.setAction(attack, this.state.playableCharacters[targetIndex]);
@@ -272,29 +273,11 @@ var Battle = React.createClass({
 
     //will set screen to dead.
     playableCharactersHandler: function(){
-        var state = this.state;
-            characters = this.state.playableCharacters;
-        Object.keys(characters).map(function(key){
-            if (characters[key].status == 'dead'){
-                switch(characters[key].name){
-                    case state.firstCharacter.name:
-                        this.setState({
-                           firstCharacter:  characters[key]
-                        });
-                        break;
-                    case state.secondCharacter.name:
-                        this.setState({
-                            secondCharacter:  characters[key]
-                        });
-                        break;
-                    case state.thirdCharacter.name:
-                        this.setState({
-                            thirdCharacter:  characters[key]
-                        });
-                        break;
-                }
-                characters[key] = null;
-
+        var state = this.state,
+            characters = state.playableCharacters;
+        characters.forEach(function(character){
+            if (character.status == 'dead'){
+                character = null;
             }
         });
         this.setState({
@@ -316,49 +299,50 @@ var Battle = React.createClass({
             thirdChar = state.thirdCharacter,
             character = state.activePlayer.name;
 
-        debugger;
-
         if(boss.status == 'dead'){
             this.setVictory();
         } else if(firstChar.status == 'dead' && secondChar.status == 'dead' && thirdChar.status == 'dead') {
             this.setGameOver();
         } else {
             switch(character) {
-                case(firstChar.name && secondChar.status == 'alive'):
-                    this.setActivePlayer(secondChar);
-                    this.screenHandler('PlayerP');
+                case firstChar.name:
+                    if(firstChar.name && secondChar.status == 'alive') {
+                        this.setActivePlayer(secondChar);
+                        this.screenHandler('PlayerP');
+                    }else if (firstChar.name && thirdChar.status == 'alive') {
+                        this.setActivePlayer(thirdChar);
+                        this.screenHandler('PlayerP');
+                    } else {
+                        this.setActivePlayer(boss);
+                        this.bossTakesTurn();
+                    }
                     break;
-                case(firstChar.name && thirdChar.status == 'alive'):
-                    this.setActivePlayer(thirdChar);
-                    this.screenHandler('PlayerP');
+                case secondChar.name:
+                    if(thirdChar.status == 'alive') {
+                        this.setActivePlayer(thirdChar);
+                        this.screenHandler('PlayerP');
+                    }else{
+                        this.setActivePlayer(boss);
+                        this.bossTakesTurn();
+                    }
                     break;
-                case(firstChar.name):
+                case thirdChar.name:
                     this.setActivePlayer(boss);
                     this.bossTakesTurn();
                     break;
-                case(secondChar.name && thirdChar.status == 'alive'):
-                    this.setActivePlayer(thirdChar);
-                    this.screenHandler('PlayerP');
-                    break;
-                case(secondChar.name && thirdChar.status == 'dead'):
-                    this.setActivePlayer(boss);
-                    this.bossTakesTurn();
-                    break;
-                case(thirdChar.name):
-                    this.setActivePlayer(boss);
-                    this.bossTakesTurn();
-                    break;
-                case(boss.name && firstChar == 'alive'):
-                    this.setActivePlayer(firstChar);
-                    this.screenHandler('PlayerP');
-                    break;
-                case(boss.name && secondChar == 'alive'):
-                    this.setActivePlayer(secondChar);
-                    this.screenHandler('PlayerP');
-                    break;
-                default:
-                    this.setActivePlayer(thirdChar);
-                    this.screenHandler('PlayerP');
+                case boss.name:
+
+                    if (firstChar.status == 'alive') {
+                        this.setActivePlayer(firstChar);
+                        this.screenHandler('PlayerP');
+                    }
+                    else if(secondChar.status == 'alive') {
+                        this.setActivePlayer(secondChar);
+                        this.screenHandler('PlayerP');
+                    } else {
+                        this.setActivePlayer(thirdChar);
+                        this.screenHandler('PlayerP');
+                    }
             }
         }
     },
@@ -442,13 +426,14 @@ var Battle = React.createClass({
     },
 
     damage: function(action, target){
+        debugger;
         var state = this.state,
             boss = state.boss,
             firstCharacter = state.firstCharacter,
             secondCharacter = state.secondCharacter,
             thirdCharacter = state.thirdCharacter;
-        switch (target) {
-            case 'boss':
+        switch (target.name) {
+            case boss.name:
                 var damage = action.magnitude - boss.defense;
                 boss.hp = boss.hp - damage;
                 if (boss.hp <= 0){
@@ -460,9 +445,9 @@ var Battle = React.createClass({
                     lastDamage: damage
                 });
                 break;
-            case 'p1':
+            case firstCharacter.name:
                 var damage = action.magnitude - firstCharacter.defense;
-                firstCharacter.hp = firstCharacter.hp - firstCharacter.defense;
+                firstCharacter.hp = firstCharacter.hp - damage;
                 if (firstCharacter.hp <= 0){
                     firstCharacter.hp = 0;
                     firstCharacter.status = 'dead';
@@ -472,8 +457,9 @@ var Battle = React.createClass({
                     lastDamage: damage
                 });
                 break;
-            case 'p2':
+            case secondCharacter.name:
                 var damage = action.magnitude - secondCharacter.defence;
+                secondCharacter.hp = secondCharacter.hp - damage;
                 if (secondCharacter.hp <= 0){
                     secondCharacter.hp = 0;
                     secondCharacter.status = 'dead';
@@ -483,8 +469,9 @@ var Battle = React.createClass({
                     lastDamage: damage
                 });
                 break;
-            case 'p3':
+            case thirdCharacter.name:
                 var damage = action.magnitude - thirdCharacter.defence;
+                thirdCharacter.hp = thirdCharacter.hp - damage;
                 if (thirdCharacter.hp <= 0){
                     thirdCharacter.hp = 0;
                     thirdCharacter.status = 'dead';

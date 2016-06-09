@@ -13,10 +13,11 @@ export default class AttackBox extends React.Component {
             attackBox;
 
         if (attack.type === 'damaging') {
-            attackBox = <span onClick={() => {props.setAction(attack, 'boss') }}>{attack.name}</span>
+            attackBox = <span onClick={() => {props.setAction(attack, props.boss) }}>{attack.name}</span>
         } else {
             attackBox = <span onClick={() => {props.setAction(attack)}}>{attack.name}</span>
         }
+
 
         return (
             <div>

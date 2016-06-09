@@ -15,14 +15,16 @@ export default class CharacterDamageTextBox extends React.Component{
 
 
     render() {
+        debugger;
         var props = this.props,
             activeActionTarget = props.activeActionTarget,
             activePlayer = props.activePlayer,
             text = '';
+        debugger;
 
         switch(this.props.activeAction.type){
             case 'damaging':
-                text = activeActionTarget + " takes " + props.lastDamage + " points of damage";
+                text = activeActionTarget.name + " takes " + props.lastDamage + " points of damage";
                 break;
             case 'healing':
                 text = activePlayer.name + " restores " + activeActionTarget.name + "\'s morale by " + props.lastHeal;
