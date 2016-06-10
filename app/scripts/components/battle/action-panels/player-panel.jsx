@@ -5,6 +5,17 @@ import Game from '../../game.jsx';
 
 export default class PlayerPanel extends React.Component {
 
+    defend(){
+        this.props.defend(this.props.activePlayer);
+        this.props.screenHandler('defendTB');
+    }
+
+    meditate(){
+        this.props.meditate(this.props.activePlayer);
+        this.props.screenHandler('meditationTB');
+
+    }
+
 
     render () {
         return (
@@ -12,9 +23,9 @@ export default class PlayerPanel extends React.Component {
                 <div>{this.props.activePlayer.name}</div>
                 <div onClick={() => {this.props.screenHandler('attackP')}}>Attack
                     <span>&nbsp;&nbsp;</span>
-                    <span onClick={() => {this.props.defend(this.props.activePlayer)}}>Defend</span>
+                    <span onClick={() => {this.defend()}}>Defend</span>
                 </div>
-                <div onClick={() => {this.props.meditate(this.props.activePlayer)}}>Meditate
+                <div onClick={() => {this.meditate()}}>Meditate
                     <span>&nbsp;&nbsp;</span>
                     <span onClick={() => {this.props.encourage()}}>Encourage</span>
                 </div>

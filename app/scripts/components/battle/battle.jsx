@@ -10,7 +10,10 @@ import PlayerPanel from './action-panels/player-panel.jsx';
 import AttackPanel from './action-panels/attack-panel.jsx';
 import SelectHealTarget from './action-panels/select-healing-target-panel.jsx';
 import CharacterDiedPanel from './text-panels/character-died.jsx';
-
+import EncourageTextBox from './text-panels/defend-text-box.jsx';
+import DefendTextBox from './text-panels/encourage-text-box.jsx';
+import MeditationTextBox from './text-panels/meditation-text-box.jsx';
+import SelectEncouragingTarget from './action-panels/select-encouraging-target-panel.jsx';
 
 var Battle = React.createClass({
 
@@ -81,14 +84,27 @@ var Battle = React.createClass({
             case 'attackP':
                 return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} {...state}/>;
                 break;
-            case 'victoryP':
-                return <VictoryPanel />;
-                break;
             case 'characterD':
-                return <CharacterDiedPanel />;
+                return <CharacterDiedPanel screenHandler={this.screenHandler} {...state}/>;
                 break;
             case 'selectHT':
-                return <SelectHealTarget screenHandler={this.screenHandler}/>;
+                return <SelectHealTarget screenHandler={this.screenHandler} {...state}/>;
+                break;
+            case 'defendTB':
+                return <DefendTextBox  screenHandler={this.screenHandler} {...state}/>;
+                break;
+            case 'meditationTB':
+                return <MeditationTextBox  screenHandler={this.screenHandler} {...state}/>;
+                break;
+            case 'selectET':
+                return <SelectHealTarget screenHandler={this.screenHandler} {...state}/>;
+                break;
+            case 'encourageTB':
+                return <EncourageTextBox  screenHandler={this.screenHandler} {...state}/>;
+                break;
+            case 'victoryP':
+                return <VictoryPanel screenHandler={this.screenHandler} {...state}/>;
+                break;
         }
     },
 
