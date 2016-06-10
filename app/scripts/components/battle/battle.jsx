@@ -347,16 +347,49 @@ var Battle = React.createClass({
         }
     },
 
+    takeCourage: function(){
+        var state = this.state;
+        state.activePlayer.courage -=  state.activeAction.courageCost;
+        switch(state.activePlayer.name){
+            case state.firstCharacter.name:
+                this.setState({
+                    firstCharacter: state.activePlayer
+                });
+                break;
+            case state.secondCharacter.name:
+                this.setState({
+                    secondCharacter: state.activePlayer
+                });
+                break;
+            case state.thirdCharacter.name:
+                this.setState({
+                    thirdCharacter: state.activePlayer
+                });
+        }
+    },
+
     defend: function(){
         var state = this.state;
-        state.playableCharacters.map(function(char){
-            char.defence += 50;
-        });
-        this.setState({
-            firstCharacter: playableCharacter[0],
-            secondCharacter: playableCharacter[1],
-            thirdCharacter: playableCharacter[2]
-        });
+
+        state.activePlayer.defense += 50;
+        switch(state.activePlayer.name){
+            case state.firstCharacter.name:
+                this.setState({
+                    firstCharacter: state.activePlayer
+                });
+                break;
+            case state.secondCharacter.name:
+                this.setState({
+                    secondCharacter: state.activePlayer
+                });
+                break;
+            case state.thirdCharacter.name:
+                this.setState({
+                    thirdCharacter: state.activePlayer
+                });
+
+        }
+
     },
 
     meditate: function(){
@@ -365,63 +398,56 @@ var Battle = React.createClass({
             firstCharacter = state.firstCharacter,
             secondCharacter = state.secondCharacter,
             thirdCharacter = state.thirdCharacter;
-        if(activePlayer.name === firstCharacter.name){
-            firstCharacter.courage += 50;
-            if(firstCharacter.courage > firstCharacter.maxCourage){
-                firstCharacter.courage = firstCharacter.maxCourage;
-            }
-            setState({
-               firstCharacter:  firstChatacter
-            });
-        } else if(activePlayer.name === secondCharacter.name){
-            secondCharacter.courage += 50;
-            if(secondCharacter.courage > secondCharacter.maxCourage){
-                secondCharacter.courage = secondCharacter.maxCourage;
-            }
-            setState({
-                firstCharacter:  secondCharacter
-            });
-        } else if(activePlayer.name === thirdCharacter.name){
-            thirdCharacter.courage += 50;
-            if(thirdCharacter.courage > thirdCharacter.maxCourage){
-                thirdCharacter.courage = thirdCharacter.maxCourage;
-            }
-            setState({
-                firstCharacter:  thirdCharacter
-            });
+        activePlayer.courage += 50;
+        if(activePlayer.courage < activePlayer.maxCourage){
+            activePlayer.courage = activePlayer.maxCourage;
         }
+        switch(activePlayer.name){
+            case firstCharacter.name:
+                setState({
+                    firstCharacter:  activePlayer
+                });
+                break;
+            case secondCharacter.name:
+                setState({
+                    secondCharacter:  activePlayer
+                });
+                break;
+            case thirdCharacter.name:
+                setState({
+                    thirdCharacter:  activePlayer
+                });
+        }
+
     },
 
     encourage: function(target){
-        switch(target){
-            case 'p1':
-                firstCharacter.courage += 50;
-                if(firstCharacter.courage > firstCharacter.maxCourage){
-                    firstCharacter.courage = firstCharacter.maxCourage;
-                }
+        target.courage += 50;
+        if(target.courage > target.maxCourage){
+            target.courage = target.maxCourage;
+        }
+
+        switch(target.name){
+            case firstCharacter.name:
                 setState({
-                    firstCharacter: firstCharacter
+                    firstCharacter: target
                 });
                 break;
-            case 'p2':
-                secondCharacter.courage += 50;
+            case secondCharacter.name:
                 if(secondCharacter.courage > secondCharacter.maxCourage){
                     secondCharacter.courage = secondCharacter.maxCourage;
                 }
                 setState({
-                    firstCharacter:  secondCharacter
+                    secondCharacter:  target
                 });
                 break;
-            case 'p3':
-                thirdCharacter.courage += 50;
+            case thirdCharacter.name:
                 if(thirdCharacter.courage > thirdCharacter.maxCourage){
                     thirdCharacter.courage = thirdCharacter.maxCourage;
                 }
                 setState({
-                    firstCharacter:  thirdCharacter
+                    thirdCharacter:  target
                 });
-                break;
-
         }
     },
 
@@ -444,6 +470,7 @@ var Battle = React.createClass({
                     boss: boss,
                     lastDamage: damage
                 });
+                this.takeCourage();
                 break;
             case firstCharacter.name:
                 var damage = action.magnitude - firstCharacter.defense;
@@ -529,6 +556,7 @@ var Battle = React.createClass({
                     lastHeal: restoration
                 });
         }
+        this.takeCourage();
     },
 
     render: function() {
@@ -547,21 +575,28 @@ var Battle = React.createClass({
                     <tr>
                         <td>
                             <div onClick={()=>{this.setTarget(firstCharacter)}}>
+                                <div>{firstCharacter.name} </div>
                                 <img src={"/images/" + firstCharacter.name.toLowerCase() + "_standing.png"} alt={firstCharacter.name}/>
-                                <div>{firstCharacter.name} {firstCharacter.hp}/{firstCharacter.maxHp}</div>
+                                <div>{firstCharacter.hp}/{firstCharacter.maxHp}</div>
+                                <div>{firstCharacter.courage}/{firstCharacter.maxCourage}</div>
                             </div>
                             <div onClick={()=>{this.setTarget(secondCharacter)}}>
+                                <div>{secondCharacter.name}</div>
                                 <img src={"/images/" + secondCharacter.name.toLowerCase() + "_standing.png"} alt={secondCharacter.name}/>
-                                <div>{secondCharacter.name} {secondCharacter.hp}/{secondCharacter.maxHp}</div>
+                                <div>{secondCharacter.hp}/{secondCharacter.maxHp}</div>
+                                <div>{secondCharacter.courage}/{secondCharacter.maxCourage}</div>
                             </div>
                             <div onClick={()=>{this.setTarget(thirdCharacter)}}>
+                                <div>{thirdCharacter.name}</div>
                                 <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
-                                <div>{thirdCharacter.name} {thirdCharacter.hp}/{thirdCharacter.maxHp}</div>
+                                <div>{thirdCharacter.hp}/{thirdCharacter.maxHp}</div>
+                                <div>{thirdCharacter.courage}/{thirdCharacter.maxCourage}</div>
                             </div>
                         </td>
                         <td>
+                            <div>{boss.name}</div>
                             <img src={"/images/gayathan_standing.png"}/>
-                            <div>{boss.name} {boss.hp}/{boss.maxHp}</div>
+                            <div>{boss.hp}/{boss.maxHp}</div>
                         </td>
                     </tr>
                     <tr>

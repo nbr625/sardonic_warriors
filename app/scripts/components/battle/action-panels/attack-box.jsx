@@ -22,6 +22,7 @@ export default class AttackBox extends React.Component {
         return (
             <div>
                 {attackBox}
+                <span>{attack.courageCost}</span>
             </div>
         );
     }
