@@ -1,5 +1,4 @@
-@import 'normalize'
-@import 'helper'
+require('bootstrap')
 
 /* variables */
 $lightgrey = #999
@@ -7,6 +6,51 @@ $linkColor = #555
 $grey = #eee
 $black = #222
 $white = #f7f7f7
+$green = #4cae4c
+
+@-webkit-keyframes typing
+  from { width: 0 }
+  to { width:100% }
+
+
+@-moz-keyframes typing
+  from { width: 0 }
+  to { width:100% }
+
+
+
+@-webkit-keyframes typing2
+  0% { width: 0 }
+  50% {width: 0}
+  100% { width:100% }
+
+@-moz-keyframes typing2
+  0% { width: 0 }
+  50% {width: 0}
+  100% { width:100% }
+
+@-webkit-keyframes typing3
+  0% { width: 0 }
+  66% {width: 0}
+  100% { width:100% }
+
+
+@-moz-keyframes typing3
+  0% { width: 0 }
+  66% {width: 0}
+  100% { width:100% }
+
+
+@-webkit-keyframes typing4
+  0% { width: 0 }
+  75% {width: 0}
+  100% { width:100% }
+
+
+@-moz-keyframes typing4
+  0% { width: 0 }
+  75% {width: 0}
+  100% { width:100% }
 
 html
 button
@@ -42,7 +86,56 @@ header
     margin-left:.5em
     
     a.active
-      text-decoration:underline
+      text-decoration:none
     
 .content
   padding: 1em
+
+.btn-success
+  color: $green
+  margin: 0 25% 0 25%
+  padding: 0 25% 0 25%
+  width: 50%
+  font-family: 'VT323'
+  font-size: 80px !important
+
+.game-title
+  font-size: 5em
+  margin: 0 20% 0 13%
+  width: 75%
+  text-align: center
+  font-family: 'VT323'
+  color: white
+  padding: 0 0 15% 0
+
+.start-screen
+  background-color: black
+  padding: 20% 0 20% 0
+
+
+.story-text
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+  -webkit-animation: typing 2s steps(30, end)
+  -moz-animation: typing 2s step(30, end)
+
+.story-text:nth-child(2)
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+  -webkit-animation: typing2 4s steps(30, end)
+  -moz-animation: typing2 4s step(30, end)
+
+.story-text:nth-child(3)
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+  -webkit-animation: typing3 6s steps(30, end)
+  -moz-animation: typing3 6s step(30, end)
+.story-text:nth-child(4)
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+  -webkit-animation: typing4 8s steps(30, end)
+  -moz-animation: typing4 8s step(30, end)

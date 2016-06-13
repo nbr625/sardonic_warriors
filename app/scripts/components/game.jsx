@@ -10,7 +10,7 @@ import Intro from './intro/intro.jsx';
 import IPanel1 from './intro/panels/intro-panel-1.jsx';
 import IPanel2 from './intro/panels/intro-panel-2.jsx';
 import IPanel3 from './intro/panels/intro-panel-3.jsx';
-
+import IPanel4 from './intro/panels/intro-panel-4.jsx';
 
 import SelectionScreen from './selection-screen/selection_screen.jsx';
 import SelectionPlayerPanel from './selection-screen/selection-player-panel.jsx';
@@ -195,6 +195,7 @@ var Game = React.createClass ({
                         <IndexRoute component={IPanel1} ></IndexRoute>
                         <Route path='2' component={IPanel2}></Route>
                         <Route path='3' component={IPanel3}></Route>
+                        <Route path='4' component={IPanel4}></Route>
                     </Route>
                     <Route path='selection-screen' component={ SelectionScreen }></Route>
                     <Route path='battle' component={Battle}></Route>
