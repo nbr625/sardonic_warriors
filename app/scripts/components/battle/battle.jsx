@@ -10,10 +10,10 @@ import PlayerPanel from './action-panels/player-panel.jsx';
 import AttackPanel from './action-panels/attack-panel.jsx';
 import SelectHealTarget from './action-panels/select-healing-target-panel.jsx';
 import CharacterDiedPanel from './text-panels/character-died.jsx';
-import EncourageTextBox from './text-panels/defend-text-box.jsx';
-import DefendTextBox from './text-panels/encourage-text-box.jsx';
+import EncourageTextBox from './text-panels/encourage-text-box.jsx';
+import DefendTextBox from './text-panels/defend-text-box.jsx';
 import MeditationTextBox from './text-panels/meditation-text-box.jsx';
-import SelectEncouragingTarget from './action-panels/select-encouraging-target-panel.jsx';
+import SelectEncourageTarget from './action-panels/select-encouraging-target-panel.jsx';
 
 var Battle = React.createClass({
 
@@ -78,8 +78,8 @@ var Battle = React.createClass({
                 break;
             case 'PlayerP':
                 return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
-                                    defend={this.defend} setAction={this.setAction.bind(this)}
-                                    meditate={this.meditate} encourage={this.encourage}/>;
+                                    defend={this.defend.bind(this)} encourage={this.encourage.bind(this)}
+                                    meditate={this.meditate.bind(this)} setAction={this.setAction.bind(this)}/>;
                 break;
             case 'attackP':
                 return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} {...state}/>;
@@ -97,10 +97,10 @@ var Battle = React.createClass({
                 return <MeditationTextBox  screenHandler={this.screenHandler} {...state}/>;
                 break;
             case 'selectET':
-                return <SelectHealTarget screenHandler={this.screenHandler} {...state}/>;
+                return <SelectEncourageTarget screenHandler={this.screenHandler} {...state}/>;
                 break;
             case 'encourageTB':
-                return <EncourageTextBox  screenHandler={this.screenHandler} {...state}/>;
+                return <EncourageTextBox  screenHandler={this.screenHandler} encourage={this.encourage} {...state}/>;
                 break;
             case 'victoryP':
                 return <VictoryPanel screenHandler={this.screenHandler} {...state}/>;
@@ -127,19 +127,21 @@ var Battle = React.createClass({
         } else {
             this.screenHandler('selectHT')
         }
-        debugger;
-
-
     },
 
-    setTarget: function(target){
+    setTarget: function(target, encourage=false){
+
         var state = this.state,
             activeAction = state.activeAction;
 
-        if (activeAction.type = 'healing'){
-            this.heal(activeAction, target);
+        if (encourage){
+            this.screenHandler('encourageTB');
+        } else {
+            if (activeAction.type = 'healing') {
+                this.heal(activeAction, target);
+            }
+            this.screenHandler('damageTB');
         }
-        this.screenHandler('damageTB');
         this.setState({
             activeActionTarget: target
         });
@@ -197,7 +199,6 @@ var Battle = React.createClass({
     },
 
     bossTakesTurn: function(){
-        debugger;
         var state = this.state,
             boss = state.boss,
             targetIndex = Math.floor(Math.random() * state.playableCharacters.length),
@@ -275,7 +276,6 @@ var Battle = React.createClass({
                 }
             ]
         }
-        debugger;
 
         var attackIndex = Math.floor(Math.random() * this.props.size(boss.attacks)),
                 attack = state.boss.attacks[attackIndex];
@@ -420,17 +420,17 @@ var Battle = React.createClass({
         }
         switch(activePlayer.name){
             case firstCharacter.name:
-                setState({
+                this.setState({
                     firstCharacter:  activePlayer
                 });
                 break;
             case secondCharacter.name:
-                setState({
+                this.setState({
                     secondCharacter:  activePlayer
                 });
                 break;
             case thirdCharacter.name:
-                setState({
+                this.setState({
                     thirdCharacter:  activePlayer
                 });
         }
@@ -438,6 +438,11 @@ var Battle = React.createClass({
     },
 
     encourage: function(target){
+        var state = this.state,
+            firstCharacter = state.firstCharacter,
+            secondCharacter = state.secondCharacter,
+            thirdCharacter = state.thirdCharacter;
+
         target.courage += 50;
         if(target.courage > target.maxCourage){
             target.courage = target.maxCourage;
@@ -445,30 +450,33 @@ var Battle = React.createClass({
 
         switch(target.name){
             case firstCharacter.name:
-                setState({
-                    firstCharacter: target
+                this.setState({
+                    firstCharacter: target,
+                    activeActionTarget: target
                 });
                 break;
             case secondCharacter.name:
                 if(secondCharacter.courage > secondCharacter.maxCourage){
                     secondCharacter.courage = secondCharacter.maxCourage;
                 }
-                setState({
-                    secondCharacter:  target
+                this.setState({
+                    secondCharacter:  target,
+                    activeActionTarget: target
                 });
                 break;
             case thirdCharacter.name:
                 if(thirdCharacter.courage > thirdCharacter.maxCourage){
                     thirdCharacter.courage = thirdCharacter.maxCourage;
                 }
-                setState({
-                    thirdCharacter:  target
+                this.setState({
+                    thirdCharacter:  target,
+                    activeActionTarget: target
                 });
         }
+        this.screenHandler('encourageTB');
     },
 
     damage: function(action, target){
-        debugger;
         var state = this.state,
             boss = state.boss,
             firstCharacter = state.firstCharacter,
@@ -577,10 +585,21 @@ var Battle = React.createClass({
 
     render: function() {
         var props = this.props,
+            state = this.state,
+            screen = state.screen,
             firstCharacter = props.firstCharacter,
             secondCharacter = props.secondCharacter,
             thirdCharacter = props.thirdCharacter,
-            boss = props.boss;
+            boss = props.boss,
+            setTarget;
+
+        if (screen == 'selectHT'){
+            setTarget = this.setTarget
+        } else if ( screen == 'selectET') {
+            setTarget = this.encourage
+        } else {
+            setTarget = function(){}
+        }
 
         return (
             <table>
@@ -590,19 +609,19 @@ var Battle = React.createClass({
                     </tr>
                     <tr>
                         <td>
-                            <div onClick={()=>{this.setTarget(firstCharacter)}}>
+                            <div onClick={()=>{setTarget(firstCharacter)}}>
                                 <div>{firstCharacter.name} </div>
                                 <img src={"/images/" + firstCharacter.name.toLowerCase() + "_standing.png"} alt={firstCharacter.name}/>
                                 <div>{firstCharacter.hp}/{firstCharacter.maxHp}</div>
                                 <div>{firstCharacter.courage}/{firstCharacter.maxCourage}</div>
                             </div>
-                            <div onClick={()=>{this.setTarget(secondCharacter)}}>
+                            <div onClick={()=>{setTarget(secondCharacter)}}>
                                 <div>{secondCharacter.name}</div>
                                 <img src={"/images/" + secondCharacter.name.toLowerCase() + "_standing.png"} alt={secondCharacter.name}/>
                                 <div>{secondCharacter.hp}/{secondCharacter.maxHp}</div>
                                 <div>{secondCharacter.courage}/{secondCharacter.maxCourage}</div>
                             </div>
-                            <div onClick={()=>{this.setTarget(thirdCharacter)}}>
+                            <div onClick={()=>{setTarget(thirdCharacter)}}>
                                 <div>{thirdCharacter.name}</div>
                                 <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
                                 <div>{thirdCharacter.hp}/{thirdCharacter.maxHp}</div>

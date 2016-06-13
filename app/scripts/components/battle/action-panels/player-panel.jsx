@@ -13,7 +13,6 @@ export default class PlayerPanel extends React.Component {
     meditate(){
         this.props.meditate(this.props.activePlayer);
         this.props.screenHandler('meditationTB');
-
     }
 
 
@@ -21,14 +20,11 @@ export default class PlayerPanel extends React.Component {
         return (
             <div class="action-panel">
                 <div>{this.props.activePlayer.name}</div>
-                <div onClick={() => {this.props.screenHandler('attackP')}}>Attack
-                    <span>&nbsp;&nbsp;</span>
-                    <span onClick={() => {this.defend()}}>Defend</span>
-                </div>
-                <div onClick={() => {this.meditate()}}>Meditate
-                    <span>&nbsp;&nbsp;</span>
-                    <span onClick={() => {this.props.encourage()}}>Encourage</span>
-                </div>
+                <div onClick={() => {this.props.screenHandler('attackP')}}>Attack</div>
+                <div onClick={() => {this.defend()}}>Defend</div>
+                <div onClick={() => {this.meditate()}}>Meditate</div>
+                <div onClick={() => {this.props.screenHandler('selectET')}}>Encourage</div>
+
             </div>
 
         );

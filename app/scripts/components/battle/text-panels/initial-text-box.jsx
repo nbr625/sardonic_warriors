@@ -19,7 +19,6 @@ export default class InitialTextBox extends React.Component{
             activeTextIndex = this.state.activeTextIndex + 1,
             props = this.props,
             size = props.size(text);
-        debugger;
         if (activeTextIndex < size) {
             this.setState({
                 activeText: text[activeTextIndex],
@@ -29,7 +28,6 @@ export default class InitialTextBox extends React.Component{
             if (props.activeAction.type === 'damaging') {
                 props.damage(props.activeAction, props.activeActionTarget);
             } else if (props.activeAction.type === 'healing') {
-                debugger;
                 props.heal(props.activeAction , props.activeActionTarget);
             }
             props.screenHandler('damageTB');
