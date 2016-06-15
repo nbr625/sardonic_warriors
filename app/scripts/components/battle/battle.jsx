@@ -605,10 +605,10 @@ var Battle = React.createClass({
         }
 
         return (
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
+            <div>
+                <div>
+                    <div>
+                        <div>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="first-character-player-hp-bar"
@@ -638,8 +638,8 @@ var Battle = React.createClass({
                                 progressColor="blue">
                                 <span className="player-courage-bar-text" id="first-character-player-courage-bar-text">{firstCharacter.courage}/{firstCharacter.maxCourage}</span>
                             </ProgressLabel>
-                        </td>
-                        <td>
+                        </div>
+                        <div>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="second-character-player-hp-bar"
@@ -669,8 +669,8 @@ var Battle = React.createClass({
                                 progressColor="blue">
                                 <span className="player-courage-bar-text" id="second-character-player-courage-bar-text">{secondCharacter.courage}/{secondCharacter.maxCourage}</span>
                             </ProgressLabel>
-                        </td>
-                        <td>
+                        </div>
+                        <div>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="third-character-player-hp-bar"
@@ -700,40 +700,36 @@ var Battle = React.createClass({
                                 progressColor="blue">
                                 <span className="player-courage-bar-text" id="third-character-player-courage-bar-text">{thirdCharacter.courage}/{thirdCharacter.maxCourage}</span>
                             </ProgressLabel>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+                        </div>
+                    </div>
+                    <div className="sprite-panel">
+                        <div>
                             <div onClick={()=>{setTarget(firstCharacter)}}>
                                 <div>{firstCharacter.name} </div>
                                 <img src={"/images/" + firstCharacter.name.toLowerCase() + "_standing.png"} alt={firstCharacter.name}/>
-                                <div>{firstCharacter.hp}/{firstCharacter.maxHp}</div>
-                                <div>{firstCharacter.courage}/{firstCharacter.maxCourage}</div>
                             </div>
                             <div onClick={()=>{setTarget(secondCharacter)}}>
                                 <div>{secondCharacter.name}</div>
                                 <img src={"/images/" + secondCharacter.name.toLowerCase() + "_standing.png"} alt={secondCharacter.name}/>
-                                <div>{secondCharacter.hp}/{secondCharacter.maxHp}</div>
-                                <div>{secondCharacter.courage}/{secondCharacter.maxCourage}</div>
                             </div>
                             <div onClick={()=>{setTarget(thirdCharacter)}}>
                                 <div>{thirdCharacter.name}</div>
                                 <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
                             </div>
-                        </td>
-                        <td>
+                        </div>
+                        <div>
                             <div>{boss.name}</div>
                             <img src={"/images/gayathan_standing.png"}/>
                             <div>{boss.hp}/{boss.maxHp}</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="panel">
+                        </div>
+                    </div>
+                    <div>
+                        <div className="panel">
                             {this.renderPanel()}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         );
     }
