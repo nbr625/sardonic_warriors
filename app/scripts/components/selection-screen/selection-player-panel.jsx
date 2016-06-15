@@ -23,17 +23,19 @@ export default class SelectionPlayerPanel extends React.Component {
         var that = this,
             panelCharacter = {name: 'Select', description: 'character'};
         if (player == 1 && firstCharacter.hasOwnProperty('player')){
-            panelCharacter = firstCharacter;
+            panelCharacter = firstCharacter.name;
         } else if (player == 2 && secondCharacter.hasOwnProperty('player')) {
-            panelCharacter = secondCharacter;
+            panelCharacter = secondCharacter.name;
         } else if (player == 3 && thirdCharacter.hasOwnProperty('player')) {
-            panelCharacter = thirdCharacter;
+            panelCharacter = thirdCharacter.name;
+        } else {
+            panelCharacter = 'select'
         }
         return (
             <tr>
 
-                <td>
-                    <ul>
+                <td className="single-selection-panel">
+                    <ul className="list-group">
                         {Object.keys(unselectedCharacters).map(function(key){
                             return <SelectionCharacterProfile key={key} index={key} unselectedChars={unselectedCharacters} player={that.props.player} {...that.props}/>;
                         })}
@@ -42,8 +44,8 @@ export default class SelectionPlayerPanel extends React.Component {
                 </td>
 
                 <td>
-                    <img src={"/images/" + panelCharacter.name.toLowerCase() + "_standing.png"} alt={panelCharacter.name}/>
-                    <div>{panelCharacter.name}</div>
+                    <img src={"/images/" + panelCharacter.toLowerCase() + "_standing.png"} alt={panelCharacter}/>
+                    <div>{panelCharacter}</div>
                 </td>
 
             </tr>

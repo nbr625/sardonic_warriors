@@ -1,4 +1,4 @@
-require('bootstrap')
+@require "bootstrap.min.css"
 
 /* variables */
 $lightgrey = #999
@@ -7,6 +7,8 @@ $grey = #eee
 $black = #222
 $white = #f7f7f7
 $green = #4cae4c
+$red = #b92c28
+$blue = #2aabd2
 
 @-webkit-keyframes typing
   from { width: 0 }
@@ -58,6 +60,7 @@ input
 select
 textarea 
   color: $black
+  font-family: 'VT323'
 
 a
 a:visited
@@ -91,17 +94,19 @@ header
 .content
   padding: 1em
 
+.btn
+  margin: 0 0 0 40%
+
 .btn-success
-  color: $green
-  margin: 0 25% 0 25%
-  padding: 0 25% 0 25%
-  width: 50%
+  width: 17%
   font-family: 'VT323'
-  font-size: 80px !important
+  font-size: 4em
+  padding: 0
+
 
 .game-title
   font-size: 5em
-  margin: 0 20% 0 13%
+  margin: 0 0 0 13%
   width: 75%
   text-align: center
   font-family: 'VT323'
@@ -112,8 +117,14 @@ header
   background-color: black
   padding: 20% 0 20% 0
 
+.story-panel
+  padding: 5% 0 0 5%
+  background-color: black;
 
 .story-text
+  font-size: 1.5em;
+  color: white;
+  font-family: 'VT323';
   width:100%;
   overflow:hidden;
   white-space:nowrap;
@@ -139,3 +150,65 @@ header
   white-space:nowrap;
   -webkit-animation: typing4 8s steps(30, end)
   -moz-animation: typing4 8s step(30, end)
+
+
+.list-group
+  list-style-type: none
+  width: 100%
+.list-group-item
+  margin: 0
+  width: 100%
+  list-style-type: none
+
+.single-selection-panel
+  padding: 10% 10%
+  width: 80%
+
+.character-hp
+  background-color: $green
+
+.character-courage
+  background-color: $blue
+
+.character-name
+  font-family: 'VT323'
+
+.story-next-button
+  font-family: 'VT323'
+  color: white;
+
+
+.player-hp-bar
+  position: absolute
+  z-index: 0
+  left: 0
+  top: 0
+  float: left
+
+.player-hp-bar-text
+  size: .5em
+  font-family: 'VT323'
+  position: absolute
+  left: 63px
+  top: 155px
+  float: left
+  color: white
+
+.player-courage-bar
+  position: absolute
+  left: 20px
+  top: 20px
+  float: left
+
+.player-courage-bar-text
+  font-family: 'VT323'
+  position: absolute
+  left: 68px
+  top: 135px
+  float: left
+  color: white
+
+.player-hp-bar#second-character-player-hp-bar
+
+
+.player-hp-bar#third-character-player-hp-bar

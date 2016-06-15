@@ -14,6 +14,7 @@ import EncourageTextBox from './text-panels/encourage-text-box.jsx';
 import DefendTextBox from './text-panels/defend-text-box.jsx';
 import MeditationTextBox from './text-panels/meditation-text-box.jsx';
 import SelectEncourageTarget from './action-panels/select-encouraging-target-panel.jsx';
+var ProgressLabel = require('react-progress-label');
 
 var Battle = React.createClass({
 
@@ -593,6 +594,8 @@ var Battle = React.createClass({
             boss = props.boss,
             setTarget;
 
+
+
         if (screen == 'selectHT'){
             setTarget = this.setTarget
         } else if ( screen == 'selectET') {
@@ -605,7 +608,99 @@ var Battle = React.createClass({
             <table>
                 <tbody>
                     <tr>
-                        <td><h1>The Showdown!</h1></td>
+                        <td>
+                            <ProgressLabel
+                                className="player-hp-bar"
+                                id="first-character-player-hp-bar"
+                                progress={firstCharacter.hp/firstCharacter.maxHp * 100}
+                                startDegree={0}
+                                progressWidth={18}
+                                trackWidth={20}
+                                cornersWidth={8}
+                                size={180}
+                                fillColor="black"
+                                trackColor="black"
+                                progressColor="green">
+                                <span className="player-hp-bar-text" id="first-character-player-hp-bar-text">{firstCharacter.hp}/{firstCharacter.maxHp}</span>
+                            </ProgressLabel>
+
+                            <ProgressLabel
+                                className="player-courage-bar"
+                                id="first-character-courage-bar"
+                                progress={firstCharacter.courage/firstCharacter.maxCourage * 100}
+                                startDegree={0}
+                                progressWidth={18}
+                                trackWidth={20}
+                                cornersWidth={8}
+                                size={140}
+                                fillColor="black"
+                                trackColor="black"
+                                progressColor="blue">
+                                <span className="player-courage-bar-text" id="first-character-player-courage-bar-text">{firstCharacter.courage}/{firstCharacter.maxCourage}</span>
+                            </ProgressLabel>
+                        </td>
+                        <td>
+                            <ProgressLabel
+                                className="player-hp-bar"
+                                id="second-character-player-hp-bar"
+                                progress={secondCharacter.hp/secondCharacter.maxHp * 100}
+                                startDegree={0}
+                                progressWidth={18}
+                                trackWidth={20}
+                                cornersWidth={8}
+                                size={180}
+                                fillColor="black"
+                                trackColor="black"
+                                progressColor="green">
+                                <span className="player-hp-bar-text" id="second-character-player-hp-bar-text">{secondCharacter.hp}/{secondCharacter.maxHp}</span>
+                            </ProgressLabel>
+
+                            <ProgressLabel
+                                className="player-courage-bar"
+                                id="second-character-courage-bar"
+                                progress={secondCharacter.courage/secondCharacter.maxCourage * 100}
+                                startDegree={0}
+                                progressWidth={18}
+                                trackWidth={20}
+                                cornersWidth={8}
+                                size={140}
+                                fillColor="black"
+                                trackColor="black"
+                                progressColor="blue">
+                                <span className="player-courage-bar-text" id="second-character-player-courage-bar-text">{secondCharacter.courage}/{secondCharacter.maxCourage}</span>
+                            </ProgressLabel>
+                        </td>
+                        <td>
+                            <ProgressLabel
+                                className="player-hp-bar"
+                                id="third-character-player-hp-bar"
+                                progress={thirdCharacter.hp/thirdCharacter.maxHp * 100}
+                                startDegree={0}
+                                progressWidth={18}
+                                trackWidth={20}
+                                cornersWidth={8}
+                                size={180}
+                                fillColor="black"
+                                trackColor="black"
+                                progressColor="green">
+                                <span className="player-hp-bar-text" id="third-character-player-hp-bar-text">{thirdCharacter.hp}/{thirdCharacter.maxHp}</span>
+                            </ProgressLabel>
+
+                            <ProgressLabel
+                                className="player-courage-bar"
+                                id="third-character-courage-bar"
+                                progress={thirdCharacter.courage/thirdCharacter.maxCourage * 100}
+                                startDegree={0}
+                                progressWidth={18}
+                                trackWidth={20}
+                                cornersWidth={8}
+                                size={140}
+                                fillColor="black"
+                                trackColor="black"
+                                progressColor="blue">
+                                <span className="player-courage-bar-text" id="third-character-player-courage-bar-text">{thirdCharacter.courage}/{thirdCharacter.maxCourage}</span>
+                            </ProgressLabel>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -624,8 +719,6 @@ var Battle = React.createClass({
                             <div onClick={()=>{setTarget(thirdCharacter)}}>
                                 <div>{thirdCharacter.name}</div>
                                 <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
-                                <div>{thirdCharacter.hp}/{thirdCharacter.maxHp}</div>
-                                <div>{thirdCharacter.courage}/{thirdCharacter.maxCourage}</div>
                             </div>
                         </td>
                         <td>

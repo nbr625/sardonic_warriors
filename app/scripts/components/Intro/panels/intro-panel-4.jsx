@@ -19,7 +19,7 @@ export default class IPanel4 extends React.Component {
 
                 </div>
                 <div className="story-text">Can you defeat the terror?</div>
-                <Link to="selection-screen">Next</Link>
+                <Link className="story-next-button" to="selection-screen">Next</Link>
             </div>
         );
     }
