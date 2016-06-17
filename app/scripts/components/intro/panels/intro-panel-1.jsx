@@ -15,7 +15,7 @@ export default class IPanel1 extends React.Component {
                     <div className="story-text">hundred of meters  above the clouds, the clash between
                     humanmade pollution and barometric pressure cook up a pocket storm.</div>
                 </div>
-                <Link to="intro/2">Next</Link>
+                <Link className="story-next-button" to="intro/2">Next</Link>
             </div>
         );
     }

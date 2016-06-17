@@ -17,7 +17,7 @@ export default class IPanel3 extends React.Component {
                     a prehistoric structure and begin to morph her body to fit this forgotten
                     vessel.
                 </div>
-                <Link to="intro/4">Next</Link>
+                <Link className="story-next-button" to="intro/4">Next</Link>
             </div>
         );
     }

@@ -22,7 +22,7 @@ export default class IPanel2 extends React.Component {
                 <div className="story-text">
                     possessed marionette. The spike of energy in the kitchen give the murderous cloud a target. Gayathri.
                 </div>
-                <Link to="intro/3">Next</Link>
+                <Link className="story-next-button" to="intro/3">Next</Link>
             </div>
         );
     }

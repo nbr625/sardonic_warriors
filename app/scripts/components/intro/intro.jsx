@@ -5,7 +5,6 @@ export default class Intro extends React.Component {
     render () {
         return (
             <div className="story-panel">
-                <div>The Story</div>
                 <div>{this.props.children}</div>
             </div>
 

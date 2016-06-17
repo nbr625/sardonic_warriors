@@ -616,11 +616,11 @@ var Battle = React.createClass({
                                 startDegree={0}
                                 progressWidth={18}
                                 trackWidth={20}
-                                cornersWidth={8}
+                                cornersWidth={0}
                                 size={180}
                                 fillColor="black"
                                 trackColor="black"
-                                progressColor="green">
+                                progressColor="#4cae4c">
                                 <span className="player-hp-bar-text" id="first-character-player-hp-bar-text">{firstCharacter.hp}/{firstCharacter.maxHp}</span>
                             </ProgressLabel>
 
@@ -631,11 +631,11 @@ var Battle = React.createClass({
                                 startDegree={0}
                                 progressWidth={18}
                                 trackWidth={20}
-                                cornersWidth={8}
+                                cornersWidth={0}
                                 size={140}
                                 fillColor="black"
                                 trackColor="black"
-                                progressColor="blue">
+                                progressColor="#2aabd2">
                                 <span className="player-courage-bar-text" id="first-character-player-courage-bar-text">{firstCharacter.courage}/{firstCharacter.maxCourage}</span>
                             </ProgressLabel>
                         </div>
@@ -647,11 +647,11 @@ var Battle = React.createClass({
                                 startDegree={0}
                                 progressWidth={18}
                                 trackWidth={20}
-                                cornersWidth={8}
+                                cornersWidth={0}
                                 size={180}
                                 fillColor="black"
                                 trackColor="black"
-                                progressColor="green">
+                                progressColor="#4cae4c">
                                 <span className="player-hp-bar-text" id="second-character-player-hp-bar-text">{secondCharacter.hp}/{secondCharacter.maxHp}</span>
                             </ProgressLabel>
 
@@ -662,11 +662,11 @@ var Battle = React.createClass({
                                 startDegree={0}
                                 progressWidth={18}
                                 trackWidth={20}
-                                cornersWidth={8}
+                                cornersWidth={0}
                                 size={140}
                                 fillColor="black"
                                 trackColor="black"
-                                progressColor="blue">
+                                progressColor="#2aabd2">
                                 <span className="player-courage-bar-text" id="second-character-player-courage-bar-text">{secondCharacter.courage}/{secondCharacter.maxCourage}</span>
                             </ProgressLabel>
                         </div>
@@ -678,11 +678,11 @@ var Battle = React.createClass({
                                 startDegree={0}
                                 progressWidth={18}
                                 trackWidth={20}
-                                cornersWidth={8}
+                                cornersWidth={0}
                                 size={180}
                                 fillColor="black"
                                 trackColor="black"
-                                progressColor="green">
+                                progressColor="#4cae4c">
                                 <span className="player-hp-bar-text" id="third-character-player-hp-bar-text">{thirdCharacter.hp}/{thirdCharacter.maxHp}</span>
                             </ProgressLabel>
 
@@ -693,15 +693,32 @@ var Battle = React.createClass({
                                 startDegree={0}
                                 progressWidth={18}
                                 trackWidth={20}
-                                cornersWidth={8}
+                                cornersWidth={0}
                                 size={140}
                                 fillColor="black"
                                 trackColor="black"
-                                progressColor="blue">
+                                progressColor="#2aabd2">
                                 <span className="player-courage-bar-text" id="third-character-player-courage-bar-text">{thirdCharacter.courage}/{thirdCharacter.maxCourage}</span>
                             </ProgressLabel>
                         </div>
+                        <div>
+                            <ProgressLabel
+                                className="player-hp-bar boss-hp-bar"
+                                id="boss-hp-bar"
+                                progress={boss.hp/boss.maxHp * 100}
+                                startDegree={0}
+                                progressWidth={26}
+                                trackWidth={30}
+                                cornersWidth={0}
+                                size={180}
+                                fillColor="black"
+                                trackColor="black"
+                                progressColor="#b92c28">
+                                <span className="player-hp-bar-text boss-hp-bar-text">{boss.hp}/{boss.maxHp}</span>
+                            </ProgressLabel>
+                        </div>
                     </div>
+
                     <div className="sprite-panel">
                         <div>
                             <div onClick={()=>{setTarget(firstCharacter)}}>
@@ -717,14 +734,13 @@ var Battle = React.createClass({
                                 <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
                             </div>
                         </div>
-                        <div>
+                        <div className="boss-sprite">
                             <div>{boss.name}</div>
                             <img src={"/images/gayathan_standing.png"}/>
-                            <div>{boss.hp}/{boss.maxHp}</div>
                         </div>
                     </div>
                     <div>
-                        <div className="panel">
+                        <div className="text-panel">
                             {this.renderPanel()}
                         </div>
                     </div>
