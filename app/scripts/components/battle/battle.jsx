@@ -719,6 +719,8 @@ var Battle = React.createClass({
                         </div>
                     </div>
 
+                    <div className="table"></div>
+
                     <div className="sprite-panel">
                         <div>
                             <div onClick={()=>{setTarget(firstCharacter)}}>
