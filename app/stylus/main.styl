@@ -4,7 +4,7 @@
 $lightgrey = #999
 $linkColor = #555
 $grey = #eee
-$black = #222
+$black = #3a3a3a
 $white = #f7f7f7
 $green = #4cae4c
 $red = #b92c28
@@ -61,6 +61,8 @@ $blue = #2aabd2
   100% { width:100% }
 
 html
+  background-color: $black
+
 button
 input
 select
@@ -174,6 +176,29 @@ header
   padding: 10% 10%
   width: 80%
 
+
+.battle-container
+  display: -webkit-box;
+  display:    -moz-box;
+  display:         box;
+  padding: 0;
+
+.battle-sides
+  -webkit-box-flex: 1
+  -moz-box-flex: 1
+  box-flex: 1
+  list-style: none
+
+.battle
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  width: 850px
+  box-flex: 0
+  max-width: 90%
+
+
+
 .character-hp
   background-color: $green
 
@@ -239,7 +264,7 @@ header
   left: 283px
 
 .second-character-courage-label
-  left: 267px
+  left: 265px
 
 .player-hp-bar#second-character-player-hp-bar
   left: 197px
@@ -277,17 +302,23 @@ header
   left:460px
 
 .sprite-panel
-  top: 200px
+  top: 210px
+  left: 15px
   position: absolute
   float:left
 
 .text-panel
   top: 486px
   position:absolute
+  width: 400px
+  height: 140px
+  background-color: antiquewhite
+  left: 181px
+  margin-top: 5%
 
 .boss-sprite
   top: 20px
-  left: 661px
+  left: 600px
   position:absolute
   float:left
 
@@ -313,13 +344,55 @@ header
 .story-next-button:visited
   color: white;
 
-.text-panel
-  width: 30%
-  left: 263px
-  margin-top: 5%
-
 .table
   width: 50%
   left: 162px
   bottom: 247px
   position: relative
+
+#text
+  font-family: 'VT323'
+
+.action-panel
+  position:relative
+
+.btn-attack
+  position: absolute
+  left: -153px
+  top: 6px
+  height: 60px
+  width: 188px
+  font-size: 2em
+  font-family: 'VeniceClassic'
+
+.btn-defend
+  position: absolute
+  left: 43px
+  top: 6px
+  height: 60px
+  width: 188px
+  font-size: 2em
+  font-family: 'VeniceClassic'
+
+.btn-meditate
+  position: absolute
+  left: -153px
+  top: 73px
+  height: 60px
+  width: 188px
+  font-size: 2em
+  font-family: 'VeniceClassic'
+
+.btn-encourage
+  position: absolute
+  left: 43px
+  top: 73px
+  height: 60px
+  width: 188px
+  font-size: 2em
+  font-family: 'VeniceClassic'
+
+.single-attack-box
+  float: left
+  height: 60px
+  width: 200px

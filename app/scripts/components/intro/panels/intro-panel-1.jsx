@@ -6,14 +6,10 @@ export default class IPanel1 extends React.Component {
         return (
             <div>
                 <div>
-                    <div className="story-text">It is another day, the crew slowly filter into the building.
-                    They commence their morning rituals. Some sacrificing grinds</div>
-                    <div className="story-text"> to the coffee idols, others like Gayathri, lacking any sense
-                    of decency begin to make as much noise as possible.</div>
-                    <div className="story-text"> As if to remind themselves, "I am alive".
-                    Some of the more hungover, Priankka grumble under their breath. Just then,</div>
-                    <div className="story-text">hundred of meters  above the clouds, the clash between
-                    humanmade pollution and barometric pressure cook up a pocket storm.</div>
+                    <div className="story-text">It is another day in Breakthrough Headquarters, the crew slowly filter into the building.The perinially joyous David marks the day.</div>
+                    <div className="story-text">'Another day in Paradise', he crows. At the kitchen many can be seen waiting for their turn at the coffee altar.</div>
+                    <div className="story-text">Gayathri can be spotted there, making loud, indistinguishable noises, which could be interpreted to mean: 'I am alive! hear me roar!'</div>
+                    <div className="story-text">Meanwhile, hundred of meters  above the clouds, the clash between human-made pollution and barometric pressure brews a pocket storm.</div>
                 </div>
                 <Link className="story-next-button" to="intro/2">Next</Link>
             </div>

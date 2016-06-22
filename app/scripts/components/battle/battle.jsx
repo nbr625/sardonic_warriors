@@ -605,7 +605,7 @@ var Battle = React.createClass({
         }
 
         return (
-            <div>
+            <div className="battle">
                 <div>
                     <div>
                         <div>
