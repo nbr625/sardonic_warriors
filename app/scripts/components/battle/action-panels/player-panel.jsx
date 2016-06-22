@@ -20,10 +20,10 @@ export default class PlayerPanel extends React.Component {
         return (
             <div class="action-panel">
                 <div>{this.props.activePlayer.name}</div>
-                <div onClick={() => {this.props.screenHandler('attackP')}}>Attack</div>
-                <div onClick={() => {this.defend()}}>Defend</div>
-                <div onClick={() => {this.meditate()}}>Meditate</div>
-                <div onClick={() => {this.props.screenHandler('selectET')}}>Encourage</div>
+                <div className="btn btn-warning" onClick={() => {this.props.screenHandler('attackP')}}>Attack</div>
+                <div className="btn btn-danger" onClick={() => {this.defend()}}>Defend</div>
+                <div className="btn btn-info" onClick={() => {this.meditate()}}>Meditate</div>
+                <div className="btn btn-success" onClick={() => {this.props.screenHandler('selectET')}}>Encourage</div>
 
             </div>
 
