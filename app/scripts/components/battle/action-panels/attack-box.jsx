@@ -20,7 +20,7 @@ export default class AttackBox extends React.Component {
 
 
         return (
-            <div className="single-attack-box">
+            <div className="btn btn-danger single-attack-box">
                 {attackBox}
                 <span>{attack.courageCost}</span>
             </div>

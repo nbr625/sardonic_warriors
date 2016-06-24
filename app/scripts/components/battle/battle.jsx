@@ -218,7 +218,7 @@ var Battle = React.createClass({
                 }, {name: "Talk about parenting Methods", magnitude: 100, type: 'damaging', initialText: [
                     `Gayathan picks ${activeActionTarget} as the unlucky recepient of her parental advice`,
                     "\"The best way to raise your child...\" she begins.",
-                    `What follows is a series of the most salacious instructions that #{activeActionTarget} has ever heard`,
+                    `What follows is a series of the most salacious instructions that ${activeActionTarget} has ever heard`,
                     "The bad advice jades him about parenthood in general."]
                 }, {name: "Cackle hellishly", magnitude: 100, type: 'damaging', initialText: [
                     "Usually Gayathan\'s laughter has the power to petrify a small child.",
@@ -609,6 +609,7 @@ var Battle = React.createClass({
                 <div>
                     <div>
                         <div>
+                            <img className="first-character-profile-picture" src={"/images/" + firstCharacter.name.toLowerCase() + "-profile.png"} alt={firstCharacter.name}/>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="first-character-player-hp-bar"
@@ -642,6 +643,7 @@ var Battle = React.createClass({
                             </ProgressLabel>
                         </div>
                         <div>
+                            <img className="second-character-profile-picture" src={"/images/" + secondCharacter.name.toLowerCase() + "-profile.png"} alt={secondCharacter.name}/>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="second-character-player-hp-bar"
@@ -675,6 +677,7 @@ var Battle = React.createClass({
                             </ProgressLabel>
                         </div>
                         <div>
+                            <img className="third-character-profile-picture" src={"/images/" + thirdCharacter.name.toLowerCase() + "-profile.png"} alt={thirdCharacter.name}/>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="third-character-player-hp-bar"
@@ -708,6 +711,7 @@ var Battle = React.createClass({
                             </ProgressLabel>
                         </div>
                         <div>
+                            <img className="boss-profile-picture" src={"/images/" + boss.name.toLowerCase() + "-profile.png"} alt={boss.name}/>
                             <ProgressLabel
                                 className="player-hp-bar boss-hp-bar"
                                 id="boss-hp-bar"

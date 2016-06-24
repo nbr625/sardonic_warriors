@@ -13,11 +13,10 @@ export default class AttackPanel extends React.Component {
 
         return (
             <div>
-                <div>{props.activePlayer.name}</div>
                 {Object.keys(attacks).map(function(key){
                     return <AttackBox key={key} index={key} attacks={attacks} {...props}/>;
                 })}
-                <div onClick={() => {this.props.screenHandler('attackP')}}>Back</div>
+                <div onClick={() => {this.props.screenHandler('PlayerP')}}>Back</div>
             </div>
         );
     }
