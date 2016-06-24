@@ -609,7 +609,6 @@ var Battle = React.createClass({
                 <div>
                     <div>
                         <div>
-                            <img className="first-character-profile-picture" src={"/images/" + firstCharacter.name.toLowerCase() + "-profile.png"} alt={firstCharacter.name}/>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="first-character-player-hp-bar"
@@ -641,9 +640,9 @@ var Battle = React.createClass({
                                 <span className="player-courage-bar-text" id="first-character-player-courage-bar-text">{firstCharacter.courage}/{firstCharacter.maxCourage}</span>
                                 <span className="courage-label first-character-courage-label">Courage</span>
                             </ProgressLabel>
+                            <img className="first-character-profile-picture" src={"/images/" + firstCharacter.name.toLowerCase() + "-profile.png"} alt={firstCharacter.name}/>
                         </div>
                         <div>
-                            <img className="second-character-profile-picture" src={"/images/" + secondCharacter.name.toLowerCase() + "-profile.png"} alt={secondCharacter.name}/>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="second-character-player-hp-bar"
@@ -675,9 +674,9 @@ var Battle = React.createClass({
                                 <span className="player-courage-bar-text" id="second-character-player-courage-bar-text">{secondCharacter.courage}/{secondCharacter.maxCourage}</span>
                                 <span className="courage-label second-character-courage-label">Courage</span>
                             </ProgressLabel>
+                            <img className="second-character-profile-picture" src={"/images/" + secondCharacter.name.toLowerCase() + "-profile.png"} alt={secondCharacter.name}/>
                         </div>
                         <div>
-                            <img className="third-character-profile-picture" src={"/images/" + thirdCharacter.name.toLowerCase() + "-profile.png"} alt={thirdCharacter.name}/>
                             <ProgressLabel
                                 className="player-hp-bar"
                                 id="third-character-player-hp-bar"
@@ -709,9 +708,9 @@ var Battle = React.createClass({
                                 <span className="player-courage-bar-text" id="third-character-player-courage-bar-text">{thirdCharacter.courage}/{thirdCharacter.maxCourage}</span>
                                 <span className="courage-label third-character-courage-label">Courage</span>
                             </ProgressLabel>
+                            <img className="third-character-profile-picture" src={"/images/" + thirdCharacter.name.toLowerCase() + "-profile.png"} alt={thirdCharacter.name}/>
                         </div>
                         <div>
-                            <img className="boss-profile-picture" src={"/images/" + boss.name.toLowerCase() + "-profile.png"} alt={boss.name}/>
                             <ProgressLabel
                                 className="player-hp-bar boss-hp-bar"
                                 id="boss-hp-bar"
@@ -727,6 +726,7 @@ var Battle = React.createClass({
                                 <span className="player-hp-bar-text boss-hp-bar-text">{boss.hp}/{boss.maxHp}</span>
                                 <span className="hp-label boss-hp-label">HP</span>
                             </ProgressLabel>
+                            <img className="boss-profile-picture" src={"/images/" + boss.name.toLowerCase() + "-profile.png"} alt={boss.name}/>
                         </div>
                     </div>
 
