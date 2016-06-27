@@ -33,9 +33,11 @@ export default class SelectionScreen extends React.Component {
                 <div>You may only take three to battle...</div>
                 <table>
                     <tbody>
-                            {renderPlayerPanel(1)}
-                            {renderPlayerPanel(2)}
-                            {renderPlayerPanel(3)}
+                        {renderPlayerPanel(1)}
+                        <tr className="selection-divider"></tr>
+                        {renderPlayerPanel(2)}
+                        <tr className="selection-divider"></tr>
+                        {renderPlayerPanel(3)}
                     </tbody>
                 </table>
                 <div>
