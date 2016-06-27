@@ -17,12 +17,13 @@ export default class AttackBox extends React.Component {
         } else {
             attackBox = <span onClick={() => {props.setAction(attack)}}>{attack.name}</span>
         }
+        var attackClass =  attack.type == 'damaging' ? 'btn-danger' : 'btn-info';
 
 
         return (
-            <div className="btn btn-danger single-attack-box">
-                {attackBox}
-                <span>{attack.courageCost}</span>
+            <div className={`btn ${attackClass} single-attack-box`}>
+                <div className="attack-title">{attackBox}</div>
+                <div className="attack-courage-cost">{attack.courageCost} Courage</div>
             </div>
         );
     }

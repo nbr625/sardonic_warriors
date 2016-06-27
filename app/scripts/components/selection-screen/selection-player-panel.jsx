@@ -23,14 +23,18 @@ export default class SelectionPlayerPanel extends React.Component {
         var that = this,
             panelCharacter = {name: 'Select', description: 'character'};
         if (player == 1 && firstCharacter.hasOwnProperty('player')){
-            panelCharacter = firstCharacter.name;
+            panelCharacter = firstCharacter;
         } else if (player == 2 && secondCharacter.hasOwnProperty('player')) {
-            panelCharacter = secondCharacter.name;
+            panelCharacter = secondCharacter;
         } else if (player == 3 && thirdCharacter.hasOwnProperty('player')) {
-            panelCharacter = thirdCharacter.name;
+            panelCharacter = thirdCharacter;
         } else {
-            panelCharacter = 'select'
+            panelCharacter = {name: 'Select'}
         }
+
+        var playerClass = panelCharacter.name != 'Select' ? panelCharacter.class : "";
+        var playerSummary = panelCharacter.name != 'Select' ? panelCharacter.profileText : "";
+
         return (
             <tr className="player-selection-panel">
 
@@ -44,8 +48,12 @@ export default class SelectionPlayerPanel extends React.Component {
                 </td>
 
                 <td>
-                    <img src={"/images/" + panelCharacter.toLowerCase() + "_standing.png"} alt={panelCharacter}/>
-                    <div>{panelCharacter}</div>
+                    <img src={"/images/" + panelCharacter.name.toLowerCase() + "_standing.png"} alt={panelCharacter.name}/>
+                </td>
+
+                <td>
+                    <div className="player-class">{panelCharacter.name}:   {playerClass}</div>
+                    <div className="player-summary">{playerSummary}</div>
                 </td>
 
             </tr>

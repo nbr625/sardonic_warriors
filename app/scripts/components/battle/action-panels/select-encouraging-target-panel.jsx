@@ -8,8 +8,8 @@ export default class SelectEncouragingTarget extends React.Component{
     render() {
         return (
             <div>
-                <div id="text">Select Target</div>
-                <div onClick={() => {this.props.screenHandler('PlayerP')}}>Back</div>
+                <div className="select-target-text">Select Target</div>
+                <div className="back-button" onClick={() => {this.props.screenHandler('PlayerP')}}>Back</div>
             </div>
         );
     }
