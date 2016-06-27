@@ -1,12 +1,12 @@
 
 module.exports = {
     character1:{
-        name:'Roman', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, attacks: [
+        name:'Roman', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "God", attacks: [
             {name:"Smite Her", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "Roman opens the Cosmic Terminal",
                 "He navigates to one his most devistating attacks",
                 "A beam of white-hot algorithm thunders through the fabric of the time continuum",
-                "Gayathan\'s an almost infinate loop of attacks iterate against her scales",
+                "Gayathan\'s an almost infinate loop of attacks iterate against her scales"
             ]}, {name: "Trance Music", magnitude:100, courageCost: 10, type: 'damaging', initialText:[
                 "Roman unplugs his laptop.",
                 "The rhythmic dark pulses pour forth and reach Gayathan\'s ",
@@ -29,9 +29,9 @@ module.exports = {
                 "\"...It is okay\"",
                 "\"Gayathan is mortified at the amount of time she has lost.\""
             ]}
-        ]
+        ], profileText: "A robotic diety programmed to bring about the apocalypse. he spends his the time before the day of reckoning coding and playing video games"
     }, character2: {
-        name:'Pri', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, attacks: [
+        name:'Pri', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Brorrior", attacks: [
             {name:"Waterbottle Avalanche", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "\"I knew this day would come.\" Says Pri as he approaches his desk",
                 "There stands a monolithic structure that spans thousands of waterbottles high",
@@ -63,10 +63,10 @@ module.exports = {
                 "\"I guess a little bit... Here!\" A lightningbolt strikes Gayathan, it slightly nerfs her attack power"
             ]}
 
-        ]
+        ], profileText: "Basic Bro with OP levels of humor. His main pastimes include making up names for Francis and Gayathri and \"making America great again\""
 
     }, character3: {
-        name:'Murat', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, attacks: [
+        name:'Murat', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Cat Knight", attacks: [
             {name:"Empathy", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "\"Gayathan, I know sometimes things have been confusing...\"",
                 "\"I have never been turned into a Dinosaur before, but I know what is to feel like you don't belong\"",
@@ -97,10 +97,10 @@ module.exports = {
                 "\"AHHHH!\" Gayathan begins to dance frantically bunping against everything like a drunk schoolgirl on prom night"
             ]}
 
-        ]
+        ], profileText: "Fearless leader of Breakthrough, retired professional LARPER, and Unicorn Whisperer. His favorite pastime is ordering exotic food on Amazon"
 
     },character4: {
-        name:'Andrew', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, attacks: [
+        name:'Andrew', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Dancer", attacks: [
             {name: "Bust a Move", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "Andrew has been preparing for this momment. He can finally reap the crop of endless nights of secret Bollywood dancing meetups",
                 "He rolls on the floor like a human that was taught how to walk by drunken snakes.",
@@ -118,13 +118,13 @@ module.exports = {
             ]},{name: "Avocado MIlkshake", magnitude:100, courageCost: 10, type: 'healing', initialText: [
                 "Andrew offers his avocado concoction to his teamate,",
                 "who takes it with some suspicion.",
-                "It is delicious!",
+                "It is delicious!"
 
             ]}
-        ]
+        ], profileText: "Tango assassin and owner of the world\'s most uncomfortable chair. He boasts the highest meetups per month rating in all the company; it is a shame that no one cares."
 
     }, character5: {
-        name:'Oleg', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, attacks: [
+        name:'Oleg', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Painter", attacks: [
             {name:"Angry Bird", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "Oleg reaches for his favorite plush to throw at people",
                 "But in his haste, he moves to Nico\'s desk and grabs the Spicy Chicken Man status",
@@ -147,10 +147,10 @@ module.exports = {
                 "She knows she has lost the game and it pains hurts her pride."
             ]}
 
-        ]
+        ], profileText: "Escaped SSR experiment, he has ingratiated himself into society and now leads the QA ranks. Weapon of choice is Paint and Post-id Notes"
 
     }, character6: {
-        name:'Bryan', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, attacks: [
+        name:'Bryan', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Narco", attacks: [
             {name:"Soylet Green", magnitude: 250, courageCost: 10, type: 'healing', initialText: [
                 "Bryan reveals that he has been stocking up on Soylet",
                 "\"Do you see now? we don't have time to prepare a meal so this Soylet is the perfect meal for this occasion\"",
@@ -173,10 +173,10 @@ module.exports = {
                 "She is beyond indignation"
 
             ]}
-        ]
+        ], profileText: "A former drug trafficker, Bryan is well suited for the dangerous lifestyle of a developer. His favorite pastime include talking about working out and convincing others to drink Soylent Green"
 
     }, character7: {
-        name:'PH', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, attacks: [
+        name:'PH', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Super Hero", attacks: [
             {name: "Cane Jutsu", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "Pri takes out the cane he uses on his pimp training clases",
                 "He moves the curved stave with the deadly fervour of a roided up JROTC student",
@@ -200,10 +200,10 @@ module.exports = {
                 "It is then, when he she has relaxed her defences that he styrikes.",
                 "He throws the the golden candle holder at his desk at her."
             ]}
-        ]
+        ], profileText: "He will tap you out. PH pretends to be boring to distract others from the fact that fights crime every night as Captain Muscle."
 
     }, character8: {
-        name:'Andy', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, attacks: [
+        name:'Andy', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Wizard", attacks: [
             {name: "Snide Spanish Remark", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "\"Ahora que eres un dinosaurio por lo menos tiene sentido que hagas tanto ruido\"",
                 "Gayathan cannot understand the euphonious glorious language of the castellians",
@@ -224,7 +224,7 @@ module.exports = {
                 "Andy offers a piece of carrot cake that his daughter baked",
                 "It is delicious."
             ]}
-        ]
+        ], profileText: "Master of tongues, he can make sarcastic remarks in countless languages. He is so powerful that his only weaknesses are dirty dishes and less than optimal recycling"
 
     }
 };

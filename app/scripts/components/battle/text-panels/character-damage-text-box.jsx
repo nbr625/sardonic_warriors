@@ -33,7 +33,7 @@ export default class CharacterDamageTextBox extends React.Component{
 
         return (
             <div>
-                <div id="text">{text}</div>
+                <div className="battle-text-box-text">{text}</div>
                 <div onClick={() => {this.nextPanel()}}>Continue</div>
             </div>
         );

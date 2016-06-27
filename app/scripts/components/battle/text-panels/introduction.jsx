@@ -33,7 +33,7 @@ export default class Introduction extends React.Component{
     render() {
         return (
             <div>
-                <div id="text">{this.state.activeText}</div>
+                <div className="battle-text-box-text">{this.state.activeText}</div>
                 <div onClick={()=>{this.switchText()}}>Next</div>
             </div>
         );

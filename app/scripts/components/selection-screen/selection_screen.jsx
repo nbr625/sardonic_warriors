@@ -27,7 +27,7 @@ export default class SelectionScreen extends React.Component {
             renderPlayerPanel = props.renderPlayerPanel;
 
         return (
-            <div>
+            <div className="selection-screen">
                 <h1>Selection Screen</h1>
                 <div>Select your warriors wisely</div>
                 <div>You may only take three to battle...</div>

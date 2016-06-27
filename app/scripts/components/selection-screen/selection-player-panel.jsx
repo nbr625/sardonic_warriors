@@ -32,7 +32,7 @@ export default class SelectionPlayerPanel extends React.Component {
             panelCharacter = 'select'
         }
         return (
-            <tr>
+            <tr className="player-selection-panel">
 
                 <td className="single-selection-panel">
                     <ul className="list-group">
