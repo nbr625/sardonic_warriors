@@ -1,8 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
 
 export default class IPanel1 extends React.Component {
+
+
     render () {
+        document.body.addEventListener('keydown', (e) => {
+            if(e.key == 'Enter'){
+                this.context.history.pushState(null, 'intro/2');
+            }
+        });
         return (
             <div>
                 <div>
@@ -16,3 +25,6 @@ export default class IPanel1 extends React.Component {
         );
     }
 }
+
+reactMixin(IPanel1, History);
+export default IPanel1;

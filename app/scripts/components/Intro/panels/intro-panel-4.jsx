@@ -1,26 +1,41 @@
 import React from 'react';
+import Game from '../../game.jsx';
 import { Link } from 'react-router';
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
 
-export default class IPanel4 extends React.Component {
+class IPanel4 extends React.Component {
+
     render () {
+
+        document.body.addEventListener('keydown', (e) => {
+            if(e.key == 'Enter'){
+                this.props.resetPlayers();
+                this.context.history.pushState(null, 'selection-screen');
+            }
+        });
+
+
         return (
             <div>
                 <div className="story-text">
-                    Her skin hardens and segments into scales. Her teeth sharpen and enlarge,
-                    no longer fitting her jaw.
+                    Her mouth extends forward with jagged teeth and her pupils become slits like rips made by sarcastic intent.
                 </div>
                 <div className="story-text">
-                    Her mouth extends forward and her eyes grow cold,
-                    only defined by a sarcastic hunger.
-                    She has been
+                    Her final form is too awful. Everyone wants to ignore the even all together. But it only anger Gayathan.
                 </div>
                 <div className="story-text">
-                    fully transformed into her final form. Gayatops stands before everyone. She begins to destroy all of the fascilities.
-
+                    She thrashes the facilities with her enormous tails while cackling in the most unsettling way
                 </div>
-                <div className="story-text">Can you defeat the terror?</div>
-                <Link className="story-next-button" to="selection-screen">Next</Link>
+                <div className="story-text">
+                    Who can rise up and defeat this terror?
+                </div>
+                <Link className="story-next-button" onClick={this.props.resetPlayers} to="selection-screen">Next</Link>
             </div>
         );
     }
+
 }
+
+reactMixin(IPanel4, History);
+export default IPanel4;

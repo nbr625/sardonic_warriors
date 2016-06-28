@@ -47,8 +47,10 @@
   "dependencies": {
     "history": "^1.13.0",
     "react": "^0.14.2",
+    "react-audio-player": "^0.1.2",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^0.14.2",
+    "react-mixin": "^3.0.5",
     "react-progress-label": "^1.2.1",
     "react-router": "^1.0.0",
     "reflux": "^0.3.0"

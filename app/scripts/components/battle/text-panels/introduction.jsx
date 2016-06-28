@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Battle from './../battle.jsx';
 
-export default class Introduction extends React.Component{
+class Introduction extends React.Component{
 
     constructor(props, context){
         super(props, context);
@@ -31,6 +31,11 @@ export default class Introduction extends React.Component{
         }
     }
     render() {
+        document.body.addEventListener('keydown', (e) => {
+            if(e.key == 'Enter'){
+                this.switchText();
+            }
+        });
         return (
             <div>
                 <div className="battle-text-box-text">{this.state.activeText}</div>
@@ -40,3 +45,5 @@ export default class Introduction extends React.Component{
     }
 
 }
+
+export default Introduction;

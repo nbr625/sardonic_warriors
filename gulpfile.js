@@ -77,12 +77,20 @@ gulp.task('images', function(cb) {
     .pipe(gulp.dest(dist + 'images/'));
 });
 
+gulp.task('music', function(cb) {
+  return gulp.src(app + 'music/**/*.{mp3}')
+      .pipe($.size({ title : 'music' }))
+      .pipe(gulp.dest(dist + 'music/'));
+});
+
 // watch styl, html and js file changes
 gulp.task('watch', function() {
   gulp.watch(app + 'stylus/*.styl', ['styles']);
   gulp.watch(app + 'index.html', ['html']);
   gulp.watch(app + 'scripts/**/*.js', ['scripts']);
   gulp.watch(app + 'scripts/**/*.jsx', ['scripts']);
+  gulp.watch(app + 'music/**/*.{mp3}', ['music']);
+  gulp.watch(app + 'images/**/*.{png,jpg,jpeg,gif}', ['images']);
 });
 
 // remove bundels
@@ -92,9 +100,9 @@ gulp.task('clean', function(cb) {
 
 
 // by default build project and then watch files in order to trigger livereload
-gulp.task('default', ['images', 'html','scripts', 'styles', 'serve', 'watch']);
+gulp.task('default', ['images', 'music', 'html','scripts', 'styles', 'serve', 'watch']);
 
 // waits until clean is finished then builds the project
 gulp.task('build', ['clean'], function(){
-  gulp.start(['images', 'html','scripts','styles']);
+  gulp.start(['images','music', 'html','scripts','styles']);
 });
