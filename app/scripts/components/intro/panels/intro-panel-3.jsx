@@ -27,6 +27,7 @@ class IPanel3 extends React.Component {
                     Her skin hardens and segments into scales, she is even more resilient to the criticism and pleas of mercy.
                 </div>
                 <Link className="story-next-button" to="intro/4">Next</Link>
+                <audio src="/music/thunder.mp3" autoPlay></audio>
             </div>
         );
     }
