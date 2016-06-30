@@ -5,13 +5,30 @@ import reactMixin from 'react-mixin';
 
 export default class IPanel1 extends React.Component {
 
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            handler: this.pressEnter.bind(this)
+        }
+    }
+
+    pressEnter(e){
+        if(e.key == 'Enter'){
+            this.props.resetPlayers();
+            this.context.history.pushState(null, 'intro/2');
+        }
+    }
+
+    componentDidMount(){
+        window.addEventListener('keydown', this.state.handler);
+
+    }
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.state.handler);
+    }
+
 
     render () {
-        document.body.addEventListener('keydown', (e) => {
-            if(e.key == 'Enter'){
-                this.context.history.pushState(null, 'intro/2');
-            }
-        });
         return (
             <div>
                 <div>

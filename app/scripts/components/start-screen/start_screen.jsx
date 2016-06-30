@@ -5,16 +5,33 @@ import { History } from 'react-router';
 import reactMixin from 'react-mixin';
 
 class StartScreen extends React.Component {
+
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            handler: this.pressEnterForStart.bind(this)
+        }
+    }
+
+    pressEnterForStart(e){
+        if(e.key == 'Enter'){
+            this.props.resetPlayers();
+            var audio = new Audio('/music/enter-button.mp3');
+            audio.play();
+            this.context.history.pushState(null, 'intro');
+        }
+    }
+
+    componentDidMount(){
+        window.addEventListener('keydown', this.state.handler);
+
+    }
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.state.handler);
+    }
+
     render () {
 
-        document.body.addEventListener('keydown', (e) => {
-            if(e.key == 'Enter'){
-                this.props.resetPlayers();
-                var audio = new Audio('/music/enter-button.mp3');
-                audio.play();
-                this.context.history.pushState(null, 'intro');
-            }
-        });
         return (
             <div className="start-screen">
                 <div className="game-title">Sardonic Warriors</div>

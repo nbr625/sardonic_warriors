@@ -4,13 +4,30 @@ import { History } from 'react-router';
 import reactMixin from 'react-mixin';
 
 class IPanel2 extends React.Component {
-    render () {
 
-        document.body.addEventListener('keydown', (e) => {
-            if(e.key == 'Enter'){
-                this.context.history.pushState(null, 'intro/3');
-            }
-        });
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            handler: this.pressEnter.bind(this)
+        }
+    }
+
+    pressEnter(e){
+        if(e.key == 'Enter'){
+            this.props.resetPlayers();
+            this.context.history.pushState(null, 'intro/3');
+        }
+    }
+
+    componentDidMount(){
+        window.addEventListener('keydown', this.state.handler);
+
+    }
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.state.handler);
+    }
+
+    render () {
 
         return (
             <div>
