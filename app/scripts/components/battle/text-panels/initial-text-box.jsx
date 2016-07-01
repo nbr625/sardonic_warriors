@@ -1,17 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Battle from './../battle.jsx';
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
 
-export default class InitialTextBox extends React.Component{
+class InitialTextBox extends React.Component{
 
     constructor(props,context){
         super(props, context);
         var text = this.props.activeAction.initialText;
         this.state = {
+            enterHandler: this.pressEnter.bind(this),
             activeTextIndex: 1,
             text: text,
             activeText: text[1]
         };
+    }
+
+    componentDidMount(){
+        window.addEventListener('keydown', this.state.enterHandler);
+
+    }
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.state.enterHandler);
+    }
+
+    pressEnter(e){
+        if(e.key == 'Enter'){
+            this.switchText();
+        }
     }
 
     switchText(){
@@ -51,3 +68,6 @@ export default class InitialTextBox extends React.Component{
     }
 
 }
+
+export default InitialTextBox;
+reactMixin(InitialTextBox, History);

@@ -1,8 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Battle from './../battle.jsx';
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
 
-export default class CharacterDamageTextBox extends React.Component{
+class CharacterDamageTextBox extends React.Component{
+
+
+    constructor(props,context){
+        super(props, context);
+        this.state = {
+            enterHandler: this.pressEnter.bind(this)
+        };
+    }
+
+    componentDidMount(){
+        window.addEventListener('keydown', this.state.enterHandler);
+
+    }
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.state.enterHandler);
+    }
+
+    pressEnter(e){
+        if(e.key == 'Enter'){
+            this.nextPanel();
+        }
+    }
 
 
     nextPanel(){
@@ -39,3 +63,6 @@ export default class CharacterDamageTextBox extends React.Component{
         );
     }
 }
+
+export default CharacterDamageTextBox;
+reactMixin(CharacterDamageTextBox, History);
