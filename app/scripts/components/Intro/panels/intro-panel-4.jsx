@@ -17,6 +17,8 @@ class IPanel4 extends React.Component {
     pressEnter(e){
         if(e.key == 'Enter'){
             this.props.resetPlayers();
+            var audio = new Audio('/music/enter-to-select-button.mp3');
+            audio.play();
             this.context.history.pushState(null, 'selection-screen');
         }
     }
@@ -30,14 +32,6 @@ class IPanel4 extends React.Component {
     }
 
     render () {
-
-        document.body.addEventListener('keydown', (e) => {
-            if(e.key == 'Enter'){
-                this.props.resetPlayers();
-                this.context.history.pushState(null, 'selection-screen');
-            }
-        });
-
 
         return (
             <div>

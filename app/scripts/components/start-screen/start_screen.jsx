@@ -35,8 +35,8 @@ class StartScreen extends React.Component {
         return (
             <div className="start-screen">
                 <div className="game-title">Sardonic Warriors</div>
-                <Link className="btn btn-success" onClick={this.props.resetPlayers} to="intro" ><h1>Press Enter</h1></Link>
-                <audio src="/music/dubstep-intro.mp3" loop></audio>
+                <Link id="start-button" className="btn btn-success" onClick={this.props.resetPlayers} to="intro" ><h1>Press Enter</h1></Link>
+                <audio src="/music/dubstep-intro.mp3" loop autoPlay></audio>
             </div>
         );
     }

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Battle from './../battle.jsx';
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
 
 class Introduction extends React.Component{
 
     constructor(props, context){
         super(props, context);
         this.state = {
+            handler: this.pressEnter.bind(this),
             activeTextIndex: 1,
             text: {
                 1: "Gayathan Stands before the chosen heroes: " + this.props.firstCharacter.name,
@@ -15,6 +18,14 @@ class Introduction extends React.Component{
                 4: "They rise to the task." },
             activeText: "Gayathan Stands before the chosen heroes " + this.props.firstCharacter.name
         };
+    }
+
+    componentDidMount(){
+        window.addEventListener('keydown', this.state.handler);
+
+    }
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.state.handler);
     }
 
     switchText(){
@@ -30,12 +41,14 @@ class Introduction extends React.Component{
             this.props.screenHandler('PlayerP');
         }
     }
+
+    pressEnter(e){
+        if(e.key == 'Enter'){
+            this.switchText();
+        }
+    }
+
     render() {
-        document.body.addEventListener('keydown', (e) => {
-            if(e.key == 'Enter'){
-                this.switchText();
-            }
-        });
         return (
             <div>
                 <div className="battle-text-box-text">{this.state.activeText}</div>
@@ -47,3 +60,4 @@ class Introduction extends React.Component{
 }
 
 export default Introduction;
+reactMixin(Introduction, History);
