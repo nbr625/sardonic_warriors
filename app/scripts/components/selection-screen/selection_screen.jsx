@@ -8,13 +8,93 @@ import ToBattleButton from './to-battle-button.jsx';
 
 export default class SelectionScreen extends React.Component {
 
-    renderBattleButton() {
-        var props = this.props,
-            firstCharset = props.firstCharacter.hasOwnProperty('player'),
-            secondCharset = props.secondCharacter.hasOwnProperty('player'),
-            thirdCharset = props.thirdCharacter.hasOwnProperty('player');
-        if (firstCharset && (secondCharset && thirdCharset)){
-            return <ToBattleButton {...this.props} />;
+
+    constructor(props,context){
+        super(props, context);
+        this.state = {
+            pressUpHandler: this.pressUp.bind(this),
+            pressDownHandler: this.pressDown.bind(this),
+            pressEnterHandler: this.pressEnter.bind(this),
+            playerHighlighted: 1,
+            characterIndexHighlighted: 0
+        };
+    }
+
+    componentDidMount(){
+        window.addEventListener('keydown', this.state.pressUpHandler);
+        window.addEventListener('keydown', this.state.pressDownHandler);
+        window.addEventListener('keydown', this.state.pressEnterHandler);
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.state.enterHandler);
+        window.removeEventListener('keydown', this.state.pressDownHandler);
+        window.removeEventListener('keydown', this.state.pressEnterHandler);
+    }
+
+    pressEnter(e){
+        if(e.key == 'Enter') {
+            this.props.selectCharacter(this.state.characterIndexHighlighted, this.state.playerHighlighted);
+        }
+    }
+
+    pressUp(e){
+        var state = this.state,
+            playerHighlighted = state.playerHighlighted,
+            characterIndexHighlighted = state.characterIndexHighlighted,
+            selectableCharSize = this.props.size(this.props.unselectedCharacters);
+
+        if(e.keyCode == 38){
+            e.preventDefault();
+
+
+            if (playerHighlighted == 1 && characterIndexHighlighted == 0) {
+                setState({
+                    playerHighlighted: 3,
+                    characterIndexHighlighted: selectableCharSize
+                });
+            } else if(playerHighlighted > 1 && characterIndexHighlighted > 0) {
+                setState({
+                    playerHighlighted: playerHighlighted - 1,
+                    characterIndexHighlighted: selectableCharSize
+                });
+
+            } else {
+                setState({
+                    characterIndexHighlighted: characterIndexHighlighted - 1
+                });
+
+            }
+
+        }
+    }
+
+    pressDown(e){
+        var state = this.state,
+            playerHighlighted = state.playerHighlighted,
+            characterIndexHighlighted = state.characterIndexHighlighted,
+            selectableCharSize = this.props.size(this.props.unselectedCharacters);
+
+        if(e.key == 40){
+            e.preventDefault();
+
+            if (playerHighlighted == 3 && characterIndexHighlighted == selectableCharSize) {
+                setState({
+                    playerHighlighted: 1,
+                    characterIndexHighlighted: 0
+                });
+            } else if(playerHighlighted < 3 && characterIndexHighlighted == selectableCharSize) {
+                setState({
+                    playerHighlighted: playerHighlighted + 1,
+                    characterIndexHighlighted: 0
+                });
+
+            } else {
+                setState({
+                    characterIndexHighlighted: characterIndexHighlighted + 1
+                });
+
+            }
         }
     }
 

@@ -29,6 +29,7 @@ var Game = React.createClass ({
         return {
 
             characters: require('../data/characters.jsx'),
+            unselectedCharacters: require('../data/characters.jsx'),
             boss: enemiesData.gayathan,
 
             firstCharacter: {},
@@ -40,6 +41,8 @@ var Game = React.createClass ({
             resetPlayers: this.resetPlayers,
             selectCharacter: this.selectCharacter,
 
+
+            updateSelectableCharacters: this.updateSelectableCharacters,
             renderSelectionProfile: this.renderSelectionProfile,
             renderFirstSelectionProfile: this.renderFirstSelectionProfile,
             renderSecondSelectionProfile: this.renderSecondSelectionProfile,
@@ -93,6 +96,19 @@ var Game = React.createClass ({
         return size;
     },
 
+    updateSelectableCharacters(){
+        var props = this.props;
+
+        for (var key in props.characters){
+            if(props.characters[key].player == 0){
+                unselectedCharacters[key] = props.characters[key];
+            }
+        }
+        this.setState({
+            unselectedCharacters: unselectedCharacters
+        });
+    },
+
 
     resetPlayers: function() {
         for(var key in this.state.characters){
@@ -119,7 +135,7 @@ var Game = React.createClass ({
 
     selectCharacter: function(key, player){
         var state = this.state,
-            characters = state.characters;
+            characters = state.unselectedCharacters;
 
         switch (player) {
             case 1:
@@ -166,6 +182,8 @@ var Game = React.createClass ({
                     characters: state.characters
                 });
         }
+
+        updateSelectableCharacters();
 
     },
 
