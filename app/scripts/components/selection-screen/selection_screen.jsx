@@ -6,7 +6,10 @@ import FirstCharacterPanel from './selection-player-panel.jsx';
 import CharacterProfile from './selection-character-profile.jsx';
 import ToBattleButton from './to-battle-button.jsx';
 
-export default class SelectionScreen extends React.Component {
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
+
+class SelectionScreen extends React.Component {
 
 
     constructor(props,context){
@@ -15,6 +18,7 @@ export default class SelectionScreen extends React.Component {
             pressUpHandler: this.pressUp.bind(this),
             pressDownHandler: this.pressDown.bind(this),
             pressEnterHandler: this.pressEnter.bind(this),
+            pressSpaceHandler: this.pressSpace.bind(this),
             playerHighlighted: 1,
             characterIndexHighlighted: 0
         };
@@ -24,16 +28,18 @@ export default class SelectionScreen extends React.Component {
         window.addEventListener('keydown', this.state.pressUpHandler);
         window.addEventListener('keydown', this.state.pressDownHandler);
         window.addEventListener('keydown', this.state.pressEnterHandler);
+        window.addEventListener('keydown', this.state.pressSpaceHandler);
     }
 
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.enterHandler);
         window.removeEventListener('keydown', this.state.pressDownHandler);
         window.removeEventListener('keydown', this.state.pressEnterHandler);
+        window.removeEventListener('keydown', this.state.pressSpaceHandler);
     }
 
     pressEnter(e){
-        if(e.key == 'Enter') {
+        if(e.keyCode == 32) {
             this.props.selectCharacter(this.state.characterIndexHighlighted, this.state.playerHighlighted);
         }
     }
@@ -98,6 +104,18 @@ export default class SelectionScreen extends React.Component {
         }
     }
 
+    pressSpace(e){
+        var props = this.props,
+            firstCharset = props.firstCharacter.hasOwnProperty('player'),
+            secondCharset = props.secondCharacter.hasOwnProperty('player'),
+            thirdCharset = props.thirdCharacter.hasOwnProperty('player'),
+            all_selected =firstCharset &&  secondCharset && thirdCharset;
+
+        if(e.key == 'Enter' && all_selected) {
+            this.context.history.pushState(null, 'battle');
+        }
+    }
+
     render() {
 
         var props = this.props,
@@ -132,3 +150,6 @@ export default class SelectionScreen extends React.Component {
     }
 
 }
+
+reactMixin(SelectionScreen, History);
+export default SelectionScreen;
