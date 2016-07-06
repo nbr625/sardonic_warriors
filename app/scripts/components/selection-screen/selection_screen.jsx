@@ -19,8 +19,6 @@ class SelectionScreen extends React.Component {
             pressDownHandler: this.pressDown.bind(this),
             pressEnterHandler: this.pressEnter.bind(this),
             pressSpaceHandler: this.pressSpace.bind(this),
-            playerHighlighted: 1,
-            characterIndexHighlighted: 0
         };
     }
 
@@ -39,67 +37,52 @@ class SelectionScreen extends React.Component {
     }
 
     pressEnter(e){
-        if(e.keyCode == 32) {
-            this.props.selectCharacter(this.state.characterIndexHighlighted, this.state.playerHighlighted);
+        var props = this.props;
+        if(e.key == 'Enter') {
+            props.selectCharacter(props.characterIndexHighlighted, props.playerHighlighted);
         }
     }
 
     pressUp(e){
-        var state = this.state,
-            playerHighlighted = state.playerHighlighted,
-            characterIndexHighlighted = state.characterIndexHighlighted,
-            selectableCharSize = this.props.size(this.props.unselectedCharacters);
+        var props = this.props,
+            playerHighlighted = props.playerHighlighted,
+            characterIndexHighlighted = props.characterIndexHighlighted,
+            selectableCharSize = props.unselectedCharacters.length - 1,
+            setPlayerHighlighted = props.setPlayerHighlighted,
+            setCharacterIndexHighlighted = props.setCharacterIndexHighlighted;
 
-        if(e.keyCode == 38){
+        if(e.keyCode == 38) {
             e.preventDefault();
-
-
             if (playerHighlighted == 1 && characterIndexHighlighted == 0) {
-                setState({
-                    playerHighlighted: 3,
-                    characterIndexHighlighted: selectableCharSize
-                });
-            } else if(playerHighlighted > 1 && characterIndexHighlighted > 0) {
-                setState({
-                    playerHighlighted: playerHighlighted - 1,
-                    characterIndexHighlighted: selectableCharSize
-                });
-
+                setPlayerHighlighted(3);
+                setCharacterIndexHighlighted(selectableCharSize);
+            } else if(playerHighlighted > 1 && characterIndexHighlighted == 0) {
+                setPlayerHighlighted(playerHighlighted - 1);
+                setCharacterIndexHighlighted(selectableCharSize);
             } else {
-                setState({
-                    characterIndexHighlighted: characterIndexHighlighted - 1
-                });
-
+                setCharacterIndexHighlighted(characterIndexHighlighted - 1);
             }
-
         }
     }
 
     pressDown(e){
-        var state = this.state,
-            playerHighlighted = state.playerHighlighted,
-            characterIndexHighlighted = state.characterIndexHighlighted,
-            selectableCharSize = this.props.size(this.props.unselectedCharacters);
+        var props = this.props,
+            playerHighlighted = props.playerHighlighted,
+            characterIndexHighlighted = props.characterIndexHighlighted,
+            selectableCharSize = props.unselectedCharacters.length - 1,
+            setPlayerHighlighted = props.setPlayerHighlighted,
+            setCharacterIndexHighlighted = props.setCharacterIndexHighlighted;
 
-        if(e.key == 40){
+        if(e.keyCode == 40) {
             e.preventDefault();
-
             if (playerHighlighted == 3 && characterIndexHighlighted == selectableCharSize) {
-                setState({
-                    playerHighlighted: 1,
-                    characterIndexHighlighted: 0
-                });
+                setPlayerHighlighted(1);
+                setCharacterIndexHighlighted(1);
             } else if(playerHighlighted < 3 && characterIndexHighlighted == selectableCharSize) {
-                setState({
-                    playerHighlighted: playerHighlighted + 1,
-                    characterIndexHighlighted: 0
-                });
-
+                setPlayerHighlighted(playerHighlighted + 1);
+                setCharacterIndexHighlighted(1);
             } else {
-                setState({
-                    characterIndexHighlighted: characterIndexHighlighted + 1
-                });
-
+                setCharacterIndexHighlighted(characterIndexHighlighted + 1);
             }
         }
     }
@@ -111,7 +94,7 @@ class SelectionScreen extends React.Component {
             thirdCharset = props.thirdCharacter.hasOwnProperty('player'),
             all_selected =firstCharset &&  secondCharset && thirdCharset;
 
-        if(e.key == 'Enter' && all_selected) {
+        if(e.keyCode == 32 && all_selected) {
             this.context.history.pushState(null, 'battle');
         }
     }
@@ -144,7 +127,7 @@ class SelectionScreen extends React.Component {
                         <ToBattleButton ready={false} {...this.props} />
                     }
                 </div>
-                <audio src="/music/selection-screen.mp3" autoPlay loop></audio>
+                <audio src="/music/selection-screen.mp3" loop></audio>
             </div>
         );
     }

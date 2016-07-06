@@ -29,33 +29,37 @@ var Game = React.createClass ({
         return {
 
             characters: require('../data/characters.jsx'),
-            unselectedCharacters: require('../data/characters.jsx'),
+            unselectedCharacters: [],
             boss: enemiesData.gayathan,
 
             firstCharacter: {},
             secondCharacter: {},
             thirdCharacter: {},
 
+            playerHighlighted: 1,
+            characterIndexHighlighted: 0,
+
             text: "",
 
-            resetPlayers: this.resetPlayers,
             selectCharacter: this.selectCharacter,
-
-
             updateSelectableCharacters: this.updateSelectableCharacters,
+            resetPlayers: this.resetPlayers,
+            resetBoss: this.resetBoss,
+
             renderSelectionProfile: this.renderSelectionProfile,
             renderFirstSelectionProfile: this.renderFirstSelectionProfile,
             renderSecondSelectionProfile: this.renderSecondSelectionProfile,
             renderThirdSelectionProfile: this.renderThirdSelectionProfile,
             renderPlayerPanel: this.renderPlayerPanel,
-            resetBoss: this.resetBoss,
+
+            setPlayerHighlighted: this.setPlayerHighlighted.bind(this),
+            setCharacterIndexHighlighted: this.setCharacterIndexHighlighted.bind(this),
 
             size: this.size
         }
     },
 
     componentDidMount: function(){
-
 
         var localStorageRefFirstChar = localStorage.getItem('firstCharacter');
 
@@ -96,16 +100,18 @@ var Game = React.createClass ({
         return size;
     },
 
-    updateSelectableCharacters(){
-        var props = this.props;
+    updateSelectableCharacters: function(){
+        debugger;
+        var state = this.state,
+            selectableCharacters = [];
 
-        for (var key in props.characters){
-            if(props.characters[key].player == 0){
-                unselectedCharacters[key] = props.characters[key];
+        for (var key in state.characters){
+            if(state.characters[key].player == 0){
+                selectableCharacters.push(state.characters[key]);
             }
         }
         this.setState({
-            unselectedCharacters: unselectedCharacters
+            unselectedCharacters: selectableCharacters
         });
     },
 
@@ -135,35 +141,36 @@ var Game = React.createClass ({
 
     selectCharacter: function(key, player){
         var state = this.state,
-            characters = state.unselectedCharacters;
+            characters = state.characters,
+            unselectedCharacters = state.unselectedCharacters,
+            character;
 
         switch (player) {
             case 1:
                 for (var loopkey in characters){
                     if(characters[loopkey].player == player){
                         characters[loopkey].player = 0;
+                    } else if (characters[loopkey].name == unselectedCharacters[key].name) {
+                        character = characters[loopkey];
+                        character.player = player;
                     }
-
                 }
-                characters[key].player = player;
-                state.firstCharacter = characters[key];
                 this.setState({
-                    firstCharacter: state.firstCharacter,
+                    firstCharacter: character,
                     characters: state.characters
                 });
-
                 break;
             case 2:
                 for (var loopkey in characters){
                     if(characters[loopkey].player == player){
                         characters[loopkey].player = 0;
+                    } else if (characters[loopkey].name == unselectedCharacters[key].name) {
+                        character = characters[loopkey];
+                        character.player = player;
                     }
-
                 }
-                characters[key].player = player;
-                state.secondCharacter = characters[key];
                 this.setState({
-                    secondCharacter: state.secondCharacter,
+                    secondCharacter: character,
                     characters: state.characters
                 });
                 break;
@@ -172,20 +179,33 @@ var Game = React.createClass ({
                 for (var loopkey in characters){
                     if(characters[loopkey].player == player){
                         characters[loopkey].player = 0;
+                    } else if (characters[loopkey].name == unselectedCharacters[key].name) {
+                        character = characters[loopkey];
+                        character.player = player;
                     }
-
                 }
-                characters[key].player = player;
-                state.thirdCharacter = characters[key];
                 this.setState({
-                    thirdCharacter: state.thirdCharacter,
+                    thirdCharacter: character,
                     characters: state.characters
                 });
         }
-
-        updateSelectableCharacters();
+        this.updateSelectableCharacters();
 
     },
+
+    setPlayerHighlighted: function(player){
+        this.setState({
+            playerHighlighted: player
+        })
+    },
+
+    setCharacterIndexHighlighted: function(index){
+        this.setState({
+            characterIndexHighlighted: index
+        });
+    },
+
+
 
     renderTextBox: function(script, afterScript){
         ReactDom.render(

@@ -12,9 +12,15 @@ export default class SelectionCharacterProfile extends React.Component {
     render () {
         var props = this.props,
             character = props.unselectedCharacters[props.index],
-            highlightedCharacters = props.characterIndexHighlighted[props.index],
+            highlightedCharacter =  props.unselectedCharacters[props.characterIndexHighlighted],
             highlightStatus;
-            highlightStatus = character == highlightedCharacters && props.playerHighlighted == props.player ? 'highlighted-character' : 'unhighlighted-character';
+
+            if (character == highlightedCharacter && props.playerHighlighted == props.player) {
+                highlightStatus = 'highlighted-character';
+            } else {
+                highlightStatus = 'unhighlighted-character';
+            }
+
         return (
             <li className="character-profile list-group" onClick={this.onSelectCharacter.bind(this)}>
                 <span className={`character-name ${highlightStatus}`}>{character.name}</span><span className="character-hp label label-default label-pill pull-xs-right">{character.maxHp}HP</span><span className="character-courage label label-default label-pill pull-xs-right"> {character.maxCourage}Courage</span>
