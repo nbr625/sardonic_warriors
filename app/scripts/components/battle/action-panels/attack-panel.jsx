@@ -178,7 +178,7 @@ var AttackPanel = React.createClass({
                 {Object.keys(attacks).map(function(key){
                     return <AttackBox key={key} index={key} attacks={attacks} highlightedIndex={state.highlightedIndex} {...props}/>;
                 })}
-                <div className={`back-button ${status}`} onClick={() => {this.props.screenHandler('PlayerP')}}>Back</div>
+                <div className={`back-button ${status}`}>Back</div>
             </div>
         );
     }

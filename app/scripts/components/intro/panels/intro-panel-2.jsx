@@ -43,7 +43,7 @@ class IPanel2 extends React.Component {
                 <div className="story-text">
                     As if to corroborate her point, she flails about like a possessed marionette. The cloud has found its target.
                 </div>
-                <Link className="story-next-button" to="intro/3">Next</Link>
+                <div className="story-next-button">Press Enter</div>
             </div>
         );
     }

@@ -179,10 +179,10 @@ var PlayerPanel = React.createClass ({
         return (
             <div class="action-panel">
                 <div className="player-name-attack-panel">{this.props.activePlayer.name}</div>
-                <div className={attackClasses} onClick={() => {this.props.screenHandler('attackP')}}>Attack</div>
-                <div className={defendClasses} onClick={() => {this.defend()}}>Defend</div>
-                <div className={meditateClasses} onClick={() => {this.meditate()}}>Meditate</div>
-                <div className={encourageClasses} onClick={() => {this.props.screenHandler('selectET')}}>Encourage</div>
+                <div className={attackClasses}>Attack</div>
+                <div className={defendClasses}>Defend</div>
+                <div className={meditateClasses}>Meditate</div>
+                <div className={encourageClasses}>Encourage</div>
 
             </div>
 

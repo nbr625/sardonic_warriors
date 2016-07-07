@@ -758,7 +758,7 @@ var Battle = React.createClass({
                             {this.renderPanel()}
                         </div>
                     </div>
-                    <audio src="/music/battle.mp3" loop autoPlay></audio>
+                    <audio src="/music/battle.mp3" loop></audio>
                 </div>
             </div>
 

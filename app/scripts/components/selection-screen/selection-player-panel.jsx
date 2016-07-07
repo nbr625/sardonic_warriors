@@ -15,7 +15,8 @@ export default class SelectionPlayerPanel extends React.Component {
             player = props.player,
             firstCharacter = props.firstCharacter,
             secondCharacter = props.secondCharacter,
-            thirdCharacter = props.thirdCharacter;
+            thirdCharacter = props.thirdCharacter,
+            spriteStatus = 'walking';
 
         if (player == 1 && firstCharacter.hasOwnProperty('player')){
             panelCharacter = firstCharacter;
@@ -24,11 +25,16 @@ export default class SelectionPlayerPanel extends React.Component {
         } else if (player == 3 && thirdCharacter.hasOwnProperty('player')) {
             panelCharacter = thirdCharacter;
         } else {
-            panelCharacter = {name: 'Select'}
+            panelCharacter = {name: 'Select'};
+            spriteStatus = 'standing';
         }
 
-        var playerClass = panelCharacter.name != 'Select' ? panelCharacter.class : "";
-        var playerSummary = panelCharacter.name != 'Select' ? panelCharacter.profileText : "";
+        var playerClass = panelCharacter.name != 'Select' ? panelCharacter.class : "",
+            playerSummary = panelCharacter.name != 'Select' ? panelCharacter.profileText : "",
+            walkingSpriteUrl = "/images/" + panelCharacter.name.toLowerCase() + "_walking.png",
+            walkingSpriteStyles ={
+            backgroundImage: 'url(' + walkingSpriteUrl + ')'
+        };
 
         return (
             <tr className="player-selection-panel">
@@ -43,7 +49,10 @@ export default class SelectionPlayerPanel extends React.Component {
                 </td>
 
                 <td>
-                    <img src={"/images/" + panelCharacter.name.toLowerCase() + "_standing.png"} alt={panelCharacter.name}/>
+                    {spriteStatus == 'walking'?
+                        <div className="sprite-walking" style={walkingSpriteStyles}></div> :
+                        <img src={"/images/" + panelCharacter.name.toLowerCase() + "_standing.png"} alt={panelCharacter.name}/>
+                    }
                 </td>
 
                 <td>

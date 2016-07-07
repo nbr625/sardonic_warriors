@@ -22,7 +22,7 @@ export default class SelectionCharacterProfile extends React.Component {
             }
 
         return (
-            <li className="character-profile list-group" onClick={this.onSelectCharacter.bind(this)}>
+            <li className="character-profile list-group">
                 <span className={`character-name ${highlightStatus}`}>{character.name}</span><span className="character-hp label label-default label-pill pull-xs-right">{character.maxHp}HP</span><span className="character-courage label label-default label-pill pull-xs-right"> {character.maxCourage}Courage</span>
             </li>
         );

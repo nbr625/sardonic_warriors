@@ -184,7 +184,7 @@ header
   height: 182px
 
 .selection-divider
-  height: 50px
+  height: 20px
 
 .battle-container
   display: -webkit-box;
@@ -218,18 +218,21 @@ header
 .selection-title
   color: white
   font-family: 'VeniceClassic'
-  font-size: 2em
+  font-size: 3em
+  text-align: center
 
 .select-wisely
   color: white
   font-family: 'VT323'
-  font-size: 18px
+  font-size: 22px
+  text-align: center
 
 .only-three
   color: white
   font-family: 'VT323'
-  font-size: 18px
-  margin-bottom: 20px
+  font-size: 22px
+  margin-bottom: 60px
+  text-align: center
 
 .character-hp
   background-color: $green
@@ -513,3 +516,20 @@ header
 
 .highlighted-character
   color: $blue
+
+#to-battle
+  color: white
+  font-size: 2em
+  text-align: center
+  font-family: 'VT323'
+  margin-top: 60px
+
+.sprite-walking
+  width: 64px;
+  height: 64px;
+  animation: walk-east 1.0s steps(9) infinite
+
+@keyframes walk-east {
+  from {background-position: 0}
+  to {background-position: -576px}
+}

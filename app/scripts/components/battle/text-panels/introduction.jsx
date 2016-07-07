@@ -52,7 +52,7 @@ class Introduction extends React.Component{
         return (
             <div>
                 <div className="battle-text-box-text">{this.state.activeText}</div>
-                <div onClick={()=>{this.switchText()}}>Next</div>
+                <div>Press Enter</div>
             </div>
         );
     }

@@ -32,7 +32,7 @@ class DefendTextBox extends React.Component{
         return (
             <div>
                 <div className="battle-text-box-text">{text}</div>
-                <div onClick={()=>this.props.screenHandler('PlayerP')}>Next</div>
+                <div>Press Enter</div>
             </div>
         );
     }

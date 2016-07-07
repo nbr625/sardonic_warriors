@@ -37,7 +37,7 @@ export default class IPanel1 extends React.Component {
                     <div className="story-text">Gayathri can be spotted there, making loud, indistinguishable noises, which could be interpreted to mean: 'I am alive! hear me roar!'</div>
                     <div className="story-text">Meanwhile, hundred of meters  above the clouds, the clash between human-made pollution and barometric pressure brews a pocket storm.</div>
                 </div>
-                <Link className="story-next-button" to="intro/2">Next</Link>
+                <div className="story-next-button">Press Enter</div>
             </div>
         );
     }

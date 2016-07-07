@@ -49,11 +49,10 @@ class IPanel4 extends React.Component {
                     Who can rise up and defeat this terror?
                 </div>
                 <audio src="/music/trex.mp3" autoPlay></audio>
-                <Link className="story-next-button" onClick={this.props.resetPlayers} to="selection-screen">Next</Link>
+                <div className="story-next-button">Press Enter</div>
             </div>
         );
     }
-
 }
 
 reactMixin(IPanel4, History);
