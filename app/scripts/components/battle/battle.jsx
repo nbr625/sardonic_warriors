@@ -14,6 +14,9 @@ import EncourageTextBox from './text-panels/encourage-text-box.jsx';
 import DefendTextBox from './text-panels/defend-text-box.jsx';
 import MeditationTextBox from './text-panels/meditation-text-box.jsx';
 import SelectEncourageTarget from './action-panels/select-encouraging-target-panel.jsx';
+import PlayerSpritePanel from './sprites/player-sprites.jsx';
+import PlayerSprite from './sprites/player-sprites.jsx';
+
 var ProgressLabel = require('react-progress-label');
 
 var Battle = React.createClass({
@@ -42,11 +45,12 @@ var Battle = React.createClass({
             activeActionTarget: {},
             boss: this.props.boss,
             bossState: 1,
-            activeBossAttackSets: 'to be written',
             screen: 'intro',
 
             lastDamage: '',
-            lastHeal: ''
+            lastHeal: '',
+            selectedCharacter: 0,
+            attackingCharacter: 0
         }
     },
 
@@ -83,13 +87,15 @@ var Battle = React.createClass({
                                     meditate={this.meditate.bind(this)} setAction={this.setAction.bind(this)}/>;
                 break;
             case 'attackP':
-                return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} {...state}/>;
+                return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} spriteHangler={this.spriteHandler} {...state}/>;
                 break;
             case 'characterD':
-                return <CharacterDiedPanel screenHandler={this.screenHandler} {...state}/>;
+                return <CharacterDiedPanel screenHandler={this.screenHandler} spriteHangler={this.spriteHandler} {...state}/>;
                 break;
             case 'selectHT':
-                return <SelectHealTarget screenHandler={this.screenHandler} {...state}/>;
+                return <SelectHealTarget screenHandler={this.screenHandler} spriteHangler={this.spriteHandler}
+                                         selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}
+                                         {...state}/>;
                 break;
             case 'defendTB':
                 return <DefendTextBox  screenHandler={this.screenHandler} {...state}/>;
@@ -98,7 +104,9 @@ var Battle = React.createClass({
                 return <MeditationTextBox  screenHandler={this.screenHandler} {...state}/>;
                 break;
             case 'selectET':
-                return <SelectEncourageTarget screenHandler={this.screenHandler} {...state}/>;
+                return <SelectEncourageTarget screenHandler={this.screenHandler} spriteHangler={this.spriteHandler}
+                                              selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}
+                                              {...state}/>;
                 break;
             case 'encourageTB':
                 return <EncourageTextBox  screenHandler={this.screenHandler} encourage={this.encourage} {...state}/>;
@@ -109,7 +117,78 @@ var Battle = React.createClass({
         }
     },
 
-    setActivePlayer(player){
+    renderSprite: function(player){
+        var state = this.state,
+            firstCharacter = state.firstCharacter,
+            secondCharacter = state.secondCharacter,
+            thirdCharacter = state.thirdCharSprite,
+            boss = state.boss;
+        switch (player) {
+            case 1:
+                switch(state.firstCharSprite){
+                    case 'standing':
+                        return <CharacterSprite player={firstCharacter} {...state} />;
+                        break;
+                    case 'attacking':
+                        return <CharacterSprite player={firstCharacter} {...state} />;
+                        break;
+                    case 'selected':
+                        return <CharacterSprite player={firstCharacter} {...state} />;
+                }
+                break;
+            case 2:
+                switch(state.secondCharSprite){
+                    case 'standing':
+                        return <CharacterSprite player={secondCharacter} {...state} />;
+                        break;
+                    case 'attacking':
+                        return <CharacterSprite player={secondCharacter} {...state} />;
+                        break;
+                    case 'selected':
+                        return <CharacterSprite player={secondCharacter} {...state} />;
+                }
+                break;
+            case 3:
+                switch(state.thirdCharSprite){
+                    case 'standing':
+                        return <CharacterSprite player={thirdCharacter} {...state} />;
+                        break;
+                    case 'attacking':
+                        return <CharacterSprite player={thirdCharacter} {...state} />;
+                        break;
+                    case 'selected':
+                        return <CharacterSprite player={thirdCharacter} {...state} />;
+                }
+                break;
+            case 4:
+                switch(state.bossCharSprite){
+                    case 'standing':
+                        return <CharacterSprite player={boss} {...state} />;
+                        break;
+                    case 'attacking':
+                        return <CharacterSprite player={boss} {...state} />;
+                        break;
+                    case 'selected':
+                        return <CharacterSprite player={boss} {...state} />;
+                }
+
+        }
+    },
+
+    selectedCharacterHandler: function(character){
+        this.setState({
+            selectedCharacter: character
+        });
+    },
+
+    attackingCharacterHandler: function(character){
+        this.setState({
+            attackingCharacter: character
+        });
+
+    },
+
+    setActivePlayer: function(player){
         this.setState({
             activePlayer: player
         });
@@ -144,7 +223,8 @@ var Battle = React.createClass({
             this.screenHandler('damageTB');
         }
         this.setState({
-            activeActionTarget: target
+            activeActionTarget: target,
+            selectedCharacter: 0
         });
     },
 
@@ -731,20 +811,8 @@ var Battle = React.createClass({
                     </div>
 
                     <div className="sprite-panel">
-                        <div>
-                            <div onClick={()=>{setTarget(firstCharacter)}}>
-                                <div>{firstCharacter.name} </div>
-                                <img src={"/images/" + firstCharacter.name.toLowerCase() + "_standing.png"} alt={firstCharacter.name}/>
-                            </div>
-                            <div onClick={()=>{setTarget(secondCharacter)}}>
-                                <div>{secondCharacter.name}</div>
-                                <img src={"/images/" + secondCharacter.name.toLowerCase() + "_standing.png"} alt={secondCharacter.name}/>
-                            </div>
-                            <div onClick={()=>{setTarget(thirdCharacter)}}>
-                                <div>{thirdCharacter.name}</div>
-                                <img src={"/images/" + thirdCharacter.name.toLowerCase() + "_standing.png"} alt={thirdCharacter.name}/>
-                            </div>
-                        </div>
+
+                        <PlayerSpritePanel />
 
                         <div><img className="table" src={"/images/battle_background.png"}/></div>
 

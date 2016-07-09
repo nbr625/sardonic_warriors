@@ -48,12 +48,14 @@ class InitialTextBox extends React.Component{
                 props.heal(props.activeAction , props.activeActionTarget);
             }
             props.screenHandler('damageTB');
+            this.props.attackingCharacterHandler(0);
 
         }
     }
 
 
     render() {
+        this.props.attackingCharacterHandler(this.props.player);
         return (
             <div>
                 <div className="battle-text-box-text">{this.state.activeText}</div>

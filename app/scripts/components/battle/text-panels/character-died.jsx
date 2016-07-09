@@ -17,6 +17,7 @@ class CharacterDiedPanel extends React.Component{
         window.addEventListener('keydown', this.state.enterHandler);
 
     }
+
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.enterHandler);
     }
