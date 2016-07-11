@@ -14,7 +14,7 @@ import EncourageTextBox from './text-panels/encourage-text-box.jsx';
 import DefendTextBox from './text-panels/defend-text-box.jsx';
 import MeditationTextBox from './text-panels/meditation-text-box.jsx';
 import SelectEncourageTarget from './action-panels/select-encouraging-target-panel.jsx';
-import PlayerSpritePanel from './sprites/player-sprites.jsx';
+import PlayerSpritePanel from './sprites/player-sprite-panel.jsx';
 import PlayerSprite from './sprites/player-sprites.jsx';
 
 var ProgressLabel = require('react-progress-label');
@@ -73,13 +73,15 @@ var Battle = React.createClass({
             case 'initialTB':
 
                 return <InitialTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
-                                       screenHandler={this.screenHandler} {...this.props}
-                                       heal={this.heal.bind(this)} damage={this.damage.bind(this)}/>;
+                                       screenHandler={this.screenHandler} {...this.props} {...state}
+                                       heal={this.heal.bind(this)} damage={this.damage.bind(this)}
+                                       attackingCharacterHandler={this.attackingCharacterHandler.bind(this)}/>;
                 break;
             case 'damageTB':
 
                 return <CharacterDamageTextBox {...state} screenHandler={this.screenHandler}
-                                               setNextTurn={this.setNextTurn.bind(this)} />;
+                                               setNextTurn={this.setNextTurn.bind(this)}
+                                               attackingCharacterHandler={this.attackingCharacterHandler.bind(this)} />;
                 break;
             case 'PlayerP':
                 return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
@@ -813,7 +815,7 @@ var Battle = React.createClass({
 
                     <div className="sprite-panel">
 
-                        <PlayerSpritePanel />
+                        <PlayerSpritePanel {...state} />
 
                         <div><img className="table" src={"/images/battle_background.png"}/></div>
 

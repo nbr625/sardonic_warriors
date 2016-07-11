@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import Battle from './../battle.jsx';
 import { History } from 'react-router';
 import reactMixin from 'react-mixin';
-import PlayerSprite from 'player-sprites.jsx';
+import PlayerSprite from './player-sprites.jsx';
 
 class PlayerSpritePanel extends React.Component{
 

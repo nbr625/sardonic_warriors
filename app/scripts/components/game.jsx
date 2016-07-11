@@ -101,7 +101,6 @@ var Game = React.createClass ({
     },
 
     updateSelectableCharacters: function(){
-        debugger;
         var state = this.state,
             selectableCharacters = [];
 
