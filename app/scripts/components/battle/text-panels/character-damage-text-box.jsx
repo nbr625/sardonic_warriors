@@ -33,6 +33,7 @@ class CharacterDamageTextBox extends React.Component{
         if(this.props.activeActionTarget.status == 'dead'){
             return this.props.screenHandler('characterD', this.props.activeActionTarget);
         } else {
+            this.props.attackingCharacterHandler(0);
             return this.props.setNextTurn();
         }
     }

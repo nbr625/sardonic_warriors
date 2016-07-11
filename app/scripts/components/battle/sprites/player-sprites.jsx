@@ -8,6 +8,7 @@ class PlayerSprite extends React.Component{
 
     renderSprite(){
         var props = this.props,
+            character = props.character,
             attackingCharacter = {backgroundImage: "/images/" + character.name.toLowerCase() + "_standing.png"},
             selectedCharacter = {backgroundImage: "/images/" + character.name.toLowerCase() + "_selected.png"},
             standingCharacter = {backgroundImage: "/images/" + character.name.toLowerCase() + "_stading.png"};

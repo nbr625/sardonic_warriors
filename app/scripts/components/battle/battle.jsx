@@ -226,6 +226,7 @@ var Battle = React.createClass({
             activeActionTarget: target,
             selectedCharacter: 0
         });
+        this.attackingCharacterHandler(this.state.activePlayer)
     },
 
     actionHandler: function(action, target){

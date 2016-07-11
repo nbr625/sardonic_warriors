@@ -36,7 +36,7 @@ class StartScreen extends React.Component {
             <div className="start-screen">
                 <div className="game-title">Sardonic Warriors</div>
                 <div className="btn btn-success"><h1>Press Space</h1></div>
-                <audio src="/music/dubstep-intro.mp3" loop></audio>
+                <audio src="/music/dubstep-intro.mp3" autoPlay loop></audio>
             </div>
         );
     }

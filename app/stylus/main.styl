@@ -525,11 +525,22 @@ header
   margin-top: 60px
 
 .sprite-walking
-  width: 64px;
-  height: 64px;
-  animation: walk-east 1.0s steps(9) infinite
+   width: 64px;
+   height: 64px;
+   animation: walk-east 1.0s steps(9) infinite
 
 @keyframes walk-east {
   from {background-position: 0}
   to {background-position: -576px}
 }
+
+.sprite-attacking
+  width: 64px;
+  height: 64px;
+  animation: attack-east 1.0s steps(6) infinite
+
+@keyframes attack-east {
+  from {background-position: 0}
+  to {background-position: -384px}
+}
+
