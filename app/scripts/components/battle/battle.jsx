@@ -86,7 +86,8 @@ var Battle = React.createClass({
             case 'PlayerP':
                 return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
                                     defend={this.defend.bind(this)} encourage={this.encourage.bind(this)}
-                                    meditate={this.meditate.bind(this)} setAction={this.setAction.bind(this)}/>;
+                                    meditate={this.meditate.bind(this)} setAction={this.setAction.bind(this)}
+                                    selectedCharacterHandler={this.selectedCharacterHandler.bind(this)}/>;
                 break;
             case 'attackP':
                 return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} spriteHangler={this.spriteHandler} {...state}/>;
@@ -116,64 +117,6 @@ var Battle = React.createClass({
             case 'victoryP':
                 return <VictoryPanel screenHandler={this.screenHandler} {...state}/>;
                 break;
-        }
-    },
-
-    renderSprite: function(player){
-        var state = this.state,
-            firstCharacter = state.firstCharacter,
-            secondCharacter = state.secondCharacter,
-            thirdCharacter = state.thirdCharSprite,
-            boss = state.boss;
-        switch (player) {
-            case 1:
-                switch(state.firstCharSprite){
-                    case 'standing':
-                        return <CharacterSprite player={firstCharacter} {...state} />;
-                        break;
-                    case 'attacking':
-                        return <CharacterSprite player={firstCharacter} {...state} />;
-                        break;
-                    case 'selected':
-                        return <CharacterSprite player={firstCharacter} {...state} />;
-                }
-                break;
-            case 2:
-                switch(state.secondCharSprite){
-                    case 'standing':
-                        return <CharacterSprite player={secondCharacter} {...state} />;
-                        break;
-                    case 'attacking':
-                        return <CharacterSprite player={secondCharacter} {...state} />;
-                        break;
-                    case 'selected':
-                        return <CharacterSprite player={secondCharacter} {...state} />;
-                }
-                break;
-            case 3:
-                switch(state.thirdCharSprite){
-                    case 'standing':
-                        return <CharacterSprite player={thirdCharacter} {...state} />;
-                        break;
-                    case 'attacking':
-                        return <CharacterSprite player={thirdCharacter} {...state} />;
-                        break;
-                    case 'selected':
-                        return <CharacterSprite player={thirdCharacter} {...state} />;
-                }
-                break;
-            case 4:
-                switch(state.bossCharSprite){
-                    case 'standing':
-                        return <CharacterSprite player={boss} {...state} />;
-                        break;
-                    case 'attacking':
-                        return <CharacterSprite player={boss} {...state} />;
-                        break;
-                    case 'selected':
-                        return <CharacterSprite player={boss} {...state} />;
-                }
-
         }
     },
 
@@ -207,7 +150,8 @@ var Battle = React.createClass({
             });
             this.screenHandler('initialTB');
         } else {
-            this.screenHandler('selectHT')
+            this.screenHandler('selectHT');
+            this.selectedCharacterHandler(1);
         }
     },
 

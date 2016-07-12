@@ -77,10 +77,10 @@ class SelectionScreen extends React.Component {
             e.preventDefault();
             if (playerHighlighted == 3 && characterIndexHighlighted == selectableCharSize) {
                 setPlayerHighlighted(1);
-                setCharacterIndexHighlighted(1);
+                setCharacterIndexHighlighted(0);
             } else if(playerHighlighted < 3 && characterIndexHighlighted == selectableCharSize) {
                 setPlayerHighlighted(playerHighlighted + 1);
-                setCharacterIndexHighlighted(1);
+                setCharacterIndexHighlighted(0);
             } else {
                 setCharacterIndexHighlighted(characterIndexHighlighted + 1);
             }

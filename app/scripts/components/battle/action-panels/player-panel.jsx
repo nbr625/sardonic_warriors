@@ -153,6 +153,7 @@ var PlayerPanel = React.createClass ({
             } else if(state.meditateButtonStatus == 'highlighted'){
                 this.meditate();
             } else {
+                this.props.selectedCharacterHandler(1);
                 this.props.screenHandler('selectET');
             }
         }

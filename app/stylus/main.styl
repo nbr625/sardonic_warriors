@@ -427,10 +427,11 @@ header
   width: 430px
 
 .table
-  width: 50%
-  left: 162px
-  bottom: 247px
+  width: 612px
+  left: 72px
+  bottom: 328px
   position: relative
+  z-index: -1
 
 .player-name-attack-panel
   font-family: 'VeniceClassic'
@@ -534,7 +535,8 @@ header
   to {background-position: -576px}
 }
 
-.sprite-attacking
+.attacking-character
+  z-index: 2;
   width: 64px;
   height: 64px;
   animation: attack-east 1.0s steps(6) infinite
@@ -544,3 +546,39 @@ header
   to {background-position: -384px}
 }
 
+.player-1 {
+  position: relative;
+  left: 185px;
+  top: -31px;
+  z-index: 2;
+}
+.player-2 {
+  position: relative;
+  left: 82px;
+  top: -8px;
+  z-index: 2;
+}
+.player-3 {
+  position: relative;
+  left: 186px;
+  top: 7px;
+  z-index: 2;
+}
+
+.attack-1 {
+  position: relative;
+  left: 560px;
+  top: 79px;
+}
+
+.attack-2 {
+  position: relative;
+  left: 560px;
+  top: -12px;
+}
+
+.attack-3 {
+  position: relative;
+  left: 576px;
+  top: -98px;
+}
