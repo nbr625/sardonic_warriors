@@ -19,7 +19,7 @@ class PlayerSprite extends React.Component{
         if (props.attackingCharacter == props.player) {
             return <div style={attackingCharacter} className={`attacking-character attack-${playerString}`}></div>;
         } else if(props.selectedCharacter == props.player) {
-            return <div style={selectedCharacter} className={`selected-character`}></div>;
+            return <div style={selectedCharacter} className={`selected-character select-${playerString}`}></div>;
         } else{
             return <img className={`standing-character player-${playerString}`} src={"/images/" + character.name.toLowerCase() + "_standing.png"}/>;
         }

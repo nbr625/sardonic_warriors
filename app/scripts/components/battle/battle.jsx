@@ -109,7 +109,7 @@ var Battle = React.createClass({
             case 'selectET':
                 return <SelectEncourageTarget screenHandler={this.screenHandler} spriteHangler={this.spriteHandler}
                                               selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}
-                                              {...state}/>;
+                                              {...state} setTarget={this.setTarget}/>;
                 break;
             case 'encourageTB':
                 return <EncourageTextBox  screenHandler={this.screenHandler} encourage={this.encourage} {...state}/>;

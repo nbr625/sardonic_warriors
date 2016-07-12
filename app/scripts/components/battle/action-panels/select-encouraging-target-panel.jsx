@@ -10,7 +10,7 @@ export default class SelectEncouragingTarget extends React.Component{
         this.state = {
             pressEnterHandler: this.pressEnter.bind(this),
             pressUpHandler: this.pressUp.bind(this),
-            PressDownHandler: this.PressDown.bind(this)
+            pressDownHandler: this.pressDown.bind(this)
         };
     }
 
@@ -23,7 +23,7 @@ export default class SelectEncouragingTarget extends React.Component{
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.pressEnterHandler);
         window.removeEventListener('keydown', this.state.pressUpHandler);
-        window.removeEventListener('keydown', this.state.PressDownHandler);
+        window.removeEventListener('keydown', this.state.pressDownHandler);
     }
 
     pressEnter(e){
@@ -64,7 +64,8 @@ export default class SelectEncouragingTarget extends React.Component{
         }
     }
 
-    PressDown(e){
+    pressDown(e){
+        debugger;
         var props = this.props,
             selectedCharacter = props.selectedCharacter,
             selectedCharacterHandler = props.selectedCharacterHandler;
