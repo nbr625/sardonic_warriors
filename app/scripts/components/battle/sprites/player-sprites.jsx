@@ -12,8 +12,10 @@ class PlayerSprite extends React.Component{
             character = props.character,
             attackingCharacterSprite = "/images/" + character.name.toLowerCase() + "_attacking.png",
             selectedCharacterSprite = "/images/" + character.name.toLowerCase() + "_selected.png",
+            standingCharacterSprite = "/images/" + character.name.toLowerCase() + "_standing.png",
             attackingCharacter = {backgroundImage: 'url(' + attackingCharacterSprite + ')' },
             selectedCharacter = {backgroundImage: 'url(' + selectedCharacterSprite + ')'},
+            standingCharacter = {backgroundImage: 'url(' + standingCharacterSprite + ')'},
             playerString = character.player.toString();
 
         if (props.attackingCharacter == props.player) {
@@ -21,7 +23,7 @@ class PlayerSprite extends React.Component{
         } else if(props.selectedCharacter == props.player) {
             return <div style={selectedCharacter} className={`selected-character select-${playerString}`}></div>;
         } else{
-            return <img className={`standing-character player-${playerString}`} src={"/images/" + character.name.toLowerCase() + "_standing.png"}/>;
+            return <div style={standingCharacter} className={`standing-character select-${playerString}`}></div>;
         }
     }
 

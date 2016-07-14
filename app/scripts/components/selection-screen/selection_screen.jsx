@@ -128,7 +128,7 @@ class SelectionScreen extends React.Component {
                         <ToBattleButton ready={false} {...this.props} />
                     }
                 </div>
-                <audio src="/music/selection-screen.mp3" autoPlay loop></audio>
+                <audio src="/music/selection-screen.mp3" loop></audio>
             </div>
         );
     }

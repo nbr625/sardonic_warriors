@@ -187,10 +187,10 @@ header
   height: 20px
 
 .battle-container
-  display: -webkit-box;
-  display:    -moz-box;
-  display:         box;
-  padding: 0;
+  display: -webkit-box
+  display:    -moz-box
+  display:         box
+  padding: 0
 
 .battle-sides
   -webkit-box-flex: 1
@@ -526,8 +526,8 @@ header
   margin-top: 60px
 
 .sprite-walking
-   width: 64px;
-   height: 64px;
+   width: 64px
+   height: 64px
    animation: walk-east 1.0s steps(9) infinite
 
 @keyframes walk-east {
@@ -536,9 +536,9 @@ header
 }
 
 .attacking-character
-  z-index: 2;
-  width: 64px;
-  height: 64px;
+  z-index: 2
+  width: 64px
+  height: 64px
   animation: attack-east 1.0s steps(6) infinite
 
 @keyframes attack-east {
@@ -547,69 +547,103 @@ header
 }
 
 .player-1 {
-  position: relative;
-  left: 185px;
-  top: -31px;
-  z-index: 2;
+  position: relative
+  left: 185px
+  top: -31px
+  z-index: 2
 }
 .player-2 {
-  position: relative;
-  left: 82px;
-  top: -8px;
-  z-index: 2;
+  position: relative
+  left: 82px
+  top: -8px
+  z-index: 2
 }
 .player-3 {
-  position: relative;
-  left: 186px;
-  top: 7px;
-  z-index: 2;
+  position: relative
+  left: 186px
+  top: 7px
+  z-index: 2
 }
 
 .attack-1 {
-  position: relative;
-  left: 560px;
-  top: 79px;
+  position: relative
+  left: 560px
+  top: 79px
 }
 
 .attack-2 {
-  position: relative;
-  left: 560px;
-  top: -12px;
+  position: relative
+  left: 560px
+  top: -12px
 }
 
 .attack-3 {
-  position: relative;
-  left: 576px;
-  top: -98px;
+  position: relative
+  left: 576px
+  top: -98px
 }
 
 
 .select-1 {
-  position: relative;
-  left: 185px;
-  top: -31px;
-  z-index: 2;
+  position: relative
+  left: 180px
+  top: -34px
+  z-index: 2
 }
 .select-2 {
-  position: relative;
-  left: 82px;
-  top: -8px;
-  z-index: 2;
+  position: relative
+  left: 72px
+  top: -7px
+  z-index: 2
 }
 .select-3 {
-  position: relative;
-  left: 186px;
-  top: 7px;
-  z-index: 2;
+  position: relative
+  left: 183px
+  top: 7px
+  z-index: 2
 }
 
 .selected-character
-  z-index: 2;
-  width: 64px;
-  height: 64px;
+  z-index: 2
+  width: 64px
+  height: 64px
   animation: wave-east 1.0s steps(7) infinite
 
 @keyframes wave-east {
   from {background-position: 0}
   to {background-position: -448px}
+}
+
+.standing-character
+  z-index: 2
+  width: 64px
+  height: 64px
+  animation: stand-east 1.0s steps(4) infinite
+
+@keyframes stand-east {
+  from {background-position: 0}
+  to {background-position: -256px}
+}
+
+.dying-character
+  z-index: 2
+  width: 64px
+  height: 64px
+  animation: die-east 1.0s steps(4) forwards
+
+@keyframes die-east {
+  from {background-position: 0}
+  to {background-position: -256px}
+}
+
+
+.reviving-character
+  z-index: 2
+  width: 64px
+  height: 64px
+  animation: revive-east 1.0s steps(4) forwards
+
+@keyframes revive-east {
+  from {background-position: 0}
+  to {background-position: -256px}
 }
