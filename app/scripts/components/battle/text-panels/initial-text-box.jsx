@@ -31,6 +31,19 @@ class InitialTextBox extends React.Component{
         }
     }
 
+    toBossDamageTextBox(){
+        var props = this.props;
+        props.setBossSprite('attacking');
+        props.hurtCharacterHandler(this.props.activeActionTarget);
+        props.screenHandler('damageTB');
+    }
+
+    toCharacterDamageTextBox(){
+        var props = this.props;
+        props.setBossSprite('hurt');
+        props.screenHandler('damageTB');
+    }
+
     switchText(){
         var text = this.state.text,
             activeTextIndex = this.state.activeTextIndex + 1,
@@ -47,9 +60,14 @@ class InitialTextBox extends React.Component{
             } else if (props.activeAction.type === 'healing') {
                 props.heal(props.activeAction , props.activeActionTarget);
             }
-            debugger;
             this.props.attackingCharacterHandler(this.props.activePlayer.player);
-            props.screenHandler('damageTB');
+
+            if(this.props.activePlayer == this.props.boss){
+                this.toBossDamageTextBox();
+            } else {
+                this.toCharacterDamageTextBox();
+            }
+
         }
     }
 

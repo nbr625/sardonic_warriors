@@ -16,6 +16,7 @@ import MeditationTextBox from './text-panels/meditation-text-box.jsx';
 import SelectEncourageTarget from './action-panels/select-encouraging-target-panel.jsx';
 import PlayerSpritePanel from './sprites/player-sprite-panel.jsx';
 import PlayerSprite from './sprites/player-sprites.jsx';
+import BossSprite from './sprites/boss-sprite.jsx';
 
 var ProgressLabel = require('react-progress-label');
 
@@ -50,7 +51,11 @@ var Battle = React.createClass({
             lastDamage: '',
             lastHeal: '',
             selectedCharacter: 0,
-            attackingCharacter: 0
+            attackingCharacter: 0,
+            hurtCharacter: 0,
+            dyingCharacter: 0,
+            revivingCharacter: 0,
+            bossSpriteState: 'standing'
         }
     },
 
@@ -75,13 +80,15 @@ var Battle = React.createClass({
                 return <InitialTextBox activeAction={state.activeAction} activeActionTarget={state.activeActionTarget}
                                        screenHandler={this.screenHandler} {...this.props} {...state}
                                        heal={this.heal.bind(this)} damage={this.damage.bind(this)}
-                                       attackingCharacterHandler={this.attackingCharacterHandler.bind(this)}/>;
+                                       attackingCharacterHandler={this.attackingCharacterHandler.bind(this)}
+                                       setBossSprite={this.setBossSprite.bind(this)}  hurtCharacterHandler={this.hurtCharacterHandler}/>;
                 break;
             case 'damageTB':
 
-                return <CharacterDamageTextBox {...state} screenHandler={this.screenHandler}
-                                               setNextTurn={this.setNextTurn.bind(this)}
-                                               attackingCharacterHandler={this.attackingCharacterHandler.bind(this)} />;
+                return <CharacterDamageTextBox {...state} screenHandler={this.screenHandler} setBossSprite={this.setBossSprite}
+                                               setNextTurn={this.setNextTurn.bind(this)} dyingCharacterHandler={this.dyingCharacterHandler}
+                                               attackingCharacterHandler={this.attackingCharacterHandler.bind(this)} revivingCharacterHandler={this.revivingCharacterHandler}
+                                               hurtCharacterHandler={this.hurtCharacterHandler}/>;
                 break;
             case 'PlayerP':
                 return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
@@ -93,12 +100,11 @@ var Battle = React.createClass({
                 return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} spriteHangler={this.spriteHandler} {...state}/>;
                 break;
             case 'characterD':
-                return <CharacterDiedPanel screenHandler={this.screenHandler} spriteHangler={this.spriteHandler} {...state}/>;
+                return <CharacterDiedPanel screenHandler={this.screenHandler} dyingCharacterHandler={this.dyingCharacterHandler} {...state}/>;
                 break;
             case 'selectHT':
-                return <SelectHealTarget screenHandler={this.screenHandler} spriteHangler={this.spriteHandler}
-                                         selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}
-                                         {...state}/>;
+                return <SelectHealTarget screenHandler={this.screenHandler} {...state}
+                                         selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}/>;
                 break;
             case 'defendTB':
                 return <DefendTextBox  screenHandler={this.screenHandler} {...state}/>;
@@ -107,9 +113,8 @@ var Battle = React.createClass({
                 return <MeditationTextBox  screenHandler={this.screenHandler} {...state}/>;
                 break;
             case 'selectET':
-                return <SelectEncourageTarget screenHandler={this.screenHandler} spriteHangler={this.spriteHandler}
-                                              selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}
-                                              {...state} setTarget={this.setTarget}/>;
+                return <SelectEncourageTarget screenHandler={this.screenHandler} {...state} setTarget={this.setTarget}
+                                              selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}/>;
                 break;
             case 'encourageTB':
                 return <EncourageTextBox  screenHandler={this.screenHandler} encourage={this.encourage} {...state}/>;
@@ -131,6 +136,30 @@ var Battle = React.createClass({
             attackingCharacter: character
         });
 
+    },
+
+    hurtCharacterHandler: function(character){
+        this.setState({
+            hurtCharacter: character
+        });
+    },
+
+    dyingCharacterHandler: function(character){
+        this.setState({
+            dyingCharacter: character
+        });
+    },
+
+    revivingCharacterHandler: function(character){
+        this.setState({
+            revivingCharacter: character
+        });
+    },
+
+    setBossSprite: function(status){
+        this.setState({
+            bossSpriteState: status
+        });
     },
 
     setActivePlayer: function(player){
@@ -175,55 +204,9 @@ var Battle = React.createClass({
         this.attackingCharacterHandler(this.state.activePlayer)
     },
 
-    actionHandler: function(action, target){
-        switch(action) {
-            case 'damaging':
-                target.hp = target.hp - action.magnitude;
-                if(target.hp < 0) {
-                    target.hp = 0;
-                    target.status = 'dead';
-                }
-                break;
-            case 'healing':
-                if(target.hp == 0) {
-                    target.status = 'alive';
-                }
-                target.hp = target.hp + action.magnitude;
-                if(target.hp > target.maxHP){
-                    target.hp = target.maxHP;
-                }
-        }
-        this.setState({
-            activeActionTarget: target
-        });
-        this.updateCharacter(target);
-        this.playableCharactersHandler();
-    },
-
-    updateCharacter: function(character){
-        var state = this.state;
-        switch(character.name){
-            case state.firstCharacter.name:
-                this.setState({
-                    firstCharacter: character
-                });
-                break;
-            case state.secondCharacter.name:
-                this.setState({
-                    secondCharacter: character
-                });
-                break;
-            case state.thirdCharacter.name:
-                this.setState({
-                    thirdCharacter: character
-                });
-                break;
-            default:
-                this.setState({
-                    boss: character
-                });
-        }
-
+    killCharacter: function(character){
+        this.screenHandler('characterD');
+        this.dyingCharacterHandler(character)
     },
 
     bossTakesTurn: function(){
@@ -309,24 +292,6 @@ var Battle = React.createClass({
                 attack = state.boss.attacks[attackIndex];
 
         this.setAction(attack, this.state.playableCharacters[targetIndex]);
-    },
-
-
-    //similar loop to playableCharactersHandler but with hp as it's argument
-
-
-    //will set screen to dead.
-    playableCharactersHandler: function(){
-        var state = this.state,
-            characters = state.playableCharacters;
-        characters.forEach(function(character){
-            if (character.status == 'dead'){
-                character = null;
-            }
-        });
-        this.setState({
-            playableCharacters: characters
-        })
     },
 
 
@@ -530,6 +495,7 @@ var Battle = React.createClass({
                 if (firstCharacter.hp <= 0){
                     firstCharacter.hp = 0;
                     firstCharacter.status = 'dead';
+                    this.dyingCharacterHandler(firstCharacter);
                 }
                 this.setState({
                     firstCharacter: firstCharacter,
@@ -542,6 +508,7 @@ var Battle = React.createClass({
                 if (secondCharacter.hp <= 0){
                     secondCharacter.hp = 0;
                     secondCharacter.status = 'dead';
+                    this.dyingCharacterHandler(secondCharacter);
                 }
                 this.setState({
                     secondCharacter: secondCharacter,
@@ -554,6 +521,7 @@ var Battle = React.createClass({
                 if (thirdCharacter.hp <= 0){
                     thirdCharacter.hp = 0;
                     thirdCharacter.status = 'dead';
+                    this.dyingCharacterHandler(thirdCharacter);
                 }
                 this.setState({
                     thirdCharacter: thirdCharacter,
@@ -573,6 +541,7 @@ var Battle = React.createClass({
                 var restoration = action.magnitude;
                 if(firstCharacter.status === 'dead'){
                     firstCharacter.status = 'alive';
+                    this.revivingCharacterHandler(firstCharacter);
                 }
                 firstCharacter.hp = firstCharacter.hp + restoration;
                 if(firstCharacter.hp > firstCharacter.maxHp){
@@ -587,6 +556,7 @@ var Battle = React.createClass({
                 var restoration = action.magnitude;
                 if(secondCharacter.status === 'dead'){
                     secondCharacter.status = 'alive';
+                    this.revivingCharacterHandler(secondCharacter);
                 }
                 secondCharacter.hp = secondCharacter.hp + restoration;
                 if(thirdCharacter.hp > secondCharacter.maxHp){
@@ -602,6 +572,7 @@ var Battle = React.createClass({
                 thirdCharacter.hp = secondCharacter.hp + restoration;
                 if(thirdCharacter.hp > thirdCharacter.maxHp){
                     thirdCharacter.hp = thirdCharacter.maxHp;
+                    this.revivingCharacterHandler(thirdCharacter);
                 }
                 this.setState({
                     thirdCharacter: thirdCharacter,
@@ -620,16 +591,6 @@ var Battle = React.createClass({
             thirdCharacter = props.thirdCharacter,
             boss = props.boss,
             setTarget;
-
-
-
-        if (screen == 'selectHT'){
-            setTarget = this.setTarget
-        } else if ( screen == 'selectET') {
-            setTarget = this.encourage
-        } else {
-            setTarget = function(){}
-        }
 
         return (
             <div className="battle">
@@ -764,8 +725,7 @@ var Battle = React.createClass({
                         <div><img className="table" src={"/images/battle_background.png"}/></div>
 
                         <div className="boss-sprite">
-                            <div>{boss.name}</div>
-                            <img src={"/images/gayathan_standing.png"}/>
+                            <BossSprite {...state}/>
                         </div>
                     </div>
                     <div>
@@ -773,7 +733,7 @@ var Battle = React.createClass({
                             {this.renderPanel()}
                         </div>
                     </div>
-                    <audio src="/music/battle.mp3" autoPlay loop></audio>
+                    <audio src="/music/battle.mp3" loop></audio>
                 </div>
             </div>
 

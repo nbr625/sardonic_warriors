@@ -7,23 +7,40 @@ import PlayerSpritePanel from './player-sprite-panel.jsx';
 
 class PlayerSprite extends React.Component{
 
-    renderSprite(){
+    renderSprite() {
         var props = this.props,
             character = props.character,
+            player = props.player,
             attackingCharacterSprite = "/images/" + character.name.toLowerCase() + "_attacking.png",
             selectedCharacterSprite = "/images/" + character.name.toLowerCase() + "_selected.png",
             standingCharacterSprite = "/images/" + character.name.toLowerCase() + "_standing.png",
-            attackingCharacter = {backgroundImage: 'url(' + attackingCharacterSprite + ')' },
+            dyingCharacterSprite = "/images/" + character.name.toLowerCase() + "_dying.png",
+            revivingCharacterSprite = "/images/" + character.name.toLowerCase() + "_reviving.png",
+            hurtCharacterSprite = "/images/" + character.name.toLowerCase() + "_hurt.png",
+            deadCharacterSprite = "/images/" + character.name.toLowerCase() + "_dead.png",
+            attackingCharacter = {backgroundImage: 'url(' + attackingCharacterSprite + ')'},
             selectedCharacter = {backgroundImage: 'url(' + selectedCharacterSprite + ')'},
             standingCharacter = {backgroundImage: 'url(' + standingCharacterSprite + ')'},
+            dyingCharacter = {backgroundImage: 'url(' + dyingCharacterSprite + ')'},
+            revivingCharacter = {backgroundImage: 'url(' + revivingCharacterSprite + ')'},
+            hurtCharacter = {backgroundImage: 'url(' + hurtCharacterSprite + ')'},
+            deadCharacter = {backgroundImage: 'url(' + deadCharacterSprite + ')'},
             playerString = character.player.toString();
 
-        if (props.attackingCharacter == props.player) {
+        if(props.player.status == 'dead'){
+            return <div style={deadCharacter} className={`dead-character dead-${playerString}`}></div>;
+        } else if(props.attackingCharacter == player) {
             return <div style={attackingCharacter} className={`attacking-character attack-${playerString}`}></div>;
-        } else if(props.selectedCharacter == props.player) {
+        } else if(props.selectedCharacter == player) {
             return <div style={selectedCharacter} className={`selected-character select-${playerString}`}></div>;
-        } else{
-            return <div style={standingCharacter} className={`standing-character select-${playerString}`}></div>;
+        } else if(props.hurtCharacter == props.player) {
+            return <div style={hurtCharacter} className={`hurt-character hurt-${playerString}`}></div>;
+        } else if(props.dyingCharacter == props.player) {
+            return <div style={dyingCharacter} className={`dying-character dying-${playerString}`}></div>;
+        } else if(props.revivingCharacter  == props.player) {
+            return <div style={revivingCharacter} className={`reviving-character reviving-${playerString}`}></div>;
+        } else {
+            return <div style={standingCharacter} className={`standing-character standing-${playerString}`}></div>;
         }
     }
 
