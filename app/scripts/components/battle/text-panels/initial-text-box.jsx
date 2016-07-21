@@ -32,19 +32,15 @@ class InitialTextBox extends React.Component{
     }
 
     toBossDamageTextBox(){
+        debugger;
         var props = this.props;
+        props.hurtCharacterHandler(props.activeActionTarget.player);
         props.setBossSprite('attacking');
-        props.hurtCharacterHandler(this.props.activeActionTarget);
-        props.screenHandler('damageTB');
-    }
-
-    toCharacterDamageTextBox(){
-        var props = this.props;
-        props.setBossSprite('hurt');
         props.screenHandler('damageTB');
     }
 
     switchText(){
+        debugger;
         var text = this.state.text,
             activeTextIndex = this.state.activeTextIndex + 1,
             props = this.props,
@@ -55,17 +51,20 @@ class InitialTextBox extends React.Component{
                 activeTextIndex: activeTextIndex
             });
         } else {
-            if (props.activeAction.type === 'damaging') {
-                props.damage(props.activeAction, props.activeActionTarget);
-            } else if (props.activeAction.type === 'healing') {
-                props.heal(props.activeAction , props.activeActionTarget);
-            }
-            this.props.attackingCharacterHandler(this.props.activePlayer.player);
-
             if(this.props.activePlayer == this.props.boss){
+                props.damage(props.activeAction, props.activeActionTarget);
                 this.toBossDamageTextBox();
+
             } else {
-                this.toCharacterDamageTextBox();
+                if (props.activeAction.type === 'damaging') {
+                    props.attackingCharacterHandler(this.props.activePlayer.player);
+                    props.damage(props.activeAction, props.activeActionTarget);
+                    props.setBossSprite('hurt');
+                    props.screenHandler('damageTB');
+                } else if (props.activeAction.type === 'healing') {
+                    props.heal(props.activeAction , props.activeActionTarget);
+                }
+                this.props.attackingCharacterHandler(this.props.activePlayer.player);
             }
 
         }

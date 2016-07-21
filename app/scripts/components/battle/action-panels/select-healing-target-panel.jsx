@@ -9,7 +9,7 @@ export default class SelectHealTarget extends React.Component{
         this.state = {
             pressEnterHandler: this.pressEnter.bind(this),
             pressUpHandler: this.pressUp.bind(this),
-            PressDownHandler: this.PressDown.bind(this)
+            pressDownHandler: this.PressDown.bind(this)
         };
     }
 
@@ -22,7 +22,7 @@ export default class SelectHealTarget extends React.Component{
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.pressEnterHandler);
         window.removeEventListener('keydown', this.state.pressUpHandler);
-        window.removeEventListener('keydown', this.state.PressDownHandler);
+        window.removeEventListener('keydown', this.state.pressDownHandler);
     }
 
     pressEnter(e){

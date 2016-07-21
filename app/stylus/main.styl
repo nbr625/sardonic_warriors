@@ -650,6 +650,25 @@ header
   height: 64px
   animation: die-east 1.0s steps(4) forwards
 
+.dying-1
+  position: relative
+  left: 180px
+  top: -34px
+  z-index: 2
+
+.dying-2
+  position: relative
+  left: 72px
+  top: -7px
+  z-index: 2
+
+.dying-3
+  position: relative
+  left: 188px
+  top: 21px
+  z-index: 2
+
+
 @keyframes die-east {
   from {background-position: 0}
   to {background-position: -256px}
@@ -667,6 +686,55 @@ header
   to {background-position: -256px}
 }
 
+.hurt-character
+  z-index: 2
+  width: 64px
+  height: 64px
+
+.hurt-1 {
+  position: relative
+  left: 180px
+  top: -34px
+  z-index: 2
+}
+.hurt-2 {
+  position: relative
+  left: 72px
+  top: -7px
+  z-index: 2
+}
+.hurt-3 {
+  position: relative
+  left: 183px
+  top: 7px
+  z-index: 2
+}
+
+
+
+.dead-character
+  z-index: 2
+  width: 64px
+  height: 64px
+
+.dead-1 {
+  position: relative
+  left: 180px
+  top: -34px
+  z-index: 2
+}
+.dead-2 {
+  position: relative
+  left: 72px
+  top: -7px
+  z-index: 2
+}
+.dead-3 {
+  position: relative
+  left: 188px
+  top: 21px
+  z-index: 2
+}
 
 .hurt-boss
   z-index: 2
@@ -685,18 +753,18 @@ header
 
 .attacking-boss.targeting-player-1
   position: absolute
-  left: -494px
-  top: 0px
+  left: -367px
+  top: -90px
 
 .attacking-boss.targeting-player-2
   position: absolute
   left: -494px
   top: 0px
 
-.attacking-boss.targeting-player-2
+.attacking-boss.targeting-player-3
   position: absolute
-  left: -494px
-  top: 0px
+  left: -381px
+  top: 65px
 
 @keyframes boss-attacks-east {
   from {background-position: 0}

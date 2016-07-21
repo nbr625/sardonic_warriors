@@ -24,14 +24,17 @@ class CharacterDiedPanel extends React.Component{
 
     pressEnter(e){
         if(e.key == 'Enter'){
-            this.props.screenHandler('finalTB');
+            var props = this.props;
+            props.dyingCharacterHandler(0);
+            props.screenHandler('PlayerP');
+            props.setNextTurn();
         }
     }
 
     render() {
         return (
             <div>
-                <div className="battle-text-box-text">{this.props.lastKilledCharacter} died. How sad...</div>
+                <div className="battle-text-box-text">{this.props.lastKilledCharacter.name} died. How sad...</div>
                 <div>Press Enter</div>
             </div>
         );

@@ -13,9 +13,9 @@ class PlayerSpritePanel extends React.Component{
 
         return (
             <div>
-                <PlayerSprite character={props.firstCharacter} player={1} {...props} />
-                <PlayerSprite character={props.secondCharacter} player={2} {...props} />
-                <PlayerSprite character={props.thirdCharacter} player={3} {...props} />
+                <PlayerSprite spriteCharacter={props.firstCharacter} player={1} {...props} />
+                <PlayerSprite spriteCharacter={props.secondCharacter} player={2} {...props} />
+                <PlayerSprite spriteCharacter={props.thirdCharacter} player={3} {...props} />
             </div>
         );
     }

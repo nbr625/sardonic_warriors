@@ -9,9 +9,24 @@ class PlayerSprite extends React.Component{
 
     renderSprite() {
         var props = this.props,
-            character = props.character,
             player = props.player,
-            attackingCharacterSprite = "/images/" + character.name.toLowerCase() + "_attacking.png",
+            character;
+
+        switch(player) {
+            case 1:
+                character = props.firstCharacter;
+                break;
+            case 2:
+                character = props.secondCharacter;
+                break;
+            case 3:
+                character = props.thirdCharacter;
+                break;
+        }
+
+
+
+        var attackingCharacterSprite = "/images/" + character.name.toLowerCase() + "_attacking.png",
             selectedCharacterSprite = "/images/" + character.name.toLowerCase() + "_selected.png",
             standingCharacterSprite = "/images/" + character.name.toLowerCase() + "_standing.png",
             dyingCharacterSprite = "/images/" + character.name.toLowerCase() + "_dying.png",
@@ -25,20 +40,20 @@ class PlayerSprite extends React.Component{
             revivingCharacter = {backgroundImage: 'url(' + revivingCharacterSprite + ')'},
             hurtCharacter = {backgroundImage: 'url(' + hurtCharacterSprite + ')'},
             deadCharacter = {backgroundImage: 'url(' + deadCharacterSprite + ')'},
-            playerString = character.player.toString();
+            playerString = player.toString();
 
-        if(props.player.status == 'dead'){
-            return <div style={deadCharacter} className={`dead-character dead-${playerString}`}></div>;
+        if(props.dyingCharacter == player) {
+            return <div style={dyingCharacter} className={`dying-character dying-${playerString}`}></div>;
         } else if(props.attackingCharacter == player) {
             return <div style={attackingCharacter} className={`attacking-character attack-${playerString}`}></div>;
         } else if(props.selectedCharacter == player) {
             return <div style={selectedCharacter} className={`selected-character select-${playerString}`}></div>;
-        } else if(props.hurtCharacter == props.player) {
+        } else if(props.hurtCharacter == player) {
             return <div style={hurtCharacter} className={`hurt-character hurt-${playerString}`}></div>;
-        } else if(props.dyingCharacter == props.player) {
-            return <div style={dyingCharacter} className={`dying-character dying-${playerString}`}></div>;
-        } else if(props.revivingCharacter  == props.player) {
+        } else if(props.revivingCharacter  == player) {
             return <div style={revivingCharacter} className={`reviving-character reviving-${playerString}`}></div>;
+        } else if(character.status == 'dead'){
+            return <div style={deadCharacter} className={`dead-character dead-${playerString}`}></div>;
         } else {
             return <div style={standingCharacter} className={`standing-character standing-${playerString}`}></div>;
         }
@@ -46,8 +61,19 @@ class PlayerSprite extends React.Component{
 
     render() {
         var props = this.props,
-            character = props.character;
+            character;
 
+        switch(props.player) {
+            case 1:
+                character = props.firstCharacter;
+                break;
+            case 2:
+                character = props.secondCharacter;
+                break;
+            case 3:
+                character = props.thirdCharacter;
+                break;
+        }
 
         return (
             <div>

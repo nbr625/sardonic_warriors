@@ -41,13 +41,12 @@ var Battle = React.createClass({
             thirdCharacter: thirdChar,
             playableCharacters: [firstChar, secChar, thirdChar],
             activePlayer: this.props.firstCharacter,
-            lastKilledCharacter: {},
+            lastKilledCharacter: 0,
             activeAction: {},
             activeActionTarget: {},
             boss: this.props.boss,
             bossState: 1,
             screen: 'intro',
-
             lastDamage: '',
             lastHeal: '',
             selectedCharacter: 0,
@@ -59,12 +58,8 @@ var Battle = React.createClass({
         }
     },
 
-    screenHandler: function(screen, dead=null){
+    screenHandler: function(screen){
         this.setState({ screen: screen });
-        if (dead){
-            this.setState({lastKilledCharacter: dead});
-        }
-
     },
 
     renderPanel: function() {
@@ -97,13 +92,13 @@ var Battle = React.createClass({
                                     selectedCharacterHandler={this.selectedCharacterHandler.bind(this)}/>;
                 break;
             case 'attackP':
-                return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} spriteHangler={this.spriteHandler} {...state}/>;
+                return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} {...state}/>;
                 break;
             case 'characterD':
-                return <CharacterDiedPanel screenHandler={this.screenHandler} dyingCharacterHandler={this.dyingCharacterHandler} {...state}/>;
+                return <CharacterDiedPanel screenHandler={this.screenHandler} dyingCharacterHandler={this.dyingCharacterHandler} setBossSprite={this.setBossSprite} {...state}/>;
                 break;
             case 'selectHT':
-                return <SelectHealTarget screenHandler={this.screenHandler} {...state}
+                return <SelectHealTarget screenHandler={this.screenHandler} {...state} setTarget={this.setTarget}
                                          selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}/>;
                 break;
             case 'defendTB':
@@ -201,12 +196,6 @@ var Battle = React.createClass({
             activeActionTarget: target,
             selectedCharacter: 0
         });
-        this.attackingCharacterHandler(this.state.activePlayer)
-    },
-
-    killCharacter: function(character){
-        this.screenHandler('characterD');
-        this.dyingCharacterHandler(character)
     },
 
     bossTakesTurn: function(){
@@ -220,23 +209,23 @@ var Battle = React.createClass({
         if (this.state.boss.hp > 6600){
             boss.attacks = [
                 {
-                    name: "Make the Snake Dance", magnitude: 250, type: 'damaging', initialText: [
+                    name: "Make the Snake Dance", magnitude: 1000, type: 'damaging', initialText: [
                     "Gayathan joins her vestigial little arms together and begins to move in sinous pulses",
                     "It becomes aparent that she is trying to recreate the snake dance from the youtube video",
                     "Her new body is enormous though, and it is a poor impression.",
                     "the "]
-                }, {name: "Talk about parenting Methods", magnitude: 100, type: 'damaging', initialText: [
+                }, {name: "Talk about parenting Methods", magnitude: 1000, type: 'damaging', initialText: [
                     `Gayathan picks ${activeActionTarget} as the unlucky recepient of her parental advice`,
                     "\"The best way to raise your child...\" she begins.",
                     `What follows is a series of the most salacious instructions that ${activeActionTarget} has ever heard`,
                     "The bad advice jades him about parenthood in general."]
-                }, {name: "Cackle hellishly", magnitude: 100, type: 'damaging', initialText: [
+                }, {name: "Cackle hellishly", magnitude: 1000, type: 'damaging', initialText: [
                     "Usually Gayathan\'s laughter has the power to petrify a small child.",
                     "But since she has now been transformed into the earth\'s top carnivore," +
                     "Her laughter sounds like the wails of all humanity",
                     `She laughs directly at ${activeActionTarget}`,
                     `${activeActionTarget} is so terrified that he looses some of his will to fight.`]
-                }, {name: "Take over their window sill", magnitude: 100, type: 'damaging', initialText: [
+                }, {name: "Take over their window sill", magnitude: 1000, type: 'damaging', initialText: [
                     "Gayathan wants to find a comfy place to rest her tired clawed feet",
                     `She find her favorite window sill by ${activeActionTarget}\'s desk`,
                     `${activeActionTarget} worries that now, instead of enjoying the quite drama of Redwood City,`,
@@ -495,7 +484,9 @@ var Battle = React.createClass({
                 if (firstCharacter.hp <= 0){
                     firstCharacter.hp = 0;
                     firstCharacter.status = 'dead';
-                    this.dyingCharacterHandler(firstCharacter);
+                    this.hurtCharacterHandler(0);
+                    this.dyingCharacterHandler(firstCharacter.player);
+                    this.setState({lastKilledCharacter: firstCharacter})
                 }
                 this.setState({
                     firstCharacter: firstCharacter,
@@ -503,12 +494,14 @@ var Battle = React.createClass({
                 });
                 break;
             case secondCharacter.name:
-                var damage = action.magnitude - secondCharacter.defence;
+                var damage = action.magnitude - secondCharacter.defense;
                 secondCharacter.hp = secondCharacter.hp - damage;
                 if (secondCharacter.hp <= 0){
                     secondCharacter.hp = 0;
                     secondCharacter.status = 'dead';
-                    this.dyingCharacterHandler(secondCharacter);
+                    this.hurtCharacterHandler(0);
+                    this.dyingCharacterHandler(secondCharacter.player);
+                    this.setState({lastKilledCharacter: secondCharacter})
                 }
                 this.setState({
                     secondCharacter: secondCharacter,
@@ -516,12 +509,14 @@ var Battle = React.createClass({
                 });
                 break;
             case thirdCharacter.name:
-                var damage = action.magnitude - thirdCharacter.defence;
+                var damage = action.magnitude - thirdCharacter.defense;
                 thirdCharacter.hp = thirdCharacter.hp - damage;
                 if (thirdCharacter.hp <= 0){
                     thirdCharacter.hp = 0;
                     thirdCharacter.status = 'dead';
-                    this.dyingCharacterHandler(thirdCharacter);
+                    this.hurtCharacterHandler(0);
+                    this.dyingCharacterHandler(thirdCharacter.player);
+                    this.setState({lastKilledCharacter: thirdCharacter})
                 }
                 this.setState({
                     thirdCharacter: thirdCharacter,

@@ -65,7 +65,6 @@ export default class SelectEncouragingTarget extends React.Component{
     }
 
     pressDown(e){
-        debugger;
         var props = this.props,
             selectedCharacter = props.selectedCharacter,
             selectedCharacterHandler = props.selectedCharacterHandler;

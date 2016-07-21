@@ -1,7 +1,7 @@
 
 module.exports = {
     character1:{
-        name:'Roman', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "God", attacks: [
+        name:'Roman', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "God", attacks: [
             {name:"Smite Her", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "Roman opens the Cosmic Terminal",
                 "He navigates to one his most devistating attacks",
@@ -31,7 +31,7 @@ module.exports = {
             ]}
         ], profileText: "A robotic diety programmed to bring about the apocalypse. he spends his the time before the day of reckoning coding and playing video games"
     }, character2: {
-        name:'Pri', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Brorrior", attacks: [
+        name:'Pri', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Brorrior", attacks: [
             {name:"Waterbottle Avalanche", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "\"I knew this day would come.\" Says Pri as he approaches his desk",
                 "There stands a monolithic structure that spans thousands of waterbottles high",
@@ -66,7 +66,7 @@ module.exports = {
         ], profileText: "Basic Bro with OP levels of humor. His main pastimes include making up names for Francis and Gayathri and \"making America great again\""
 
     }, character3: {
-        name:'Murat', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Cat Knight", attacks: [
+        name:'Murat', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Cat Knight", attacks: [
             {name:"Empathy", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "\"Gayathan, I know sometimes things have been confusing...\"",
                 "\"I have never been turned into a Dinosaur before, but I know what is to feel like you don't belong\"",
@@ -100,7 +100,7 @@ module.exports = {
         ], profileText: "Fearless leader of Breakthrough, retired professional LARPER, and Unicorn Whisperer. His favorite pastime is ordering exotic food on Amazon"
 
     },character4: {
-        name:'Andrew', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Dancer", attacks: [
+        name:'Andrew', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Dancer", attacks: [
             {name: "Bust a Move", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "Andrew has been preparing for this momment. He can finally reap the crop of endless nights of secret Bollywood dancing meetups",
                 "He rolls on the floor like a human that was taught how to walk by drunken snakes.",
@@ -124,7 +124,7 @@ module.exports = {
         ], profileText: "Tango assassin and owner of the world\'s most uncomfortable chair. He boasts the highest meetups per month rating in all the company; it is a shame that no one cares."
 
     }, character5: {
-        name:'Oleg', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Painter", attacks: [
+        name:'Oleg', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Painter", attacks: [
             {name:"Angry Bird", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "Oleg reaches for his favorite plush to throw at people",
                 "But in his haste, he moves to Nico\'s desk and grabs the Spicy Chicken Man status",
@@ -150,7 +150,7 @@ module.exports = {
         ], profileText: "Escaped SSR experiment, he has ingratiated himself into society and now leads the QA ranks. Weapon of choice is Paint and Post-id Notes"
 
     }, character6: {
-        name:'Bryan', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Narco", attacks: [
+        name:'Bryan', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Narco", attacks: [
             {name:"Soylet Green", magnitude: 250, courageCost: 10, type: 'healing', initialText: [
                 "Bryan reveals that he has been stocking up on Soylet",
                 "\"Do you see now? we don't have time to prepare a meal so this Soylet is the perfect meal for this occasion\"",
@@ -176,7 +176,7 @@ module.exports = {
         ], profileText: "A former drug trafficker, Bryan is well suited for the dangerous lifestyle of a developer. His favorite pastime include talking about working out and convincing others to drink Soylent Green"
 
     }, character7: {
-        name:'PH', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Super Hero", attacks: [
+        name:'PH', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Super Hero", attacks: [
             {name: "Cane Jutsu", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "Pri takes out the cane he uses on his pimp training clases",
                 "He moves the curved stave with the deadly fervour of a roided up JROTC student",
@@ -203,7 +203,7 @@ module.exports = {
         ], profileText: "He will tap you out. PH pretends to be boring to distract others from the fact that fights crime every night as Captain Muscle."
 
     }, character8: {
-        name:'Andy', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defence: 0, class: "Wizard", attacks: [
+        name:'Andy', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Wizard", attacks: [
             {name: "Snide Spanish Remark", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
                 "\"Ahora que eres un dinosaurio por lo menos tiene sentido que hagas tanto ruido\"",
                 "Gayathan cannot understand the euphonious glorious language of the castellians",

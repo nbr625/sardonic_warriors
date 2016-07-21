@@ -31,29 +31,26 @@ class CharacterDamageTextBox extends React.Component{
 
     nextPanel(){
         var props = this.props;
-        props.attackingCharacterHandler(0);
-        if(props.activeActionTarget.status == 'dead'){
-            return props.screenHandler('characterD', props.activeActionTarget);
-
-        } else {
-            if (props.activePlayer == props.boss){
-                props.hurtCharacterHandler(0);
-                props.setBossSprite('standing');
-                if (props.activeActionTarget.hp > 0){
-                    props.setNextTurn()
-                } else {
-                    props.killCharacter(props.activeActionTarget);
-                }
-            } else if (props.activeActionTarget.hp > 0){
-                props.setBossSprite('standing');
-                props.dyingCharacterHandler(0);
-                props.setNextTurn();
+        if (props.activePlayer == props.boss){
+            props.hurtCharacterHandler(0);
+            props.setBossSprite('standing');
+            if (props.activeActionTarget.hp > 0){
+                props.setNextTurn()
             } else {
-                props.setBossSprite('dying');
-                props.setVictory();
+                props.dyingCharacterHandler(props.activeActionTarget.player);
+                props.screenHandler('characterD');
             }
-
+        } else if (props.activeActionTarget.hp > 0){
+            props.attackingCharacterHandler(0);
+            props.setBossSprite('standing');
+            props.setNextTurn();
+        } else {
+            props.attackingCharacterHandler(0);
+            props.setBossSprite('dying');
+            props.setVictory();
         }
+
+
     }
 
 
