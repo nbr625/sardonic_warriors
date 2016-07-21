@@ -163,6 +163,21 @@ var Battle = React.createClass({
         });
     },
 
+    updatePlayableCharacters: function() {
+        var state = this.state,
+            firstCharacter = state.firstCharacter,
+            secondCharacter = state.secondCharacter,
+            thirdCharacter = state.thirdCharacter,
+            playableCharacters = [],
+            allCharacters = [firstCharacter, secondCharacter, thirdCharacter];
+
+        for(var character in allCharacters){
+            if(character.status == 'alive'){
+                playableCharacters.push(character);
+            }
+        }
+    },
+
 
     setAction: function(action, target=null){
         this.setState({
@@ -286,6 +301,10 @@ var Battle = React.createClass({
 
     setVictory: function(){
         this.screenHandler('victoryP');
+    },
+
+    setGameOver: function(){
+
     },
 
 
@@ -484,6 +503,7 @@ var Battle = React.createClass({
                 if (firstCharacter.hp <= 0){
                     firstCharacter.hp = 0;
                     firstCharacter.status = 'dead';
+                    this.updatePlayableCharacters();
                     this.hurtCharacterHandler(0);
                     this.dyingCharacterHandler(firstCharacter.player);
                     this.setState({lastKilledCharacter: firstCharacter})
@@ -499,6 +519,7 @@ var Battle = React.createClass({
                 if (secondCharacter.hp <= 0){
                     secondCharacter.hp = 0;
                     secondCharacter.status = 'dead';
+                    this.updatePlayableCharacters();
                     this.hurtCharacterHandler(0);
                     this.dyingCharacterHandler(secondCharacter.player);
                     this.setState({lastKilledCharacter: secondCharacter})
@@ -514,6 +535,7 @@ var Battle = React.createClass({
                 if (thirdCharacter.hp <= 0){
                     thirdCharacter.hp = 0;
                     thirdCharacter.status = 'dead';
+                    this.updatePlayableCharacters();
                     this.hurtCharacterHandler(0);
                     this.dyingCharacterHandler(thirdCharacter.player);
                     this.setState({lastKilledCharacter: thirdCharacter})
@@ -536,6 +558,7 @@ var Battle = React.createClass({
                 var restoration = action.magnitude;
                 if(firstCharacter.status === 'dead'){
                     firstCharacter.status = 'alive';
+                    this.updatePlayableCharacters();
                     this.revivingCharacterHandler(firstCharacter);
                 }
                 firstCharacter.hp = firstCharacter.hp + restoration;
@@ -551,11 +574,12 @@ var Battle = React.createClass({
                 var restoration = action.magnitude;
                 if(secondCharacter.status === 'dead'){
                     secondCharacter.status = 'alive';
+                    this.updatePlayableCharacters();
                     this.revivingCharacterHandler(secondCharacter);
                 }
                 secondCharacter.hp = secondCharacter.hp + restoration;
-                if(thirdCharacter.hp > secondCharacter.maxHp){
-                    thirdCharacter.hp = secondCharacter.maxHp;
+                if(secondCharacter.hp > secondCharacter.maxHp){
+                    secondCharacter.hp = secondCharacter.maxHp;
                 }
                 this.setState({
                     secondCharacter: secondCharacter,
@@ -564,13 +588,17 @@ var Battle = React.createClass({
                 break;
             case thirdCharacter.name:
                 var restoration = action.magnitude;
-                thirdCharacter.hp = secondCharacter.hp + restoration;
+                if(thirdCharacter.status === 'dead'){
+                    thirdCharacter.status = 'alive';
+                    this.updatePlayableCharacters();
+                    this.revivingCharacterHandler(secondCharacter);
+                }
+                thirdCharacter.hp = thirdCharacter.hp + restoration;
                 if(thirdCharacter.hp > thirdCharacter.maxHp){
                     thirdCharacter.hp = thirdCharacter.maxHp;
-                    this.revivingCharacterHandler(thirdCharacter);
                 }
                 this.setState({
-                    thirdCharacter: thirdCharacter,
+                    thirdCharacter: secondCharacter,
                     lastHeal: restoration
                 });
         }
@@ -580,12 +608,10 @@ var Battle = React.createClass({
     render: function() {
         var props = this.props,
             state = this.state,
-            screen = state.screen,
             firstCharacter = props.firstCharacter,
             secondCharacter = props.secondCharacter,
             thirdCharacter = props.thirdCharacter,
-            boss = props.boss,
-            setTarget;
+            boss = props.boss;
 
         return (
             <div className="battle">
