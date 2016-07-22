@@ -81,9 +81,10 @@ export default class SelectHealTarget extends React.Component{
 
     pressBack(e){
         var props = this.props;
-        if(e.key == 'Back'){
+        if(e.keyCode == 8){
             e.preventDefault();
             props.screenHandler('PlayerP');
+            props.selectedCharacterHandler(0)
         }
     }
 
@@ -93,7 +94,7 @@ export default class SelectHealTarget extends React.Component{
         return (
             <div>
                 <div className="select-target-text">Select Target</div>
-                <div className="back-button" onClick={() => {this.props.screenHandler('attackP')}}>Back</div>
+                <div className="back-button">Back</div>
             </div>
         );
     }

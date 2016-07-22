@@ -84,9 +84,10 @@ export default class SelectEncouragingTarget extends React.Component{
 
     pressBack(e){
         var props = this.props;
-        if(e.key == 'Back'){
+        if(e.keyCode == 8){
             e.preventDefault();
             props.screenHandler('PlayerP');
+            props.selectedCharacterHandler(0)
         }
     }
 

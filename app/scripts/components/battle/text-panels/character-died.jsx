@@ -23,7 +23,7 @@ class CharacterDiedPanel extends React.Component{
     }
 
     pressEnter(e){
-        if(e.key == 'Enter'){
+        if(e.keyCode == 'Enter'){
             var props = this.props;
             props.dyingCharacterHandler(0);
             props.setNextTurn();
