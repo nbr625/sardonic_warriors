@@ -32,7 +32,6 @@ class InitialTextBox extends React.Component{
     }
 
     toBossDamageTextBox(){
-        debugger;
         var props = this.props;
         props.hurtCharacterHandler(props.activeActionTarget.player);
         props.setBossSprite('attacking');
@@ -40,7 +39,6 @@ class InitialTextBox extends React.Component{
     }
 
     switchText(){
-        debugger;
         var text = this.state.text,
             activeTextIndex = this.state.activeTextIndex + 1,
             props = this.props,

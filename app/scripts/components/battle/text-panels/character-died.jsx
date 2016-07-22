@@ -26,8 +26,8 @@ class CharacterDiedPanel extends React.Component{
         if(e.key == 'Enter'){
             var props = this.props;
             props.dyingCharacterHandler(0);
-            props.screenHandler('PlayerP');
             props.setNextTurn();
+            props.screenHandler('PlayerP');
         }
     }
 

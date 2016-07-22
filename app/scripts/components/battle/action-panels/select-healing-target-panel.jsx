@@ -9,7 +9,8 @@ export default class SelectHealTarget extends React.Component{
         this.state = {
             pressEnterHandler: this.pressEnter.bind(this),
             pressUpHandler: this.pressUp.bind(this),
-            pressDownHandler: this.PressDown.bind(this)
+            pressDownHandler: this.PressDown.bind(this),
+            pressBackHandler: this.pressBack.bind(this)
         };
     }
 
@@ -17,12 +18,15 @@ export default class SelectHealTarget extends React.Component{
         window.addEventListener('keydown', this.state.pressEnterHandler);
         window.addEventListener('keydown', this.state.pressUpHandler);
         window.addEventListener('keydown', this.state.pressDownHandler);
+        window.addEventListener('keydown', this.state.pressBackHandler);
+
 
     }
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.pressEnterHandler);
         window.removeEventListener('keydown', this.state.pressUpHandler);
         window.removeEventListener('keydown', this.state.pressDownHandler);
+        window.removeEventListener('keydown', this.state.pressBackHandler);
     }
 
     pressEnter(e){
@@ -72,6 +76,14 @@ export default class SelectHealTarget extends React.Component{
             } else {
                 selectedCharacterHandler(selectedCharacter + 1)
             }
+        }
+    }
+
+    pressBack(e){
+        var props = this.props;
+        if(e.key == 'Back'){
+            e.preventDefault();
+            props.screenHandler('PlayerP');
         }
     }
 

@@ -10,7 +10,8 @@ export default class SelectEncouragingTarget extends React.Component{
         this.state = {
             pressEnterHandler: this.pressEnter.bind(this),
             pressUpHandler: this.pressUp.bind(this),
-            pressDownHandler: this.pressDown.bind(this)
+            pressDownHandler: this.pressDown.bind(this),
+            pressBackHandler: this.pressBack.bind(this)
         };
     }
 
@@ -18,12 +19,14 @@ export default class SelectEncouragingTarget extends React.Component{
         window.addEventListener('keydown', this.state.pressEnterHandler);
         window.addEventListener('keydown', this.state.pressUpHandler);
         window.addEventListener('keydown', this.state.pressDownHandler);
+        window.addEventListener('keydown', this.state.pressBackHandler);
 
     }
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.pressEnterHandler);
         window.removeEventListener('keydown', this.state.pressUpHandler);
         window.removeEventListener('keydown', this.state.pressDownHandler);
+        window.removeEventListener('keydown', this.state.pressBackHandler);
     }
 
     pressEnter(e){
@@ -79,11 +82,19 @@ export default class SelectEncouragingTarget extends React.Component{
         }
     }
 
+    pressBack(e){
+        var props = this.props;
+        if(e.key == 'Back'){
+            e.preventDefault();
+            props.screenHandler('PlayerP');
+        }
+    }
+
     render() {
         return (
             <div>
                 <div className="select-target-text">Select Target</div>
-                <div className="back-button" onClick={() => {this.props.screenHandler('PlayerP')}}>Back</div>
+                <div className="back-button">Back</div>
             </div>
         );
     }

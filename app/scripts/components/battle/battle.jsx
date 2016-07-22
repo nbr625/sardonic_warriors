@@ -95,7 +95,8 @@ var Battle = React.createClass({
                 return <AttackPanel screenHandler={this.screenHandler} setAction={this.setAction.bind(this)} {...state}/>;
                 break;
             case 'characterD':
-                return <CharacterDiedPanel screenHandler={this.screenHandler} dyingCharacterHandler={this.dyingCharacterHandler} setBossSprite={this.setBossSprite} {...state}/>;
+                return <CharacterDiedPanel screenHandler={this.screenHandler} dyingCharacterHandler={this.dyingCharacterHandler}
+                                           setBossSprite={this.setBossSprite} setNextTurn={this.setNextTurn.bind(this)} {...state}/>;
                 break;
             case 'selectHT':
                 return <SelectHealTarget screenHandler={this.screenHandler} {...state} setTarget={this.setTarget}
@@ -171,11 +172,15 @@ var Battle = React.createClass({
             playableCharacters = [],
             allCharacters = [firstCharacter, secondCharacter, thirdCharacter];
 
-        for(var character in allCharacters){
-            if(character.status == 'alive'){
-                playableCharacters.push(character);
+        for(var index in allCharacters){
+            if(allCharacters[index].status == 'alive'){
+                playableCharacters.push(allCharacters[index]);
             }
         }
+        this.setState({
+            playableCharacters: playableCharacters
+        });
+
     },
 
 
@@ -348,7 +353,6 @@ var Battle = React.createClass({
                     this.bossTakesTurn();
                     break;
                 case boss.name:
-
                     if (firstChar.status == 'alive') {
                         this.setActivePlayer(firstChar);
                         this.screenHandler('PlayerP');
@@ -503,7 +507,6 @@ var Battle = React.createClass({
                 if (firstCharacter.hp <= 0){
                     firstCharacter.hp = 0;
                     firstCharacter.status = 'dead';
-                    this.updatePlayableCharacters();
                     this.hurtCharacterHandler(0);
                     this.dyingCharacterHandler(firstCharacter.player);
                     this.setState({lastKilledCharacter: firstCharacter})
@@ -512,6 +515,7 @@ var Battle = React.createClass({
                     firstCharacter: firstCharacter,
                     lastDamage: damage
                 });
+                this.updatePlayableCharacters();
                 break;
             case secondCharacter.name:
                 var damage = action.magnitude - secondCharacter.defense;
@@ -519,7 +523,6 @@ var Battle = React.createClass({
                 if (secondCharacter.hp <= 0){
                     secondCharacter.hp = 0;
                     secondCharacter.status = 'dead';
-                    this.updatePlayableCharacters();
                     this.hurtCharacterHandler(0);
                     this.dyingCharacterHandler(secondCharacter.player);
                     this.setState({lastKilledCharacter: secondCharacter})
@@ -528,6 +531,7 @@ var Battle = React.createClass({
                     secondCharacter: secondCharacter,
                     lastDamage: damage
                 });
+                this.updatePlayableCharacters();
                 break;
             case thirdCharacter.name:
                 var damage = action.magnitude - thirdCharacter.defense;
@@ -535,7 +539,6 @@ var Battle = React.createClass({
                 if (thirdCharacter.hp <= 0){
                     thirdCharacter.hp = 0;
                     thirdCharacter.status = 'dead';
-                    this.updatePlayableCharacters();
                     this.hurtCharacterHandler(0);
                     this.dyingCharacterHandler(thirdCharacter.player);
                     this.setState({lastKilledCharacter: thirdCharacter})
@@ -544,6 +547,7 @@ var Battle = React.createClass({
                     thirdCharacter: thirdCharacter,
                     lastDamage: damage
                 });
+                this.updatePlayableCharacters();
         }
     },
 
@@ -558,7 +562,6 @@ var Battle = React.createClass({
                 var restoration = action.magnitude;
                 if(firstCharacter.status === 'dead'){
                     firstCharacter.status = 'alive';
-                    this.updatePlayableCharacters();
                     this.revivingCharacterHandler(firstCharacter);
                 }
                 firstCharacter.hp = firstCharacter.hp + restoration;
@@ -569,12 +572,12 @@ var Battle = React.createClass({
                     firstCharacter: firstCharacter,
                     lastHeal: restoration
                 });
+                this.updatePlayableCharacters();
                 break;
             case secondCharacter.name:
                 var restoration = action.magnitude;
                 if(secondCharacter.status === 'dead'){
                     secondCharacter.status = 'alive';
-                    this.updatePlayableCharacters();
                     this.revivingCharacterHandler(secondCharacter);
                 }
                 secondCharacter.hp = secondCharacter.hp + restoration;
@@ -585,12 +588,12 @@ var Battle = React.createClass({
                     secondCharacter: secondCharacter,
                     lastHeal: restoration
                 });
+                this.updatePlayableCharacters();
                 break;
             case thirdCharacter.name:
                 var restoration = action.magnitude;
                 if(thirdCharacter.status === 'dead'){
                     thirdCharacter.status = 'alive';
-                    this.updatePlayableCharacters();
                     this.revivingCharacterHandler(secondCharacter);
                 }
                 thirdCharacter.hp = thirdCharacter.hp + restoration;
@@ -598,9 +601,10 @@ var Battle = React.createClass({
                     thirdCharacter.hp = thirdCharacter.maxHp;
                 }
                 this.setState({
-                    thirdCharacter: secondCharacter,
+                    thirdCharacter: thirdCharacter,
                     lastHeal: restoration
                 });
+                this.updatePlayableCharacters();
         }
         this.takeCourage();
     },
