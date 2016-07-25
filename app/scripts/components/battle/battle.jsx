@@ -17,15 +17,13 @@ import SelectEncourageTarget from './action-panels/select-encouraging-target-pan
 import PlayerSpritePanel from './sprites/player-sprite-panel.jsx';
 import PlayerSprite from './sprites/player-sprites.jsx';
 import BossSprite from './sprites/boss-sprite.jsx';
+import VictoryPanel from './text-panels/victory-text.jsx';
+import GameOverPanel from './text-panels/game-over-text.jsx';
 
 var ProgressLabel = require('react-progress-label');
 
 var Battle = React.createClass({
 
-    //activePlayers and individual characters are now different entities for the sake of
-    //establishing flexibility
-    //lastKilled character is another new entity that might be changed to all killed characters
-    //for the sake of symmetry and ability to revive.
     getInitialState: function(){
         var firstChar = this.props.firstCharacter,
             secChar = this.props.secondCharacter,
@@ -121,21 +119,19 @@ var Battle = React.createClass({
             case 'victoryP':
                 return <VictoryPanel screenHandler={this.screenHandler} {...state}/>;
                 break;
+            case 'gameOP':
+                return <GameOverPanel screenHandler={this.screenHandler} {...state}/>;
         }
     },
 
     defaultListenerPreventer: function(e){
         if(e.keyCode == 8){
             e.preventDefault();
-
         }
     },
 
-
     componentDidMount(){
         window.addEventListener('keydown', this.state.defaultListenerPreventerHandler);
-
-
     },
 
     componentWillUnmount(){
@@ -201,9 +197,7 @@ var Battle = React.createClass({
         this.setState({
             playableCharacters: playableCharacters
         });
-
     },
-
 
     setAction: function(action, target=null){
         this.setState({
@@ -246,28 +240,26 @@ var Battle = React.createClass({
             targetIndex = Math.floor(Math.random() * state.playableCharacters.length),
             activeActionTarget = this.state.playableCharacters[targetIndex].name;
 
-
-
         if (this.state.boss.hp > 6600){
             boss.attacks = [
                 {
-                    name: "Make the Snake Dance", magnitude: 1000, type: 'damaging', initialText: [
+                    name: "Make the Snake Dance", magnitude: 100, type: 'damaging', initialText: [
                     "Gayathan joins her vestigial little arms together and begins to move in sinous pulses",
                     "It becomes aparent that she is trying to recreate the snake dance from the youtube video",
                     "Her new body is enormous though, and it is a poor impression.",
                     "the "]
-                }, {name: "Talk about parenting Methods", magnitude: 1000, type: 'damaging', initialText: [
+                }, {name: "Talk about parenting Methods", magnitude: 100, type: 'damaging', initialText: [
                     `Gayathan picks ${activeActionTarget} as the unlucky recepient of her parental advice`,
                     "\"The best way to raise your child...\" she begins.",
                     `What follows is a series of the most salacious instructions that ${activeActionTarget} has ever heard`,
                     "The bad advice jades him about parenthood in general."]
-                }, {name: "Cackle hellishly", magnitude: 1000, type: 'damaging', initialText: [
+                }, {name: "Cackle hellishly", magnitude: 100, type: 'damaging', initialText: [
                     "Usually Gayathan\'s laughter has the power to petrify a small child.",
                     "But since she has now been transformed into the earth\'s top carnivore," +
                     "Her laughter sounds like the wails of all humanity",
                     `She laughs directly at ${activeActionTarget}`,
                     `${activeActionTarget} is so terrified that he looses some of his will to fight.`]
-                }, {name: "Take over their window sill", magnitude: 1000, type: 'damaging', initialText: [
+                }, {name: "Take over their window sill", magnitude: 100, type: 'damaging', initialText: [
                     "Gayathan wants to find a comfy place to rest her tired clawed feet",
                     `She find her favorite window sill by ${activeActionTarget}\'s desk`,
                     `${activeActionTarget} worries that now, instead of enjoying the quite drama of Redwood City,`,
@@ -325,16 +317,6 @@ var Battle = React.createClass({
         this.setAction(attack, this.state.playableCharacters[targetIndex]);
     },
 
-
-    setVictory: function(){
-        this.screenHandler('victoryP');
-    },
-
-    setGameOver: function(){
-
-    },
-
-
     setNextTurn: function(){
         var state = this.state,
             boss = state.boss,
@@ -344,9 +326,9 @@ var Battle = React.createClass({
             character = state.activePlayer.name;
 
         if(boss.status == 'dead'){
-            this.setVictory();
+            this.screenHandler('victoryP');
         } else if(firstChar.status == 'dead' && secondChar.status == 'dead' && thirdChar.status == 'dead') {
-            this.setGameOver();
+            this.screenHandler('gameOP');
         } else {
             switch(character) {
                 case firstChar.name:
@@ -365,7 +347,7 @@ var Battle = React.createClass({
                     if(thirdChar.status == 'alive') {
                         this.setActivePlayer(thirdChar);
                         this.screenHandler('PlayerP');
-                    }else{
+                    } else {
                         this.setActivePlayer(boss);
                         this.bossTakesTurn();
                     }
@@ -378,8 +360,7 @@ var Battle = React.createClass({
                     if (firstChar.status == 'alive') {
                         this.setActivePlayer(firstChar);
                         this.screenHandler('PlayerP');
-                    }
-                    else if(secondChar.status == 'alive') {
+                    } else if(secondChar.status == 'alive') {
                         this.setActivePlayer(secondChar);
                         this.screenHandler('PlayerP');
                     } else {

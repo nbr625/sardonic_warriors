@@ -24,6 +24,7 @@ class Introduction extends React.Component{
         window.addEventListener('keydown', this.state.handler);
 
     }
+
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.handler);
     }

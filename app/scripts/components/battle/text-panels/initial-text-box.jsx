@@ -68,7 +68,6 @@ class InitialTextBox extends React.Component{
         }
     }
 
-
     render() {
         return (
             <div>

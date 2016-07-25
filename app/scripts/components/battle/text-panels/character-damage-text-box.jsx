@@ -18,6 +18,7 @@ class CharacterDamageTextBox extends React.Component{
         window.addEventListener('keydown', this.state.enterHandler);
 
     }
+
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.enterHandler);
     }
@@ -27,7 +28,6 @@ class CharacterDamageTextBox extends React.Component{
             this.nextPanel();
         }
     }
-
 
     nextPanel(){
         var props = this.props;
@@ -47,12 +47,11 @@ class CharacterDamageTextBox extends React.Component{
         } else {
             props.attackingCharacterHandler(0);
             props.setBossSprite('dying');
-            props.setVictory();
+            props.setNextTurn();
         }
 
 
     }
-
 
     render() {
         var props = this.props,
@@ -68,8 +67,6 @@ class CharacterDamageTextBox extends React.Component{
                 text = activePlayer.name + " restores " + activeActionTarget.name + "\'s morale by " + props.lastHeal;
                 break;
         }
-
-
 
         return (
             <div>

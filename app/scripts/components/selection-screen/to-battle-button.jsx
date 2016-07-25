@@ -7,7 +7,6 @@ import SelectionScreen from './selection_screen.jsx';
 
 export default class ToBattleButton extends React.Component {
 
-
     render () {
         var props = this.props,
             character = props.characters,

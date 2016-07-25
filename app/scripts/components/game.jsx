@@ -18,11 +18,14 @@ import SelectionCharacterProfile from './selection-screen/selection-character-pr
 
 import Battle from './battle/battle.jsx';
 
+import Victory from './game-end/victory.jsx';
+import GameOver from './game-end/game-over.jsx';
+
 var Rebase = require('re-base');
 var base = Rebase.createClass('https://sardonic-warriors.firebaseio.com');
 
-var Game = React.createClass ({
 
+var Game = React.createClass ({
 
     getInitialState: function() {
         var enemiesData = require('../data/enemies.jsx');
@@ -204,8 +207,6 @@ var Game = React.createClass ({
         });
     },
 
-
-
     renderTextBox: function(script, afterScript){
         ReactDom.render(
             <TextBox {...this.props} setTurn={this.setTurn} script={script} activePlayer={this.state.activePlayer} afterScript={afterScript}/>,
@@ -219,8 +220,6 @@ var Game = React.createClass ({
            boss: this.state.boss
         });
     },
-
-
 
     render: function() {
 
@@ -236,6 +235,9 @@ var Game = React.createClass ({
                     </Route>
                     <Route path='selection-screen' component={ SelectionScreen }></Route>
                     <Route path='battle' component={Battle}></Route>
+                    <Route path='game-over' component={GameOver}></Route>
+                    <Route path='victory' component={Victory}></Route>
+
 
                 </Route>
             </Router>

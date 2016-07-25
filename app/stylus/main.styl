@@ -530,10 +530,10 @@ header
    height: 64px
    animation: walk-east 1.0s steps(9) infinite
 
-@keyframes walk-east {
+@keyframes walk-east
   from {background-position: 0}
   to {background-position: -576px}
-}
+
 
 .attacking-character
   z-index: 2
@@ -541,86 +541,86 @@ header
   height: 64px
   animation: attack-east 1.0s steps(6) infinite
 
-@keyframes attack-east {
+@keyframes attack-east
   from {background-position: 0}
   to {background-position: -384px}
-}
 
-.player-1 {
+
+.player-1
   position: relative
   left: 185px
   top: -31px
   z-index: 2
-}
-.player-2 {
+
+.player-2
   position: relative
   left: 82px
   top: -8px
   z-index: 2
-}
-.player-3 {
+
+.player-3
   position: relative
   left: 186px
   top: 7px
   z-index: 2
-}
 
-.attack-1 {
+
+.attack-1
   position: relative
-  left: 560px
+  left: 245px
   top: 79px
-}
 
-.attack-2 {
+
+.attack-2
   position: relative
-  left: 560px
+  left: 229px
   top: -12px
-}
 
-.attack-3 {
+
+.attack-3
   position: relative
-  left: 576px
+  left: 245px
   top: -98px
-}
 
 
-.select-1 {
+
+.select-1
   position: relative
   left: 180px
   top: -34px
   z-index: 2
-}
-.select-2 {
+
+.select-2
   position: relative
   left: 72px
   top: -7px
   z-index: 2
-}
-.select-3 {
+
+.select-3
   position: relative
   left: 183px
   top: 7px
   z-index: 2
-}
 
-.standing-1 {
+
+.standing-1
   position: relative
   left: 180px
   top: -34px
   z-index: 2
-}
-.standing-2 {
+
+.standing-2
   position: relative
   left: 72px
   top: -7px
   z-index: 2
-}
-.standing-3 {
+
+.standing-3
   position: relative
   left: 183px
   top: 7px
   z-index: 2
-}
+
 
 .selected-character
   z-index: 2
@@ -628,10 +628,10 @@ header
   height: 64px
   animation: wave-east 1.0s steps(7) infinite
 
-@keyframes wave-east {
+@keyframes wave-east
   from {background-position: 0}
   to {background-position: -448px}
-}
+
 
 .standing-character
   z-index: 2
@@ -639,10 +639,10 @@ header
   height: 64px
   animation: stand-east 1.0s steps(4) infinite
 
-@keyframes stand-east {
+@keyframes stand-east
   from {background-position: 0}
   to {background-position: -256px}
-}
+
 
 .dying-character
   z-index: 2
@@ -652,27 +652,27 @@ header
 
 .dying-1
   position: relative
-  left: 180px
-  top: -34px
+  left: 245px
+  top: 79px
   z-index: 2
 
 .dying-2
   position: relative
-  left: 72px
-  top: -7px
+  left: 229px
+  top: -12px
   z-index: 2
 
 .dying-3
   position: relative
-  left: 188px
-  top: 21px
+  left: 245px
+  top: 79px
   z-index: 2
 
 
-@keyframes die-east {
+@keyframes die-east
   from {background-position: 0}
   to {background-position: -256px}
-}
+
 
 
 .reviving-character
@@ -681,35 +681,55 @@ header
   height: 64px
   animation: revive-east 1.0s steps(4) forwards
 
-@keyframes revive-east {
+.reviving-1
+  position: relative
+  left: 245px
+  top: 79px
+  z-index: 2
+
+
+.reviving-2
+  position: relative
+  left: 229px
+  top: -12px
+  z-index: 2
+
+
+.reviving-3
+  position: relative
+  left: 245px
+  top: 79px
+  z-index: 2
+
+@keyframes revive-east
   from {background-position: 0}
   to {background-position: -256px}
-}
+
 
 .hurt-character
   z-index: 2
   width: 64px
   height: 64px
 
-.hurt-1 {
+.hurt-1
   position: relative
-  left: 180px
-  top: -34px
+  left: 245px
+  top: 79px
   z-index: 2
-}
-.hurt-2 {
-  position: relative
-  left: 72px
-  top: -7px
-  z-index: 2
-}
-.hurt-3 {
-  position: relative
-  left: 183px
-  top: 7px
-  z-index: 2
-}
 
+
+.hurt-2
+  position: relative
+  left: 229px
+  top: -12px
+  z-index: 2
+
+
+.hurt-3
+  position: relative
+  left: 245px
+  top: 79px
+  z-index: 2
 
 
 .dead-character
@@ -723,12 +743,14 @@ header
   top: -34px
   z-index: 2
 }
+
 .dead-2 {
   position: relative
   left: 72px
   top: -7px
   z-index: 2
 }
+
 .dead-3 {
   position: relative
   left: 188px
@@ -741,30 +763,23 @@ header
   width: 230px
   height: 230px
   position: absolute
-  left: 22px
-  top: -13px
+  left: -212px
+  top: -37px
 
 .attacking-boss
   z-index: 2
   width: 234px
   height: 230px
   position: absolute
+  left: -212px
+  top: -37px
   animation: boss-attacks-east 1.0s steps(4) infinite
 
-.attacking-boss.targeting-player-1
+.attacking-boss
   position: absolute
-  left: -367px
-  top: -90px
+  left: -212px
+  top: -37px
 
-.attacking-boss.targeting-player-2
-  position: absolute
-  left: -494px
-  top: 0px
-
-.attacking-boss.targeting-player-3
-  position: absolute
-  left: -381px
-  top: 65px
 
 @keyframes boss-attacks-east {
   from {background-position: 0}
@@ -780,13 +795,15 @@ header
   z-index: 2
   width: 230px
   height: 230px
-  animation: boss-dies-east 1.0s steps(3) forward
+  position: absolute
+  left: -212px
+  top: -37px
+  animation: boss-dies-east 1.0s steps(3) forwards
 
 @keyframes boss-dies-east {
   from {background-position: 0}
   to {background-position: -706px}
 }
-
 
 .standing-boss
   z-index: 2
@@ -800,3 +817,30 @@ header
   from {background-position: 0}
   to {background-position: -936px}
 }
+
+.game-over-component
+  width: 803px
+  margin-left: auto
+  margin-right: auto
+
+.game-over
+  color: white
+  font-size: 1.5em
+  font-family: 'VT323'
+
+.game-over.highlighted
+  background-color: $green
+
+
+.btn-danger.selection-screen-route
+  position: absolute
+  left: -212px
+
+.btn-danger.main-screen-route
+  position:absolute
+  left: 79px
+
+
+
+
+

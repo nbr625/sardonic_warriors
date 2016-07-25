@@ -6,7 +6,6 @@ import SelectionCharacterProfile from './selection-character-profile.jsx'
 
 export default class SelectionPlayerPanel extends React.Component {
 
-
     render () {
 
         var that = this,

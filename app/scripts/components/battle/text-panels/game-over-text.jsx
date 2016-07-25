@@ -4,7 +4,7 @@ import Battle from './../battle.jsx';
 import { History } from 'react-router';
 import reactMixin from 'react-mixin';
 
-class CharacterDiedPanel extends React.Component{
+class GameOverPanel extends React.Component{
 
     constructor(props,context){
         super(props, context);
@@ -24,9 +24,7 @@ class CharacterDiedPanel extends React.Component{
 
     pressEnter(e){
         if(e.key == 'Enter'){
-            var props = this.props;
-            props.dyingCharacterHandler(0);
-            props.setNextTurn();
+            this.context.history.pushState(null, 'game-over');
         }
     }
 
@@ -40,5 +38,5 @@ class CharacterDiedPanel extends React.Component{
     }
 }
 
-export default CharacterDiedPanel;
-reactMixin(CharacterDiedPanel, History);
+export default GameOverPanel;
+reactMixin(GameOverPanel, History);

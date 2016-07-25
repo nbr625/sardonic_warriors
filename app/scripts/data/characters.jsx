@@ -2,7 +2,7 @@
 module.exports = {
     character1:{
         name:'Roman', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "God", attacks: [
-            {name:"Smite Her", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
+            {name:"Smite Her", magnitude: 10000, courageCost: 10, type: 'damaging', initialText: [
                 "Roman opens the Cosmic Terminal",
                 "He navigates to one his most devistating attacks",
                 "A beam of white-hot algorithm thunders through the fabric of the time continuum",

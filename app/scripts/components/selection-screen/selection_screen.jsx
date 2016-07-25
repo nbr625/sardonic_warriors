@@ -11,7 +11,6 @@ import reactMixin from 'react-mixin';
 
 class SelectionScreen extends React.Component {
 
-
     constructor(props,context){
         super(props, context);
         this.state = {
@@ -44,6 +43,7 @@ class SelectionScreen extends React.Component {
     }
 
     pressUp(e){
+        debugger;
         var props = this.props,
             playerHighlighted = props.playerHighlighted,
             characterIndexHighlighted = props.characterIndexHighlighted,
