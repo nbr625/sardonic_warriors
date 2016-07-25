@@ -13,18 +13,21 @@ var AttackPanel = React.createClass({
         return {
             highlightHandler: this.highLightButton.bind(this),
             highlightedIndex: 0,
-            pressEnterHandler: this.pressEnter.bind(this)
+            pressEnterHandler: this.pressEnter.bind(this),
+            pressBackHandler: this.pressBack.bind(this)
         }
     },
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.highlightHandler);
         window.addEventListener('keydown', this.state.pressEnterHandler);
+        window.addEventListener('keydown', this.state.pressBackHandler);
     },
 
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.highlightHandler);
         window.removeEventListener('keydown', this.state.pressEnterHandler);
+        window.removeEventListener('keydown', this.state.pressBackHandler);
     },
 
     highLightButton: function(e){
@@ -158,6 +161,15 @@ var AttackPanel = React.createClass({
 
         if (e.key == 'Enter' && state.highlightedIndex == 4){
             this.props.screenHandler('PlayerP');
+        }
+    },
+
+    pressBack(e){
+        var props = this.props;
+        if(e.keyCode == 8){
+            e.preventDefault();
+            props.screenHandler('PlayerP');
+            props.selectedCharacterHandler(0)
         }
     },
 

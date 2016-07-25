@@ -36,15 +36,15 @@ export default class SelectEncouragingTarget extends React.Component{
         if(e.key == 'Enter'){
             switch(selectedCharacter){
                 case 1:
-                    setTarget(props.firstCharacter);
+                    setTarget(props.firstCharacter, true);
                     this.props.selectedCharacterHandler(0);
                     break;
                 case 2:
-                    setTarget(props.secondCharacter);
+                    setTarget(props.secondCharacter, true);
                     this.props.selectedCharacterHandler(0);
                     break;
                 case 3:
-                    setTarget(props.thirdCharacter);
+                    setTarget(props.thirdCharacter, true);
                     this.props.selectedCharacterHandler(0);
 
             }

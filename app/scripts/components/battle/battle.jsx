@@ -36,6 +36,8 @@ var Battle = React.createClass({
         this.screenHandler.bind(this);
         return {
 
+            defaultListenerPreventerHandler: this.defaultListenerPreventer.bind(this),
+
             firstCharacter: firstChar,
             secondCharacter: secChar,
             thirdCharacter: thirdChar,
@@ -49,6 +51,7 @@ var Battle = React.createClass({
             screen: 'intro',
             lastDamage: '',
             lastHeal: '',
+            lastEncouraging: '',
             selectedCharacter: 0,
             attackingCharacter: 0,
             hurtCharacter: 0,
@@ -103,22 +106,40 @@ var Battle = React.createClass({
                                          selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}/>;
                 break;
             case 'defendTB':
-                return <DefendTextBox  screenHandler={this.screenHandler} {...state}/>;
+                return <DefendTextBox  screenHandler={this.screenHandler} setNextTurn={this.setNextTurn.bind(this)} {...state}/>;
                 break;
             case 'meditationTB':
-                return <MeditationTextBox  screenHandler={this.screenHandler} {...state}/>;
+                return <MeditationTextBox  screenHandler={this.screenHandler} setNextTurn={this.setNextTurn.bind(this)} {...state}/>;
                 break;
             case 'selectET':
                 return <SelectEncourageTarget screenHandler={this.screenHandler} {...state} setTarget={this.setTarget}
                                               selectedCharacterHandler={this.selectedCharacterHandler} attackingCharacterHandler={this.attackingCharacterHandler}/>;
                 break;
             case 'encourageTB':
-                return <EncourageTextBox  screenHandler={this.screenHandler} encourage={this.encourage} {...state}/>;
+                return <EncourageTextBox  screenHandler={this.screenHandler} setNextTurn={this.setNextTurn.bind(this)} encourage={this.encourage} {...state}/>;
                 break;
             case 'victoryP':
                 return <VictoryPanel screenHandler={this.screenHandler} {...state}/>;
                 break;
         }
+    },
+
+    defaultListenerPreventer: function(e){
+        if(e.keyCode == 8){
+            e.preventDefault();
+
+        }
+    },
+
+
+    componentDidMount(){
+        window.addEventListener('keydown', this.state.defaultListenerPreventerHandler);
+
+
+    },
+
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.state.defaultListenerPreventerHandler);
     },
 
     selectedCharacterHandler: function(character){
@@ -206,6 +227,7 @@ var Battle = React.createClass({
 
         if (encourage){
             this.screenHandler('encourageTB');
+            this.encourage(target)
         } else {
             if (activeAction.type = 'healing') {
                 this.heal(activeAction, target);

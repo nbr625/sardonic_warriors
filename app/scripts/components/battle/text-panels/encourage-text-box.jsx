@@ -23,7 +23,7 @@ class EncourageTextBox extends React.Component{
 
     pressEnter(e){
         if(e.key == 'Enter'){
-            this.props.screenHandler('PlayerP');
+            this.props.setNextTurn();
         }
     }
 
