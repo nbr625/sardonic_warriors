@@ -759,9 +759,10 @@ var Battle = React.createClass({
                     <div>
                         <div className="text-panel">
                             {this.renderPanel()}
+                            <img className="golden-frame-pic" src="images/golden-frame.png"/>
                         </div>
                     </div>
-                    <audio src="/music/battle.mp3" loop></audio>
+                    <audio src="/music/battle.mp3" autoPlay loop></audio>
                 </div>
             </div>
 

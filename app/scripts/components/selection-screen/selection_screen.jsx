@@ -17,7 +17,7 @@ class SelectionScreen extends React.Component {
             pressUpHandler: this.pressUp.bind(this),
             pressDownHandler: this.pressDown.bind(this),
             pressEnterHandler: this.pressEnter.bind(this),
-            pressSpaceHandler: this.pressSpace.bind(this),
+            pressSpaceHandler: this.pressSpace.bind(this)
         };
     }
 
@@ -43,7 +43,6 @@ class SelectionScreen extends React.Component {
     }
 
     pressUp(e){
-        debugger;
         var props = this.props,
             playerHighlighted = props.playerHighlighted,
             characterIndexHighlighted = props.characterIndexHighlighted,
@@ -113,7 +112,8 @@ class SelectionScreen extends React.Component {
                 <h1 className="selection-title">Selection Screen</h1>
                 <div className="select-wisely">Select your warriors wisely</div>
                 <div className="only-three">You may only take three to battle...</div>
-                <table>
+                <img className="player-selection-parchment-image" src="/images/old-partchment-background.png"/>
+                <table className="player-selection-parchment">
                     <tbody>
                         {renderPlayerPanel(1)}
                         <tr className="selection-divider"></tr>
@@ -128,8 +128,9 @@ class SelectionScreen extends React.Component {
                         <ToBattleButton ready={false} {...this.props} />
                     }
                 </div>
-                <audio src="/music/selection-screen.mp3" loop></audio>
+                <audio src="/music/selection-screen.mp3" autoPlay loop></audio>
             </div>
+
         );
     }
 

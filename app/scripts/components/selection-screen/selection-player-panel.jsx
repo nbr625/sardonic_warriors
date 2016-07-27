@@ -54,7 +54,7 @@ export default class SelectionPlayerPanel extends React.Component {
                     }
                 </td>
 
-                <td>
+                <td className="character-selection-text">
                     <div className="player-class">{panelCharacter.name}:   {playerClass}</div>
                     <div className="player-summary">{playerSummary}</div>
                 </td>

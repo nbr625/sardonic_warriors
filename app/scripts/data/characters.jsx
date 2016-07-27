@@ -29,7 +29,8 @@ module.exports = {
                 "\"...It is okay\"",
                 "\"Gayathan is mortified at the amount of time she has lost.\""
             ]}
-        ], profileText: "A robotic diety programmed to bring about the apocalypse. he spends his the time before the day of reckoning coding and playing video games"
+        ], profileText: "A robotic deity programmed to bring about the apocalypse. he spends his the time before the day of reckoning coding and playing video games",
+        endGameSummary: "Roman was able to go back to his desk and begin his long sleep before the time of armageddon, when he would destroy the human race for their insolence and imperfection"
     }, character2: {
         name:'Pri', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Brorrior", attacks: [
             {name:"Waterbottle Avalanche", magnitude: 250, courageCost: 10, type: 'damaging', initialText: [
@@ -63,7 +64,8 @@ module.exports = {
                 "\"I guess a little bit... Here!\" A lightningbolt strikes Gayathan, it slightly nerfs her attack power"
             ]}
 
-        ], profileText: "Basic Bro with OP levels of humor. His main pastimes include making up names for Francis and Gayathri and \"making America great again\""
+        ], profileText: "Basic Bro with OP levels of humor. His main pastimes include making up names for Francis and Gayathri and \"making America great again\"",
+        endGameSummary: "Pri wasted no time shovelling bacon into his champion face. He ate at the artery clogging strips with unnerving gusto"
 
     }, character3: {
         name:'Murat', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Cat Knight", attacks: [
@@ -97,7 +99,8 @@ module.exports = {
                 "\"AHHHH!\" Gayathan begins to dance frantically bunping against everything like a drunk schoolgirl on prom night"
             ]}
 
-        ], profileText: "Fearless leader of Breakthrough, retired professional LARPER, and Unicorn Whisperer. His favorite pastime is ordering exotic food on Amazon"
+        ], profileText: "Fearless leader of Breakthrough, retired professional LARPER, and Unicorn Whisperer. His favorite pastime is ordering exotic food on Amazon",
+        endGameSummary: "Murat returned to his office where he rewarded himself with a baseball size ball of Flacka. He used the unreasoable amounts of energy to code an unicorn dating site."
 
     },character4: {
         name:'Andrew', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Dancer", attacks: [
@@ -121,7 +124,8 @@ module.exports = {
                 "It is delicious!"
 
             ]}
-        ], profileText: "Tango assassin and owner of the world\'s most uncomfortable chair. He boasts the highest meetups per month rating in all the company; it is a shame that no one cares."
+        ], profileText: "Tango assassin and owner of the world\'s most uncomfortable chair. He boasts the highest meetups per month rating in all the company; it is a shame that no one cares.",
+        endGameSummary: "Andrew had to promptly leave to attend a Javascript-hide-and-seek meetup. On the way to the meetup he was confused for a pokemon and kidnapped until the end of the day"
 
     }, character5: {
         name:'Oleg', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Painter", attacks: [
@@ -147,7 +151,8 @@ module.exports = {
                 "She knows she has lost the game and it pains hurts her pride."
             ]}
 
-        ], profileText: "Escaped SSR experiment, he has ingratiated himself into society and now leads the QA ranks. Weapon of choice is Paint and Post-id Notes"
+        ], profileText: "Escaped SSR experiment, he has ingratiated himself into society and now leads the QA ranks. Weapon of choice is Paint and Post-id Notes",
+        endGameSummary: "Oleg realized that he had just run out of Post-ids; he ran out of the office without celebrating his victory"
 
     }, character6: {
         name:'Bryan', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Narco", attacks: [
@@ -173,7 +178,8 @@ module.exports = {
                 "She is beyond indignation"
 
             ]}
-        ], profileText: "A former drug trafficker, Bryan is well suited for the dangerous lifestyle of a developer. His favorite pastime include talking about working out and convincing others to drink Soylent Green"
+        ], profileText: "A former drug trafficker, Bryan is well suited for the dangerous lifestyle of a developer. His favorite pastime include talking about working out and convincing others to drink Soylent Green",
+        endGameSummary: "Bryan chugged three bottles of Soylent Green and growled like a wild animal"
 
     }, character7: {
         name:'PH', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Super Hero", attacks: [
@@ -200,7 +206,8 @@ module.exports = {
                 "It is then, when he she has relaxed her defences that he styrikes.",
                 "He throws the the golden candle holder at his desk at her."
             ]}
-        ], profileText: "He will tap you out. PH pretends to be boring to distract others from the fact that fights crime every night as Captain Muscle."
+        ], profileText: "He will tap you out. PH pretends to be boring to distract others from the fact that fights crime every night as Captain Muscle.",
+        endGameSummary: "PH put Bryan on a headlock and tapped him out. He stitched his superhero suit and prepared to walk the night as Flex Man"
 
     }, character8: {
         name:'Andy', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "Wizard", attacks: [
@@ -224,7 +231,8 @@ module.exports = {
                 "Andy offers a piece of carrot cake that his daughter baked",
                 "It is delicious."
             ]}
-        ], profileText: "Master of tongues, he can make sarcastic remarks in countless languages. He is so powerful that his only weaknesses are dirty dishes and less than optimal recycling"
+        ], profileText: "Master of tongues, he can make sarcastic remarks in countless languages. He is so powerful that his only weaknesses are dirty dishes and less than optimal recycling",
+        endGameSummary: "Andy left programming behind and became a standup comedian. He could be seen dishing out sharp observations at the fox theater."
 
     }
 };

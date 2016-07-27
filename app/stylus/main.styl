@@ -168,19 +168,38 @@ header
 .list-group
   list-style-type: none
   width: 100%
-  background-color: white
+  background-color: transparent
+
 .list-group-item
   margin: 0
   width: 100%
   list-style-type: none
   background-color: white
 
+
+.player-selection-parchment
+  height: 238px
+  width: 100%
+  position: relative
+
+.player-selection-parchment-image
+  background-repeat:no-repeat
+  background-size:100%
+  z-index: 0
+  width: 1097px
+  height: 930px
+  position: absolute
+  top: 169px
+  left: 226px
+
+
 .single-selection-panel
   padding: 10px
   width: 273px
+  height: 210px
 
 .player-selection-panel
-  background-color: white
+  background-color: transparent
   height: 182px
 
 .selection-divider
@@ -211,7 +230,7 @@ header
 
 .selection-screen
   background: $black
-  width: 803px
+  width: 1030px
   margin-left: auto
   margin-right: auto
 
@@ -252,7 +271,7 @@ header
   font-size: 18px
 
 .character-profile
-  background-color: white
+  background-color: transparent
   width: 225px
   margin-left: 9px
 
@@ -368,13 +387,24 @@ header
   float:left
 
 .text-panel
-  top: 486px
+  top: 495px
   position: absolute
   width: 400px
   height: 156px
-  background-color: antiquewhite
-  left: 181px
-  margin-top: 5%
+  background-color: #faebd7
+  left: 201px
+  margin-top: 8%
+
+
+.golden-frame-pic
+  background-repeat:no-repeat
+  background-image: url('../images/golden-frame.png')
+  background-size:100%
+  position: absolute
+  height: 238px
+  width: 502px
+  left: -51px
+  top: -50px
 
 .boss-sprite
   top: 20px
@@ -413,6 +443,11 @@ header
 .story-next-button:visited
   color: white
 
+.character-selection-text
+  width: 430px
+  position: relative
+  right: 91px
+
 .player-class
   color: black
   font-family: 'VeniceClassic'
@@ -424,7 +459,7 @@ header
   font-family: 'VT323'
   font-size: 18px
   margin-left: 34px
-  width: 430px
+  width: 486px
 
 .table
   width: 612px
@@ -524,6 +559,7 @@ header
   text-align: center
   font-family: 'VT323'
   margin-top: 60px
+  position: relative
 
 .sprite-walking
    width: 64px
@@ -839,8 +875,4 @@ header
 .btn-danger.main-screen-route
   position:absolute
   left: 79px
-
-
-
-
 
