@@ -32,18 +32,10 @@ class IPanel3 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">
-                    Lightning precipitates down to the unsuspecting dancer. It takes less than a second to reach the unsuspecting target
-                </div>
-                <div className="story-text">
-                    Gayathri floods the room with blinding incandescence. Her cells charge with the unstable power. Her cells remember
-                </div>
-                <div className="story-text">
-                    a prehistoric anatomical structure and begin to approximate this forgotten vessel. It fills her with sarcastic might!
-                </div>
-                <div className="story-text">
-                    Her skin hardens and segments into scales, she is even more resilient to the criticism and pleas of mercy.
-                </div>
+                <div className="story-text">trumps all other genres. It is just so much to dance," She says to a crowd that was</div>
+                <div className="story-text">not talking about dancing. As if to corroborate her point, she flails about like a</div>
+                <div className="story-text">possessed marionette. The cloud has found its target. Lightning precipitates down</div>
+                <div className="story-text">to the unsuspecting dancer. It takes less than a second to reach the unsuspecting</div>
                 <div className="story-next-button">Press Enter</div>
                 <audio src="/music/thunder.mp3" autoPlay></audio>
             </div>

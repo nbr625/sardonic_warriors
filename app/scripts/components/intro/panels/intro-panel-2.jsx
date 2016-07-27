@@ -31,18 +31,10 @@ class IPanel2 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">
-                    Synchronized with the burbling of the coffee machine, the isotopic charges crack the sky.
-                </div>
-                <div className="story-text">
-                    It hungers for a high energy source to stabilize itself. "Everyone can tell that Bollywood music,
-                </div>
-                <div className="story-text">
-                    trumps all other genres. It is just so much to dance," She says to a crowd that was not talking about dancing.
-                </div>
-                <div className="story-text">
-                    As if to corroborate her point, she flails about like a possessed marionette. The cloud has found its target.
-                </div>
+                <div className="story-text">'I am alive! hear me roar!' Meanwhile, hundred of meters  above the clouds, the clash</div>
+                <div className="story-text">between human-made pollution and barometric pressure brews a pocket storm. Synchronized</div>
+                <div className="story-text"> with the burbling of the coffee machine, the isotopic charges crack the sky. It hungers</div>
+                <div className="story-text">for a high energy source to stabilize itself. "Everyone can tell that Bollywood music,</div>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

@@ -20,7 +20,7 @@ class IPanel4 extends React.Component {
             this.props.updateSelectableCharacters();
             var audio = new Audio('/music/enter-to-select-button.mp3');
             audio.play();
-            this.context.history.pushState(null, 'selection-screen');
+            this.context.history.pushState(null, 'intro/5');
         }
     }
 
@@ -36,18 +36,10 @@ class IPanel4 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">
-                    Her mouth extends forward with jagged teeth and her pupils become slits like rips made by sarcastic intent.
-                </div>
-                <div className="story-text">
-                    Her final form is too awful. Everyone wants to ignore the even all together. But it only anger Gayathan.
-                </div>
-                <div className="story-text">
-                    She thrashes the facilities with her enormous tails while cackling in the most unsettling way
-                </div>
-                <div className="story-text">
-                    Who can rise up and defeat this terror?
-                </div>
+                <div className="story-text">target Gayathri floods the room with blinding incandescence. Her cells charge with</div>
+                <div className="story-text">the unstable power. Her cells remember a prehistoric anatomical structure and</div>
+                <div className="story-text">begin to approximate this forgotten vessel. It fills her with sarcastic might!</div>
+                <div className="story-text">Her skin hardens and segments into scales, she is even more resilient to the</div>
                 <audio src="/music/trex.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>

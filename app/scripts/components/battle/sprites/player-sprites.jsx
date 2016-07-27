@@ -77,7 +77,7 @@ class PlayerSprite extends React.Component{
 
         return (
             <div>
-                <div>{character.name} </div>
+                <div className="character-name-text">{character.name}</div>
                 {this.renderSprite()}
             </div>
         );

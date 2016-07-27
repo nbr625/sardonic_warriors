@@ -17,6 +17,7 @@ import SelectEncourageTarget from './action-panels/select-encouraging-target-pan
 import PlayerSpritePanel from './sprites/player-sprite-panel.jsx';
 import PlayerSprite from './sprites/player-sprites.jsx';
 import BossSprite from './sprites/boss-sprite.jsx';
+import NotEnoughCourage from './text-panels/not-enough-courage.jsx';
 import VictoryPanel from './text-panels/victory-text.jsx';
 import GameOverPanel from './text-panels/game-over-text.jsx';
 
@@ -115,6 +116,9 @@ var Battle = React.createClass({
                 break;
             case 'encourageTB':
                 return <EncourageTextBox  screenHandler={this.screenHandler} setNextTurn={this.setNextTurn.bind(this)} encourage={this.encourage} {...state}/>;
+                break;
+            case 'notEC':
+                return <NotEnoughCourage screenHandler={this.screenHandler} {...state}/>;
                 break;
             case 'victoryP':
                 return <VictoryPanel screenHandler={this.screenHandler} {...state}/>;
@@ -622,7 +626,8 @@ var Battle = React.createClass({
 
         return (
             <div className="battle">
-                <div>
+                <img className="battle-parchment-image" src="/images/old-partchment-background.png"/>
+                <div className="battle-content">
                     <div>
                         <div>
                             <ProgressLabel

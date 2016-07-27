@@ -25,13 +25,19 @@ var AttackBox = React.createClass({
     pressEnter: function(e){
         var props = this.props,
             attack = props.attacks[this.props.index];
+        debugger;
 
         if (e.key == 'Enter'){
-            if(props.index == props.highlightedIndex && attack.type === 'damaging'){
-                props.setAction(attack, props.boss);
-            } else if(props.index == props.highlightedIndex && attack.type === 'healing'){
-                props.setAction(attack);
+            if(props.index == props.highlightedIndex){
+                if(attack.courageCost > props.activePlayer.courage){
+                    props.screenHandler('notEC');
+                } else if(attack.type === 'damaging'){
+                    props.setAction(attack, props.boss);
+                } else if(attack.type === 'healing'){
+                    props.setAction(attack);
+                }
             }
+
         }
     },
 
@@ -41,9 +47,9 @@ var AttackBox = React.createClass({
             attackBox, attackStatus;
 
         if (attack.type === 'damaging') {
-            attackBox = <span onClick={() => {props.setAction(attack, props.boss) }}>{attack.name}</span>
+            attackBox = <span>{attack.name}</span>
         } else {
-            attackBox = <span onClick={() => {props.setAction(attack)}}>{attack.name}</span>
+            attackBox = <span>{attack.name}</span>
         }
         var attackClass =  attack.type == 'damaging' ? 'btn-danger' : 'btn-info';
 

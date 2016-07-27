@@ -47,7 +47,7 @@ class BossSprite extends React.Component{
 
         return (
             <div>
-                <div>{boss.name} </div>
+                <div className="boss-name-text">{boss.name}</div>
                 {this.renderSprite()}
             </div>
         );

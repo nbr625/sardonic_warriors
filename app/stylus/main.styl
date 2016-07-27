@@ -132,35 +132,38 @@ header
 
 .story-panel
   padding: 5% 0 0 5%
-  background-color: black;
+  background-color: transparent
+  position: absolute
+  top: 459px
+  left: 286px
 
 .story-text
-  font-size: 1.5em;
-  color: white;
+  font-size: 1.5em
+  color: #7d1010
   font-family: 'VT323'
-  width:100%;
-  overflow:hidden;
-  white-space:nowrap;
+  width:100%
+  overflow:hidden
+  white-space:nowrap
   -webkit-animation: typing 2s steps(30, end)
   -moz-animation: typing 2s step(30, end)
 
 .story-text:nth-child(2)
-  width:100%;
-  overflow:hidden;
-  white-space:nowrap;
+  width:100%
+  overflow:hidden
+  white-space:nowrap
   -webkit-animation: typing2 4s steps(30, end)
   -moz-animation: typing2 4s step(30, end)
 
 .story-text:nth-child(3)
-  width:100%;
-  overflow:hidden;
-  white-space:nowrap;
+  width:100%
+  overflow:hidden
+  white-space:nowrap
   -webkit-animation: typing3 6s steps(30, end)
   -moz-animation: typing3 6s step(30, end)
 .story-text:nth-child(4)
-  width:100%;
-  overflow:hidden;
-  white-space:nowrap;
+  width:100%
+  overflow:hidden
+  white-space:nowrap
   -webkit-animation: typing4 8s steps(30, end)
   -moz-animation: typing4 8s step(30, end)
 
@@ -189,9 +192,23 @@ header
   width: 1097px
   height: 930px
   position: absolute
-  top: 169px
-  left: 226px
+  top: 127px
+  left: -39px
 
+.story-partchment-image
+  background-repeat: no-repeat
+  background-size: 100%
+  z-index: -1
+  width: 1518px
+  height: 373px
+  position: absolute
+  top: -58px
+  left: -274px
+
+.story-slide
+  position: absolute
+  top: 53px
+  left: 43px
 
 .single-selection-panel
   padding: 10px
@@ -225,14 +242,30 @@ header
   box-flex: 0
   max-width: 90%
 
+.battle-parchment-image
+  background-repeat:no-repeat
+  background-size: 100%
+  z-index: -1
+  width: 1097px
+  height: 930px
+  position: absolute
+  top: -20px
+  left: -132px
+
+.battle-content
+  position: relative
+  top: 22px
+  left: 15px
+
 .panel-body
-  background: #3a3a3a;
+  background: #3a3a3a
 
 .selection-screen
   background: $black
   width: 1030px
   margin-left: auto
   margin-right: auto
+  position: relative
 
 .selection-title
   color: white
@@ -387,14 +420,19 @@ header
   float:left
 
 .text-panel
-  top: 495px
+  top: 520px
   position: absolute
   width: 400px
   height: 156px
   background-color: #faebd7
-  left: 201px
+  left: 225px
   margin-top: 8%
 
+.character-name-text
+  color:transparent
+
+.boss-name-text
+  color:transparent
 
 .golden-frame-pic
   background-repeat:no-repeat
