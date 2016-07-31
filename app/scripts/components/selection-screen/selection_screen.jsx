@@ -39,6 +39,8 @@ class SelectionScreen extends React.Component {
         var props = this.props;
         if(e.key == 'Enter') {
             props.selectCharacter(props.characterIndexHighlighted, props.playerHighlighted);
+            var audio = new Audio('/music/select-character.mp3');
+            audio.play();
         }
     }
 
@@ -61,6 +63,8 @@ class SelectionScreen extends React.Component {
             } else {
                 setCharacterIndexHighlighted(characterIndexHighlighted - 1);
             }
+            var audio = new Audio('/music/menu-selection-key.mp3');
+            audio.play();
         }
     }
 
@@ -83,6 +87,8 @@ class SelectionScreen extends React.Component {
             } else {
                 setCharacterIndexHighlighted(characterIndexHighlighted + 1);
             }
+            var audio = new Audio('/music/menu-selection-key.mp3');
+            audio.play();
         }
     }
 
@@ -97,6 +103,8 @@ class SelectionScreen extends React.Component {
             this.context.history.pushState(null, 'battle');
             this.props.resetBoss();
         }
+        var audio = new Audio('/music/start-menu.mp3');
+        audio.play();
     }
 
     render() {

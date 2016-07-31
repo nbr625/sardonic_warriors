@@ -18,7 +18,7 @@ class IPanel4 extends React.Component {
         if(e.key == 'Enter'){
             this.props.resetPlayers();
             this.props.updateSelectableCharacters();
-            var audio = new Audio('/music/enter-to-select-button.mp3');
+            var audio = new Audio('/music/page-flipping-sound-4.mp3');
             audio.play();
             this.context.history.pushState(null, 'intro/5');
         }

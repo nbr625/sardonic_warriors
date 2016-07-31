@@ -16,6 +16,8 @@ class IPanel2 extends React.Component {
         if(e.key == 'Enter'){
             this.props.resetPlayers();
             this.context.history.pushState(null, 'intro/3');
+            var audio = new Audio('/music/page-flipping-sound-2.mp3');
+            audio.play();
         }
     }
 

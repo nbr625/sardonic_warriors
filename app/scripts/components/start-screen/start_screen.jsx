@@ -16,7 +16,7 @@ class StartScreen extends React.Component {
     pressEnterForStart(e){
         if(e.keyCode == 32){
             this.props.resetPlayers();
-            var audio = new Audio('/music/enter-button.mp3');
+            var audio = new Audio('/music/start-menu.mp3');
             audio.play();
             this.context.history.pushState(null, 'intro');
         }

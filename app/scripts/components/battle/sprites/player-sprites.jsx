@@ -42,21 +42,33 @@ class PlayerSprite extends React.Component{
             deadCharacter = {backgroundImage: 'url(' + deadCharacterSprite + ')'},
             playerString = player.toString();
 
+        let playerStyle = '';
+        let playerClass = '';
+
         if(props.dyingCharacter == player) {
-            return <div style={dyingCharacter} className={`dying-character dying-${playerString}`}></div>;
+            playerStyle = dyingCharacter;
+            playerClass = `dying-character dying-${playerString}`;
         } else if(props.attackingCharacter == player) {
-            return <div style={attackingCharacter} className={`attacking-character attack-${playerString}`}></div>;
+            playerStyle = attackingCharacter;
+            playerClass = `attacking-character attack-${playerString}`;
         } else if(props.selectedCharacter == player) {
-            return <div style={selectedCharacter} className={`selected-character select-${playerString}`}></div>;
+            playerStyle = selectedCharacter;
+            playerClass = `selected-character select-${playerString}`;
         } else if(props.hurtCharacter == player) {
-            return <div style={hurtCharacter} className={`hurt-character hurt-${playerString}`}></div>;
+            playerStyle = hurtCharacter;
+            playerClass = `hurt-character hurt-${playerString}`
         } else if(props.revivingCharacter  == player) {
-            return <div style={revivingCharacter} className={`reviving-character reviving-${playerString}`}></div>;
+            playerStyle = revivingCharacter;
+            playerClass = `reviving-character reviving-${playerString}`;
         } else if(character.status == 'dead'){
-            return <div style={deadCharacter} className={`dead-character dead-${playerString}`}></div>;
+            playerStyle = deadCharacter;
+            playerClass = `dead-character dead-${playerString}`;
         } else {
-            return <div style={standingCharacter} className={`standing-character standing-${playerString}`}></div>;
+            playerStyle = standingCharacter;
+            playerClass = `standing-character standing-${playerString}`
         }
+
+        return <div style={playerStyle} className={playerClass}></div>;
     }
 
     render() {

@@ -47,7 +47,7 @@ export default class SelectionPlayerPanel extends React.Component {
 
                 </td>
 
-                <td>
+                <td className="selection-sprite">
                     {spriteStatus == 'walking'?
                         <div className="sprite-walking" style={walkingSpriteStyles}></div> :
                         <img src={"/images/" + panelCharacter.name.toLowerCase() + "_standing.png"} alt={panelCharacter.name}/>

@@ -53,6 +53,15 @@ class CharacterDamageTextBox extends React.Component{
 
     }
 
+    renderSound(){
+        var props = this.props;
+        if (props.activeAction.type ==  'damaging') {
+            return <audio src={`/music/${props.activePlayer.name}-attacking.mp3`} autoPlay></audio>
+        } else {
+            return <audio src={`/music/player-healing.mp3`} autoPlay></audio>
+        }
+    }
+
     render() {
         var props = this.props,
             activeActionTarget = props.activeActionTarget,
@@ -72,6 +81,8 @@ class CharacterDamageTextBox extends React.Component{
             <div>
                 <div className="battle-text-box-text">{text}</div>
                 <div>Press Enter</div>
+                {this.renderSound()}
+                <audio src={`/music/${activePlayer.name}-attacking.mp3`} autoPlay loop></audio>
             </div>
         );
     }
