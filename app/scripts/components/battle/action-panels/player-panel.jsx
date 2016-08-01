@@ -42,6 +42,8 @@ var PlayerPanel = React.createClass ({
             case rightKey:
             case downKey:
                 e.preventDefault();
+                var audio = new Audio('/music/menu-selection-key.mp3');
+                audio.play();
         }
 
         // Attack Button
@@ -147,12 +149,20 @@ var PlayerPanel = React.createClass ({
         var state = this.state;
         if (e.key == 'Enter'){
             if(state.attackButtonStatus == 'highlighted'){
+                var audio = new Audio('/music/open-attack-menu.mp3');
+                audio.play();
                 this.props.screenHandler('attackP');
             } else if(state.defendButtonStatus == 'highlighted'){
+                var audio = new Audio('/music/player-defending.mp3');
+                audio.play();
                 this.defend();
             } else if(state.meditateButtonStatus == 'highlighted'){
+                var audio = new Audio('/music/player-meditating.mp3');
+                audio.play();
                 this.meditate();
             } else {
+                var audio = new Audio('/music/open-attack-menu.mp3');
+                audio.play();
                 this.props.selectedCharacterHandler(1);
                 this.props.screenHandler('selectET');
             }

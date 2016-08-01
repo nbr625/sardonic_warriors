@@ -37,6 +37,8 @@ var AttackBox = React.createClass({
                     props.setAction(attack);
                 }
             }
+            var audio = new Audio('/music/enter-attack.mp3');
+            audio.play();
 
         }
     },

@@ -48,6 +48,8 @@ export default class SelectEncouragingTarget extends React.Component{
                     this.props.selectedCharacterHandler(0);
 
             }
+            var audio = new Audio('/music/player-meditating.mp3');
+            audio.play();
         }
     }
 
@@ -87,7 +89,9 @@ export default class SelectEncouragingTarget extends React.Component{
         if(e.keyCode == 8){
             e.preventDefault();
             props.screenHandler('PlayerP');
-            props.selectedCharacterHandler(0)
+            props.selectedCharacterHandler(0);
+            var audio = new Audio('/music/back-menu-button.mp3');
+            audio.play();
         }
     }
 

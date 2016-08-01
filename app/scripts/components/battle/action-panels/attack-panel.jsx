@@ -41,6 +41,8 @@ var AttackPanel = React.createClass({
             case rightKey:
             case downKey:
                 e.preventDefault();
+                var audio = new Audio('/music/menu-selection-key.mp3');
+                audio.play();
         }
 
         switch(highlightedIndex){
@@ -161,6 +163,8 @@ var AttackPanel = React.createClass({
 
         if (e.key == 'Enter' && state.highlightedIndex == 4){
             this.props.screenHandler('PlayerP');
+            var audio = new Audio('/music/back-menu-button.mp3');
+            audio.play();
         }
     },
 

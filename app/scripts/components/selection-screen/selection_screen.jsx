@@ -102,9 +102,9 @@ class SelectionScreen extends React.Component {
         if(e.keyCode == 32 && all_selected) {
             this.context.history.pushState(null, 'battle');
             this.props.resetBoss();
+            var audio = new Audio('/music/start-menu.mp3');
+            audio.play();
         }
-        var audio = new Audio('/music/start-menu.mp3');
-        audio.play();
     }
 
     render() {
