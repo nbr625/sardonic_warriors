@@ -34,10 +34,8 @@ class IPanel3 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">trumps all other genres. It is just so much to dance," She says to a crowd that was</div>
-                <div className="story-text">not talking about dancing. As if to corroborate her point, she flails about like a</div>
-                <div className="story-text">possessed marionette. The cloud has found its target. Lightning precipitates down</div>
-                <div className="story-text">to the unsuspecting dancer. It takes less than a second to reach the unsuspecting</div>
+                <div className="story-text">"Just another day in paradise!" said Steve, his voice ringing like the crow</div>
+                <div className="story-text">a rooster that pushed away the yesterday and soldered the reality of morning.</div>
                 <div className="story-next-button">Press Enter</div>
                 <audio src="/music/thunder.mp3" autoPlay></audio>
             </div>

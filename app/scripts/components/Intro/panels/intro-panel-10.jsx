@@ -1,9 +1,11 @@
 import React from 'react';
+import Game from '../../game.jsx';
 import { Link } from 'react-router';
 import { History } from 'react-router';
 import reactMixin from 'react-mixin';
 
-class IPanel2 extends React.Component {
+class IPanel5 extends React.Component {
+
 
     constructor(props, context){
         super(props, context);
@@ -15,9 +17,10 @@ class IPanel2 extends React.Component {
     pressEnter(e){
         if(e.key == 'Enter'){
             this.props.resetPlayers();
-            this.context.history.pushState(null, 'intro/3');
-            var audio = new Audio('/music/page-flipping-sound-2.mp3');
+            this.props.updateSelectableCharacters();
+            var audio = new Audio('/music/page-flipping-sound-5.mp3');
             audio.play();
+            this.context.history.pushState(null, 'intro/11');
         }
     }
 
@@ -33,13 +36,14 @@ class IPanel2 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">It was a place filled with colorful characters. On such character was the</div>
-                <div className="story-text">perennially happy Steve, who could he heard passing by the hall.</div>
+                <div className="story-text">The room flooded with blinding incandescence. Gayathri begun to morph at</div>
+                <div className="story-text">the cellular level to contain the incredible amount of negative energy.</div>
+                <audio src="/music/trex.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );
     }
 }
 
-reactMixin(IPanel2, History);
-export default IPanel2;
+reactMixin(IPanel5, History);
+export default IPanel5;

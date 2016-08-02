@@ -20,7 +20,7 @@ class IPanel5 extends React.Component {
             this.props.updateSelectableCharacters();
             var audio = new Audio('/music/page-flipping-sound-5.mp3');
             audio.play();
-            this.context.history.pushState(null, 'selection-screen');
+            this.context.history.pushState(null, 'intro/6');
         }
     }
 
@@ -36,10 +36,8 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">criticism and pleas of mercy. Her mouth extends forward with jagged teeth and</div>
-                <div className="story-text">her pupils become slits like rips made by sarcastic intent. Her final form</div>
-                <div className="story-text">is too awful. Everyone wants to ignore the even all together. But it only anger</div>
-                <div className="story-text">Gayathan. She thrashes the facilities while cackling in the most unsettling way.</div>
+                <div className="story-text">Neither of them imagined that thousands of feet above them, the human-made</div>
+                <div className="story-text">pollution and barometric pressures brewed a radioactive storm.</div>
                 <audio src="/music/trex.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>

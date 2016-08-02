@@ -12,6 +12,16 @@ import IPanel2 from './intro/panels/intro-panel-2.jsx';
 import IPanel3 from './intro/panels/intro-panel-3.jsx';
 import IPanel4 from './intro/panels/intro-panel-4.jsx';
 import IPanel5 from './intro/panels/intro-panel-5.jsx';
+import IPanel6 from './intro/panels/intro-panel-6.jsx';
+import IPanel7 from './intro/panels/intro-panel-7.jsx';
+import IPanel8 from './intro/panels/intro-panel-8.jsx';
+import IPanel9 from './intro/panels/intro-panel-9.jsx';
+import IPanel10 from './intro/panels/intro-panel-10.jsx';
+import IPanel11 from './intro/panels/intro-panel-11.jsx';
+import IPanel12 from './intro/panels/intro-panel-12.jsx';
+import IPanel13 from './intro/panels/intro-panel-13.jsx';
+import IPanel14 from './intro/panels/intro-panel-14.jsx';
+
 
 import SelectionScreen from './selection-screen/selection_screen.jsx';
 import SelectionPlayerPanel from './selection-screen/selection-player-panel.jsx';
@@ -234,6 +244,15 @@ var Game = React.createClass ({
                         <Route path='3' component={IPanel3}></Route>
                         <Route path='4' component={IPanel4}></Route>
                         <Route path='5' component={IPanel5}></Route>
+                        <Route path='6' component={IPanel6}></Route>
+                        <Route path='7' component={IPanel7}></Route>
+                        <Route path='8' component={IPanel8}></Route>
+                        <Route path='9' component={IPanel9}></Route>
+                        <Route path='10' component={IPanel10}></Route>
+                        <Route path='11' component={IPanel11}></Route>
+                        <Route path='12' component={IPanel12}></Route>
+                        <Route path='13' component={IPanel13}></Route>
+                        <Route path='14' component={IPanel14}></Route>
                     </Route>
                     <Route path='selection-screen' component={ SelectionScreen }></Route>
                     <Route path='battle' component={Battle}></Route>

@@ -36,10 +36,8 @@ class IPanel4 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">target Gayathri floods the room with blinding incandescence. Her cells charge with</div>
-                <div className="story-text">the unstable power. Her cells remember a prehistoric anatomical structure and</div>
-                <div className="story-text">begin to approximate this forgotten vessel. It fills her with sarcastic might!</div>
-                <div className="story-text">Her skin hardens and segments into scales, she is even more resilient to the</div>
+                <div className="story-text">"Its not paradise until the bacon is done," said Pri, who had a swine</div>
+                <div className="story-text">shapped hole that no amount of hippie optimism could fill</div>
                 <audio src="/music/trex.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>

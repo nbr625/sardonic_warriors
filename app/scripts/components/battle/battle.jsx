@@ -616,13 +616,38 @@ var Battle = React.createClass({
         this.takeCourage();
     },
 
+    renderFrame: function(){
+        switch(this.state.screen){
+            case 'PlayerP':
+            case 'attackP':
+            case 'selectHT':
+            case 'selectET':
+                return <img className="golden-frame-pic" src="images/golden-frame.png"/>;
+                break;
+            default:
+        }
+
+    },
+
     render: function() {
         var props = this.props,
             state = this.state,
             firstCharacter = props.firstCharacter,
             secondCharacter = props.secondCharacter,
             thirdCharacter = props.thirdCharacter,
-            boss = props.boss;
+            boss = props.boss,
+            panelClass = '';
+
+        switch(state.screen){
+            case 'PlayerP':
+            case 'attackP':
+            case 'selectHT':
+            case 'selectET':
+                panelClass = "button-panel";
+                break;
+            default:
+                panelClass = "text-panel";
+        }
 
         return (
             <div className="battle">
@@ -762,9 +787,9 @@ var Battle = React.createClass({
                         </div>
                     </div>
                     <div>
-                        <div className="text-panel">
+                        <div className={panelClass}>
                             {this.renderPanel()}
-                            <img className="golden-frame-pic" src="images/golden-frame.png"/>
+                            {this.renderFrame()}
                         </div>
                     </div>
                     <audio src="/music/battle.mp3" autoPlay loop></audio>

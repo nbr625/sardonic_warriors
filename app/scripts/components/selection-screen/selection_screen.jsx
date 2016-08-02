@@ -36,11 +36,11 @@ class SelectionScreen extends React.Component {
     }
 
     pressEnter(e){
-        var props = this.props;
+        var props = this.props,
+            audio = new Audio('/music/select-character.mp3');
         if(e.key == 'Enter') {
-            props.selectCharacter(props.characterIndexHighlighted, props.playerHighlighted);
-            var audio = new Audio('/music/select-character.mp3');
             audio.play();
+            props.selectCharacter(props.characterIndexHighlighted, props.playerHighlighted);
         }
     }
 
@@ -50,10 +50,12 @@ class SelectionScreen extends React.Component {
             characterIndexHighlighted = props.characterIndexHighlighted,
             selectableCharSize = props.unselectedCharacters.length - 1,
             setPlayerHighlighted = props.setPlayerHighlighted,
-            setCharacterIndexHighlighted = props.setCharacterIndexHighlighted;
+            setCharacterIndexHighlighted = props.setCharacterIndexHighlighted,
+            audio = new Audio('/music/menu-selection-key.mp3');
 
         if(e.keyCode == 38) {
             e.preventDefault();
+            audio.play();
             if (playerHighlighted == 1 && characterIndexHighlighted == 0) {
                 setPlayerHighlighted(3);
                 setCharacterIndexHighlighted(selectableCharSize);
@@ -63,8 +65,6 @@ class SelectionScreen extends React.Component {
             } else {
                 setCharacterIndexHighlighted(characterIndexHighlighted - 1);
             }
-            var audio = new Audio('/music/menu-selection-key.mp3');
-            audio.play();
         }
     }
 
@@ -74,10 +74,12 @@ class SelectionScreen extends React.Component {
             characterIndexHighlighted = props.characterIndexHighlighted,
             selectableCharSize = props.unselectedCharacters.length - 1,
             setPlayerHighlighted = props.setPlayerHighlighted,
-            setCharacterIndexHighlighted = props.setCharacterIndexHighlighted;
+            setCharacterIndexHighlighted = props.setCharacterIndexHighlighted,
+            audio = new Audio('/music/menu-selection-key.mp3');
 
         if(e.keyCode == 40) {
             e.preventDefault();
+            audio.play();
             if (playerHighlighted == 3 && characterIndexHighlighted == selectableCharSize) {
                 setPlayerHighlighted(1);
                 setCharacterIndexHighlighted(0);
@@ -87,8 +89,6 @@ class SelectionScreen extends React.Component {
             } else {
                 setCharacterIndexHighlighted(characterIndexHighlighted + 1);
             }
-            var audio = new Audio('/music/menu-selection-key.mp3');
-            audio.play();
         }
     }
 
@@ -97,13 +97,14 @@ class SelectionScreen extends React.Component {
             firstCharset = props.firstCharacter.hasOwnProperty('player'),
             secondCharset = props.secondCharacter.hasOwnProperty('player'),
             thirdCharset = props.thirdCharacter.hasOwnProperty('player'),
-            all_selected =firstCharset &&  secondCharset && thirdCharset;
+            all_selected =firstCharset &&  secondCharset && thirdCharset,
+            audio = new Audio('/music/start-menu.mp3');
 
         if(e.keyCode == 32 && all_selected) {
+            e.preventDefault();
+            audio.play();
             this.context.history.pushState(null, 'battle');
             this.props.resetBoss();
-            var audio = new Audio('/music/start-menu.mp3');
-            audio.play();
         }
     }
 

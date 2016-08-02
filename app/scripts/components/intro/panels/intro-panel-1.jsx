@@ -34,10 +34,8 @@ export default class IPanel1 extends React.Component {
         return (
             <div>
                 <div>
-                    <div className="story-text">Legends talk about a place called Breakthrough, where the crew slowly filter into the building.</div>
-                    <div className="story-text">The perinially joyous David marks the day. 'Another day in Paradise', he crows. At the</div>
-                    <div className="story-text">kitchen many can be seen waiting for their turn at the coffee altar. Gayathri can be</div>
-                    <div className="story-text">spotted there, making loud, indistinguishable noises, which could be interpreted as:</div>
+                    <div className="story-text">Listen...A long time ago, before the Trump Calamity, in this building temple,</div>
+                    <div className="story-text"> stood a place called Breakthrough...</div>
                 </div>
                 <div className="story-next-button">Press Enter</div>
             </div>

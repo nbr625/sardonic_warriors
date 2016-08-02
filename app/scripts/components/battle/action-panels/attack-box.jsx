@@ -24,10 +24,11 @@ var AttackBox = React.createClass({
 
     pressEnter: function(e){
         var props = this.props,
-            attack = props.attacks[this.props.index];
-        debugger;
+            attack = props.attacks[this.props.index],
+            audio = new Audio('/music/enter-attack.mp3');
 
         if (e.key == 'Enter'){
+            audio.play();
             if(props.index == props.highlightedIndex){
                 if(attack.courageCost > props.activePlayer.courage){
                     props.screenHandler('notEC');
@@ -37,8 +38,6 @@ var AttackBox = React.createClass({
                     props.setAction(attack);
                 }
             }
-            var audio = new Audio('/music/enter-attack.mp3');
-            audio.play();
 
         }
     },

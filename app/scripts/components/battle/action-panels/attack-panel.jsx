@@ -169,9 +169,11 @@ var AttackPanel = React.createClass({
     },
 
     pressBack(e){
-        var props = this.props;
+        var props = this.props,
+            audio = new Audio('/music/back-menu-button.mp3');
+
         if(e.keyCode == 8){
-            e.preventDefault();
+            audio.play();
             props.screenHandler('PlayerP');
             props.selectedCharacterHandler(0)
         }

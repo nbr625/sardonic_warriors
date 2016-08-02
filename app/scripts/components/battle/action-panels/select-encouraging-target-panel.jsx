@@ -32,8 +32,11 @@ export default class SelectEncouragingTarget extends React.Component{
     pressEnter(e){
         var props = this.props,
             selectedCharacter = props.selectedCharacter,
-            setTarget = props.setTarget;
+            setTarget = props.setTarget,
+            audio = new Audio('/music/player-meditating.mp3');
         if(e.key == 'Enter'){
+            e.preventDefault();
+            audio.play();
             switch(selectedCharacter){
                 case 1:
                     setTarget(props.firstCharacter, true);
@@ -48,17 +51,19 @@ export default class SelectEncouragingTarget extends React.Component{
                     this.props.selectedCharacterHandler(0);
 
             }
-            var audio = new Audio('/music/player-meditating.mp3');
-            audio.play();
+
         }
     }
 
     pressUp(e){
         var props = this.props,
             selectedCharacter = props.selectedCharacter,
-            selectedCharacterHandler = props.selectedCharacterHandler;
+            selectedCharacterHandler = props.selectedCharacterHandler,
+            audio = new Audio('/music/player-meditating.mp3');
+
         if(e.keyCode == 38){
             e.preventDefault();
+            audio.play();
 
             if(selectedCharacter == 1){
                 selectedCharacterHandler(3);
@@ -72,9 +77,11 @@ export default class SelectEncouragingTarget extends React.Component{
     pressDown(e){
         var props = this.props,
             selectedCharacter = props.selectedCharacter,
-            selectedCharacterHandler = props.selectedCharacterHandler;
+            selectedCharacterHandler = props.selectedCharacterHandler,
+            audio = new Audio('/music/player-meditating.mp3');
         if(e.keyCode == 40){
             e.preventDefault();
+            audio.play();
 
             if(selectedCharacter == 3){
                 selectedCharacterHandler(1);
@@ -85,13 +92,13 @@ export default class SelectEncouragingTarget extends React.Component{
     }
 
     pressBack(e){
-        var props = this.props;
+        var props = this.props,
+            audio = new Audio('/music/back-menu-button.mp3');
         if(e.keyCode == 8){
             e.preventDefault();
+            audio.play()
             props.screenHandler('PlayerP');
             props.selectedCharacterHandler(0);
-            var audio = new Audio('/music/back-menu-button.mp3');
-            audio.play();
         }
     }
 

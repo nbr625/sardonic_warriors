@@ -14,9 +14,9 @@ class StartScreen extends React.Component {
     }
 
     pressEnterForStart(e){
+        var audio = new Audio('/music/start-menu.mp3');
         if(e.keyCode == 32){
             this.props.resetPlayers();
-            var audio = new Audio('/music/start-menu.mp3');
             audio.play();
             this.context.history.pushState(null, 'intro');
         }
@@ -35,9 +35,9 @@ class StartScreen extends React.Component {
 
         return (
             <div className="start-screen">
-                <div className="game-title">Sardonic Warriors</div>
+                <div className="game-title">Would you like me to tell you a story?</div>
                 <div className="btn btn-success"><h1>Press Space</h1></div>
-                <audio src="/music/dubstep-intro.mp3" autoPlay loop></audio>
+                <audio src="/music/start-menu-music.mp3" autoPlay loop></audio>
             </div>
         );
     }
