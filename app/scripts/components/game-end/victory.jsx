@@ -9,12 +9,20 @@ var Victory = React.createClass({
     render: function() {
         return (
             <div className="victory-component">
-                <div className="victory-text-1">This the victory component</div>
-                <div className="victory-text-2">Victory is sweet! Our heroes were successful!</div>
-                <div className="victory-text-3">{this.props.firstCharacter.endGameSummary}</div>
-                <div className="victory-text-4">{this.props.secondCharacter.endGameSummary}</div>
-                <div className="victory-text-4">{this.props.secondCharacter.endGameSummary}</div>
-                <audio src="/music/intro-music.mp3" autoPlay loop></audio>
+                <div className="victory-text">This the victory component</div>
+                <div className="victory-text">The great foe fell, firstChar, secondChar and thirdCharacter became the heroes for the day.</div>
+                <div className="victory-text">Nico and Steve bragged about how much better they could have done the job</div>
+                <div className="victory-text">Gayathri was taken to the server room so that she could have a polyphasic nap. When she rose, she felt much better</div>
+                <div className="victory-text">{this.props.firstCharacter.endGameSummary}</div>
+                <div className="victory-text">{this.props.secondCharacter.endGameSummary}</div>
+                <div className="victory-text">{this.props.secondCharacter.endGameSummary}</div>
+                <div className="victory-text">Special thanks to:</div>
+                <div className="victory-text">Steve, Pri and Gayathri</div>
+                <div className="victory-text">Roman for consultation</div>
+                <div className="victory-text">Olga for pointers on Refactoring</div>
+                <div className="victory-text">And Everyone in Breakthrough for showing me their colors.</div>
+                <div className="victory-text">Thank you for this experience</div>
+                <audio src="/music/victory-music.mp3" autoPlay loop></audio>
             </div>
 
         );
