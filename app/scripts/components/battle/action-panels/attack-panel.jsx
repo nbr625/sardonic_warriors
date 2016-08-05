@@ -172,7 +172,7 @@ var AttackPanel = React.createClass({
         var props = this.props,
             audio = new Audio('/music/back-menu-button.mp3');
 
-        if(e.keyCode == 8){
+        if(e.keyCode == 13 || e.keyCode == 8){
             audio.play();
             props.screenHandler('PlayerP');
             props.selectedCharacterHandler(0)
@@ -196,7 +196,7 @@ var AttackPanel = React.createClass({
                 {Object.keys(attacks).map(function(key){
                     return <AttackBox key={key} index={key} attacks={attacks} highlightedIndex={state.highlightedIndex} {...props}/>;
                 })}
-                <div className={`back-button ${status}`}>Back</div>
+                <div className="back-button">Press Back</div>
             </div>
         );
     }

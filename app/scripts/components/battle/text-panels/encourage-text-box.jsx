@@ -28,11 +28,11 @@ class EncourageTextBox extends React.Component{
     }
 
     render() {
-        var text = this.props.activePlayer.name + " remind " + this.props.activeActionTarget.name + " that he will die someday. But today is not that day. " +  this.props.activeActionTarget.name + " is encouraged by this cryptic statement.";
         return (
             <div>
-                <div className="battle-text-box-text">{text}</div>
-                <div>Press Enter</div>
+                <div className="battle-text-box-text" id="healing">{this.props.activePlayer.name + " remind " + this.props.activeActionTarget.name + " that he will die someday. But today is not that day."}</div>
+                <div className="battle-text-box-text" id="healing">{this.props.activeActionTarget.name + " is encouraged by this cryptic statement."}</div>
+                <div className="text-enter-button" id="healing">Press Enter</div>
             </div>
         );
     }

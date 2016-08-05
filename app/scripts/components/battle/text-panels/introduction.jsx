@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import Battle from './../battle.jsx';
 import { History } from 'react-router';
@@ -8,21 +9,21 @@ class Introduction extends React.Component{
 
     constructor(props, context){
         super(props, context);
+        var introText = [
+            ["Gayathan Stands before the chosen heroes: " + this.props.firstCharacter.name,
+                this.props.secondCharacter.name + " and " + this.props.thirdCharacter.name],
+            ["Tho they are terrified, particularly " + this.props.secondCharacter.name + "...",
+                "They rise to the task."]];
         this.state = {
             handler: this.pressEnter.bind(this),
-            activeTextIndex: 1,
-            text: {
-                1: "Gayathan Stands before the chosen heroes: " + this.props.firstCharacter.name,
-                2: this.props.secondCharacter.name + " and " + this.props.thirdCharacter.name,
-                3: "Tho they are terrified, particularly " + this.props.secondCharacter.name + "...",
-                4: "They rise to the task." },
-            activeText: "Gayathan Stands before the chosen heroes " + this.props.firstCharacter.name
+            activeTextIndex: 0,
+            text: introText,
+            activeText: introText[0]
         };
     }
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.handler);
-
     }
 
     componentWillUnmount(){
@@ -33,7 +34,7 @@ class Introduction extends React.Component{
         var text = this.state.text,
             activeTextIndex = this.state.activeTextIndex + 1,
             size = this.props.size(text);
-        if (activeTextIndex <= size) {
+        if (activeTextIndex < size) {
             this.setState({
                 activeText: text[activeTextIndex],
                 activeTextIndex: activeTextIndex
@@ -49,11 +50,24 @@ class Introduction extends React.Component{
         }
     }
 
+    componentDidUpdate(params) {
+        var el = ReactDOM.findDOMNode(this);
+        if (this.state.activeTextIndex % 2 == 0) {
+            el.classList.remove('battle-text-box-text-0');
+            el.classList.add('battle-text-box-text-1');
+        } else {
+            el.classList.remove('battle-text-box-text-1');
+            el.classList.add('battle-text-box-text-0');
+        }
+    }
+
     render() {
+        var state = this.state;
         return (
             <div>
-                <div className="battle-text-box-text">{this.state.activeText}</div>
-                <div>Press Enter</div>
+                <div className={`battle-text-box-text-${ Math.abs(state.activeTextIndex % 2)}`}>{state.activeText[0]}</div>
+                <div className={`battle-text-box-text-${ Math.abs(state.activeTextIndex % 2)}`}>{state.activeText[1]}</div>
+                <div className="text-enter-button">Press Enter</div>
             </div>
         );
     }

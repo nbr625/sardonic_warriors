@@ -66,6 +66,7 @@ class CharacterDamageTextBox extends React.Component{
         var props = this.props,
             activeActionTarget = props.activeActionTarget,
             activePlayer = props.activePlayer,
+            player = activePlayer.name.toLowerCase(),
             text = '';
 
         switch(this.props.activeAction.type){
@@ -79,8 +80,8 @@ class CharacterDamageTextBox extends React.Component{
 
         return (
             <div>
-                <div className="battle-text-box-text">{text}</div>
-                <div>Press Enter</div>
+                <div className="battle-text-box-text" id={player}>{text}</div>
+                <div className="text-enter-button" id={player}>Press Enter</div>
                 {this.renderSound()}
                 <audio src={`/music/${activePlayer.name}-attacking.mp3`} autoPlay loop></audio>
             </div>

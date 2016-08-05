@@ -28,11 +28,11 @@ class MeditationTextBox extends React.Component{
     }
 
     render() {
-        var text = this.props.activePlayer.name + " thinks about the fact that he is statistical miracle that could end at any moment that the universal die stops rolling in his favor. The thought somehow encourages him. Weirdo.";
         return (
             <div>
-                <div className="battle-text-box-text">{text}</div>
-                <div>Press Enter</div>
+                <div className="battle-text-box-text" id="healing">{this.props.activePlayer.name + " thinks about the fact that he is statistical miracle that could end at any moment that"}</div>
+                <div className="battle-text-box-text" id="healing">{"the universal die stops rolling in his favor. The thought somehow encourages him. Weirdo."}</div>
+                <div className="text-enter-button" id="healing">Press Enter</div>
             </div>
         );
     }

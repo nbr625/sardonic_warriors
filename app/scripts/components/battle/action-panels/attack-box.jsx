@@ -65,7 +65,7 @@ var AttackBox = React.createClass({
         return (
             <div className={`btn ${attackClass} single-attack-box ${attackStatus}`}>
                 <div className="attack-title">{attackBox}</div>
-                <div className="attack-courage-cost">{attack.courageCost} Courage</div>
+                <div className="attack-courage-cost">{attack.courageCost}Courage</div>
             </div>
         );
     }

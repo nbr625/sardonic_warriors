@@ -73,7 +73,7 @@ class InitialTextBox extends React.Component{
         }
     }
     componentDidUpdate(params) {
-        let el = ReactDOM.findDOMNode(this);
+        var el = ReactDOM.findDOMNode(this);
         if (this.state.activeTextIndex % 2 == 0) {
             el.classList.remove('battle-text-box-text-0');
             el.classList.add('battle-text-box-text-1');
@@ -84,13 +84,15 @@ class InitialTextBox extends React.Component{
     }
 
     render() {
-        var state = this.state;
+        var state = this.state,
+            props = this.props,
+            player = props.activePlayer.name.toLowerCase();
 
         return (
             <div>
-                <div className={`battle-text-box-text-${ Math.abs(state.activeTextIndex % 2)}`}>{state.activeText[0]}</div>
-                <div className={`battle-text-box-text-${ Math.abs(state.activeTextIndex % 2)}`}>{state.activeText[1]}</div>
-                <div className="text-enter-button">Press Enter</div>
+                <div className={`battle-text-box-text-${ Math.abs(state.activeTextIndex % 2)}`} id={player}>{state.activeText[0]}</div>
+                <div className={`battle-text-box-text-${ Math.abs(state.activeTextIndex % 2)}`} id={player}>{state.activeText[1]}</div>
+                <div className="text-enter-button" id={player}>Press Enter</div>
             </div>
         );
     }

@@ -35,8 +35,8 @@ class NotEnoughCourage extends React.Component{
             text = activePlayer.name + " doesn\'t have anough courage for attack. Select another action";
         return (
             <div>
-                <div className="battle-text-box-text">{text}</div>
-                <div>Press Enter</div>
+                <div className="battle-text-box-text" id="not-enough">{text}</div>
+                <div className="text-enter-button" id="not-enough">Press Enter</div>
             </div>
         );
     }

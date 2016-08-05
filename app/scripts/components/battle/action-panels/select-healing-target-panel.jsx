@@ -81,7 +81,7 @@ export default class SelectHealTarget extends React.Component{
 
     pressBack(e){
         var props = this.props;
-        if(e.keyCode == 8){
+        if(e.keyCode == 8 || e.keyCode == 13){
             e.preventDefault();
             props.screenHandler('PlayerP');
             props.selectedCharacterHandler(0)
@@ -91,10 +91,27 @@ export default class SelectHealTarget extends React.Component{
 
 
     render() {
+
+        var props = this.props,
+            selectedCharacter = props.selectedCharacter,
+            playerName = "";
+
+        switch(selectedCharacter){
+            case 1:
+                playerName = props.firstCharacter.name;
+                break;
+            case 2:
+                playerName = props.secondCharacter.name;
+                break;
+            case 3:
+                playerName = props.thirdCharacter.name;
+
+        }
+
         return (
             <div>
-                <div className="select-target-text">Select Target</div>
-                <div className="back-button">Back</div>
+                <div className="select-target-text" id="healing">Target: {playerName}</div>
+                <div className="back-button" id="healing">Press Back</div>
             </div>
         );
     }

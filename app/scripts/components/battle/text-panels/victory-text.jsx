@@ -32,7 +32,7 @@ class VictoryPanel extends React.Component{
         return (
             <div>
                 <div className="battle-text-box-text">Gayathan collapses to the ground she seems to be unconcious</div>
-                <div>Press Enter</div>
+                <div className="text-enter-button">Press Enter</div>
             </div>
         );
     }

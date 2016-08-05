@@ -194,7 +194,6 @@ var PlayerPanel = React.createClass ({
                 <div className={defendClasses}>Defend</div>
                 <div className={meditateClasses}>Meditate</div>
                 <div className={encourageClasses}>Encourage</div>
-
             </div>
 
         );

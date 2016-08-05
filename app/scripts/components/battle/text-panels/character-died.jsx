@@ -33,8 +33,8 @@ class CharacterDiedPanel extends React.Component{
     render() {
         return (
             <div>
-                <div className="battle-text-box-text">{this.props.lastKilledCharacter.name} died. How sad...</div>
-                <div>Press Enter</div>
+                <div className="battle-text-box-text" id="gayathan">{props.lastKilledCharacter.name} died. How sad...</div>
+                <div className="text-enter-button" id="gayathan">Press Enter</div>
             </div>
         );
     }

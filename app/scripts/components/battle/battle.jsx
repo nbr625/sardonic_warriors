@@ -768,7 +768,7 @@ var Battle = React.createClass({
                                 size={180}
                                 fillColor="black"
                                 trackColor="black"
-                                progressColor="#b92c28">
+                                progressColor="#4cae4c">
                                 <span className="player-hp-bar-text boss-hp-bar-text">{boss.hp}/{boss.maxHp}</span>
                                 <span className="hp-label boss-hp-label">HP</span>
                             </ProgressLabel>
