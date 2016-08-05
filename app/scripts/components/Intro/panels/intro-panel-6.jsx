@@ -36,9 +36,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">Its highly negative isotopic charges hungered for a surge of positive</div>
-                <div className="story-text">energy to stabilize itself. Its static channels combed the landscape for it.</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">The Isotopic Storm needed to dump its negative charge; with invisible,</div>
+                <div className="story-text">static channels it felt the landscape for a spike of positive energy</div>
+                <audio src="/music/intro-6.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

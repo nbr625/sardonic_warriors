@@ -36,9 +36,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">'It is just so much to dance!' As though to corroborate her claim, she</div>
-                <div className="story-text">moved like a possessed marionette, unknowingly raising the positive charge.</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">'It is just so much to dance!' As though to prove her claim, she proceeded</div>
+                <div className="story-text">moved like a possessed marionette, unknowingly raising her positive charge...</div>
+                <audio src="/music/intro-8.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

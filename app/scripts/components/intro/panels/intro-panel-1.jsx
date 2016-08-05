@@ -34,8 +34,9 @@ export default class IPanel1 extends React.Component {
         return (
             <div>
                 <div>
-                    <div className="story-text">Listen...A long time ago, before the Trump Calamity, in this building temple,</div>
-                    <div className="story-text"> stood a place called Breakthrough...</div>
+                    <div className="story-text">Listen...A long time ago, before the Trump Calamity, deep in Redwoods,</div>
+                    <div className="story-text">stood a place called Breakthrough...</div>
+                    <audio src="/music/intro-1.mp3" autoPlay></audio>
                 </div>
                 <div className="story-next-button">Press Enter</div>
             </div>

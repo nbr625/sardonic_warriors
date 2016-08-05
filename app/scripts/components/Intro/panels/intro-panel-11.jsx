@@ -36,9 +36,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">Out of desperation, her body recalled a sturdier vessel, cast away long</div>
-                <div className="story-text">before history. Her fleshy human skin segmented and hardens into scales</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">Out of desperation, her DNA summoned a sturdier vessel, cast away long</div>
+                <div className="story-text">before history. Her fleshy human skin segmented and hardened into scales</div>
+                <audio src="/music/intro-11.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );
@@ -46,4 +46,5 @@ class IPanel5 extends React.Component {
 }
 
 reactMixin(IPanel5, History);
+
 export default IPanel5;

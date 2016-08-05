@@ -36,9 +36,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">Everyone tried to ignore the eldritch manifestation before them. Gayathan's</div>
-                <div className="story-text">evil eyes could not see tie-die, so Nico and Steve slipped unnoticed.</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">Gayathan's reptilian eyes could not see tie-die; Nico and Steve quickly ran</div>
+                <div className="story-text">away. Out of those less well-dressed warriors, most tried to mentally escape.</div>
+                <audio src="/music/intro-13.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

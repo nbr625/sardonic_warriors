@@ -3,11 +3,11 @@ module.exports = {
     character1:{
         name:'Roman', hp:1000, maxHp: 1000, courage: 100, maxCourage: 100, description: 'description', status: 'alive', defense: 0, class: "God", attacks: [
             {name:"Smite Her", magnitude: 10000, courageCost: 10, type: 'damaging', initialText: [
-                ["Roman opens the Cosmic Terminal",
-                "He navigates to one his most devistating attacks"],
-                ["A beam of white-hot algorithm thunders through the fabric of the time continuum",
+                ["Roman opens the Cosmic Terminal. He navigates to one his most devastating",
+                "attacks. A beam of white-hot algorithm thunders through the fabric"],
+                [" of the time continuum",
                 "Gayathan\'s an almost infinate loop of attacks iterate against her scales"]
-            ]}, {name: "Trance Music", magnitude:100, courageCost: 10, type: 'damaging', initialText:[
+            ]}, {name: "Waffle Maker", magnitude:100, courageCost: 10, type: 'damaging', initialText:[
                 ["Roman unplugs his laptop.",
                 "The rhythmic dark pulses pour forth and reach Gayathan\'s "],
                 ["Gayathan begins to dispair in the expansive space that the music creates",

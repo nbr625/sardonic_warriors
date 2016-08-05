@@ -36,9 +36,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">The storm found its target. It thundered down to Gayathri. She was struck</div>
-                <div className="story-text">instantly. The charge ran through her, making her dance truly horrifying.</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">At once, the storm found her flailing behind thin walls. An eager surge</div>
+                <div className="story-text">thundered down, demolishing all obstruction until it found its target</div>
+                <audio src="/music/intro-9.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

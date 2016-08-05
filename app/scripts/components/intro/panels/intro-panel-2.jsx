@@ -33,8 +33,9 @@ class IPanel2 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">It was a place filled with colorful characters. On such character was the</div>
-                <div className="story-text">perennially happy Steve, who could he heard passing by the hall.</div>
+                <div className="story-text">It was a place filled with colorful characters. One such character was the</div>
+                <div className="story-text">perennially happy Steve, who could he heard passing by the halls.</div>
+                <audio src="/music/intro-2.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

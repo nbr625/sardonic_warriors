@@ -36,9 +36,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">Out of those less well-dressed warriors, three reluctant heroes rose</div>
-                <div className="story-text">to the Occasion...</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">But being ignored only incited the anger of Gayathan, the Sarcastic Terror</div>
+                <div className="story-text">With no other option, Three reluctant heroes rose to the Occasion...</div>
+                <audio src="/music/intro-14.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

@@ -422,6 +422,15 @@ header
   float:left
 
 .text-panel
+  top: 491px
+  position: absolute
+  width: 807px
+  height: 156px
+  background-color: transparent
+  left: 21px
+  margin-top: 8%
+
+.button-panel
   top: 520px
   position: absolute
   width: 400px
@@ -568,11 +577,92 @@ header
   font-family: 'VT323'
   font-size: 15px
 
-
 .battle-text-box-text
-  size: 20px
+  font-size: 23px
   font-family: 'VT323'
-  padding: 10px 10px 5px 10px
+  overflow:hidden
+  white-space:nowrap
+
+.battle-text-box-text:nth-child(1)
+  -webkit-animation: typing 2s steps(30, end)
+  -moz-animation: typing 2s step(30, end)
+
+.battle-text-box-text:nth-child(2)
+  -webkit-animation: typing2 4s steps(30, end)
+  -moz-animation: typing2 4s step(30, end)
+
+.battle-text-box-text-0
+  font-size: 23px
+  font-family: 'VT323'
+  overflow:hidden
+  white-space:nowrap
+
+.battle-text-box-text-0:nth-child(1)
+  -webkit-animation: typing 2s steps(30, end)
+  -moz-animation: typing 2s step(30, end)
+
+.battle-text-box-text-0:nth-child(2)
+  -webkit-animation: typing2 4s steps(60, end)
+  -moz-animation: typing2 4s step(60, end)
+
+
+.battle-text-box-text-1
+  font-size: 23px
+  font-family: 'VT323'
+  overflow:hidden
+  white-space:nowrap
+
+.battle-text-box-text-1:nth-child(1)
+  -webkit-animation: typing 2s steps(30, end)
+  -moz-animation: typing 2s step(30, end)
+
+.battle-text-box-text-1:nth-child(2)
+  -webkit-animation: typing-battle-1 4s steps(60, end)
+  -moz-animation: typing-battle-1 4s step(60, end)
+
+
+
+.battle-text-box-text-2
+  font-size: 23px
+  font-family: 'VT323'
+  overflow:hidden
+  white-space:nowrap
+
+.battle-text-box-text-2:nth-child(1)
+  -webkit-animation: typing 2s steps(30, end)
+  -moz-animation: typing 2s step(30, end)
+
+.battle-text-box-text-2:nth-child(2)
+  -webkit-animation: typing2 4s steps(30, end)
+  -moz-animation: typing2 4s step(30, end)
+
+.battle-text-box-text-3
+  font-size: 23px
+  font-family: 'VT323'
+  overflow:hidden
+  white-space:nowrap
+
+.battle-text-box-text-3:nth-child(1)
+  -webkit-animation: typing 2s steps(30, end)
+  -moz-animation: typing 2s step(30, end)
+
+.battle-text-box-text-3:nth-child(2)
+  -webkit-animation: typing2 4s steps(30, end)
+  -moz-animation: typing2 4s step(30, end)
+
+.battle-text-box-text-4
+  font-size: 23px
+  font-family: 'VT323'
+  overflow:hidden
+  white-space:nowrap
+
+.battle-text-box-text-4:nth-child(1)
+  -webkit-animation: typing 2s steps(30, end)
+  -moz-animation: typing 2s step(30, end)
+
+.battle-text-box-text-4:nth-child(2)
+  -webkit-animation: typing2 4s steps(30, end)
+  -moz-animation: typing2 4s step(30, end)
 
 .attack-title
   font-size: 19px
@@ -602,11 +692,11 @@ header
   color: $blue
 
 #to-battle
-  color: white
-  font-size: 2em
+  color: $red;
+  font-weight: bold;
+  font-size: 3em;
   text-align: center
   font-family: 'VT323'
-  margin-top: 60px
   position: relative
 
 .sprite-walking
@@ -924,3 +1014,19 @@ header
   position:absolute
   left: 79px
 
+@-webkit-keyframes typing {
+  from { width: 0;}
+  to {width: 100%;}
+}
+@-webkit-keyframes typing2 {
+  0% { width: 0; }
+  50% { width: 0;}
+  100% { width: 100%;}
+}
+
+
+@-webkit-keyframes typing-battle-1 {
+  0% { width: 0;  }
+  50% { width: 0; }
+  100% { width: 100%; }
+}

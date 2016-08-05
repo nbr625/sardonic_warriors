@@ -34,8 +34,9 @@ class IPanel3 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">"Just another day in paradise!" said Steve, his voice ringing like the crow</div>
-                <div className="story-text">a rooster that pushed away the yesterday and soldered the reality of morning.</div>
+                <div className="story-text">"Just another day in paradise!" said Steve, as though he was a smith on a</div>
+                <div className="story-text">mission to melt away the yesterday and solder the realities of a new day.</div>
+                <audio src="/music/intro-3.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
                 <audio src="/music/thunder.mp3" autoPlay></audio>
             </div>

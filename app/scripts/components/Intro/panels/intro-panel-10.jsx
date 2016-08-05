@@ -36,9 +36,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">The room flooded with blinding incandescence. Gayathri begun to morph at</div>
-                <div className="story-text">the cellular level to contain the incredible amount of negative energy.</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">The room filled with blinding incandescence. To contain the incredible surge</div>
+                <div className="story-text">of negative energy, Gayathri's body had to morphed at the cellular level.</div>
+                <audio src="/music/intro-10.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

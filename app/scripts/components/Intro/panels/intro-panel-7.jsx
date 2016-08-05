@@ -37,8 +37,8 @@ class IPanel5 extends React.Component {
         return (
             <div>
                 <div className="story-text">'I still think that Bollywood music is the best genre of music', said</div>
-                <div className="story-text">Gayathri to a crowd that had not been talking about Bollywood at all.</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">Gayathri to a crowd that had not been talking about Bollywood, at all.</div>
+                <audio src="/music/intro-7.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

@@ -36,9 +36,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div>
-                <div className="story-text">Her mouth extended forward with jagged teeth and her pupils became malicious</div>
-                <div className="story-text">slits. Her new form stands before all the terrified, sleepy warriors</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <div className="story-text">From her mouth jagged fangs extended forward and her pupils turned into</div>
+                <div className="story-text">evil slits. Her new form towered before all the terrified, sleepy warriors</div>
+                <audio src="/music/intro-12.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

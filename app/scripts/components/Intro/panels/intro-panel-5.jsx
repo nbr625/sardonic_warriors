@@ -38,7 +38,7 @@ class IPanel5 extends React.Component {
             <div>
                 <div className="story-text">Neither of them imagined that thousands of feet above them, the human-made</div>
                 <div className="story-text">pollution and barometric pressures brewed a radioactive storm.</div>
-                <audio src="/music/trex.mp3" autoPlay></audio>
+                <audio src="/music/intro-5.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );
