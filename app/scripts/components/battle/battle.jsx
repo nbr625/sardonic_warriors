@@ -248,69 +248,69 @@ var Battle = React.createClass({
             boss.attacks = [
                 {
                     name: "Make the Snake Dance", magnitude: 100, type: 'damaging', initialText: [
-                    ["Gayathan joins her vestigial little arms together and begins to move in sinous pulses",
-                    "It becomes aparent that she is trying to recreate the snake dance from the youtube video"],
-                    ["Her new body is enormous though, and it is a poor impression.",
-                    "the "]]
-                }, {name: "Talk about parenting Methods", magnitude: 100, type: 'damaging', initialText: [
-                    [`Gayathan picks ${activeActionTarget} as the unlucky recepient of her parental advice`,
-                    "\"The best way to raise your child...\" she begins."],
-                    [`What follows is a series of the most salacious instructions that ${activeActionTarget} has ever heard`,
-                    "The bad advice jades him about parenthood in general."]]
-                }, {name: "Cackle hellishly", magnitude: 100, type: 'damaging', initialText: [
-                    ["Usually Gayathan\'s laughter has the power to petrify a small child.",
-                    "But since she has now been transformed into the earth\'s top carnivore,"]
-                    ["Her laughter sounds like the wails of all humanity",
-                    `She laughs directly at ${activeActionTarget}`],
-                    [`${activeActionTarget} is so terrified that he looses some of his will to fight.`, '']]
-                }, {name: "Take over their window sill", magnitude: 100, type: 'damaging', initialText: [
-                    ["Gayathan wants to find a comfy place to rest her tired clawed feet",
-                    `She find her favorite window sill by ${activeActionTarget}\'s desk`],
-                    [`${activeActionTarget} worries that now, instead of enjoying the quite drama of Redwood City,`,
-                    "he will have to find pleasure in Gayathan\'s nightmare enducing Dinosaur transformation"],
-                    ["The thought brings bile to the back of his throat", ""]]
+                    ["Gayathan joined her vestigial little arms together and moved in",
+                    "sinous pulses, to everyone\'s confusion It became apparent"],
+                    ["was trying to recreate the snake dance from the youtube video",
+                    "Her new body was enormous though, and it was a poor impression."]]
+                }, {name: "Talk about parenting Methods", magnitude: 150, type: 'damaging', initialText: [
+                    [`Gayathan picked ${activeActionTarget} as the unlucky recepient of`,
+                    "her parental advice \"The best way to raise your child...\" she begun."],
+                    [`She took no time dispensing the most salacious advise that ${activeActionTarget}`,
+                    "has ever heard. The bad advice jadeed him about parenthood in general."]]
+                }, {name: "Cackle hellishly", magnitude: 200, type: 'damaging', initialText: [
+                    ["Usually Gayathan\'s laughter had the power to petrify a small child.",
+                    "But since she was transformed into the earth\'s top carnivore,"],
+                    ["Her laughter sounded like the wails of all humanity being tortured",
+                    `She laughed directly at ${activeActionTarget}, who was mortified`]]
+                }, {name: "Take over their window sill", magnitude: 250, type: 'damaging', initialText: [
+                    ["Gayathan wanted to find a comfy place to rest her tired clawed feet",
+                    `She sat by window sill next to ${activeActionTarget}\'s desk`],
+                    [`${activeActionTarget}; instead of enjoying the quite drama of`,
+                    "Redwood City he was blocked by nightmare enducing Dinosaur"]]
                 }
             ];
         } else if (this.state.boss.hp > 3300) {
             boss.attacks = [
-                {name: "Insist that you watch bollywood videos", magnitude: 250, type: 'damaging', initialText: [
-                    ["Now that she is one the deadliest predators that have ever roamed the earth,",
-                    "Gayathan has the confidence to force everyone to watch her favorite Bollywood flicks with her"],
-                    [`She demands that ${activeActionTarget} bring her some popcorn or else she shall make him his snack`,
-                    `${activeActionTarget} spends his whole day popping inumerable packets of popcorn.`]]
-                }, {name: "Howl at the moon", magnitude: 100, type: 'damaging', initialText: [
-                        ["As the first member of the Moon Freaks Gayathan has special moon powers",
-                        "Her new form only amplifies this power."],
-                        ["She produces a terrible howl that summons the moon into the day sky",
-                        `The moon shoots a ray of vengeful energy directly at ${activeActionTarget}`]]
-                }, {name: "Check herself out", magnitude: 100, type: 'damaging', initialText: [
-                        ["Gayathan takes a moment to catch her reflection in the mirror",
-                        "She begins to check herself out, posing in different ways, each more ridiculous than the last"],
-                        [`${activeActionTarget} is particularly disturbed by ther disproportionate self-regard`,
-                        "The sight makes him loose some of his morale"]]
+                {name: "Insist that you watch bollywood videos", magnitude: 200, type: 'damaging', initialText: [
+                    ["Now that she was one the deadliest predators to ever roam the earth,",
+                    "Gayathan has the confidence to force someone watch a Bollywood movie"],
+                    [`${activeActionTarget} was unfortunately chosen as her victim`,
+                    `He spent many hours watching people dance insanely`]]
+                }, {name: "Howl at the moon", magnitude: 350, type: 'damaging', initialText: [
+                        ["As the first member of the Moon Freaks Gayathan had special powers",
+                        "Her new form only amplifed those mystical power."],
+                        ["She produced a terrible howl that summons the moon into the day sky",
+                        `The moon shot a ray of vengeful energy directly at ${activeActionTarget}`]]
+                }, {name: "Check herself out", magnitude: 250, type: 'damaging', initialText: [
+                        ["Gayathan took a moment to catch her reflection in the mirror",
+                        "Shamelessly,She checked herself out; she seems proud of her eldritch looks"],
+                        [`${activeActionTarget} is particularly disturbed by her disproportionate`,
+                         "self-regard. The sight made him loose some of his own self-regard"]]
                 }
             ];
 
         } else {
             boss.attacks = [
-                {name: "Smell Attack", magnitude: 250, type: 'damaging', initialText: [
-                    ["Gayathan raises her little arms up in the air",
-                    `a pungent cloud of body odor wafts directly at ${activeActionTarget}`],
-                    ["Before he can think to do otherwise, he breaths in the lethal aroma", ""]]
-                }, {name: "Word Attack", magnitude: 100, type: 'damaging', initialText: [
-                    [`Gayathan begins to talk to ${activeActionTarget} an accelerated pace`,
-                    "She doesn't seem to be saying anything coherent"],
-                    [`${activeActionTarget} begins to loose his mind to the nonesense storm`, ""]]
-                }, {name: "Insist on her masala manana", magnitude: 100, type: 'damaging', initialText: [
-                    [`Gayathan wants ${activeActionTarget} to try her masala manana,`,
-                    `${activeActionTarget} doesn\'t want to be rude, even if Gayathan is now a terrifying monster`],
-                    ["He decides to take the smallest spec of food that would be considered polite",
-                    "Upon hitting his tongue, the morsel burns his tongue to a crisp"],
-                    ["It is spicy beyond any shadow of sanity", ""]]
-                }, {name: "Harness the power of the sun", magnitude: 100, type: 'damaging', initialText: [
-                    ["Gayathan stands by the window, charging herself with Solar energy",
-                    "She behins to glow with an unnatural yellow light"],
-                    [`She looks directly at ${activeActionTarget} and shoots a with hot plasma laser at him`, ""]]
+                {name: "Smell Attack", magnitude: 350, type: 'damaging', initialText: [
+                    ["Gayathan raised her little arms up in the air",
+                    `a pungent cloud of body odor wafted directly at ${activeActionTarget}`],
+                    ["Before he could think to do otherwise, he breathed in the lethal aroma",
+                     "It made him question the sanctity of life."]]
+                }, {name: "Word Attack", magnitude: 300, type: 'damaging', initialText: [
+                    [`Gayathan talked to ${activeActionTarget} an accelerated pace.`,
+                    "She didn't say anything that could be classified as a thought"],
+                    [`${activeActionTarget} stated to loose mind to the spate of nonsense`,
+                     "He was boggled at the thought that someone really thinks this thoughts"]]
+                }, {name: "Insist on her masala manana", magnitude: 400, type: 'damaging', initialText: [
+                    [`Gayathan wanted ${activeActionTarget} to try her masala manana,`,
+                    `he didn\'t want to be rude, even if she was a terrifying monster`],
+                    ["He decided to take the smallest thimble of food. However, The dish was",
+                    "spicy beyond any shadow of sanity spicy, it burned his tongue to a crisp"]]
+                }, {name: "Harness the power of the sun", magnitude: 500, type: 'damaging', initialText: [
+                    ["Gayathan stood by the window, charging herself with Solar energy",
+                    "She glowed with a forbidding yellow hue..."],
+                    [`She looks directly at ${activeActionTarget} and roars, discharging`,
+                     "solar flames at him. He would be sunburned for days..."]]
                 }
             ]
         }
