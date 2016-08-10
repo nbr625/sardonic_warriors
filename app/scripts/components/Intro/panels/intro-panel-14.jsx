@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { History } from 'react-router';
 import reactMixin from 'react-mixin';
 
-class IPanel5 extends React.Component {
+class IPanel14 extends React.Component {
 
 
     constructor(props, context){
@@ -20,7 +20,7 @@ class IPanel5 extends React.Component {
             this.props.updateSelectableCharacters();
             var audio = new Audio('/music/page-flipping-sound-5.mp3');
             audio.play();
-            this.context.history.pushState(null, 'selection-screen');
+            this.context.history.pushState(null, 'intro/15');
         }
     }
 
@@ -35,9 +35,10 @@ class IPanel5 extends React.Component {
     render () {
 
         return (
-            <div>
-                <div className="story-text">But being ignored only incited the anger of Gayathan, the Sarcastic Terror</div>
-                <div className="story-text">With no other option, Three reluctant heroes rose to the Occasion...</div>
+            <div className="intro-panel-14">
+                <img src="/images/conference-room.jpg" className="intro-background"/>
+                <div className="story-text" id="first-line">"Have no fear!", said Nico as he stepped forward. "This is my game and I</div>
+                <div className="story-text" id="second-line">have omnipotent powers here! Fall before my might you ancient beast!" </div>
                 <audio src="/music/intro-14.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
@@ -45,5 +46,5 @@ class IPanel5 extends React.Component {
     }
 }
 
-reactMixin(IPanel5, History);
-export default IPanel5;
+reactMixin(IPanel14, History);
+export default IPanel14;

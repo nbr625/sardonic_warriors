@@ -33,9 +33,10 @@ class IPanel3 extends React.Component {
     render () {
 
         return (
-            <div>
-                <div className="story-text">"Just another day in paradise!" said Steve, as though he was a smith on a</div>
-                <div className="story-text">mission to melt away the yesterday and solder the realities of a new day.</div>
+            <div className="intro-panel-kitchen">
+                <img src="/images/kitchen.jpg" className="intro-background"/>
+                <div className="story-text" id="first-line">"Just another day in paradise!" said Steve, as though he was a smith on a</div>
+                <div className="story-text" id="second-line">mission to melt away the yesterday and solder the realities of a new day.</div>
                 <audio src="/music/intro-3.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
                 <audio src="/music/thunder.mp3" autoPlay></audio>

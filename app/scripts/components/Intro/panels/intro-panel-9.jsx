@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { History } from 'react-router';
 import reactMixin from 'react-mixin';
 
-class IPanel5 extends React.Component {
+class IPanel9 extends React.Component {
 
 
     constructor(props, context){
@@ -35,9 +35,10 @@ class IPanel5 extends React.Component {
     render () {
 
         return (
-            <div>
-                <div className="story-text">At once, the storm found her flailing behind thin walls. An eager surge</div>
-                <div className="story-text">thundered down, demolishing all obstruction until it found its target</div>
+            <div className="intro-panel-9">
+                <img src="/images/thunder-clouds.jpg" className="intro-background"/>
+                <div className="story-text" id="first-line">At once, the storm found her flailing behind thin walls. An eager surge</div>
+                <div className="story-text" id="second-line">thundered down, demolishing all obstruction until it found its target</div>
                 <audio src="/music/intro-9.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
@@ -45,5 +46,5 @@ class IPanel5 extends React.Component {
     }
 }
 
-reactMixin(IPanel5, History);
-export default IPanel5;
+reactMixin(IPanel9, History);
+export default IPanel9;

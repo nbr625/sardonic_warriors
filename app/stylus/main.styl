@@ -87,43 +87,47 @@ header
   background-color: black
   padding: 20% 0 20% 0
 
-.story-panel
-  padding: 5% 0 0 5%
-  background-color: transparent
+.intro-background
+  z-index: -2
   position: absolute
-  top: 600px
-  left: 503px
+  top: -828px
+  width: 1575px
+  left: -166px
+
+.story-panel
+  background-color: transparent
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  width: 850px
+  top: 762px
+  left: -41px
+
 
 .story-text
-  font-size: 31px
+  font-size: 32px
   color: #7d1010
   font-family: 'blzee'
+  width:100%
+  overflow:hidden
+  white-space:nowrap
+
+
+.story-text#first-line
   width:100%
   overflow:hidden
   white-space:nowrap
   -webkit-animation: typing 2s steps(30, end)
   -moz-animation: typing 2s step(30, end)
 
-.story-text:nth-child(2)
+
+.story-text#second-line
   width:100%
   overflow:hidden
   white-space:nowrap
+  margin-top: 10px
   -webkit-animation: typing2 4s steps(30, end)
   -moz-animation: typing2 4s step(30, end)
-
-.story-text:nth-child(3)
-  width:100%
-  overflow:hidden
-  white-space:nowrap
-  -webkit-animation: typing3 6s steps(30, end)
-  -moz-animation: typing3 6s step(30, end)
-.story-text:nth-child(4)
-  width:100%
-  overflow:hidden
-  white-space:nowrap
-  -webkit-animation: typing4 8s steps(30, end)
-  -moz-animation: typing4 8s step(30, end)
-
 
 .list-group
   list-style-type: none
@@ -156,16 +160,16 @@ header
   background-repeat: no-repeat
   background-size: 100%
   z-index: -1
-  width: 1975px
-  height: 373px
+  width: 2115px
+  height: 422px
   position: absolute
-  top: -58px
-  left: -513px
+  top: -59px
+  left: -603px
 
 .story-slide
   position: absolute
   top: 58px
-  left: -104px
+  left: -163px
 
 .single-selection-panel
   padding: 10px
@@ -440,10 +444,10 @@ header
   font-style: normal
   color: darkgoldenrod
   text-decoration: none !important
-  font-size: 3em
+  font-size: 55px
   position: absolute
-  left: 834px
-  top: 96px
+  left: 950px
+  top: 117px
   z-index: 2
   width: 300px
 

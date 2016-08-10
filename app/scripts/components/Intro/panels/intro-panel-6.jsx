@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { History } from 'react-router';
 import reactMixin from 'react-mixin';
 
-class IPanel5 extends React.Component {
+class IPanel6 extends React.Component {
 
 
     constructor(props, context){
@@ -35,9 +35,10 @@ class IPanel5 extends React.Component {
     render () {
 
         return (
-            <div>
-                <div className="story-text">The Isotopic Storm needed to dump its negative charge; with invisible,</div>
-                <div className="story-text">static channels it felt the landscape for a spike of positive energy</div>
+            <div className="intro-panel-6">
+                <img src="/images/brewing-storm.jpg" className="intro-background"/>
+                <div className="story-text" id="first-line">The Isotopic Storm needed to dump its negative charge; with invisible,</div>
+                <div className="story-text" id="second-line">static channels it felt the landscape for a spike of positive energy</div>
                 <audio src="/music/intro-6.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
@@ -45,5 +46,5 @@ class IPanel5 extends React.Component {
     }
 }
 
-reactMixin(IPanel5, History);
-export default IPanel5;
+reactMixin(IPanel6, History);
+export default IPanel6;

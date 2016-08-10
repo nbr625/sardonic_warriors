@@ -35,9 +35,10 @@ class IPanel5 extends React.Component {
     render () {
 
         return (
-            <div>
-                <div className="story-text">Neither of them imagined that thousands of feet above them, the human-made</div>
-                <div className="story-text">pollution and barometric pressures brewed a radioactive storm.</div>
+            <div className="intro-panel-5">
+                <img src="/images/brewing-storm.jpg" className="intro-background"/>
+                <div className="story-text" id="first-line">Neither of them imagined that thousands of feet above them, the human-made</div>
+                <div className="story-text" id="second-line">pollution and barometric pressures brewed a radioactive storm.</div>
                 <audio src="/music/intro-5.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
