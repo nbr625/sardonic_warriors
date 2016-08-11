@@ -24,6 +24,11 @@ class IPanel3 extends React.Component {
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.handler);
+        var images = ["/images/thunder-clouds.png","/images/gayathan-turning-0.png", "/images/gayathan-turning.png"];
+        images.forEach((src) => {
+            const img = document.createElement('img');
+            img.src = src;
+        });
 
     }
     componentWillUnmount(){
@@ -34,12 +39,12 @@ class IPanel3 extends React.Component {
 
         return (
             <div className="intro-panel-kitchen">
-                <img src="/images/kitchen.jpg" className="intro-background"/>
+                <img src="/images/kitchen.png" className="intro-background"/>
+                <img src="/images/steve-laughing-right.png" className="intro-character-right"/>
                 <div className="story-text" id="first-line">"Just another day in paradise!" said Steve, as though he was a smith on a</div>
                 <div className="story-text" id="second-line">mission to melt away the yesterday and solder the realities of a new day.</div>
                 <audio src="/music/intro-3.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
-                <audio src="/music/thunder.mp3" autoPlay></audio>
             </div>
         );
     }

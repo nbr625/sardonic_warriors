@@ -36,7 +36,8 @@ class IPanel12 extends React.Component {
 
         return (
             <div className="intro-panel-12">
-                <img src="/images/conference-room.jpg" className="intro-background"/>
+                <img src="/images/conference-room.png" className="intro-background"/>
+                <img src="/images/gayathan-turned-2.png" className="intro-character-middle" id="gayathan-1"/>
                 <div className="story-text" id="first-line">From her mouth jagged fangs extended forward and her pupils turned into</div>
                 <div className="story-text" id="second-line">evil slits. Her new form towered over them like a huge unyielding corporation</div>
                 <audio src="/music/intro-12.mp3" autoPlay></audio>

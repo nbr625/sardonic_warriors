@@ -36,7 +36,8 @@ class IPanel8 extends React.Component {
 
         return (
             <div className="intro-panel-8">
-                <img src="/images/kitchen.jpg" className="intro-background"/>
+                <img src="/images/kitchen.png" className="intro-background"/>
+                <img src="/images/gayathan-laughing.png" className="intro-character-middle"/>
                 <div className="story-text" id="first-line">'It is just so much to dance!' As though to prove her claim, she proceeded</div>
                 <div className="story-text" id="second-line">moved like a possessed marionette, unknowingly raising her positive charge...</div>
                 <audio src="/music/intro-8.mp3" autoPlay></audio>

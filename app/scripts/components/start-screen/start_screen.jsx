@@ -24,6 +24,11 @@ class StartScreen extends React.Component {
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.handler);
+        var images = ["./images/conference-room.png", "/images/kitchen.png", "/images/steve-laughing-right.png"];
+        images.forEach((src) => {
+            const img = document.createElement('img');
+            img.src = src;
+        });
 
     }
 
@@ -36,9 +41,9 @@ class StartScreen extends React.Component {
         return (
             <div className="start-screen">
                 <div className="game-title">Would you like me to tell you a story?</div>
-                <div className="btn btn-success"><h1>Press Space</h1></div>
-                <audio src="/music/start-menu-music.mp3" autoPlay loop></audio>
-                <audio src="/music/tell-you-a-story.mp3" autoPlay></audio>
+                <div className="game-title-press-space">Press Space</div>
+                <audio id="background-music" src="/music/start-menu-music.mp3" autoPlay loop></audio>
+                <audio id="narration" src="/music/tell-you-a-story.mp3" autoPlay></audio>
             </div>
         );
     }

@@ -36,10 +36,11 @@ class IPanel16 extends React.Component {
 
         return (
             <div className="intro-panel-13">
-                <img src="/images/conference-room.jpg" className="intro-background"/>
-                <div className="story-text" id="first-line">After that, most of the office was truly terrified. Even still, three</div>
-                <div className="story-text" id="second-line">reluctant heroes rose from the panicking group</div>
-                <audio src="/music/intro-13.mp3" autoPlay></audio>
+                <img src="/images/conference-room.png" className="intro-background"/>
+                <img src="/images/gayathan-turned-2.png" className="intro-character-middle" id="gayathan-1"/>
+                <div className="story-text" id="first-line">After that, Gayathan destroyed Breakthrough... I have waited since</div>
+                <div className="story-text" id="second-line">for someone to rewrite the scrolls of time. Are you the one?</div>
+                <audio src="/music/intro-16.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );

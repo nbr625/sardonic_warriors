@@ -36,7 +36,8 @@ class IPanel11 extends React.Component {
 
         return (
             <div className="intro-panel-11">
-                <img src="/images/conference-room.jpg" className="intro-background"/>
+                <img src="/images/conference-room.png" className="intro-background"/>
+                <img src="/images/gayathan-turning.png" className="intro-character-middle"/>
                 <div className="story-text" id="first-line">Out of desperation, her DNA summoned a sturdier vessel, cast away long</div>
                 <div className="story-text" id="second-line">before history. Her fleshy human skin segmented and hardened into scales</div>
                 <audio src="/music/intro-11.mp3" autoPlay></audio>

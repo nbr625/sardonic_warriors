@@ -36,10 +36,12 @@ class IPanel15 extends React.Component {
 
         return (
             <div className="intro-panel-14">
-                <img src="/images/conference-room.jpg" className="intro-background"/>
-                <div className="story-text" id="first-line">The beast surprised him by breathing fire and roasting him. He was forced</div>
-                <div className="story-text" id="second-line">to enter enter an emergency nap, rendering him out of action.</div>
-                <audio src="/music/intro-14.mp3" autoPlay></audio>
+                <img src="/images/conference-room.png" className="intro-background"/>
+                <img src="/images/gayathan-turned-1-cut.png" className="intro-character-middle" id="gayathan-2"/>
+                <div className="story-text" id="first-line">But the beast surprised him by breathing fire and roasting him. He was</div>
+                <div className="story-text" id="second-line">forced to enter enter an emergency nap, rendering him out of action.</div>
+                <audio src="/music/intro-15.mp3" autoPlay></audio>
+                <audio src="/music/trex.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>
         );e

@@ -26,6 +26,11 @@ class IPanel5 extends React.Component {
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.handler);
+        var images = ["/images/story-pri-scared.png", "/images/steve-terrified-left.png"];
+        images.forEach((src) => {
+            const img = document.createElement('img');
+            img.src = src;
+        });
 
     }
     componentWillUnmount(){
@@ -36,9 +41,9 @@ class IPanel5 extends React.Component {
 
         return (
             <div className="intro-panel-5">
-                <img src="/images/brewing-storm.jpg" className="intro-background"/>
-                <div className="story-text" id="first-line">Neither of them imagined that thousands of feet above them, the human-made</div>
-                <div className="story-text" id="second-line">pollution and barometric pressures brewed a radioactive storm.</div>
+                <img src="/images/brewing-storm.png" className="intro-background"/>
+                <div className="story-text" id="first-line">Neither of them imagined that thousands of feet above them, the human</div>
+                <div className="story-text" id="second-line">made pollution and barometric pressures brewed a radioactive storm.</div>
                 <audio src="/music/intro-5.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>

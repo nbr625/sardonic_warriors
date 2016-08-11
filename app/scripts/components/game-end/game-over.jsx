@@ -27,11 +27,11 @@ var GameOver = React.createClass({
     highLightButton: function(e){
         var state = this.state,
             highlightedIndex = state.highlightedIndex,
-            leftKey = 37, rightKey = 39;
+            upKey = 38, downKey = 40;
 
         switch (e.keyCode){
-            case leftKey:
-            case rightKey:
+            case upKey:
+            case downKey:
                 e.preventDefault();
                 if(highlightedIndex == 0){
                     this.setState ({
@@ -63,20 +63,23 @@ var GameOver = React.createClass({
             highlightedIndex = this.state.highlightedIndex;
 
         if(highlightedIndex == 0){
-            selectionState = 'highlighted';
-            mainScreenState = 'non-highlighted';
+            selectionState = 'highlighted-game-over';
+            mainScreenState = 'non-highlited';
         } else if(highlightedIndex == 1) {
             selectionState = 'non-highlited';
-            mainScreenState = 'highlighted';
+            mainScreenState = 'highlighted-game-over';
         }
 
         return (
-            <div className="game-over game-over-component">
-                <div className="game-over game-over-title">Game Over</div>
-                <div className="game-over failed-breakthrough-warriors">You have failed the Breakthrough Warriors</div>
-                <div className="game-over play-again">Would you like to attempt it again?</div>
-                <div className={`game-over btn btn-danger selection-screen-route ${selectionState}`}>Selection Screen</div>
-                <div className={`game-over btn btn-danger main-screen-route ${mainScreenState}`}>Main Screen</div>
+            <div className="game-over-component">
+                <img src="/images/partchment-horizontal-background.png" className="game-over-background"/>
+                <div className="game-over-screen-text">
+                    <div className="game-over-title">Game Over</div>
+                    <div className="failed-breakthrough-warriors">You have failed the Breakthrough Warriors</div>
+                    <div className="play-again">Would you like to attempt it again?</div>
+                    <div className={`selection-screen-route ${selectionState}`}>Selection Screen</div>
+                    <div className={`main-screen-route ${mainScreenState}`}>Main Screen</div>
+                </div>
                 <audio src="/music/intro-music.mp3" autoPlay loop></audio>
             </div>
 

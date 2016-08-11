@@ -23,8 +23,14 @@ export default class IPanel1 extends React.Component {
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.handler);
+        var images = ["/images/snackbar.png", "/images/intro-pri-talking-left.png"];
+        images.forEach((src) => {
+            const img = document.createElement('img');
+            img.src = src;
+        });
 
     }
+
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.handler);
     }
@@ -34,7 +40,7 @@ export default class IPanel1 extends React.Component {
         return (
             <div >
                 <div>
-                    <img src="/images/conference-room.jpg" className="intro-background"/>
+                    <img src="/images/conference-room.png" className="intro-background"/>
                     <div className="story-text" id="first-line">Listen...A long time ago, before the Trump Calamity, deep in Redwoods,</div>
                     <div className="story-text" id="second-line">stood a place called Breakthrough...</div>
                     <audio src="/music/intro-1.mp3" autoPlay></audio>

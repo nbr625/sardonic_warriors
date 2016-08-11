@@ -75,17 +75,52 @@ header
 
 
 .game-title
-  font-size: 5em
-  margin: 0 0 0 13%
-  width: 75%
+  font-size: 97px
+  width: 1046px
   text-align: center
   font-family: 'VeniceClassic'
-  color: white
-  padding: 0 0 15% 0
+  color: #26c526
+  position: relative
+  top: -398px
+
+.game-title-press-space
+  font-size: 66px
+  width: 393px
+  text-align: center
+  font-family: 'VeniceClassic'
+  color: #ffffff
+  position: relative
+  top: -376px
+  left: 316px
 
 .start-screen
-  background-color: black
+  background-image: url("../images/start-screen.jpg")
+  background-size: cover
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  width: 1089px
   padding: 20% 0 20% 0
+
+.intro-background-filter
+  background-image: url("../images/partchment-filter.png")
+  background-size:cover
+  z-index: -2
+  position: absolute
+  top: -828px
+  width: 1575px
+  height: 1034px
+  left: -329px
+  opacity: 1
+
+.game-over-background
+  z-index: 0;
+  position: absolute;
+  top: 13px;
+  width: 1575px;
+  height: 554px;
+  left: 160px;
+  opacity: 1;
 
 .intro-background
   z-index: -2
@@ -93,6 +128,56 @@ header
   top: -828px
   width: 1575px
   left: -166px
+  opacity: 0.5
+
+
+.intro-character-left
+  position: absolute;
+  top: -903px;
+  left: -211px;
+  width: 717px;
+  z-index: -1;
+
+
+.intro-character-right
+  position: absolute;
+  top: -903px;
+  left: 713px;
+  width: 717px;
+  z-index: -1;
+
+.intro-character-middle
+  position: absolute
+  top: -903px
+  left: 270px
+  width: 717px
+  z-index: -1
+
+.intro-character-middle#gayathan-1
+  top: -886px
+  width: 1100px
+
+.intro-character-middle#gayathan-2
+  top: -875px
+  width: 1664px
+  left: -996px
+
+.intro-character-left#gayathan-1
+  top: -886px
+  left: -161px;
+  width: 1100px
+
+
+.intro-character-right#first
+  top: -839px;
+  left: 830px;
+  width: 636px;
+
+.intro-character-right#second
+  top: -839px;
+  left: 527px;
+  width: 636px;
+
 
 .story-panel
   background-color: transparent
@@ -159,7 +244,6 @@ header
 .story-partchment-image
   background-repeat: no-repeat
   background-size: 100%
-  z-index: -1
   width: 2115px
   height: 422px
   position: absolute
@@ -950,13 +1034,27 @@ header
   margin-left: auto
   margin-right: auto
 
-.game-over
-  color: white
-  font-size: 1.5em
+.game-over-screen-text
+  position: relative
+  font-size: 36px
+  top: 91px
+  left: -5px
+  text-align: center
+  color: $red
   font-family: 'blzee'
 
-.game-over.highlighted
-  background-color: $green
+.selection-screen-route
+  color:white
+  margin-top: 29px
+
+.selection-screen-route.highlighted-game-over
+  color:$green
+
+.main-screen-route
+  color:white
+
+.main-screen-route.highlighted-game-over
+  color:$green
 
 
 .btn-danger.selection-screen-route
@@ -966,6 +1064,30 @@ header
 .btn-danger.main-screen-route
   position:absolute
   left: 79px
+
+.victory-component
+  width: 1063px
+  margin-left: auto
+  margin-right: auto
+  position: relative
+  left: -57px
+
+.victory-background
+  z-index:-2
+  height: 3000px
+  width: 1208px
+
+.victory-text
+  z-index: 1
+  color: $red
+  font-size: 30px
+  font-family: 'blzee'
+  position: relative
+  top: -2809px
+  left: 288px
+  width: 639px
+  margin-bottom: 199px
+  text-align: center
 
 @-webkit-keyframes typing {
   from { width: 0;}
