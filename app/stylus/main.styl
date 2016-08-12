@@ -92,6 +92,13 @@ header
   position: relative
   top: -376px
   left: 316px
+  animation: game-title-press-pulse 1.2s steps(2) infinite
+
+@-webkit-keyframes game-title-press-pulse {
+  from { font-size: 66px;}
+  to {font-size: 70px;}
+}
+
 
 .start-screen
   background-image: url("../images/start-screen.jpg")
@@ -526,7 +533,7 @@ header
   font-family: 'VeniceClassic'
   font-weight: normal
   font-style: normal
-  color: darkgoldenrod
+  color: #7d1010
   text-decoration: none !important
   font-size: 55px
   position: absolute
@@ -534,6 +541,21 @@ header
   top: 117px
   z-index: 2
   width: 300px
+  animation: story-next-button-show 3.5s steps(1) forwards, story-next-button-pulse 1.2s steps(2) infinite
+
+@-webkit-keyframes story-next-button-show {
+  0% { color: transparent}
+  66% { color: transparent}
+  100% { color: #7d1010}
+}
+
+@-webkit-keyframes story-next-button-pulse {
+  from { font-size: 55px;}
+  to {
+    font-size: 58px;
+    left: 945px
+  }
+}
 
 .story-next-button:hover
   color: darkgoldenrod
@@ -717,13 +739,25 @@ header
   font-weight: normal
   font-style: normal
   text-decoration: none !important
-  font-size: 59px
+  font-size: 51px
   position: absolute
   padding-left: 10px
   width: 400px
   top: 75px
   left: 514px
   color: #296b29
+  animation: battle-enter-button-show 2s steps(1) forwards, battle-enter-button-pulse 1.2s steps(2) infinite
+
+@-webkit-keyframes battle-enter-button-show {
+  0% { color: transparent}
+  66% { color: transparent}
+  100% { color: #296b29}
+}
+
+@-webkit-keyframes battle-enter-button-pulse {
+  from {font-size: 51px;}
+  to {font-size: 53px;}
+}
 
 #gayathan
   color: $red
@@ -740,10 +774,16 @@ header
 #to-battle
   color: $red;
   font-weight: bold;
-  font-size: 3em;
+  font-size: 48px;
   text-align: center
   font-family: 'blzee'
   position: relative
+  animation: to-battle-enter-button-pulse 1.2s steps(2) infinite
+
+@-webkit-keyframes to-battle-enter-button-pulse {
+  from {font-size: 48px;}
+  to {font-size: 50px;}
+}
 
 .sprite-walking
    width: 64px
@@ -1075,11 +1115,25 @@ header
   left: 79px
 
 .victory-component
-  width: 1063px
+  width: 1189px
+  height: 864px
   margin-left: auto
   margin-right: auto
   position: relative
-  left: -57px
+  left: -19px
+  overflow: hidden
+
+.victory-partchment
+  position: relative
+  top: 525px
+  animation: scroll-up 40.0s steps(4866) forwards
+
+@-webkit-keyframes scroll-up {
+  from { top: 525px;}
+  to {top: -4341px;}
+}
+
+
 
 .victory-background
   z-index:-2

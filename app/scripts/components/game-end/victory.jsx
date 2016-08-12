@@ -9,23 +9,25 @@ var Victory = React.createClass({
     render: function() {
         return (
             <div className="victory-component">
-                <img src="/images/old-partchment-background.png" className="victory-background"/>
-                <div>
-                    <div className="victory-text">This the victory component</div>
-                    <div className="victory-text">The great foe fell, firstChar, secondChar and thirdCharacter became the heroes for the day.</div>
-                    <div className="victory-text">Nico and Steve bragged about how much better they could have done the job</div>
-                    <div className="victory-text">Gayathri was taken to the server room so that she could have a polyphasic nap. When she rose, she felt much better</div>
-                    <div className="victory-text">{this.props.firstCharacter.endGameSummary}</div>
-                    <div className="victory-text">{this.props.secondCharacter.endGameSummary}</div>
-                    <div className="victory-text">{this.props.secondCharacter.endGameSummary}</div>
-                    <div className="victory-text">Special thanks to:</div>
-                    <div className="victory-text">Steve, Pri and Gayathri</div>
-                    <div className="victory-text">Roman for consultation</div>
-                    <div className="victory-text">Olga for pointers on Refactoring</div>
-                    <div className="victory-text">And Everyone in Breakthrough for showing me their colors.</div>
-                    <div className="victory-text">Thank you for this experience</div>
+                <div className="victory-partchment">
+                    <img src="/images/old-partchment-background.png" className="victory-background"/>
+                    <div>
+                        <div className="victory-text">This the victory component</div>
+                        <div className="victory-text">The great foe fell, firstChar, secondChar and thirdCharacter became the heroes for the day.</div>
+                        <div className="victory-text">Nico and Steve bragged about how much better they could have done the job</div>
+                        <div className="victory-text">Gayathri was taken to the server room so that she could have a polyphasic nap. When she rose, she felt much better</div>
+                        <div className="victory-text">{this.props.firstCharacter.endGameSummary}</div>
+                        <div className="victory-text">{this.props.secondCharacter.endGameSummary}</div>
+                        <div className="victory-text">{this.props.secondCharacter.endGameSummary}</div>
+                        <div className="victory-text">Special thanks to:</div>
+                        <div className="victory-text">Steve, Pri and Gayathri</div>
+                        <div className="victory-text">Roman for consultation</div>
+                        <div className="victory-text">Olga for pointers on Refactoring</div>
+                        <div className="victory-text">And Everyone in Breakthrough for showing me their colors.</div>
+                        <div className="victory-text">Thank you for this experience</div>
+                    </div>
+                    <audio src="/music/victory-music.mp3" autoPlay loop></audio>
                 </div>
-                <audio src="/music/victory-music.mp3" autoPlay loop></audio>
             </div>
 
         );
