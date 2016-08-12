@@ -24,12 +24,6 @@ class IPanel3 extends React.Component {
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.handler);
-        var images = ["/images/thunder-clouds.png","/images/gayathan-turning-0.png", "/images/gayathan-turning.png"];
-        images.forEach((src) => {
-            const img = document.createElement('img');
-            img.src = src;
-        });
-
     }
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.handler);

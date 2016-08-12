@@ -23,12 +23,6 @@ export default class IPanel1 extends React.Component {
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.handler);
-        var images = ["/images/snackbar.png", "/images/intro-pri-talking-left.png"];
-        images.forEach((src) => {
-            const img = document.createElement('img');
-            img.src = src;
-        });
-
     }
 
     componentWillUnmount(){
@@ -44,6 +38,10 @@ export default class IPanel1 extends React.Component {
                     <div className="story-text" id="first-line">Listen...A long time ago, before the Trump Calamity, deep in Redwoods,</div>
                     <div className="story-text" id="second-line">stood a place called Breakthrough...</div>
                     <audio src="/music/intro-1.mp3" autoPlay></audio>
+                    <div className="hidden-image">
+                        <img src="/images/snackbar.png"/>
+                        <img src="/images/intro-pri-talking-left.png"/>
+                    </div>
                 </div>
                 <div className="story-next-button">Press Enter</div>
             </div>

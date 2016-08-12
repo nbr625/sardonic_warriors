@@ -26,12 +26,6 @@ class IPanel4 extends React.Component {
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.handler);
-        var images = ["/images/gayathan-turned-2.png", "/images/gayathan-turned-1-cut.png"];
-        images.forEach((src) => {
-            const img = document.createElement('img');
-            img.src = src;
-        });
-
     }
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.handler);
