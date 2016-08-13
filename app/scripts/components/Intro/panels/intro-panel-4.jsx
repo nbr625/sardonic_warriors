@@ -35,9 +35,9 @@ class IPanel4 extends React.Component {
 
         return (
             <div>
-                <img src="/images/snackbar.png" className="intro-background"/>
-                <img src="/images/steve-laughing-right.png" className="intro-character-left"/>
-                <img src="/images/intro-pri-talking-left.png" className="intro-character-right"/>
+                <img src="/images/snackbar.png" className="background-fade-in"/>
+                <img src="/images/steve-laughing-right.png" className="intro-character-left introduced-character"/>
+                <img src="/images/intro-pri-talking-left.png" className="intro-character-right character-being-introduced"/>
                 <div className="story-text" id="first-line">"Its not paradise until the bacon is done," countered Pri, who had a breach</div>
                 <div className="story-text" id="second-line">his soul that could only be covered with processed animal fat</div>
                 <audio src="/music/intro-4.mp3" autoPlay></audio>

@@ -135,8 +135,22 @@ header
   top: -828px
   width: 1575px
   left: -166px
-  opacity: 0.5
+  opacity: 0.45
 
+.background-fade-in
+  z-index: -2
+  position: absolute
+  top: -828px
+  width: 1575px
+  left: -166px
+  opacity: 0
+  animation: background-fade-in 4s forwards
+
+@-webkit-keyframes background-fade-in {
+  0% { opacity: 0}
+  50% { opacity: 0.55}
+  100% {opacity: 0.45;}
+}
 
 .intro-character-left
   position: absolute;
@@ -159,6 +173,20 @@ header
   left: 270px
   width: 717px
   z-index: -1
+
+.character-being-introduced
+  opacity: 0
+  animation: character-fade-in 4s forwards
+
+@-webkit-keyframes character-fade-in {
+  0% { opacity: 0}
+  50% { opacity: 0.95}
+  100% {opacity: 0.85;}
+}
+
+.introduced-character
+  opacity: 0.85
+
 
 .intro-character-middle#gayathan-1
   top: -886px

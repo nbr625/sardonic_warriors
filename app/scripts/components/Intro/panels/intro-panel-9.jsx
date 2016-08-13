@@ -36,7 +36,7 @@ class IPanel9 extends React.Component {
 
         return (
             <div className="intro-panel-9">
-                <img src="/images/thunder-clouds.png" className="intro-background"/>
+                <img src="/images/thunder-clouds.png" className="background-fade-in"/>
                 <div className="story-text" id="first-line">At once, the storm found her flailing behind thin walls. An eager surge</div>
                 <div className="story-text" id="second-line">thundered down, demolishing all obstruction until it found its target</div>
                 <audio src="/music/intro-9.mp3" autoPlay></audio>

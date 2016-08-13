@@ -37,7 +37,7 @@ class IPanel7 extends React.Component {
         return (
             <div className="intro-panel-7">
                 <img src="/images/kitchen.png" className="intro-background"/>
-                <img src="/images/gayathri-talking-1.png" className="intro-character-middle"/>
+                <img src="/images/gayathri-talking-1.png" className="intro-character-middle character-being-introduced"/>
                 <div className="story-text" id="first-line">'I still think that Bollywood music is the best genre of music', said</div>
                 <div className="story-text" id="second-line">Gayathri to a crowd that had not been talking about Bollywood, at all.</div>
                 <audio src="/music/intro-7.mp3" autoPlay></audio>

@@ -37,9 +37,9 @@ class IPanel13 extends React.Component {
         return (
             <div className="intro-panel-13">
                 <img src="/images/conference-room.png" className="intro-background"/>
-                <img src="/images/gayathan-turned-1-cut.png" className="intro-character-middle" id="gayathan-2"/>
-                <img src="/images/story-pri-scared.png" className="intro-character-right" id="first"/>
-                <img src="/images/steve-terrified-left.png" className="intro-character-right" id="second"/>
+                <img src="/images/gayathan-turned-1-cut.png" className="intro-character-middle character-being-introduced" id="gayathan-2"/>
+                <img src="/images/story-pri-scared.png" className="intro-character-right character-being-introduced" id="first"/>
+                <img src="/images/steve-terrified-left.png" className="intro-character-right character-being-introduced" id="second"/>
                 <div className="story-text" id="first-line">Like a heavy handed metaphor for an older, larger company,</div>
                 <div className="story-text" id="second-line">she sought to consume Breakthrough and destroy its unique agile culture</div>
                 <audio src="/music/intro-13.mp3" autoPlay></audio>

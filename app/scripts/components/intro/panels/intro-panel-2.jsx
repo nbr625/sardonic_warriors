@@ -34,7 +34,7 @@ class IPanel2 extends React.Component {
         return (
             <div>
                 <img src="/images/conference-room.png" className="intro-background"/>
-                <img src="/images/steve-laughing-right.png" className="intro-character-left"/>
+                <img src="/images/steve-laughing-right.png" className="intro-character-left character-being-introduced"/>
                 <div className="story-text" id="first-line">It was a place filled with colorful characters. One such character was the</div>
                 <div className="story-text" id="second-line">perennially happy Steve, who could he heard passing by the halls.</div>
                 <audio src="/music/intro-2.mp3" autoPlay></audio>

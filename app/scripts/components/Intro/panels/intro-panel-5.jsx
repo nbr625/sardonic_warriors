@@ -35,7 +35,7 @@ class IPanel5 extends React.Component {
 
         return (
             <div className="intro-panel-5">
-                <img src="/images/brewing-storm.png" className="intro-background"/>
+                <img src="/images/brewing-storm.png" className="background-fade-in"/>
                 <div className="story-text" id="first-line">Neither of them imagined that thousands of feet above them, the human</div>
                 <div className="story-text" id="second-line">made pollution and barometric pressures brewed a radioactive storm.</div>
                 <audio src="/music/intro-5.mp3" autoPlay></audio>
