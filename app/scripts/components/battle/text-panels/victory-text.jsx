@@ -33,6 +33,7 @@ class VictoryPanel extends React.Component{
             <div>
                 <div className="battle-text-box-text">Gayathan collapses to the ground she seems to be unconcious</div>
                 <div className="text-enter-button">Press Enter</div>
+                <audio src="/music/victory-chime.mp3" autoPlay loop></audio>
             </div>
         );
     }

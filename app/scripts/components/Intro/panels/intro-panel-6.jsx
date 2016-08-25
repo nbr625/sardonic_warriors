@@ -37,7 +37,7 @@ class IPanel6 extends React.Component {
         return (
             <div className="intro-panel-6">
                 <img src="/images/brewing-storm.png" className="intro-background"/>
-                <div className="story-text" id="first-line">The Isotopic Storm needed to dump its negative charge; with invisible,</div>
+                <div className="story-text" id="first-line">The Isotopic storm needed to dump its negative charge; with invisible,</div>
                 <div className="story-text" id="second-line">static channels it felt the landscape for a spike of positive energy</div>
                 <audio src="/music/intro-6.mp3" autoPlay></audio>
                 <audio src="/music/thunder.mp3" autoPlay></audio>

@@ -68,7 +68,7 @@ class PlayerSprite extends React.Component{
             playerClass = `standing-character standing-${playerString}`
         }
 
-        return <div style={playerStyle} className={playerClass}></div>;
+        return <div id={playerString} style={playerStyle} className={playerClass}></div>;
     }
 
     render() {

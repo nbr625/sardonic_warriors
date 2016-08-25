@@ -80,7 +80,7 @@ class CharacterDamageTextBox extends React.Component{
 
         return (
             <div>
-                <div className="battle-text-box-text" id={player}>{text}</div>
+                <div className="character-damage-text-box-text" id={player}>{text}</div>
                 <div className="text-enter-button" id={player}>Press Enter</div>
                 {this.renderSound()}
                 <audio src={`/music/${activePlayer.name}-attacking.mp3`} autoPlay loop></audio>

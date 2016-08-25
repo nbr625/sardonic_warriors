@@ -24,8 +24,17 @@ var Victory = React.createClass({
                         <div className="victory-text">Roman for consultation</div>
                         <div className="victory-text">Olga for pointers on Refactoring</div>
                         <div className="victory-text">And Everyone in Breakthrough for showing me their colors.</div>
-                        <div className="victory-text">Thank you for this experience</div>
+                        <div className="victory-text">Thank you</div>
+                        <div src="/images/roman_attacking.png" className="victory-roman"></div>
+                        <div src="/images/pri_selected.png" className="victory-pri"></div>
+                        <div src="/images/ph_walking.png" className="victory-ph"></div>
+                        <div src="/images/murat_attacking.png" className="victory-murat"></div>
+                        <div src="/images/bryan_attacking.png" className="victory-bryan"></div>
+                        <div src="/images/andy_walking.png" className="victory-andy"></div>
+                        <div src="/images/andrew_selected.png" className="victory-andrew"></div>
+                        <div src="/images/oleg_attacking.png" className="victory-oleg"></div>
                     </div>
+                    <div className="the-end">The End</div>
                     <audio src="/music/victory-music.mp3" autoPlay loop></audio>
                 </div>
             </div>

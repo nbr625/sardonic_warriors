@@ -780,7 +780,7 @@ var Battle = React.createClass({
 
                         <PlayerSpritePanel {...state} />
 
-                        <div><img className="table" src={"/images/battle_background.png"}/></div>
+                        <div><img className="table" src={"/images/battle_background_final.png"}/></div>
 
                         <div className="boss-sprite">
                             <BossSprite {...state}/>

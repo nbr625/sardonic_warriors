@@ -80,7 +80,7 @@ var GameOver = React.createClass({
                     <div className={`selection-screen-route ${selectionState}`}>Selection Screen</div>
                     <div className={`main-screen-route ${mainScreenState}`}>Main Screen</div>
                 </div>
-                <audio src="/music/intro-music.mp3" autoPlay loop></audio>
+                <audio src="/music/game-over-music.mp3" autoPlay loop></audio>
             </div>
 
         );
