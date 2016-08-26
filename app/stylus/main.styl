@@ -1414,7 +1414,7 @@ header
 
 .victory-background
   z-index:-2
-  height: 4403px
+  height: 2671px;
   width: 1208px
 
 .victory-text
@@ -1423,7 +1423,7 @@ header
   font-size: 30px
   font-family: 'blzee'
   position: relative
-  top: -4098px
+  top: -2410px
   left: 288px
   width: 639px
   margin-bottom: 199px
@@ -1436,8 +1436,8 @@ header
   width: 64px
   height: 64px
   position: absolute
-  left: 575px
-  top: 2118px
+  left: 559px
+  top: 2060px
   animation: roman-victory 1.0s steps(6) infinite
 
 @-webkit-keyframes roman-victory {
@@ -1453,7 +1453,7 @@ header
   height: 64px
   position: absolute
   left: 559px
-  top: 415px
+  top: 382px
   animation: bryan-victory 1.0s steps(6) infinite
 
 @-webkit-keyframes bryan-victory {
@@ -1468,8 +1468,8 @@ header
   width: 64px
   height: 64px
   position: absolute
-  left: 246px;
-  top: 748px;
+  left: 550px
+  top: 992px
   animation: oleg-victory 1.0s steps(6) infinite
 
 @-webkit-keyframes oleg-victory {
@@ -1486,7 +1486,7 @@ header
   height: 64px
   position: absolute
   left: 566px
-  top: 1627px
+  top: 1582px
   animation: murat-victory 1.0s steps(6) infinite
 
 @-webkit-keyframes murat-victory {
@@ -1497,18 +1497,42 @@ header
 .victory-ph
   width: 64px
   height: 64px
-  animation: walk-east 1.0s steps(9) infinite
+  position: absolute
+  left: 566px
+  top: 1317px
+  background-image: url('../images/ph_walking.png')
+  background-position: 0
+  animation: ph-walk-east 1.0s steps(9) infinite
 
-@keyframes walk-east
+@keyframes ph-walk-east
   from {background-position: 0}
   to {background-position: -576px}
 
-.victory-ph
+.victory-pri
   width: 64px
   height: 64px
-  animation: walk-east 1.0s steps(9) infinite
+  position:absolute
+  left: 566px
+  top: 1816px
+  background-image: url('../images/pri_walking.png')
+  background-position: 0
+  animation: pri-walking 1.0s steps(9) infinite
 
-@keyframes walk-east
+@keyframes pri-walking
+  from {background-position: 0}
+  to {background-position: -576px}
+
+.victory-andy
+  width: 64px
+  height: 64px
+  position:absolute
+  left: 553px
+  top: 700px
+  background-image: url('../images/andy_walking.png')
+  background-position: 0
+  animation: andy-walking 1.0s steps(9) infinite
+
+@keyframes andy-walking
   from {background-position: 0}
   to {background-position: -576px}
 
