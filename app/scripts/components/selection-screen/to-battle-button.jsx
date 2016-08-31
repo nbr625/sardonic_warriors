@@ -22,8 +22,14 @@ export default class ToBattleButton extends React.Component {
                 {props.ready ?
                     <div id="to-battle">Press Space to Enter Battle</div> :
                     characterCount == 2?
-                        <div>Pick one more Hero</div> :
-                        <div>Pick {3-characterCount} more Heroes</div>
+                        <div className="before-picking-three-heroes">
+                            <div className="pick-more-heroes">Pick one more Hero</div>
+                            <div className="press-space-to-pause-selection">Press Space to Pause</div>
+                        </div> :
+                        <div>
+                            <div className="pick-more-heroes">Pick {3-characterCount} more Heroes</div>
+                            <div className="press-space-to-pause-selection">Press Space to Pause</div>
+                        </div>
                 }
             </div>
         );

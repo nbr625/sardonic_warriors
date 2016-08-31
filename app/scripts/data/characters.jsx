@@ -2,7 +2,7 @@
 module.exports = {
     character1:{
         name:'Roman', hp:900, maxHp: 900, courage: 250, maxCourage: 250, description: 'description', status: 'alive', defense: 30, class: "God", attacks: [
-            {name:"Waffle Maker", magnitude: 200, courageCost: 35, type: 'damaging', initialText: [
+            {name:"Waffle Maker", magnitude: 10000, courageCost: 35, type: 'damaging', initialText: [
                 ["Roman reminded Gayathan that it was He who brought the sacred waffle",
                 "maker into their lives. Gayathan recalled all those fluffy waffles"],
                 ["She felt an immense guilt for threatening Roman. She heaves",

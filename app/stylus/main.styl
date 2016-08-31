@@ -88,7 +88,7 @@ header
   width: 393px
   text-align: center
   font-family: 'VeniceClassic'
-  color: #ffffff
+  color: #97e697
   position: relative
   top: -376px
   left: 316px
@@ -276,6 +276,20 @@ header
   top: 127px
   left: -39px
 
+.selection-controls
+  z-index: 3
+  position: absolute
+  top: 245px
+  left: 97px
+  width: 80%
+
+.battle-controls
+  z-index: 3
+  position: absolute
+  top: 58px
+  left: -22px
+  width: 99%
+
 .story-partchment-image
   background-repeat: no-repeat
   background-size: 100%
@@ -333,6 +347,11 @@ header
   position: absolute
   top: -20px
   left: -132px
+
+.battle-paused-image
+  z-index: 3
+  top: -42px
+  left: -147px
 
 .battle-content
   position: relative
@@ -714,6 +733,13 @@ header
   }
 }
 
+.battle-text-box-text
+  font-size: 21px
+  font-family: 'blzee'
+  overflow:hidden
+  white-space:nowrap
+  color: #318831
+
 .battle-text-box-text#gayathan
   color: $red
 
@@ -826,13 +852,41 @@ header
   color: $blue
 
 #to-battle
-  color: $red;
-  font-weight: bold;
-  font-size: 48px;
+  color: $red
+  font-weight: bold
+  font-size: 48px
   text-align: center
   font-family: 'blzee'
   position: relative
   animation: to-battle-enter-button-pulse 1.2s steps(2) infinite
+
+.press-space-to-pause-selection
+  color: #007f9c
+  font-weight: bold
+  font-size: 38px
+  text-align: center
+  font-family: 'blzee'
+  position: relative
+  top: -25px
+
+.press-space-to-pause-battle
+  color: #007f9c
+  font-weight: bold
+  font-size: 29px
+  text-align: center
+  font-family: 'blzee'
+  position: absolute
+  top: 911px
+  left: 280px
+
+.pick-more-heroes
+  color: #449d44
+  font-weight: bold
+  font-size: 48px
+  text-align: center
+  font-family: 'blzee'
+  position: relative
+  top: -18px
 
 @-webkit-keyframes to-battle-enter-button-pulse {
   from {font-size: 48px;}
@@ -1080,31 +1134,78 @@ header
   z-index: 2
   width: 64px
   height: 64px
+  z-index: 2
   animation: die-east 1.0s steps(4) forwards
 
 .dying-1
   position: relative
   left: 270px
   top: 79px
-  z-index: 2
+  animation: die-east-1 1.0s steps(4) forwards
+
+@keyframes die-east-1
+  0% {
+    background-position: 0
+    left: 270px
+    top: 79px
+  }
+  25% {
+    background-position: 0
+    left: 180px
+    top: -34px
+  }
+  100% {
+    background-position: -256px
+    left: 180px
+    top: -34px
+  }
 
 .dying-2
   position: relative
   left: 260px
   top: -12px
-  z-index: 2
+  animation: die-east-2 1.0s steps(4) forwards
+
+@keyframes die-east-2
+  0% {
+    background-position: 0
+    left: 260px
+    top: -12px
+  }
+  25% {
+    background-position: 0
+    left: 72px
+    top: -7px
+  }
+  100% {
+    background-position: -256px
+    left: 72px
+    top: -7px
+  }
 
 .dying-3
   position: relative
   left: 270px
   top: 79px
-  z-index: 2
+  animation: die-east-3 1.0s steps(4) forwards
 
 
-@keyframes die-east
-  from {background-position: 0}
-  to {background-position: -256px}
-
+@keyframes die-east-3
+  0% {
+    background-position: 0
+    left: 270px
+    top: -98px
+  }
+  25% {
+    background-position: 0
+    left: 183px
+    top: 7px
+  }
+  100% {
+    background-position: -256px
+    left: 183px
+    top: 7px
+  }
 
 
 .reviving-character
@@ -1377,7 +1478,7 @@ header
   }
   to {
     background-position: -706px
-    left: -239px
+    left: -200px
   }
 }
 
@@ -1472,7 +1573,7 @@ header
 
 .victory-component
   width: 1189px
-  //height: 864px
+  height: 864px
   margin-left: auto
   margin-right: auto
   position: relative
@@ -1484,7 +1585,7 @@ header
   top: 525px
   animation: scroll-up 40.0s steps(4866) forwards
 
-@-webkit-keyframes scroll-p {
+@-webkit-keyframes scroll-up {
   from { top: 525px;}
   to {top: -4341px;}
 }
@@ -1516,7 +1617,7 @@ header
   height: 64px
   position: absolute
   left: 559px
-  top: 3263px
+  top: 3205px
   animation: roman-victory 1.0s steps(6) infinite
 
 @-webkit-keyframes roman-victory {
@@ -1565,7 +1666,7 @@ header
   height: 64px
   position: absolute
   left: 566px
-  top: 2793px
+  top: 2698px
   animation: murat-victory 1.0s steps(6) infinite
 
 @-webkit-keyframes murat-victory {
@@ -1592,7 +1693,7 @@ header
   height: 64px
   position:absolute
   left: 566px
-  top: 3024px
+  top: 2950px
   background-image: url('../images/pri_walking.png')
   background-position: 0
   animation: pri-walking 1.0s steps(9) infinite
@@ -1633,7 +1734,7 @@ header
   height: 64px
   position:absolute
   left: 574px
-  top: 2554px
+  top: 2453px
   background-position: 0
   animation: wave-east 1.0s steps(7) infinite
 
@@ -1645,7 +1746,7 @@ header
   height: 64px
   position:absolute
   left: 574px
-  top: 2135px
+  top: 2036px
   background-position: 0
   animation: wave-east 1.0s steps(7) infinite
 

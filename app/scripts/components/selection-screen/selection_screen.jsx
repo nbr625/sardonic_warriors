@@ -14,18 +14,22 @@ class SelectionScreen extends React.Component {
     constructor(props,context){
         super(props, context);
         this.state = {
+            paused: false,
             pressUpHandler: this.pressUp.bind(this),
             pressDownHandler: this.pressDown.bind(this),
             pressEnterHandler: this.pressEnter.bind(this),
-            pressSpaceHandler: this.pressSpace.bind(this)
+            pressSpaceHandler: this.pressSpace.bind(this),
+            pressESCHandler: this.pressESC.bind(this)
         };
     }
 
     componentDidMount(){
+        this.props.resetPlayers();
         window.addEventListener('keydown', this.state.pressUpHandler);
         window.addEventListener('keydown', this.state.pressDownHandler);
         window.addEventListener('keydown', this.state.pressEnterHandler);
         window.addEventListener('keydown', this.state.pressSpaceHandler);
+        window.addEventListener('keydown', this.state.pressESCHandler);
     }
 
     componentWillUnmount(){
@@ -33,6 +37,7 @@ class SelectionScreen extends React.Component {
         window.removeEventListener('keydown', this.state.pressDownHandler);
         window.removeEventListener('keydown', this.state.pressEnterHandler);
         window.removeEventListener('keydown', this.state.pressSpaceHandler);
+        window.removeEventListener('keydown', this.state.pressESCHandler);
     }
 
     pressEnter(e){
@@ -98,13 +103,42 @@ class SelectionScreen extends React.Component {
             secondCharset = props.secondCharacter.hasOwnProperty('player'),
             thirdCharset = props.thirdCharacter.hasOwnProperty('player'),
             all_selected =firstCharset &&  secondCharset && thirdCharset,
+            audio = new Audio('/music/start-menu.mp3'),
+            audio2 = new Audio('/music/page-flipping-sound-1.mp3');
+
+
+
+        if(e.keyCode == 32) {
+            e.preventDefault();
+            if (all_selected) {
+                audio.play();
+                this.context.history.pushState(null, 'battle');
+                props.resetBoss();
+
+            } else if (this.state.paused == false) {
+                audio2.play();
+                this.setState({
+                    paused: true
+                });
+            } else {
+                audio2.play();
+                this.setState({
+                    paused: false
+                });
+            }
+        }
+    }
+
+    pressESC(e){
+        var state = this.state,
+            props = this.props,
             audio = new Audio('/music/start-menu.mp3');
 
-        if(e.keyCode == 32 && all_selected) {
+        if(e.keyCode == 27 && state.paused == true) {
             e.preventDefault();
             audio.play();
-            this.context.history.pushState(null, 'battle');
-            this.props.resetBoss();
+            this.context.history.pushState(null, '/');
+            props.resetBoss();
         }
     }
 
@@ -137,6 +171,14 @@ class SelectionScreen extends React.Component {
                         <ToBattleButton ready={false} {...this.props} />
                     }
                 </div>
+
+                {this.state.paused ?
+                    <div id="selection-screen paused-element-selection">
+                        <img className="player-selection-parchment-image" src="/images/old-partchment-background.png"/>
+                        <img className="selection-controls" src="/images/selection-panel-controls.png"/>
+                    </div> :
+                    <div className="empty"></div>
+                }
                 <audio src="/music/selection-instructions.mp3" autoPlay></audio>
                 <audio src="/music/selection-screen.mp3" autoPlay loop></audio>
             </div>

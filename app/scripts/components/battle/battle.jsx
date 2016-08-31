@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
+
 import Game from '../game.jsx';
 
 import Introduction from './text-panels/introduction.jsx';
@@ -36,6 +39,9 @@ var Battle = React.createClass({
         return {
 
             defaultListenerPreventerHandler: this.defaultListenerPreventer.bind(this),
+            paused: false,
+            pressSpaceHandler: this.pressSpace.bind(this),
+            pressESCHandler: this.pressESC.bind(this),
 
             firstCharacter: firstChar,
             secondCharacter: secChar,
@@ -139,10 +145,46 @@ var Battle = React.createClass({
 
     componentDidMount(){
         window.addEventListener('keydown', this.state.defaultListenerPreventerHandler);
+        window.addEventListener('keydown', this.state.pressSpaceHandler);
+        window.addEventListener('keydown', this.state.pressESCHandler);
     },
 
     componentWillUnmount(){
         window.removeEventListener('keydown', this.state.defaultListenerPreventerHandler);
+        window.removeEventListener('keydown', this.state.pressSpaceHandler);
+        window.removeEventListener('keydown', this.state.pressESCHandler);
+    },
+
+    pressSpace(e){
+        var audio = new Audio('/music/page-flipping-sound-1.mp3');
+
+
+
+        if(e.keyCode == 32) {
+            e.preventDefault();
+            audio.play();
+
+            if (this.state.paused == false) {
+                this.setState({
+                    paused: true
+                });
+            } else {
+                this.setState({
+                    paused: false
+                });
+            }
+        }
+    },
+
+    pressESC(e){
+        var state = this.state,
+            audio = new Audio('/music/start-menu.mp3');
+
+        if(e.keyCode == 27 && state.paused == true) {
+            e.preventDefault();
+            audio.play();
+            this.context.history.pushState(null, '/');
+        }
     },
 
     selectedCharacterHandler: function(character){
@@ -272,22 +314,22 @@ var Battle = React.createClass({
         if (this.state.boss.hp > 6600){
             boss.attacks = [
                 {
-                    name: "Make the Snake Dance", magnitude: 100, type: 'damaging', initialText: [
+                    name: "Make the Snake Dance", magnitude: 2000, type: 'damaging', initialText: [
                     ["Gayathan joined her vestigial little arms together and moved in",
                     "sinous pulses, to everyone\'s confusion It became apparent"],
                     ["was trying to recreate the snake dance from the youtube video",
                     "Her new body was enormous though, and it was a poor impression."]]
-                }, {name: "Talk about parenting Methods", magnitude: 150, type: 'damaging', initialText: [
+                }, {name: "Talk about parenting Methods", magnitude: 2000, type: 'damaging', initialText: [
                     [`Gayathan picked ${activeActionTarget} as the unlucky recepient of`,
                     "her parental advice \"The best way to raise your child...\" she begun."],
                     [`She took no time dispensing the most salacious advise that ${activeActionTarget}`,
                     "has ever heard. The bad advice jadeed him about parenthood in general."]]
-                }, {name: "Cackle hellishly", magnitude: 200, type: 'damaging', initialText: [
+                }, {name: "Cackle hellishly", magnitude: 2000, type: 'damaging', initialText: [
                     ["Usually Gayathan\'s laughter had the power to petrify a small child.",
                     "But since she was transformed into the earth\'s top carnivore,"],
                     ["Her laughter sounded like the wails of all humanity being tortured",
                     `She laughed directly at ${activeActionTarget}, who was mortified`]]
-                }, {name: "Take over their window sill", magnitude: 250, type: 'damaging', initialText: [
+                }, {name: "Take over their window sill", magnitude: 2000, type: 'damaging', initialText: [
                     ["Gayathan wanted to find a comfy place to rest her tired clawed feet",
                     `She sat by window sill next to ${activeActionTarget}\'s desk`],
                     [`${activeActionTarget}; instead of enjoying the quite drama of`,
@@ -539,8 +581,6 @@ var Battle = React.createClass({
                 if (firstCharacter.hp <= 0){
                     firstCharacter.hp = 0;
                     firstCharacter.status = 'dead';
-                    this.hurtCharacterHandler(0);
-                    this.dyingCharacterHandler(firstCharacter.player);
                     this.setState({lastKilledCharacter: firstCharacter})
                 }
                 this.setState({
@@ -555,8 +595,6 @@ var Battle = React.createClass({
                 if (secondCharacter.hp <= 0){
                     secondCharacter.hp = 0;
                     secondCharacter.status = 'dead';
-                    this.hurtCharacterHandler(0);
-                    this.dyingCharacterHandler(secondCharacter.player);
                     this.setState({lastKilledCharacter: secondCharacter})
                 }
                 this.setState({
@@ -571,8 +609,6 @@ var Battle = React.createClass({
                 if (thirdCharacter.hp <= 0){
                     thirdCharacter.hp = 0;
                     thirdCharacter.status = 'dead';
-                    this.hurtCharacterHandler(0);
-                    this.dyingCharacterHandler(thirdCharacter.player);
                     this.setState({lastKilledCharacter: thirdCharacter})
                 }
                 this.setState({
@@ -816,7 +852,15 @@ var Battle = React.createClass({
                             {this.renderPanel()}
                             {this.renderFrame()}
                         </div>
+                        <div className="press-space-to-pause-battle">Press Space to Pause</div>
                     </div>
+                    {state.paused ?
+                        <div id="battle paused-element-battle">
+                            <img className="battle-parchment-image battle-paused-image" src="/images/old-partchment-background.png"/>
+                            <img className="battle-controls" src="/images/battle-panel-controls.png"/>
+                        </div> :
+                            <div className="empty"></div>
+                    }
                     <audio src="/music/battle.mp3" autoPlay loop></audio>
                 </div>
             </div>
@@ -825,4 +869,5 @@ var Battle = React.createClass({
     }
 });
 
+reactMixin(Battle, History);
 export default Battle;
