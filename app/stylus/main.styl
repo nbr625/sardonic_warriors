@@ -848,76 +848,153 @@ header
   from {background-position: 0}
   to {background-position: -576px}
 
+.to-battle-character
+  z-index: 2
+  width: 64px
+  height: 64px
+
+.to-battle-1
+  position: relative
+  left: 180px
+  top: -34px
+  animation: to-battle-east-1 1.0s forwards
+@keyframes to-battle-east-1
+  from {
+    position: relative
+    left: 180px
+    top: -34px
+  }
+  to {
+    position: relative
+    left: 270px
+    top: 79px
+    background-position: 0
+  }
+
+.to-battle-2
+  position: relative
+  left: 72px
+  top: -7px
+  animation:to-battle-east-2 1.0s forwards
+@keyframes to-battle-east-2
+  from {
+    position: relative
+    left: 72px
+    top: -7px
+  }
+  to {
+    position: relative
+    left: 260px
+    top: -12px
+    background-position: 0
+  }
+
+.to-battle-3
+  position: relative
+  left: 183px
+  top: 7px
+  animation: to-battle-east-3 1.0s forwards
+@keyframes to-battle-east-3
+  from {
+    position: relative
+    left: 183px
+    top: 7px
+  }
+  to {
+    position: relative
+    left: 270px
+    top: -98px
+    background-position: 0
+  }
+
 .attacking-character
   z-index: 2
   width: 64px
   height: 64px
 
+
 .attack-1
   position: relative
-  left: 180px
-  top: -34px
+  left: 270px
+  top: 79px
   animation: attack-east-1 1.0s steps(5) forwards
 
 @keyframes attack-east-1
-  0% {
-    position: relative
-    left: 180px
-    top: -34px
-  } 50% {
-    position: relative
-    left: 270px
-    top: 79px
-    background-position: 0
-  } 100% {
-    position: relative
-    left: 270px
-    top: 79px
-    background-position: -320px
-  }
+  from {background-position: 0  }
+  to { background-position: -320px }
 
 .attack-2
   position: relative
-  left: 72px
-  top: -7px
+  left: 260px
+  top: -12px
   animation: attack-east-2 1.0s steps(5) forwards
 @keyframes attack-east-2
-  0% {
-    position: relative
-    left: 72px
-    top: -7px
-  } 50% {
-    position: relative
-    left: 260px
-    top: -12px
-    background-position: 0
-  } 100% {
-      left: 260px
-      top: -12px
-      background-position: -320px
-  }
+  from { background-position: 0 }
+  to { background-position: -320px  }
 
 .attack-3
   position: relative
-  left: 183px
-  top: 7px
+  left: 270px
+  top: -98px
   animation: attack-east-3 1.0s steps(5) forwards
 @keyframes attack-east-3
-  0% {
+  from { background-position: 0 }
+  to { background-position: -320px }
+
+
+.returning-character
+  z-index: 2
+  width: 64px
+  height: 64px
+
+.returning-1
+  position: relative
+  left: 270px
+  top: 79px
+  animation: returning-east-1 1.0s forwards, stand-east 1.0s steps(4) infinite
+@keyframes returning-east-1
+  from {
+    left: 270px
+    top: 79px
+  }
+  to {
+    left: 180px
+    top: -34px
+  }
+
+.returning-2
+  position: relative
+  left: 260px
+  top: -12px
+  animation:returning-east-2 1.0s forwards, stand-east 1.0s steps(4) infinite
+@keyframes returning-east-2
+  from {
+    left: 260px
+    top: -12px
+  }
+  to {
+    left: 72px
+    top: -7px
+  }
+
+.returning-3
+  position: relative
+  left: 183px
+  top: 7px
+  animation: returning-east-3 1.0s forwards, stand-east 1.0s steps(4) infinite
+@keyframes returning-east-3
+  from {
+    position: relative
+    left: 270px
+    top: -98px
+  }
+  to {
     position: relative
     left: 183px
     top: 7px
-  } 50% {
-    position: relative
-    left: 270px
-    top: -98px
-    background-position: 0
-  } 100% {
-    position: relative
-    left: 270px
-    top: -98px
-    background-position: -320px
   }
+
+
 
 .player-1
   position: relative
@@ -1070,47 +1147,41 @@ header
   position: relative
   left: 180px
   top: -34px
+  background-position: -256px
   z-index: 2
   animation: hurt-east-1 2.0s steps(4) forwards
 
 @keyframes hurt-east-1
 
   0% {
-    left: 180px
-    top: -34px
-    background-position: 0
+    left: 270px
+    top: 79px
   }
   25% {
-    background-position: -256px
     left: 270px
     top: 79px
   }
   60% {
-    background-position: -256px
     left: 280px
     top: 79px
   }
 
   70% {
-    background-position: -256px
     left: 260px
     top: 79px
   }
 
   80% {
-    background-position: -256px
     left: 280px
     top: 79px
   }
 
   90% {
-    background-position: -256px
     left: 260px
     top: 79px
   }
 
   100% {
-    background-position: -256px
     left: 270px
     top: 79px
   }
@@ -1121,45 +1192,39 @@ header
   position: relative
   left: 180px
   top: -34px
+  background-position: -256px
   animation: hurt-east-2 2.0s steps(4) forwards
 
 @keyframes hurt-east-2
   0% {
-    left: 180px
-    top: -34px
-    background-position: 0
+    left: 278px
+    top: -12px
   }
   25% {
-    background-position: -256px
     left: 278px
     top: -12px
   }
   60% {
-    background-position: -256px
     left: 288px
     top: -12px
   }
 
   70% {
-    background-position: -256px
     left: 268px
     top: -12px
   }
 
   80% {
-    background-position: -256px
     left: 288px
     top: -12px
   }
 
   90% {
-    background-position: -256px
     left: 268px
     top: -12px
   }
 
   100% {
-    background-position: -256px
     left: 278px
     top: -12px
   }
@@ -1170,45 +1235,39 @@ header
   position: relative
   left: 180px
   top: -34px
+  background-position: -256px
   animation: hurt-east-3 2.0s steps(4) forwards
 
 @keyframes hurt-east-3
   0% {
-    position: relative
-    left: 180px
-    top: -34px
+    left: 283px
+    top: -94px
   }
   25% {
-    background-position: 0
     left: 283px
     top: -94px
   }
   50% {
-    background-position: -256px
     left: 293px
     top: -94px
   }
 
   70% {
-    background-position: -256px
     left: 273px
     top: -94px
   }
 
   80% {
-    background-position: -256px
     left: 293px
     top: -94px
   }
 
   90% {
-    background-position: -256px
     left: 273px
     top: -94px
   }
 
   100% {
-    background-position: -256px
     left: 283px
     top: -94px
   }
@@ -1254,12 +1313,10 @@ header
 
 @keyframes boss-hurt-east {
   0% {
-    position: absolute
-    top: 3px
-    left 0px
+    left: -259px
+    top: -37px
   }
   25% {
-    position: absolute
     left: -259px
     top: -37px
   }
@@ -1290,37 +1347,13 @@ header
   width: 234px
   height: 230px
   position: absolute
-  left: -212px
+  left: -259px
   top: -37px
   animation: boss-attacks-east 1.0s steps(3) forwards
 
-.attacking-boss
-  position: absolute
-  left: -212px
-  top: -37px
-
-
 @keyframes boss-attacks-east {
-  0% {
-    z-index: 2
-    width: 234px
-    height: 230px
-    position: absolute
-    top: 3px
-    left:0px
-  }
-  50% {
-    position: absolute
-    left: -259px
-    top: -37px
-    background-position: 0
-  }
-  100% {
-    position: absolute
-    left: -259px
-    top: -37px
-    background-position: -702px
-  }
+  from { background-position: 0 }
+  to { background-position: -702px }
 }
 
 .dead-boss
@@ -1338,8 +1371,14 @@ header
   animation: boss-dies-east 1.0s steps(3) forwards
 
 @keyframes boss-dies-east {
-  from {background-position: 0}
-  to {background-position: -706px}
+  from {
+    background-position: 0
+    left: -259px
+  }
+  to {
+    background-position: -706px
+    left: -239px
+  }
 }
 
 .standing-boss
@@ -1353,6 +1392,46 @@ header
 @keyframes boss-stand-east {
   from {background-position: 0}
   to {background-position: -936px}
+}
+
+.to-battle-boss
+  z-index: 2
+  width: 234px
+  height: 230px
+  position: absolute
+  top: 3px
+  left: 0
+  animation: boss-to-battle-east 1.0s forwards
+
+@keyframes boss-to-battle-east {
+  from {
+    left: 0
+    top: 3px
+  }
+  to {
+    left: -259px
+    top: -37px
+  }
+}
+
+.returning-boss
+  z-index: 2
+  width: 234px
+  height: 230px
+  position: absolute
+  left: -259px
+  top: -37px
+  animation: boss-returning-east 1.0s forwards, boss-stand-east 1.0s steps(4) infinite
+
+@keyframes boss-returning-east {
+  from {
+    left: -259px
+    top: -37px
+  }
+  to {
+    left: 0
+    top: 3px
+  }
 }
 
 .game-over-component
@@ -1393,7 +1472,7 @@ header
 
 .victory-component
   width: 1189px
-  height: 864px
+  //height: 864px
   margin-left: auto
   margin-right: auto
   position: relative
@@ -1405,7 +1484,7 @@ header
   top: 525px
   animation: scroll-up 40.0s steps(4866) forwards
 
-@-webkit-keyframes scroll-up {
+@-webkit-keyframes scroll-p {
   from { top: 525px;}
   to {top: -4341px;}
 }
@@ -1414,7 +1493,7 @@ header
 
 .victory-background
   z-index:-2
-  height: 2671px;
+  height: 3824px
   width: 1208px
 
 .victory-text
@@ -1423,7 +1502,7 @@ header
   font-size: 30px
   font-family: 'blzee'
   position: relative
-  top: -2410px
+  top: -3550px
   left: 288px
   width: 639px
   margin-bottom: 199px
@@ -1437,7 +1516,7 @@ header
   height: 64px
   position: absolute
   left: 559px
-  top: 2060px
+  top: 3263px
   animation: roman-victory 1.0s steps(6) infinite
 
 @-webkit-keyframes roman-victory {
@@ -1486,7 +1565,7 @@ header
   height: 64px
   position: absolute
   left: 566px
-  top: 1582px
+  top: 2793px
   animation: murat-victory 1.0s steps(6) infinite
 
 @-webkit-keyframes murat-victory {
@@ -1513,7 +1592,7 @@ header
   height: 64px
   position:absolute
   left: 566px
-  top: 1816px
+  top: 3024px
   background-image: url('../images/pri_walking.png')
   background-position: 0
   animation: pri-walking 1.0s steps(9) infinite
@@ -1535,6 +1614,41 @@ header
 @keyframes andy-walking
   from {background-position: 0}
   to {background-position: -576px}
+
+
+.victory-first-char
+  z-index: 2
+  width: 64px
+  height: 64px
+  position:absolute
+  left: 574px
+  top: 1704px
+  background-position: 0
+  animation: wave-east 1.0s steps(7) infinite
+
+
+.victory-second-char
+  z-index: 2
+  width: 64px
+  height: 64px
+  position:absolute
+  left: 574px
+  top: 2554px
+  background-position: 0
+  animation: wave-east 1.0s steps(7) infinite
+
+
+
+.victory-third-char
+  z-index: 2
+  width: 64px
+  height: 64px
+  position:absolute
+  left: 574px
+  top: 2135px
+  background-position: 0
+  animation: wave-east 1.0s steps(7) infinite
+
 
 
 

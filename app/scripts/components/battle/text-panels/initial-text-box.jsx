@@ -37,6 +37,7 @@ class InitialTextBox extends React.Component{
     toBossDamageTextBox(){
         var props = this.props;
         props.hurtCharacterHandler(props.activeActionTarget.player);
+        props.toBattleCharacterHandler(0);
         props.setBossSprite('attacking');
         props.screenHandler('damageTB');
     }
@@ -57,9 +58,9 @@ class InitialTextBox extends React.Component{
             if(this.props.activePlayer == this.props.boss){
                 props.damage(props.activeAction, props.activeActionTarget);
                 this.toBossDamageTextBox();
-
             } else {
                 if (props.activeAction.type === 'damaging') {
+                    props.toBattleCharacterHandler(0);
                     props.attackingCharacterHandler(this.props.activePlayer.player);
                     props.damage(props.activeAction, props.activeActionTarget);
                     props.setBossSprite('hurt');

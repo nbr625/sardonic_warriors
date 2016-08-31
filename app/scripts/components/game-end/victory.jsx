@@ -6,19 +6,45 @@ import Game from '../game.jsx';
 
 var Victory = React.createClass({
 
+    getInitialState: function(){
+        debugger;
+        var firstChar = this.props.firstCharacter,
+            secChar = this.props.secondCharacter,
+            thirdChar = this.props.thirdCharacter;
+        return {
+            firstCharacter: firstChar,
+            secondCharacter: secChar,
+            thirdCharacter: thirdChar
+        }
+    },
+
     render: function() {
+        debugger;
+
+        var state = this.state,
+            firstCharacter = state.firstCharacter,
+            secondCharacter = state.secondCharacter,
+            thirdCharacter = state.thirdCharacter,
+            firstCharWaving = "/images/" + firstCharacter.name.toLowerCase() + "_selected.png",
+            firstCharWavingStyles ={backgroundImage: 'url(' + firstCharWaving + ')'},
+            secondCharWaving = "/images/" + secondCharacter.name.toLowerCase() + "_selected.png",
+            secondCharWavingStyles ={backgroundImage: 'url(' + secondCharWaving + ')'},
+            thirdCharWaving = "/images/" + thirdCharacter.name.toLowerCase() + "_selected.png",
+            thirdCharWavingStyles ={backgroundImage: 'url(' + thirdCharWaving + ')'},
+            heroSentence = `The great foe fell, ${firstCharacter.name}, ${secondCharacter.name} and ${thirdCharacter.name} became the heroes for the day.`;
+
         return (
             <div className="victory-component">
                 <div className="victory-partchment">
                     <img src="/images/old-partchment-background.png" className="victory-background"/>
                     <div>
                         <div className="victory-text">This the victory component</div>
-                        <div className="victory-text">The great foe fell, firstChar, secondChar and thirdCharacter became the heroes for the day.</div>
+                        <div className="victory-text">{heroSentence}</div>
                         <div className="victory-text">Nico and Steve bragged about how much better they could have done the job</div>
                         <div className="victory-text">Gayathri was taken to the server room so that she could have a polyphasic nap. When she rose, she felt much better</div>
-                        <div className="victory-text">{this.props.firstCharacter.endGameSummary}</div>
-                        <div className="victory-text">{this.props.secondCharacter.endGameSummary}</div>
-                        <div className="victory-text">{this.props.secondCharacter.endGameSummary}</div>
+                        <div className="victory-text">{firstCharacter.endGameSummary}</div>
+                        <div className="victory-text">{thirdCharacter.endGameSummary}</div>
+                        <div className="victory-text">{secondCharacter.endGameSummary}</div>
                         <div className="victory-text">Special thanks to:</div>
                         <div className="victory-text">Steve, Pri and Gayathri</div>
                         <div className="victory-text">Roman for consultation</div>
@@ -32,6 +58,9 @@ var Victory = React.createClass({
                         <div className="victory-andy"></div>
                         <div className="victory-andrew"></div>
                         <div className="victory-oleg"></div>
+                        <div className="victory-first-char" style={firstCharWavingStyles}></div>
+                        <div className="victory-second-char" style={secondCharWavingStyles}></div>
+                        <div className="victory-third-char" style={thirdCharWavingStyles}></div>
                     </div>
                     <div className="the-end">The End</div>
                     <audio src="/music/victory-music.mp3" autoPlay loop></audio>
@@ -42,5 +71,4 @@ var Victory = React.createClass({
     }
 });
 
-export default Victory
-reactMixin(Victory, History);
+export default Victory;

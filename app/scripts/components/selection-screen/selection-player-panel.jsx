@@ -32,8 +32,8 @@ export default class SelectionPlayerPanel extends React.Component {
             playerSummary = panelCharacter.name != 'Select' ? panelCharacter.profileText : "",
             walkingSpriteUrl = "/images/" + panelCharacter.name.toLowerCase() + "_walking.png",
             walkingSpriteStyles ={
-            backgroundImage: 'url(' + walkingSpriteUrl + ')'
-        };
+                backgroundImage: 'url(' + walkingSpriteUrl + ')'
+            };
 
         return (
             <tr className="player-selection-panel">

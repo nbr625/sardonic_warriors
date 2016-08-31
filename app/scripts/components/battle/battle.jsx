@@ -56,6 +56,8 @@ var Battle = React.createClass({
             hurtCharacter: 0,
             dyingCharacter: 0,
             revivingCharacter: 0,
+            toBattleCharacter: 0,
+            returningCharacter: 0,
             bossSpriteState: 'standing'
         }
     },
@@ -78,14 +80,15 @@ var Battle = React.createClass({
                                        screenHandler={this.screenHandler} {...this.props} {...state}
                                        heal={this.heal.bind(this)} damage={this.damage.bind(this)}
                                        attackingCharacterHandler={this.attackingCharacterHandler.bind(this)}
-                                       setBossSprite={this.setBossSprite.bind(this)}  hurtCharacterHandler={this.hurtCharacterHandler}/>;
+                                       setBossSprite={this.setBossSprite.bind(this)}  hurtCharacterHandler={this.hurtCharacterHandler}
+                                       toBattleCharacterHandler={this.toBattleCharacterHandler}/>;
                 break;
             case 'damageTB':
 
                 return <CharacterDamageTextBox {...state} screenHandler={this.screenHandler} setBossSprite={this.setBossSprite}
                                                setNextTurn={this.setNextTurn.bind(this)} dyingCharacterHandler={this.dyingCharacterHandler}
                                                attackingCharacterHandler={this.attackingCharacterHandler.bind(this)} revivingCharacterHandler={this.revivingCharacterHandler}
-                                               hurtCharacterHandler={this.hurtCharacterHandler}/>;
+                                               hurtCharacterHandler={this.hurtCharacterHandler} returningCharacterHandler={this.returningCharacterHandler}/>;
                 break;
             case 'PlayerP':
                 return <PlayerPanel screenHandler={this.screenHandler.bind(this)} activePlayer={state.activePlayer}
@@ -148,6 +151,19 @@ var Battle = React.createClass({
         });
     },
 
+    toBattleCharacterHandler: function(character){
+        this.setState({
+            toBattleCharacter: character
+        });
+    },
+
+    returningCharacterHandler: function(character){
+        debugger;
+        this.setState({
+            returningCharacter: character
+        });
+    },
+
     attackingCharacterHandler: function(character){
         this.setState({
             attackingCharacter: character
@@ -203,18 +219,27 @@ var Battle = React.createClass({
         });
     },
 
-    setAction: function(action, target=null){
+    setAction: function(action, target=null) {
         this.setState({
-           activeAction: action
+            activeAction: action
         });
-        if(target){
+        if (target == this.state.boss) {
             this.setState({
                 activeActionTarget: target
             });
+            this.setBossSprite('to-battle');
+            this.toBattleCharacterHandler(this.state.activePlayer.player);
+            this.screenHandler('initialTB');
+        } else if(target){
+            this.setState({
+                activeActionTarget: target
+            });
+            this.setBossSprite('to-battle');
+            this.toBattleCharacterHandler(this.state.activeActionTarget.player);
             this.screenHandler('initialTB');
         } else {
+            this.selectedCharacterHandler;
             this.screenHandler('selectHT');
-            this.selectedCharacterHandler(1);
         }
     },
 

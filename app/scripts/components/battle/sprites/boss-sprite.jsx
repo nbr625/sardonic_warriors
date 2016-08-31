@@ -16,8 +16,12 @@ class BossSprite extends React.Component{
             standingBossSprite = "/images/" + boss.name.toLowerCase() + "_standing.png",
             dyingBossSprite = "/images/" + boss.name.toLowerCase() + "_dying.png",
             deadBossSprite = "/images/" + boss.name.toLowerCase() + "_dead.png",
+            toBattleBossSprite = "/images/" + boss.name.toLowerCase() + "_standing.png",
+            returningBossSprite = "/images/" + boss.name.toLowerCase() + "_standing.png",
             attackingCharacter = {backgroundImage: 'url(' + attackingBossSprite + ')'},
             standingCharacter = {backgroundImage: 'url(' + standingBossSprite + ')'},
+            toBattleCharacter = {backgroundImage: 'url(' + toBattleBossSprite + ')'},
+            returningCharacter = {backgroundImage: 'url(' + returningBossSprite + ')'},
             dyingCharacter = {backgroundImage: 'url(' + dyingBossSprite + ')'},
             hurtCharacter = {backgroundImage: 'url(' + hurtBossSprite + ')'},
             deadCharacter = {backgroundImage: 'url(' + deadBossSprite + ')'};
@@ -25,6 +29,12 @@ class BossSprite extends React.Component{
         switch(bossStatus) {
             case 'standing':
                 return <div style={standingCharacter} className={`standing-boss`}></div>;
+                break;
+            case 'to-battle':
+                return <div style={toBattleCharacter} className={`to-battle-boss`}></div>;
+                break;
+            case 'returning':
+                return <div style={returningCharacter} className={`returning-boss`}></div>;
                 break;
             case 'attacking':
                 return <div style={attackingCharacter} className={`attacking-boss targeting-player-${props.activeActionTarget.player}`}></div>;

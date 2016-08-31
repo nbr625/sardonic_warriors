@@ -35,6 +35,7 @@ class CharacterDamageTextBox extends React.Component{
             props.hurtCharacterHandler(0);
             props.setBossSprite('standing');
             if (props.activeActionTarget.hp > 0){
+                props.returningCharacterHandler(props.activeActionTarget.player);
                 props.setNextTurn()
             } else {
                 props.dyingCharacterHandler(props.activeActionTarget.player);
@@ -42,9 +43,11 @@ class CharacterDamageTextBox extends React.Component{
             }
         } else if (props.activeActionTarget.hp > 0){
             props.attackingCharacterHandler(0);
-            props.setBossSprite('standing');
+            props.returningCharacterHandler(props.activePlayer.player);
+            props.setBossSprite('returning');
             props.setNextTurn();
         } else {
+            this.props.returningCharacterHandler(props.activePlayer.player);
             props.attackingCharacterHandler(0);
             props.setBossSprite('dying');
             props.setNextTurn();

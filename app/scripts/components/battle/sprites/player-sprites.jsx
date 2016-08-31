@@ -63,9 +63,15 @@ class PlayerSprite extends React.Component{
         } else if(character.status == 'dead'){
             playerStyle = deadCharacter;
             playerClass = `dead-character dead-${playerString}`;
+        } else if(props.toBattleCharacter == player) {
+            playerStyle = standingCharacter;
+            playerClass = `to-battle-character to-battle-${playerString}`;
+        }  else if(props.returningCharacter == player) {
+            playerStyle = standingCharacter;
+            playerClass = `returning-character returning-${playerString}`;
         } else {
             playerStyle = standingCharacter;
-            playerClass = `standing-character standing-${playerString}`
+            playerClass = `standing-character standing-${playerString}`;
         }
 
         return <div id={playerString} style={playerStyle} className={playerClass}></div>;
