@@ -34,7 +34,7 @@ class StartScreen extends React.Component {
 
         return (
             <div className="start-screen">
-                <div className="game-title">Would you like me to tell you a story?</div>
+                <div className="game-title">Oh... Hi! Would you like me to hear my story?</div>
                 <div className="game-title-press-space">Press Space</div>
                 <audio id="background-music" src="/music/start-menu-music.mp3" autoPlay loop></audio>
                 <audio id="narration" src="/music/tell-you-a-story.mp3" autoPlay></audio>

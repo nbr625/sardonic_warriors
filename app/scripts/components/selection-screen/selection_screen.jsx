@@ -152,9 +152,9 @@ class SelectionScreen extends React.Component {
 
         return (
             <div className="selection-screen">
-                <h1 className="selection-title">So one has answered the calling. Listen well...</h1>
+                <h1 className="selection-title">So one has answered the calling! Listen well...</h1>
                 <div className="select-wisely">I can only grant you control over three Breakthroughers</div>
-                <div className="only-three">Choose wisely...</div>
+                <div className="only-three">Please, choose wisely...</div>
                 <img className="player-selection-parchment-image" src="/images/old-partchment-background.png"/>
                 <table className="player-selection-parchment">
                     <tbody>

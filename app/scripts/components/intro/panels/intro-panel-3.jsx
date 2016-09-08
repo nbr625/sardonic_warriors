@@ -35,8 +35,8 @@ class IPanel3 extends React.Component {
             <div className="intro-panel-kitchen">
                 <img src="/images/kitchen.png" className="background-fade-in"/>
                 <img src="/images/steve-laughing-right.png" className="intro-character-right introduced-character"/>
-                <div className="story-text" id="first-line">"Just another day in paradise!" said Steve, as though he was a smith on a</div>
-                <div className="story-text" id="second-line">mission to melt away the yesterday and solder the realities of a new day.</div>
+                <div className="story-text" id="first-line">"Just another day in paradise!" said Steve, already rippling positive</div>
+                <div className="story-text" id="second-line">vibrations in the serene pond of matutine echoes and run on metaphors </div>
                 <audio src="/music/intro-3.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>

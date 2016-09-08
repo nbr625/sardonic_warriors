@@ -14,12 +14,17 @@ var Victory = React.createClass({
         return {
             firstCharacter: firstChar,
             secondCharacter: secChar,
-            thirdCharacter: thirdChar
+            thirdCharacter: thirdChar,
+            rolling: true
         }
     },
 
+    componentDidMount: function() {
+        var self = this;
+        setTimeout(() => {self.context.history.pushState(null, '/');}, 45000);
+    },
+
     render: function() {
-        debugger;
 
         var state = this.state,
             firstCharacter = state.firstCharacter,
@@ -61,8 +66,8 @@ var Victory = React.createClass({
                         <div className="victory-first-char" style={firstCharWavingStyles}></div>
                         <div className="victory-second-char" style={secondCharWavingStyles}></div>
                         <div className="victory-third-char" style={thirdCharWavingStyles}></div>
+                        <div className="the-end">The End</div>
                     </div>
-                    <div className="the-end">The End</div>
                     <audio src="/music/victory-music.mp3" autoPlay loop></audio>
                 </div>
             </div>
@@ -71,4 +76,5 @@ var Victory = React.createClass({
     }
 });
 
+reactMixin(Victory, History);
 export default Victory;

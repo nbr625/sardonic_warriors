@@ -24,6 +24,18 @@ export default class Intro extends React.Component {
                 <img className="story-partchment-image" src="/images/partchment-horizontal-background.png"/>
                 <div className="story-slide">{this.props.children}</div>
                 <audio src="/music/intro-music.mp3" autoPlay loop></audio>
+                <div className="hidden-image">
+                    <img src="/images/intro-pri-talking-left.png"/>
+                    <img src="/images/thunder-clouds.png"/>
+                    <img src="/images/gayathan-turning-0.png"/>
+                    <img src="/images/gayathan-turning.png"/>
+                    <img src="/images/gayathan-turned-2.png"/>
+                    <img src="/images/gayathan-turned-1-cut.png"/>
+                    <img src="/images/story-pri-scared.png"/>
+                    <img src="/images/steve-terrified-left.png"/>
+                    <img src="/images/nico-pointing-intro.png"/>
+                    <img src="/images/nico-roasted-intro.png"/>
+                </div>
             </div>
 
         );

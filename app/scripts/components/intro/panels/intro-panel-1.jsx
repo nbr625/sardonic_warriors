@@ -35,8 +35,8 @@ export default class IPanel1 extends React.Component {
             <div >
                 <div>
                     <img src="/images/conference-room.png" className="background-fade-in"/>
-                    <div className="story-text" id="first-line">Listen...A long time ago, before the Trump Calamity, deep in Redwoods,</div>
-                    <div className="story-text" id="second-line">stood a place called Breakthrough...</div>
+                    <div className="story-text" id="first-line">Take a Listen...A long time ago, even before the Trump Calamity,</div>
+                    <div className="story-text" id="second-line">There was a sanctuary by the Redwoods. Some called it Breakthrough</div>
                     <audio src="/music/intro-1.mp3" autoPlay></audio>
                     <div className="hidden-image">
                         <img src="/images/snackbar.png"/>

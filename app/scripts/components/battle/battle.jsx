@@ -314,22 +314,22 @@ var Battle = React.createClass({
         if (this.state.boss.hp > 6600){
             boss.attacks = [
                 {
-                    name: "Make the Snake Dance", magnitude: 2000, type: 'damaging', initialText: [
+                    name: "Make the Snake Dance", magnitude: 200, type: 'damaging', initialText: [
                     ["Gayathan joined her vestigial little arms together and moved in",
                     "sinous pulses, to everyone\'s confusion It became apparent"],
                     ["was trying to recreate the snake dance from the youtube video",
                     "Her new body was enormous though, and it was a poor impression."]]
-                }, {name: "Talk about parenting Methods", magnitude: 2000, type: 'damaging', initialText: [
+                }, {name: "Talk about parenting Methods", magnitude: 150, type: 'damaging', initialText: [
                     [`Gayathan picked ${activeActionTarget} as the unlucky recepient of`,
                     "her parental advice \"The best way to raise your child...\" she begun."],
                     [`She took no time dispensing the most salacious advise that ${activeActionTarget}`,
                     "has ever heard. The bad advice jadeed him about parenthood in general."]]
-                }, {name: "Cackle hellishly", magnitude: 2000, type: 'damaging', initialText: [
+                }, {name: "Cackle hellishly", magnitude: 250, type: 'damaging', initialText: [
                     ["Usually Gayathan\'s laughter had the power to petrify a small child.",
                     "But since she was transformed into the earth\'s top carnivore,"],
                     ["Her laughter sounded like the wails of all humanity being tortured",
                     `She laughed directly at ${activeActionTarget}, who was mortified`]]
-                }, {name: "Take over their window sill", magnitude: 2000, type: 'damaging', initialText: [
+                }, {name: "Take over their window sill", magnitude: 300, type: 'damaging', initialText: [
                     ["Gayathan wanted to find a comfy place to rest her tired clawed feet",
                     `She sat by window sill next to ${activeActionTarget}\'s desk`],
                     [`${activeActionTarget}; instead of enjoying the quite drama of`,
@@ -338,7 +338,7 @@ var Battle = React.createClass({
             ];
         } else if (this.state.boss.hp > 3300) {
             boss.attacks = [
-                {name: "Insist that you watch bollywood videos", magnitude: 200, type: 'damaging', initialText: [
+                {name: "Insist that you watch bollywood videos", magnitude: 300, type: 'damaging', initialText: [
                     ["Now that she was one the deadliest predators to ever roam the earth,",
                     "Gayathan has the confidence to force someone watch a Bollywood movie"],
                     [`${activeActionTarget} was unfortunately chosen as her victim`,

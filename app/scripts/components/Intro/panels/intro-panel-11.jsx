@@ -20,7 +20,7 @@ class IPanel11 extends React.Component {
             this.props.updateSelectableCharacters();
             var audio = new Audio('/music/page-flipping-sound-5.mp3');
             audio.play();
-            this.context.history.pushState(null, 'intro/12');
+            this.context.history.pushState(null, 'intro/13');
         }
     }
 
@@ -38,8 +38,8 @@ class IPanel11 extends React.Component {
             <div className="intro-panel-11">
                 <img src="/images/conference-room.png" className="intro-background"/>
                 <img src="/images/gayathan-turning.png" className="intro-character-middle character-being-introduced"/>
-                <div className="story-text" id="first-line">Out of desperation, her DNA summoned a sturdier vessel, cast away long</div>
-                <div className="story-text" id="second-line">before history. Her fleshy human skin segmented and hardened into scales</div>
+                <div className="story-text" id="first-line">Her frantic cells remembered a terrible vessel, cast away long before history</div>
+                <div className="story-text" id="second-line">they worked in a frenzy to rebuild from this monstrous blueprint</div>
                 <audio src="/music/intro-11.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>

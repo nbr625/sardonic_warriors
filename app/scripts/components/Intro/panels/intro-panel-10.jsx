@@ -38,8 +38,8 @@ class IPanel10 extends React.Component {
             <div className="intro-panel-10">
                 '<img src="/images/kitchen.png" className="intro-background"/>
                 <img src="/images/gayathan-turning-0.png" className="intro-character-middle character-being-introduced"/>
-                <div className="story-text" id="first-line">The room filled with blinding incandescence. To contain the incredible surge</div>
-                <div className="story-text" id="second-line">of negative energy, Gayathri's body had to morphed at the cellular level.</div>
+                <div className="story-text" id="first-line">The bolt struck Gayathri and flooded the room with blinding incandescence.</div>
+                <div className="story-text" id="second-line">To contain the charge of negative energy, Gayathri's body had to change...</div>
                 <audio src="/music/intro-10.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>

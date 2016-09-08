@@ -37,8 +37,8 @@ class IPanel9 extends React.Component {
         return (
             <div className="intro-panel-9">
                 <img src="/images/thunder-clouds.png" className="background-fade-in"/>
-                <div className="story-text" id="first-line">At once, the storm found her flailing behind thin walls. An eager surge</div>
-                <div className="story-text" id="second-line">thundered down, demolishing all obstruction until it found its target</div>
+                <div className="story-text" id="first-line">Above the clouds, the reaction was immediate; An eager lightning</div>
+                <div className="story-text" id="second-line">surged downwards, blasting away all obstacles between its target</div>
                 <audio src="/music/intro-9.mp3" autoPlay></audio>
                 <audio src="/music/thunder.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>

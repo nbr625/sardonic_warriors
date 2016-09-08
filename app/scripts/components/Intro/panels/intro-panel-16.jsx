@@ -39,7 +39,7 @@ class IPanel16 extends React.Component {
                 <img src="/images/conference-room.png" className="intro-background"/>
                 <img src="/images/gayathan-turned-2.png" className="intro-character-middle character-being-introduced" id="gayathan-1"/>
                 <div className="story-text" id="first-line">After that, Gayathan destroyed Breakthrough... I have waited since</div>
-                <div className="story-text" id="second-line">for someone to rewrite the scrolls of time. Are you the one?</div>
+                <div className="story-text" id="second-line">for someone to rewrite the scrolls of time. How's your handwriting?</div>
                 <audio src="/music/intro-16.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
             </div>

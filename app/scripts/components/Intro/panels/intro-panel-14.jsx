@@ -38,7 +38,8 @@ class IPanel14 extends React.Component {
             <div className="intro-panel-14">
                 <img src="/images/conference-room.png" className="intro-background"/>
                 <img src="/images/gayathan-turned-2.png" className="intro-character-left character-being-introduced" id="gayathan-1"/>
-                <div className="story-text" id="first-line">"Have no fear!", said Nico as he stepped forward. "This is my game and I</div>
+                <img src="/images/nico-pointing-intro.png" className="intro-character-right character-being-introduced"/>
+                <div className="story-text" id="first-line">"Have no fear!", said Nico stepping forward. "This is my game and I</div>
                 <div className="story-text" id="second-line">have omnipotent powers here! Fall before my might you ancient beast!" </div>
                 <audio src="/music/intro-14.mp3" autoPlay></audio>
                 <div className="story-next-button">Press Enter</div>
