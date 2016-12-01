@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dfdc8775-ed00-4efd-b2f0-6fda756c5f03" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="Sardonic_Warriors.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +28,8 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11392405">
-              <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.75949365">
+              <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -84,8 +85,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="432" />
-    <option name="y" value="82" />
+    <option name="x" value="181" />
+    <option name="y" value="23" />
     <option name="width" value="1278" />
     <option name="height" value="799" />
   </component>
@@ -235,7 +236,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="432" y="82" width="1278" height="799" extended-state="0" />
+    <frame x="181" y="23" width="1278" height="799" extended-state="1" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2540453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -291,8 +292,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11392405">
-          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.75949365">
+          <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
           <folding />
         </state>
       </provider>
