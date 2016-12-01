@@ -12,6 +12,7 @@
   ],
   "main": "index.html",
   "scripts": {
+    "build": "gulp build",
     "start": "gulp clean && gulp",
     "test": "jest"
   },

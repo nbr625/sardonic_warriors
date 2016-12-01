@@ -50,4 +50,3 @@ export default class IPanel1 extends React.Component {
 }
 
 reactMixin(IPanel1, History);
-export default IPanel1;
