@@ -106,3 +106,7 @@ gulp.task('default', ['images', 'music', 'html','scripts', 'styles', 'serve', 'w
 gulp.task('build', ['clean'], function(){
   gulp.start(['images','music', 'html','scripts','styles']);
 });
+
+gulp.task("heroku:production", function(){
+  console.log('hello'); // the task does not need to do anything.
+});
