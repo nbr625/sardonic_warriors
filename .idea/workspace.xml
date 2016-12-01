@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dfdc8775-ed00-4efd-b2f0-6fda756c5f03" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="Sardonic_Warriors.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -236,7 +235,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="181" y="23" width="1278" height="799" extended-state="1" />
+    <frame x="181" y="23" width="1278" height="799" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2540453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
