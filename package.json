@@ -46,6 +46,7 @@
     "webpack": "^1.12.3"
   },
   "dependencies": {
+    "gulp": "^3.9.1",
     "history": "^1.13.0",
     "react": "^0.14.2",
     "react-audio-player": "^0.1.2",
@@ -55,7 +56,9 @@
     "react-preload": "^0.2.3",
     "react-progress-label": "^1.2.1",
     "react-router": "^1.0.0",
-    "reflux": "^0.3.0"
+    "reflux": "^0.3.0",
+    "nodemon": "^1.2.1",
+    "webpack": "^1.10.1"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
