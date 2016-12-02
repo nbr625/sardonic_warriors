@@ -42,7 +42,6 @@
     "orchestrator": "^0.3.7",
     "re-base": "^1.5.1",
     "react-addons-test-utils": "^0.14.2",
-    "react-hot-loader": "^1.3.0",
     "webpack": "^1.12.3"
   },
   "engines": {
@@ -72,7 +71,6 @@
     "orchestrator": "^0.3.7",
     "re-base": "^1.5.1",
     "react-addons-test-utils": "^0.14.2",
-    "react-hot-loader": "^1.3.0",
     "webpack": "^1.12.3"
   },
   "jest": {
